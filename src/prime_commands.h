@@ -93,7 +93,7 @@
 #define PRIME_MODIFY_START              "modify_start"
 #define PRIME_MODIFY_CURSOR_EXPAND      "modify_cursor_expand"
 #define PRIME_MODIFY_CURSOR_SHRINK      "modify_cursor_shrink"
-#define PRIME_MODIFY_CURSOR_LEFT        "modify_cusror_left"
+#define PRIME_MODIFY_CURSOR_LEFT        "modify_cursor_left"
 #define PRIME_MODIFY_CURSOR_LEFT_EDGE   "modify_cursor_left_edge"
 #define PRIME_MODIFY_CURSOR_RIGHT       "modify_cursor_right"
 #define PRIME_MODIFY_CURSOR_RIGHT_EDGE  "modify_cursor_right_edge"

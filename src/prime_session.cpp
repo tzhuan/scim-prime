@@ -248,7 +248,7 @@ PrimeSession::modify_cursor_left (void)
 }
 
 void
-PrimeSession::modify_cusror_left_edge (void)
+PrimeSession::modify_cursor_left_edge (void)
 {
     send_command (PRIME_MODIFY_CURSOR_LEFT_EDGE);
 }

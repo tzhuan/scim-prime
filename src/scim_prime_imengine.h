@@ -57,6 +57,7 @@ private:
 
     /* flags */
     bool                    m_converting;
+    bool                    m_modifying;
     bool                    m_registering;
 
     /* for register mode */
@@ -84,6 +85,7 @@ public:
 public:
     virtual bool is_preediting                 (void);
     virtual bool is_converting                 (void);
+    virtual bool is_modifying                  (void);
     virtual bool is_registering                (void);
 
 private: // actions
@@ -119,6 +121,7 @@ private: // actions
     bool   action_select_candidate_9           (void);
     bool   action_select_candidate_10          (void);
 
+    bool   action_modify_start                 (void);
     bool   action_select_prev_segment          (void);
     bool   action_select_next_segment          (void);
     bool   action_select_first_segment         (void);

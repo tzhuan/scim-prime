@@ -76,7 +76,7 @@ public: // prime commands
     // modify
     void        modify_start             (void);
     void        modify_cursor_left       (void);
-    void        modify_cusror_left_edge  (void);
+    void        modify_cursor_left_edge  (void);
     void        modify_cursor_right      (void);
     void        modify_cursor_right_edge (void);
     void        modify_cursor_expand     (void);
