@@ -93,6 +93,7 @@ private: // actions
     bool   action_commit_without_learn         (void);
     bool   action_convert                      (void);
     bool   action_revert                       (void);
+    bool   action_finish_selecting_candidates  (void);
 
     bool   action_modify_caret_left            (void);
     bool   action_modify_caret_right           (void);
@@ -144,15 +145,13 @@ private:
            get_session                         (void);
 
     void   set_preedition                      (void);
+    void   set_preedition_on_register          (void);
     void   set_prediction                      (void);
 
     void   select_candidate_no_direct          (unsigned int    item);
 
     /* processing key event */
     bool   process_key_event_lookup_keybind    (const KeyEvent &key);
-    bool   process_key_event_without_preedit   (const KeyEvent &key);
-    bool   process_key_event_with_preedit      (const KeyEvent &key);
-    bool   process_key_event_with_candidate    (const KeyEvent &key);
     bool   process_remaining_key_event         (const KeyEvent &key);
 
     /* utility */
