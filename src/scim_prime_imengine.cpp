@@ -643,11 +643,15 @@ PrimeInstance::action_revert (void)
     if (!is_preediting () && !is_registering ())
         return false;
 
-    if (is_converting ()) {
-        action_finish_selecting_candidates ();
+    if (is_registering ()) {
+        if (is_converting ()) {
+            action_finish_selecting_candidates ();
 
-    } else if (is_registering ()) {
-        if (is_preediting ()) {
+        } else if (is_modifying ()) {
+            m_modifying = false;
+            set_preedition ();
+
+        } else if (is_preediting ()) {
             get_session()->edit_erase ();
             m_lookup_table.clear ();
             hide_lookup_table ();
@@ -658,6 +662,13 @@ PrimeInstance::action_revert (void)
             get_session()->edit_insert (query_string.c_str());
             set_preedition ();
         }
+
+    } else if (is_converting ()) {
+        action_finish_selecting_candidates ();
+
+    } else if (is_modifying ()) {
+        m_modifying = false;
+        set_preedition ();
 
     } else {
         reset ();
