@@ -27,6 +27,7 @@
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT            "/IMEngine/PRIME/CloseCandWinOnSelect"
+#define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION         "/IMEngine/PRIME/DirectSelectOnPrediction"
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
 #define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT                        "/IMEngine/PRIME/ShowComment"
@@ -59,12 +60,12 @@
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY              "/IMEngine/PRIME/SelectCandidates8Key"
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY              "/IMEngine/PRIME/SelectCandidates9Key"
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY             "/IMEngine/PRIME/SelectCandidates10Key"
-#define SCIM_PRIME_CONFIG_SELECT_FIRST_SEGMENT_KEY            "/IMEngine/Prime/SelectFirstSegmentKey"
-#define SCIM_PRIME_CONFIG_SELECT_LAST_SEGMENT_KEY             "/IMEngine/Prime/SelectLastSegmentKey"
-#define SCIM_PRIME_CONFIG_SELECT_NEXT_SEGMENT_KEY             "/IMEngine/Prime/SelectNextSegmentKey"
-#define SCIM_PRIME_CONFIG_SELECT_PREV_SEGMENT_KEY             "/IMEngine/Prime/SelectPrevSegmentKey"
-#define SCIM_PRIME_CONFIG_SHRINK_SEGMENT_KEY                  "/IMEngine/Prime/ShrinkSegmentKey"
-#define SCIM_PRIME_CONFIG_EXPAND_SEGMENT_KEY                  "/IMEngine/Prime/ExpandSegmentKey"
+#define SCIM_PRIME_CONFIG_SELECT_FIRST_SEGMENT_KEY            "/IMEngine/PRIME/SelectFirstSegmentKey"
+#define SCIM_PRIME_CONFIG_SELECT_LAST_SEGMENT_KEY             "/IMEngine/PRIME/SelectLastSegmentKey"
+#define SCIM_PRIME_CONFIG_SELECT_NEXT_SEGMENT_KEY             "/IMEngine/PRIME/SelectNextSegmentKey"
+#define SCIM_PRIME_CONFIG_SELECT_PREV_SEGMENT_KEY             "/IMEngine/PRIME/SelectPrevSegmentKey"
+#define SCIM_PRIME_CONFIG_SHRINK_SEGMENT_KEY                  "/IMEngine/PRIME/ShrinkSegmentKey"
+#define SCIM_PRIME_CONFIG_EXPAND_SEGMENT_KEY                  "/IMEngine/PRIME/ExpandSegmentKey"
 #define SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY                "/IMEngine/PRIME/SetModeDefaultKey"
 #define SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY               "/IMEngine/PRIME/SetModeKatakanaKey"
 #define SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY          "/IMEngine/PRIME/SetModeHalfKatakanaKey"
@@ -79,6 +80,7 @@
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT               false
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT    false
+#define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT true
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
 #define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  false
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT                false

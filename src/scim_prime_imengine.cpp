@@ -59,6 +59,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_converting (false),
       m_modifying (false),
       m_registering (false),
+      m_cancel_prediction (false),
       m_registering_cursor (0)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
@@ -87,10 +88,12 @@ PrimeInstance::process_key_event (const KeyEvent& key)
 
     // ignore key release.
     if (key.is_key_release ()) {
-        if (m_factory->m_predict_on_preedition)
+        if (!m_cancel_prediction && m_factory->m_predict_on_preedition)
             set_prediction ();
         return true;
     }
+
+    m_cancel_prediction = false;
 
     // ignore modifier keys
     if (key.code == SCIM_KEY_Shift_L || key.code == SCIM_KEY_Shift_R ||
@@ -706,11 +709,16 @@ PrimeInstance::action_revert (void)
             m_modifying = false;
             set_preedition ();
 
+        } else if (m_lookup_table.number_of_candidates () > 0) {
+            m_cancel_prediction = true;
+            action_finish_selecting_candidates ();
+
         } else if (is_preediting ()) {
             get_session()->edit_erase ();
             m_lookup_table.clear ();
             hide_lookup_table ();
             set_preedition ();
+
         } else {
             String query_string = m_query_string;
             reset (); 
@@ -725,6 +733,10 @@ PrimeInstance::action_revert (void)
         m_modifying = false;
         set_preedition ();
 
+    } else if (m_lookup_table.number_of_candidates () > 0) {
+        m_cancel_prediction = true;
+        action_finish_selecting_candidates ();
+
     } else {
         reset ();
     }
@@ -735,14 +747,15 @@ PrimeInstance::action_revert (void)
 bool
 PrimeInstance::action_finish_selecting_candidates (void)
 {
-    if (!is_converting ())
+    if (m_lookup_table.number_of_candidates () <= 0)
         return false;
 
     m_lookup_table.clear ();
-    hide_lookup_table ();
     m_candidates.clear();
     m_converting = false;
+
     set_preedition ();
+    hide_lookup_table ();
 
     return true;
 }
@@ -1008,12 +1021,30 @@ PrimeInstance::action_conv_prev_page (void)
 bool
 PrimeInstance::action_select_candidate (unsigned int i)
 {
-    if (!is_converting ())
+    if (!is_preediting ())
         return false;
 
-    select_candidate (i);
+    if (is_converting ()) {
+        select_candidate (i);
+        return true;
+    }
 
-    return true;
+    // on prediction
+    if (m_factory->m_direct_select_on_prediction &&
+        m_lookup_table.number_of_candidates () > i)
+    {
+        PrimeCandidates candidates;
+        get_session()->conv_predict (candidates);
+        if (candidates.size() > i) {
+            commit_string (candidates[i].m_conversion);
+            reset ();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    return false;
 }
 
 bool
@@ -1279,12 +1310,11 @@ PrimeInstance::action_toggle_language (void)
     std::vector<String> list;
     get_session()->get_env (key, type, list);
 
-    // FIXME! should be stored using map container
     m_prime.session_end (m_session);
     delete m_session;
     m_session = NULL;
 
-    if (list.size() <= 0) {
+    if (list.empty ()) {
         m_session = m_prime.session_start ();
         return true;
     }

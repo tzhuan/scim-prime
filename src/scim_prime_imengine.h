@@ -61,6 +61,7 @@ private:
     bool                    m_converting;
     bool                    m_modifying;
     bool                    m_registering;
+    bool                    m_cancel_prediction;
 
     /* for register mode */
     String                  m_query_string;

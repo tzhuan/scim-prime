@@ -201,6 +201,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_close_cand_win_on_select
         = config->read (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
                         SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT);
+    m_direct_select_on_prediction
+        = config->read (String (SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION),
+                        SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT);
     m_show_annotation
         = config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
                         SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT);

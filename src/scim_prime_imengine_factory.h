@@ -49,6 +49,7 @@ class PrimeFactory : public IMEngineFactoryBase
     bool         m_auto_register;
     bool         m_commit_on_upper;
     bool         m_close_cand_win_on_select;
+    bool         m_direct_select_on_prediction;
     bool         m_show_annotation;
     bool         m_show_usage;
     bool         m_show_comment;
