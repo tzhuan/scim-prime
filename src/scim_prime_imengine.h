@@ -46,6 +46,7 @@ class PrimeFactory : public IMEngineFactoryBase
     /* for preference */
     String       m_command;
     String       m_typing_method;
+    bool         m_predict_on_preedition;
     bool         m_auto_register;
     bool         m_commit_on_upper;
     bool         m_show_annotation;

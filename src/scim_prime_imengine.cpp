@@ -101,6 +101,7 @@ PrimeFactory::PrimeFactory (const String &lang,
                             const ConfigPointer &config)
     : m_uuid (uuid),
       m_config (config),
+      m_predict_on_preedition (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
       m_auto_register (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_commit_on_upper (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
       m_show_annotation (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
@@ -204,6 +205,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_typing_method
         = config->read (String (SCIM_PRIME_CONFIG_TYPING_METHOD),
                         String (SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT));
+    m_predict_on_preedition
+        = config->read (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
+                        SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT);
     m_auto_register
         = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
                         SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT);
@@ -349,7 +353,8 @@ PrimeInstance::process_key_event (const KeyEvent& key)
 
     // ignore key release.
     if (key.is_key_release ()) {
-        set_prediction ();
+        if (m_factory->m_predict_on_preedition)
+            set_prediction ();
         return true;
     }
 
@@ -554,6 +559,9 @@ PrimeInstance::set_preedition (void)
 void
 PrimeInstance::set_prediction (void)
 {
+    if (!m_factory->m_predict_on_preedition)
+        return;
+
     // prediction
     if (!is_converting () && m_session) {
         m_lookup_table.clear ();

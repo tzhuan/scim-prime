@@ -130,20 +130,22 @@ struct ComboConfigData
 };
 
 // Internal data declaration.
-static String __config_command         = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
-static bool   __config_auto_register   = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
-static bool   __config_commit_on_upper = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
-static bool   __config_show_annotation = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
-static bool   __config_show_usage      = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
+static String __config_command               = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
+static bool   __config_predict_on_preedition = SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT;
+static bool   __config_auto_register         = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
+static bool   __config_commit_on_upper       = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
+static bool   __config_show_annotation       = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
+static bool   __config_show_usage            = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
 
 static bool __have_changed    = true;
 
-static GtkWidget    * __widget_auto_register   = 0;
-static GtkWidget    * __widget_command         = 0;
-static GtkWidget    * __widget_commit_on_upper = 0;
-static GtkWidget    * __widget_show_annotation = 0;
-static GtkWidget    * __widget_show_usage      = 0;
-static GtkTooltips  * __widget_tooltips        = 0;
+static GtkWidget    * __widget_command               = 0;
+static GtkWidget    * __widget_predict_on_preedition = 0;
+static GtkWidget    * __widget_auto_register         = 0;
+static GtkWidget    * __widget_commit_on_upper       = 0;
+static GtkWidget    * __widget_show_annotation       = 0;
+static GtkWidget    * __widget_show_usage            = 0;
+static GtkTooltips  * __widget_tooltips              = 0;
 
 static KeyboardConfigData __config_keyboards_common [] =
 {
@@ -584,6 +586,15 @@ create_options_page ()
     APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as convert engine."),
                  __widget_command, 0);
 
+    /* predict on preedition */
+    __widget_predict_on_preedition
+        = gtk_check_button_new_with_mnemonic (_("Predict while typing letters."));
+    gtk_widget_show (__widget_predict_on_preedition);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_predict_on_preedition, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_predict_on_preedition), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_predict_on_preedition,
+                          _("Predict while typing letters."), NULL);
+
     /* auto register */
     __widget_auto_register
         = gtk_check_button_new_with_mnemonic (_("Use auto registering a word feature"));
@@ -624,6 +635,9 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_command, "changed",
                       G_CALLBACK (on_default_editable_changed),
                       &__config_command);
+    g_signal_connect ((gpointer) __widget_predict_on_preedition, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_predict_on_preedition);
     g_signal_connect ((gpointer) __widget_auto_register, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_auto_register);
@@ -796,6 +810,12 @@ setup_widget_value ()
             __config_command.c_str ());
     }
 
+    if (__widget_predict_on_preedition) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_predict_on_preedition),
+            __config_predict_on_preedition);
+    }
+
     if (__widget_auto_register) {
         gtk_toggle_button_set_active (
             GTK_TOGGLE_BUTTON (__widget_auto_register),
@@ -840,6 +860,9 @@ load_config (const ConfigPointer &config)
     __config_command =
         config->read (String (SCIM_PRIME_CONFIG_COMMAND),
                       __config_command);
+    __config_predict_on_preedition=
+        config->read (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
+                      __config_predict_on_preedition);
     __config_auto_register =
         config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
                       __config_auto_register);
@@ -874,6 +897,8 @@ save_config (const ConfigPointer &config)
 
     config->write (String (SCIM_PRIME_CONFIG_COMMAND),
                    __config_command);
+    config->write (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
+                   __config_predict_on_preedition);
     config->write (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
                    __config_auto_register);
     config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
