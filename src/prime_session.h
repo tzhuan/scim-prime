@@ -48,8 +48,10 @@ public:
 
 public: // prime commands
     void        conv_commit              (void);
-    void        conv_convert             (char *method);
-    void        conv_predict             (char *method);
+    void        conv_convert             (String &method,
+                                          std::vector<WideString> candidates);
+    void        conv_predict             (String &method,
+                                          std::vector<WideString> candidates);
     void        conv_select              (int   index);
 
     void        edit_backspace           (void);

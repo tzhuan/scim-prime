@@ -199,6 +199,26 @@ PrimeConnection::version (String &version)
 }
 
 void
+PrimeConnection::get_env (const String &key,
+                          String &type, std::vector<String> &values)
+{
+    type = String ();
+    values.clear ();
+
+    bool success = send_command (PRIME_GET_ENV, key.c_str(), NULL);
+
+    if (success) {
+        get_reply (values, "\t");
+        if (values.size () > 0) {
+            type = values[0];
+            values.erase (values.begin());
+        }
+    } else {
+        type = "nil";
+    }
+}
+
+void
 PrimeConnection::refresh (void)
 {
     send_command (PRIME_REFRESH, NULL);
@@ -245,6 +265,26 @@ void
 PrimeConnection::reset_context (void)
 {
     send_command (PRIME_RESET_CONTEXT, NULL);
+}
+
+void
+PrimeConnection::preedit_convert_input (const String &pattern,
+                                        WideString &preedition,
+                                        WideString &pending)
+{
+    bool success = send_command (PRIME_PREEDIT_CONVERT_INPUT,
+                                 pattern.c_str(), NULL);
+
+    if (success) {
+        std::vector<String> list;
+        get_reply (list, "\t");
+        if (list.size () > 0)
+            m_iconv.convert (preedition, list[0]);
+        if (list.size () > 1)
+            m_iconv.convert (pending, list[1]);
+    } else {
+        // error
+    }
 }
 
 bool

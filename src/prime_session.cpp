@@ -35,6 +35,30 @@ PrimeSession::~PrimeSession ()
 }
 
 void
+conv_commit (void)
+{
+    // FIXME!
+}
+
+void
+conv_convert (String &method, std::vector<WideString> &candidates)
+{
+    // FIXME!
+}
+
+void
+conv_predict (String &method, std::vector<WideString> &candidates)
+{
+    // FIXME!
+}
+
+void
+conv_select (int index)
+    // FIXME!
+{
+}
+
+void
 PrimeSession::edit_backspace (void)
 {
     send_command (PRIME_EDIT_BACKSPACE);

@@ -59,6 +59,7 @@ public:
 };
 
 
+typedef std::vector<String> Strings;
 typedef std::vector<PrimeCandidate> PrimeCandidates;
 
 
@@ -76,48 +77,57 @@ public:
 
     // comunication
     // Arguments must be terminated by NULL pointer.
-    bool                send_command        (const char          *command,
+    bool                send_command        (const char      *command,
                                              ...);
 
     // getting reply string
-    void                get_reply           (String              &reply);
-    void                get_reply           (WideString          &reply);
-    void                get_reply           (std::vector<String> &str_list,
-                                             char                *delim);
+    void                get_reply           (String          &reply);
+    void                get_reply           (WideString      &reply);
+    void                get_reply           (Strings         &str_list,
+                                             char            *delim);
 
     // get prime version
-    void                version             (String              &version);
+    void                version             (String          &version);
+
+    // get variables
+    void                get_env             (const String    &key,
+                                             String          &type,
+                                             Strings         &values);
 
     // refresh prime
     void                refresh             (void);
 
     // session
-    PrimeSession       *session_start       (const char          *language = NULL);
-    void                session_end         (PrimeSession        *session);
+    PrimeSession       *session_start       (const char      *language = NULL);
+    void                session_end         (PrimeSession    *session);
 
     // context
-    void                set_context         (WideString          &context);
+    void                set_context         (WideString      &context);
     void                reset_context       (void);
 
+    // preedition
+    void                preedit_convert_input (const String  &pattern,
+                                               WideString    &preedition,
+                                               WideString    &pending);
+
     // lookup
-    bool                lookup              (const String        &sequence,
-                                             PrimeCandidates     &candidates,
-                                             const char          *command = PRIME_LOOKUP);
+    bool                lookup              (const String    &sequence,
+                                             PrimeCandidates &candidates,
+                                             const char      *command = PRIME_LOOKUP);
 
     // learn
-    void                learn_word          (WideString           key,
-                                             WideString           value,
-                                             WideString           part,
-                                             WideString           context,
-                                             WideString           suffix,
-                                             WideString           rest);
+    void                learn_word          (WideString       key,
+                                             WideString       value,
+                                             WideString       part,
+                                             WideString       context,
+                                             WideString       suffix,
+                                             WideString       rest);
 
 private:
-    void                split_string        (String              &str,
-                                             std::vector<String> &str_list,
-                                             char                *delim,
-                                             int                  num = -1);
-
+    void                split_string        (String          &str,
+                                             Strings         &str_list,
+                                             char            *delim,
+                                             int              num = -1);
 
 public:
     IConvert         m_iconv;
