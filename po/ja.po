@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
 "POT-Creation-Date: 2005-03-14 16:41+0900\n"
-"PO-Revision-Date: 2005-03-14 17:06+0900\n"
+"PO-Revision-Date: 2005-03-14 17:26+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr "入力文字列が無い時にスペースを入力するキーイベン
 
 #: src/scim_prime_imengine_setup.cpp:218
 msgid "Alternative space keys:"
-msgstr "スペースキーの設定"
+msgstr "全角スペースキー"
 
 #: src/scim_prime_imengine_setup.cpp:219
 msgid "Select alternative space keys"
