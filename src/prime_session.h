@@ -42,7 +42,8 @@ class PrimeSession
 {
 public:
     PrimeSession                  (PrimeConnection *connection,
-                                   String           id_str);
+                                   String           id_str,
+                                   const char      *language);
     virtual ~PrimeSession         ();
 
 public: // prime commands
@@ -92,6 +93,7 @@ public: // other functions
 private:
     PrimeConnection *m_connection;
     String           m_id_str;
+    String           m_language;
 };
 
 #endif /* __PRIME_SESSION_H__ */

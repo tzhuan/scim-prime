@@ -21,9 +21,12 @@
 #include "prime_session.h"
 #include "prime_commands.h"
 
-PrimeSession::PrimeSession (PrimeConnection *connection, String id_str)
+PrimeSession::PrimeSession (PrimeConnection *connection,
+                            String id_str,
+                            const char *language)
     : m_connection (connection),
-      m_id_str (id_str)
+      m_id_str (id_str),
+      m_language (language ? language : "")
 {
 }
 

@@ -66,7 +66,7 @@ public:
     virtual ~PrimeConnection                ();
 
     // connection
-    void                open_connection     (void);
+    void                open_connection     (const char *typing_method = NULL);
     void                close_connection    (void);
 
     // comunication
@@ -113,6 +113,8 @@ private:
     int              m_in_fd;
     int              m_out_fd;
     int              m_err_fd;
+
+    String           m_typing_method;
 
     String           m_last_reply; // EUC-JP
 };

@@ -51,7 +51,7 @@ PrimeConnection::~PrimeConnection ()
 }
 
 void
-PrimeConnection::open_connection ()
+PrimeConnection::open_connection (const char *typing_method)
 {
     pid_t pid;
     int in_fd[2], out_fd[2], err_fd[2];
@@ -72,6 +72,8 @@ PrimeConnection::open_connection ()
 
     if (pid > 0) {
         /* parent process */
+        m_typing_method = typing_method ? typing_method : "";
+
         m_pid = pid;
 
         m_in_fd = in_fd[1];
@@ -86,9 +88,17 @@ PrimeConnection::open_connection ()
     } else if (pid == 0) {
         /* child process */      
 
-        char *argv[2];
+        char *argv[3];
+        String method = "--typing-method=";
+
         argv[0] = "prime";
-        argv[1] = NULL;
+        if (typing_method) {
+            method += typing_method;
+            argv[1] = (char *) method.c_str();
+        } else {
+            argv[1] = NULL;
+        }
+        argv[2] = NULL;
 
         /* set pipe */
         close (out_fd[0]);
@@ -185,7 +195,7 @@ PrimeConnection::session_start (const char *language)
 {
     bool success = send_command (PRIME_SESSION_START, language, NULL);
     if (success) {
-        PrimeSession *session = new PrimeSession(this, m_last_reply.c_str());
+        PrimeSession *session = new PrimeSession(this, m_last_reply.c_str(), language);
         return session;
     } else {
         // error
