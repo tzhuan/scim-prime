@@ -119,6 +119,11 @@ PrimeFactory::PrimeFactory (const String &lang,
 
     if (lang.length () >= 2)
         set_languages (lang);
+
+    // config
+    reload_config (m_config);
+    m_reload_signal_connection
+        = m_config->signal_connect_reload (slot (this, &PrimeFactory::reload_config));
 }
 
 PrimeFactory::~PrimeFactory ()
@@ -174,7 +179,8 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_session (NULL),
       m_factory (factory),
       m_prev_key (0,0),
-      m_converting (false)
+      m_converting (false),
+      m_learning (false)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
@@ -186,6 +192,80 @@ void
 PrimeFactory::reload_config (const ConfigPointer &config)
 {
     if (config) {
+        String str;
+
+        // edit keys
+        str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
+                            String (SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT));
+        scim_string_to_key_list (m_commit_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_CONVERT_KEY),
+                            String (SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT));
+        scim_string_to_key_list (m_convert_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_CANCEL_KEY),
+                            String (SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT));
+        scim_string_to_key_list (m_cancel_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_BACKSPACE_KEY),
+                            String (SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT));
+        scim_string_to_key_list (m_backspace_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_DELETE_KEY),
+                            String (SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT));
+        scim_string_to_key_list (m_delete_keys, str);
+
+        // caret keys
+        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY),
+                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT));
+        scim_string_to_key_list (m_modify_caret_left_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY),
+                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT));
+        scim_string_to_key_list (m_modify_caret_right_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY),
+                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT));
+        scim_string_to_key_list (m_modify_caret_left_edge_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY),
+                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT));
+        scim_string_to_key_list (m_modify_caret_right_edge_keys, str);
+
+        // candidate keys
+        str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY),
+                            String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT));
+        scim_string_to_key_list (m_conv_next_candidate_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY),
+                            String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT));
+        scim_string_to_key_list (m_conv_prev_candidate_keys, str);
+
+        // mode keys
+        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY),
+                            String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT));
+        scim_string_to_key_list (m_set_mode_default_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY),
+                            String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY_DEFAULT));
+        scim_string_to_key_list (m_set_mode_katakana_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY),
+                            String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY_DEFAULT));
+        scim_string_to_key_list (m_set_mode_half_katakana_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY),
+                            String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT));
+        scim_string_to_key_list (m_set_mode_raw_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY),
+                            String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT));
+        scim_string_to_key_list (m_set_mode_wide_ascii_keys, str);
+
+        // learn a word
+        str = config->read (String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY),
+                            String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY_DEFAULT));
+        scim_string_to_key_list (m_learn_word_keys, str);
     }
 }
 
@@ -199,6 +279,79 @@ PrimeInstance::~PrimeInstance ()
 bool
 PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 {
+    // edit keys
+    if (match_key_event (m_factory->m_commit_keys, key) &&
+        action_commit ())
+        return true;
+
+    if (match_key_event (m_factory->m_convert_keys, key) &&
+        action_convert ())
+        return true;
+
+    if (match_key_event (m_factory->m_cancel_keys, key) &&
+        action_revert ())
+        return true;
+
+    if (match_key_event (m_factory->m_backspace_keys, key) &&
+        action_edit_backspace ())
+        return true;
+
+    if (match_key_event (m_factory->m_delete_keys, key) &&
+        action_edit_delete ())
+        return true;
+
+    // caret keys
+    if (match_key_event (m_factory->m_modify_caret_left_keys, key) &&
+        action_modify_caret_left ())
+        return true;
+
+    if (match_key_event (m_factory->m_modify_caret_right_keys, key) &&
+        action_modify_caret_right ())
+        return true;
+
+    if (match_key_event (m_factory->m_modify_caret_left_edge_keys, key) &&
+        action_modify_caret_left_edge ())
+        return true;
+
+    if (match_key_event (m_factory->m_modify_caret_right_edge_keys, key) &&
+        action_modify_caret_right_edge ())
+        return true;
+
+    // candidate keys
+    if (match_key_event (m_factory->m_conv_next_candidate_keys, key) &&
+        action_conv_next_candidate ())
+        return true;
+
+    if (match_key_event (m_factory->m_conv_prev_candidate_keys, key) &&
+        action_conv_prev_candidate ())
+        return true;
+
+    // mode keys
+    if (match_key_event (m_factory->m_set_mode_default_keys, key) &&
+        action_set_mode_default ())
+        return true;
+
+    if (match_key_event (m_factory->m_set_mode_katakana_keys, key) &&
+        action_set_mode_katakana ())
+        return true;
+
+    if (match_key_event (m_factory->m_set_mode_half_katakana_keys, key) &&
+        action_set_mode_half_katakana ())
+        return true;
+
+    if (match_key_event (m_factory->m_set_mode_raw_keys, key) &&
+        action_set_mode_raw ())
+        return true;
+
+    if (match_key_event (m_factory->m_set_mode_wide_ascii_keys, key) &&
+        action_set_mode_wide_ascii ())
+        return true;
+
+    // learn a word
+    if (match_key_event (m_factory->m_learn_word_keys, key) &&
+        action_learn_a_word ())
+        return true;
+
     return false;
 }
 
@@ -211,144 +364,12 @@ PrimeInstance::process_key_event_without_preedit (const KeyEvent& key)
 bool
 PrimeInstance::process_key_event_with_preedit (const KeyEvent& key)
 {
-    switch (key.code) {
-    case SCIM_KEY_Escape:
-        if (action_revert ())
-            return true;
-        break;
-
-    case SCIM_KEY_Return:
-        if (action_commit ())
-            return true;
-        break;
-
-    case SCIM_KEY_space:
-        if (action_convert ())
-            return true;
-        break;
-
-    case SCIM_KEY_BackSpace:
-        if (action_back ())
-            return true;
-        break;
-
-    case SCIM_KEY_Delete:
-        if (action_delete ())
-            return true;
-        break;
-
-    case SCIM_KEY_Left:
-        if (action_move_caret_backward ())
-            return true;
-        break;
-
-    case SCIM_KEY_Right:
-        if (action_move_caret_forward ())
-            return true;
-        break;
-
-    case SCIM_KEY_F6:
-        m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F7:
-        m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F8:
-        m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F9:
-        m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F10:
-        m_session->edit_set_mode (PRIME_PREEDITION_RAW);
-        set_preedition ();
-        return true;
-        break;
-
-    default:
-        break;
-    }
-
     return process_remaining_key_event (key);
 }
 
 bool
 PrimeInstance::process_key_event_with_candidate (const KeyEvent &key)
 {
-    switch (key.code) {
-    case SCIM_KEY_Return:
-        if (action_commit ())
-            return true;
-        break;
-
-    case SCIM_KEY_Escape:
-    case SCIM_KEY_BackSpace:
-        if (action_revert ())
-            return true;
-        break;
-
-    case SCIM_KEY_space:
-    case SCIM_KEY_Down:
-        if (action_select_next_candidate ())
-            return true;
-        break;
-
-    case SCIM_KEY_Up:
-        if (action_select_prev_candidate ())
-            return true;
-        break;
-
-    case SCIM_KEY_F6:
-        action_revert ();
-        m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F7:
-        action_revert ();
-        m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F8:
-        action_revert ();
-        m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F9:
-        action_revert ();
-        m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
-        set_preedition ();
-        return true;
-        break;
-
-    case SCIM_KEY_F10:
-        action_revert ();
-        m_session->edit_set_mode (PRIME_PREEDITION_RAW);
-        set_preedition ();
-        return true;
-        break;
-
-    default:
-        break;
-    }
-
     return process_remaining_key_event (key);
 }
 
@@ -375,7 +396,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
 
         if (m_session)
             m_session->edit_insert (buf);
-        set_preedition();
+        set_preedition ();
 
         return true;
     }
@@ -468,7 +489,11 @@ PrimeInstance::reset ()
 {
     SCIM_DEBUG_IMENGINE(2) << "reset.\n";
 
-    m_converting = false;
+    m_learning       = false;
+    m_learning_key   = WideString ();
+    m_learning_value = WideString ();
+
+    m_converting     = false;
 
     if (m_session)
         m_session->edit_erase();
@@ -501,28 +526,84 @@ PrimeInstance::trigger_property (const String &property)
     SCIM_DEBUG_IMENGINE(2) << "trigger_property : " << property << " - " << prime_prop << "\n";
 }
 
+#define ADD_SEPARATOR_ATTR() \
+{ \
+    attr.set_start (str.length ()); \
+    attr.set_length (tmp.length ()); \
+    attr.set_type (SCIM_ATTR_FOREGROUND); \
+    attr.set_value (SCIM_RGB_COLOR(255, 0, 0)); \
+    str += tmp; \
+    attr_list.push_back (attr); \
+}
+
 void
 PrimeInstance::set_preedition (void)
 {
-    if (is_converting ()) {
+    if (is_learning ()) {
+        AttributeList attr_list;
+        int pos;
+
+        WideString str = utf8_mbstowcs (_("Lean a word:"));
+        Attribute attr (0, str.length (), SCIM_ATTR_DECORATE);
+        attr.set_value (SCIM_ATTR_DECORATE_HIGHLIGHT);
+        attr_list.push_back (attr);
+
+        WideString tmp = utf8_mbstowcs (_("["));
+        ADD_SEPARATOR_ATTR();
+
+        str += m_learning_key;
+
+        tmp = utf8_mbstowcs (_("|"));
+        ADD_SEPARATOR_ATTR();
+
+        str += m_learning_value;
+
+        pos = str.length ();
+
+        if (is_converting ()) {
+            int candpos = m_lookup_table.get_cursor_pos_in_current_page ();
+            str += m_lookup_table.get_candidate_in_current_page (candpos);
+        } else {
+            WideString left, cursor, right;
+            m_session->edit_get_preedition (left, cursor, right);
+            pos += left.length ();
+            str += left + cursor + right;
+        }
+
+        tmp = utf8_mbstowcs (_("]"));
+        ADD_SEPARATOR_ATTR()
+
+        update_preedit_string (str, attr_list);
+        update_preedit_caret (pos);
+        show_preedit_string ();
+
+    } else if (is_converting ()) {
         int pos = m_lookup_table.get_cursor_pos_in_current_page ();
         WideString cand = m_lookup_table.get_candidate_in_current_page (pos);
         update_preedit_string (cand);
         update_preedit_caret (0);
         show_preedit_string ();
+
     } else if (m_session) {
         WideString left, cursor, right;
         m_session->edit_get_preedition (left, cursor, right);
 
         update_preedit_string (left + cursor + right);
         update_preedit_caret (left.length ());
-        show_preedit_string ();
+
+        if (left.length () + cursor.length () + right.length () > 0)
+            show_preedit_string ();
+        else
+            hide_preedit_string ();
+
     } else {
         update_preedit_string (WideString());
         update_preedit_caret (0);
         hide_preedit_string ();
     }
 }
+
+#undef ADD_SEPARATOR_ATTR
 
 void
 PrimeInstance::set_prediction (void)
@@ -568,16 +649,57 @@ PrimeInstance::is_converting (void)
 bool
 PrimeInstance::is_learning (void)
 {
-    return false;
+    return m_learning;
 }
 
 bool
 PrimeInstance::action_commit (void)
 {
-    if (is_converting ()) {
+    if (is_learning ()) {
+        if (is_converting ()) {
+            int pos = m_lookup_table.get_cursor_pos_in_current_page ();
+            m_learning_value += m_lookup_table.get_candidate_in_current_page (pos);
+
+            m_converting = false;
+            if (m_session)
+                m_session->edit_erase();
+            m_lookup_table.clear ();
+            hide_lookup_table ();
+
+            set_preedition ();
+
+        } else if (is_preediting ()) {
+            if (m_session) {
+                WideString left, cursor, right, all;
+                m_session->edit_get_preedition (left, cursor, right);
+                m_learning_value += left + cursor + right;
+            }
+
+            if (m_session)
+                m_session->edit_erase();
+            m_lookup_table.clear ();
+            hide_lookup_table ();
+
+            set_preedition ();
+
+        } else {
+            if (m_learning_key.length () > 0 && m_learning_value.length () > 0) {
+                m_prime.learn_word (m_learning_key, m_learning_value,
+                                    WideString (), WideString (),
+                                    WideString (), WideString ());
+            }
+
+            reset ();
+        }
+
+    } else if (is_converting ()) {
         int pos = m_lookup_table.get_cursor_pos_in_current_page ();
         WideString cand = m_lookup_table.get_candidate_in_current_page (pos);
         commit_string (cand);
+        m_prime.set_context (cand);
+
+        reset ();
+
     } else if (is_preediting ()) {
         if (m_session) {
             WideString left, cursor, right, all;
@@ -586,11 +708,12 @@ PrimeInstance::action_commit (void)
             all = left + cursor + right;
             m_prime.set_context (all);
         }
+
+        reset ();
+
     } else {
         return false;
     }
-
-    reset ();
 
     return true;
 }
@@ -621,7 +744,7 @@ PrimeInstance::action_convert (void)
         show_lookup_table ();
     }
 
-    set_preedition();
+    set_preedition ();
 
     return true;
 }
@@ -629,7 +752,7 @@ PrimeInstance::action_convert (void)
 bool
 PrimeInstance::action_revert (void)
 {
-    if (!is_preediting ())
+    if (!is_preediting () && !is_learning ())
         return false;
 
     if (is_converting ()) {
@@ -637,6 +760,18 @@ PrimeInstance::action_revert (void)
         hide_lookup_table ();
         m_converting = false;
         set_preedition ();
+
+    } else if (is_learning ()) {
+        if (is_preediting ()) {
+            if (m_session)
+                m_session->edit_erase ();
+            m_lookup_table.clear ();
+            hide_lookup_table ();
+            set_preedition ();
+        } else {
+            reset ();
+        }
+
     } else {
         reset ();
     }
@@ -645,7 +780,7 @@ PrimeInstance::action_revert (void)
 }
 
 bool
-PrimeInstance::action_move_caret_backward (void)
+PrimeInstance::action_modify_caret_left (void)
 {
     if (!is_preediting ())
         return false;
@@ -655,13 +790,13 @@ PrimeInstance::action_move_caret_backward (void)
     if (m_session)
         m_session->edit_cursor_left ();
 
-    set_preedition();
+    set_preedition ();
 
     return true;
 }
 
 bool
-PrimeInstance::action_move_caret_forward (void)
+PrimeInstance::action_modify_caret_right (void)
 {
     if (!is_preediting ())
         return false;
@@ -671,35 +806,45 @@ PrimeInstance::action_move_caret_forward (void)
     if (m_session)
         m_session->edit_cursor_right ();
     
-    set_preedition();
+    set_preedition ();
 
     return true;
 }
 
 bool
-PrimeInstance::action_move_caret_first (void)
+PrimeInstance::action_modify_caret_left_edge (void)
 {
     if (!is_preediting ())
         return false;
     if (is_converting ())
         return false;
 
+    if (m_session)
+        m_session->edit_cursor_left_edge ();
+    
+    set_preedition ();
+
     return false;
 }
 
 bool
-PrimeInstance::action_move_caret_last (void)
+PrimeInstance::action_modify_caret_right_edge (void)
 {
     if (!is_preediting ())
         return false;
     if (is_converting ())
         return false;
 
+    if (m_session)
+        m_session->edit_cursor_right_edge ();
+    
+    set_preedition ();
+
     return false;
 }
 
 bool
-PrimeInstance::action_back (void)
+PrimeInstance::action_edit_backspace (void)
 {
     if (!is_preediting ())
         return false;
@@ -709,13 +854,13 @@ PrimeInstance::action_back (void)
     if (m_session)
         m_session->edit_backspace ();
 
-    set_preedition();
+    set_preedition ();
 
     return true;
 }
 
 bool
-PrimeInstance::action_delete (void)
+PrimeInstance::action_edit_delete (void)
 {
     if (!is_preediting ())
         return false;
@@ -731,7 +876,7 @@ PrimeInstance::action_delete (void)
 }
 
 bool
-PrimeInstance::action_select_next_candidate (void)
+PrimeInstance::action_conv_next_candidate (void)
 {
     if (!is_converting ())
         return false;
@@ -747,7 +892,7 @@ PrimeInstance::action_select_next_candidate (void)
 }
 
 bool
-PrimeInstance::action_select_prev_candidate (void)
+PrimeInstance::action_conv_prev_candidate (void)
 {
     if (!is_converting ())
         return false;
@@ -758,6 +903,94 @@ PrimeInstance::action_select_prev_candidate (void)
         m_lookup_table.cursor_up ();
 
     select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_mode_default (void)
+{
+    if (is_converting ())
+        return false;
+
+    m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
+    set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_mode_katakana (void)
+{
+    if (is_converting ())
+        return false;
+
+    m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
+    set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_mode_half_katakana (void)
+{
+    if (is_converting ())
+        return false;
+
+    m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
+    set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_mode_raw (void)
+{
+    if (is_converting ())
+        return false;
+
+    m_session->edit_set_mode (PRIME_PREEDITION_RAW);
+    set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_mode_wide_ascii (void)
+{
+    if (is_converting ())
+        return false;
+
+    m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
+    set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_learn_a_word (void)
+{
+    if (!m_session)
+        return false;
+
+    // FIXME!
+    if (!is_preediting ())
+        return false;
+
+    if (is_converting ())
+        action_revert ();
+
+    WideString left, cursor, right;
+    m_session->edit_get_preedition (left, cursor, right);
+    m_learning_key = left + cursor + right;
+
+    m_learning = true;
+
+    m_session->edit_erase();
+    m_lookup_table.clear ();
+    hide_lookup_table ();
+
+    set_preedition ();
 
     return true;
 }

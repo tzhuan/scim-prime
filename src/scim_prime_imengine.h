@@ -39,6 +39,31 @@ class PrimeFactory : public IMEngineFactoryBase
 
     /* config */
     ConfigPointer  m_config;
+    Connection     m_reload_signal_connection;
+
+    /* for key bindings */
+    KeyEventList m_commit_keys;
+    KeyEventList m_convert_keys;
+    KeyEventList m_cancel_keys;
+
+    KeyEventList m_backspace_keys;
+    KeyEventList m_delete_keys;
+
+    KeyEventList m_modify_caret_left_keys;
+    KeyEventList m_modify_caret_right_keys;
+    KeyEventList m_modify_caret_left_edge_keys;
+    KeyEventList m_modify_caret_right_edge_keys;
+
+    KeyEventList m_conv_next_candidate_keys;
+    KeyEventList m_conv_prev_candidate_keys;
+
+    KeyEventList m_set_mode_default_keys;
+    KeyEventList m_set_mode_katakana_keys;
+    KeyEventList m_set_mode_half_katakana_keys;
+    KeyEventList m_set_mode_raw_keys;
+    KeyEventList m_set_mode_wide_ascii_keys;
+
+    KeyEventList m_learn_word_keys;
 
 public:
     PrimeFactory (const String &lang,
@@ -79,9 +104,12 @@ private:
 
     /* flags */
     bool                    m_converting;
+    bool                    m_learning;
+    WideString              m_learning_key;
+    WideString              m_learning_value;
 
 public:
-   PrimeInstance (PrimeFactory   *factory,
+    PrimeInstance (PrimeFactory   *factory,
                    const String   &encoding,
                    int             id = -1);
     virtual ~PrimeInstance ();
@@ -120,15 +148,24 @@ private:
     bool   action_convert                      (void);
     bool   action_revert                       (void);
 
-    bool   action_move_caret_backward          (void);
-    bool   action_move_caret_forward           (void);
-    bool   action_move_caret_first             (void);
-    bool   action_move_caret_last              (void);
+    bool   action_modify_caret_left            (void);
+    bool   action_modify_caret_right           (void);
+    bool   action_modify_caret_left_edge       (void);
+    bool   action_modify_caret_right_edge      (void);
 
-    bool   action_back                         (void);
-    bool   action_delete                       (void);
-    bool   action_select_next_candidate        (void);
-    bool   action_select_prev_candidate        (void);
+    bool   action_edit_backspace               (void);
+    bool   action_edit_delete                  (void);
+
+    bool   action_conv_next_candidate          (void);
+    bool   action_conv_prev_candidate          (void);
+
+    bool   action_set_mode_default             (void);
+    bool   action_set_mode_katakana            (void);
+    bool   action_set_mode_half_katakana       (void);
+    bool   action_set_mode_raw                 (void);
+    bool   action_set_mode_wide_ascii          (void);
+
+    bool   action_learn_a_word                 (void);
 
     /* utility */
     bool   match_key_event (const KeyEventList &keys,

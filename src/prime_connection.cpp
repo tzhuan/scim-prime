@@ -264,6 +264,27 @@ PrimeConnection::lookup (const char *sequence, PrimeCandidates &candidates, cons
     return false;
 }
 
+void
+PrimeConnection::learn_word (WideString wkey, WideString wvalue,
+                             WideString wpart, WideString wcontext,
+                             WideString wsuffix, WideString wrest)
+{
+    String key, value, part, context, suffix, rest;
+
+    m_iconv.convert (key, wkey);
+    m_iconv.convert (value, wvalue);
+    m_iconv.convert (part, wpart);
+    m_iconv.convert (context, wcontext);
+    m_iconv.convert (suffix, wsuffix);
+    m_iconv.convert (rest, wrest);
+
+    send_command (PRIME_LEARN_WORD,
+                  key.c_str(), value.c_str(),
+                  part.c_str(), context.c_str(),
+                  suffix.c_str(), rest.c_str(),
+                  NULL);
+}
+
 bool
 PrimeConnection::send_command (const char *command,
                                ...)
@@ -304,7 +325,7 @@ PrimeConnection::send_command (const char *command,
 
     do {
         ssize_t rv = write (m_in_fd,
-                            str.c_str () + (len - remaining),
+                            str.c_str() + (len - remaining),
                             remaining);
         switch (errno) {
         case EBADF:
@@ -381,7 +402,7 @@ PrimeConnection::get_reply (String &reply)
 void
 PrimeConnection::get_reply (WideString &reply)
 {
-    m_iconv.convert(reply, m_last_reply);
+    m_iconv.convert (reply, m_last_reply);
 }
 
 void
@@ -398,11 +419,11 @@ PrimeConnection::split_string (String &str, std::vector<String> &str_list,
     String::size_type start = 0, end;
 
     do {
-        end = str.find(delim, start);
+        end = str.find (delim, start);
         if (end == String::npos)
             end = str.length ();
 
-        str_list.push_back (str.substr(start, end - start));
-        start = end + strlen(delim);
+        str_list.push_back (str.substr (start, end - start));
+        start = end + strlen (delim);
     } while (start < str.length ());
 }

@@ -99,6 +99,14 @@ public:
                                              PrimeCandidates     &candidates,
                                              const char          *command = PRIME_LOOKUP);
 
+    // learn
+    void                learn_word          (WideString           key,
+                                             WideString           value,
+                                             WideString           part,
+                                             WideString           context,
+                                             WideString           suffix,
+                                             WideString           rest);
+
 private:
     void                split_string        (String              &str,
                                              std::vector<String> &str_list,
