@@ -26,7 +26,6 @@
 #include <unistd.h>
 #include <scim.h>
 #include <map>
-#include "prime_session.h"
 #include "prime_commands.h"
 
 using namespace scim;
@@ -54,6 +53,9 @@ public:
 
 typedef std::vector<String> Strings;
 typedef std::vector<PrimeCandidate> PrimeCandidates;
+
+
+class PrimeSession;
 
 
 class PrimeConnection
@@ -116,12 +118,6 @@ public:
                                              WideString       suffix,
                                              WideString       rest);
 
-private:
-    void                split_string        (String          &str,
-                                             Strings         &str_list,
-                                             char            *delim,
-                                             int              num = -1);
-
 public:
     IConvert         m_iconv;
 
@@ -135,6 +131,12 @@ private:
 
     String           m_last_reply; // EUC-JP
 };
+
+
+void scim_prime_util_split_string (String  &str,
+                                   Strings &str_list,
+                                   char    *delim,
+                                   int      num = -1);
 
 #endif /* __SCIM_PRIME_CONNECTION_H__ */
 /*

@@ -47,12 +47,13 @@ public:
     virtual ~PrimeSession         ();
 
 public: // prime commands
-    void        conv_commit              (void);
-    void        conv_convert             (String &method,
-                                          std::vector<WideString> candidates);
-    void        conv_predict             (String &method,
-                                          std::vector<WideString> candidates);
-    void        conv_select              (int   index);
+    void        conv_predict             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_convert             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_select              (WideString &selected_string,
+                                          int index);
+    void        conv_commit              (WideString &commited_string);
 
     void        edit_backspace           (void);
     void        edit_commit              (void);
@@ -95,6 +96,9 @@ public: // other functions
     bool        send_command             (const char *command,
                                           const char *arg2 = NULL);
     String     &get_id_str               (void);
+
+private:
+    void        get_candidates           (PrimeCandidates &candidates);
 
 private:
     PrimeConnection *m_connection;

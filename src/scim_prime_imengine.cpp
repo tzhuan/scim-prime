@@ -41,6 +41,8 @@
 #include "scim_prime_imengine_factory.h"
 #include "scim_prime_imengine.h"
 #include "scim_prime_prefs.h"
+#include "prime_connection.h"
+#include "prime_session.h"
 #include "intl.h"
 
 PrimeConnection PrimeInstance::m_prime = PrimeConnection();
@@ -200,6 +202,10 @@ PrimeInstance::select_candidate_no_direct (unsigned int item)
 
     show_lookup_table ();
 
+    WideString selected_string;
+    m_session->conv_select (selected_string,
+                            m_lookup_table.get_cursor_pos ());
+
     m_lookup_table.set_cursor_pos_in_current_page (item);
     update_lookup_table (m_lookup_table);
 
@@ -340,8 +346,8 @@ PrimeInstance::set_preedition (void)
 
     } else if (is_converting ()) {
         int pos = m_lookup_table.get_cursor_pos ();
-        WideString cand = m_candidates[pos].m_conversion;
-        update_preedit_string (cand);
+        PrimeCandidate &cand = m_candidates[pos];
+        update_preedit_string (cand.m_conversion);
         update_preedit_caret (0);
         show_preedit_string ();
 
@@ -376,21 +382,16 @@ PrimeInstance::set_prediction (void)
     if (!is_converting () && get_session()) {
         m_lookup_table.clear ();
 
-        String query;
-        get_session()->edit_get_query_string (query);
-
         PrimeCandidates candidates;
-        m_prime.set_context (m_context);
-        m_prime.lookup (query, candidates);
+
+        get_session()->conv_predict (candidates);
 
         if (is_preediting () &&
             candidates.size () > 0 &&
             candidates[0].m_conversion.length () > 0)
         {
             for (unsigned int i = 0; i < candidates.size (); i++) {
-                WideString label;
-                get_candidate_label (label, candidates[i]);
-                m_lookup_table.append_candidate (label);
+                m_lookup_table.append_candidate (candidates[i].m_conversion);
             }
             m_lookup_table.show_cursor (false);
             update_lookup_table (m_lookup_table);
@@ -427,22 +428,15 @@ PrimeInstance::action_commit_on_register (bool learn)
         return false;
 
     if (is_converting ()) {
+        WideString cand, sel;
         int pos = m_lookup_table.get_cursor_pos ();
-        PrimeCandidate &cand = m_candidates[pos];
 
-        m_registering_value.insert (m_registering_cursor, cand.m_conversion);
-        m_registering_cursor += cand.m_conversion.length ();
-
+        m_session->conv_select (sel, pos);
         if (learn)
-            m_prime.learn_word (cand.m_values["basekey"],
-                                cand.m_values["base"],
-                                cand.m_values["part"],
-                                cand.m_values["context"],
-                                cand.m_values["suffix"],
-                                cand.m_values["rest"]);
-        m_context = cand.m_values["base"]
-                  + cand.m_values["suffix"]
-                  + cand.m_values["rest"];
+            m_session->conv_commit (cand);
+
+        m_registering_value.insert (m_registering_cursor, cand);
+        m_registering_cursor += cand.length ();
 
         m_candidates.clear();
         m_converting = false;
@@ -493,21 +487,11 @@ PrimeInstance::action_commit (bool learn)
         return action_commit_on_register (learn);
 
     } else if (is_converting ()) {
-        int pos = m_lookup_table.get_cursor_pos ();
-        PrimeCandidate &cand = m_candidates[pos];
-        commit_string (cand.m_conversion);
-
+        WideString cand, sel;
+        m_session->conv_select (sel, m_lookup_table.get_cursor_pos ());
         if (learn)
-            m_prime.learn_word (cand.m_values["basekey"],
-                                cand.m_values["base"],
-                                cand.m_values["part"],
-                                cand.m_values["context"],
-                                cand.m_values["suffix"],
-                                cand.m_values["rest"]);
-
-        m_context = cand.m_values["base"]
-                  + cand.m_values["suffix"]
-                  + cand.m_values["rest"];
+            m_session->conv_commit (cand);
+        commit_string (cand);
 
         reset ();
 
@@ -553,12 +537,8 @@ PrimeInstance::action_convert (void)
 
         m_lookup_table.clear ();
 
-        String query;
-        get_session()->edit_get_query_string (query);
+        get_session()->conv_convert (m_candidates);
 
-        m_candidates.clear();
-        m_prime.set_context (m_context);
-        m_prime.lookup (query, m_candidates, PRIME_LOOKUP_ALL);
         for (unsigned int i = 0; i < m_candidates.size (); i++) {
             WideString label;
             get_candidate_label (label, m_candidates[i]);
@@ -1049,10 +1029,10 @@ PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
     label = cand.m_conversion;
 
     if (m_factory->m_show_annotation &&
-        cand.m_values["annotation"].length () > 0)
+        cand.m_values["form"].length () > 0)
     {
-        label += utf8_mbstowcs (" (");
-        label += cand.m_values["annotation"];
+        label += utf8_mbstowcs ("  (");
+        label += cand.m_values["form"];
         label += utf8_mbstowcs (" )");
     }
 
@@ -1061,6 +1041,14 @@ PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
     {
         label += utf8_mbstowcs ("\t\xE2\x96\xBD");
         label += cand.m_values["usage"];
+    }
+
+    if (m_factory->m_show_comment &&
+        cand.m_values["comment"].length () > 0)
+    {
+        label += utf8_mbstowcs ("\t<");
+        label += cand.m_values["comment"];
+        label += utf8_mbstowcs (">");
     }
 }
 /*

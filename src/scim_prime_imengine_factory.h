@@ -51,6 +51,7 @@ class PrimeFactory : public IMEngineFactoryBase
     bool         m_close_cand_win_on_select;
     bool         m_show_annotation;
     bool         m_show_usage;
+    bool         m_show_comment;
     String       m_space_char;
     String       m_alt_space_char;
 

@@ -106,7 +106,8 @@ PrimeFactory::PrimeFactory (const String &lang,
       m_commit_on_upper (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
       m_close_cand_win_on_select (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT),
       m_show_annotation (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
-      m_show_usage (SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT)
+      m_show_usage (SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT),
+      m_show_comment (SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Factory :\n";
     SCIM_DEBUG_IMENGINE(1) << "  Lang : " << lang << "\n";
@@ -206,6 +207,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_show_usage
         = config->read (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
                         SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT);
+    m_show_comment
+        = config->read (String (SCIM_PRIME_CONFIG_SHOW_COMMENT),
+                        SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT);
     m_space_char
         = config->read (String (SCIM_PRIME_CONFIG_SPACE_CHAR),
                         String (SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT));

@@ -35,27 +35,84 @@ PrimeSession::~PrimeSession ()
 }
 
 void
-conv_commit (void)
+PrimeSession::conv_predict (PrimeCandidates &candidates, String method)
 {
-    // FIXME!
+    bool success = send_command (PRIME_CONV_PREDICT);
+
+    if (success) {
+        get_candidates (candidates);
+    } else {
+        // error
+    }
 }
 
 void
-conv_convert (String &method, std::vector<WideString> &candidates)
+PrimeSession::conv_convert (PrimeCandidates &candidates, String method)
 {
-    // FIXME!
+    bool success = send_command (PRIME_CONV_CONVERT);
+
+    if (success) {
+        get_candidates (candidates);
+    } else {
+        // error
+    }
 }
 
 void
-conv_predict (String &method, std::vector<WideString> &candidates)
+PrimeSession::get_candidates (PrimeCandidates &candidates)
 {
-    // FIXME!
+    std::vector<String> cand_list;
+    m_connection->get_reply (cand_list, "\n");
+
+    std::vector<String>::iterator it = cand_list.begin ();
+
+    for (it++ /* Skip the index field. FIXME! */;
+         it != cand_list.end ();
+         it++)
+    {
+        std::vector<String> cols;
+
+        scim_prime_util_split_string (*it, cols, "\t");
+
+        candidates.push_back (PrimeCandidate ());
+        PrimeCandidate &cand = *(candidates.end () - 1);
+
+        if (cols.size () > 0)
+            m_connection->m_iconv.convert (cand.m_conversion, cols[0]);
+
+        for (unsigned int i = 1; i < cols.size (); i++) {
+            std::vector<String> pair;
+            scim_prime_util_split_string (cols[i], pair, "=", 2);
+            m_connection->m_iconv.convert (cand.m_values[pair[0]], pair[1]);
+        }
+    }
 }
 
 void
-conv_select (int index)
-    // FIXME!
+PrimeSession::conv_select (WideString &selected_string, int index)
 {
+    char buf[32];
+    sprintf(buf, "%10d", index);
+
+    bool success = send_command (PRIME_CONV_SELECT, buf);
+
+    if (success) {
+        m_connection->get_reply (selected_string);
+    } else {
+        // error
+    }
+}
+
+void
+PrimeSession::conv_commit (WideString &commited_string)
+{
+    bool success = send_command (PRIME_CONV_COMMIT);
+
+    if (success) {
+        m_connection->get_reply (commited_string);
+    } else {
+        // error
+    }
 }
 
 void
@@ -197,7 +254,7 @@ void
 PrimeSession::segment_select (int index)
 {
     char buf[32];
-    sprintf(buf, "%10d\n", index);
+    sprintf(buf, "%10d", index);
     send_command (PRIME_SEGMENT_SELECT, buf);
 }
 

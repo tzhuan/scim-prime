@@ -29,6 +29,7 @@
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT            "/IMEngine/PRIME/CloseCandWinOnSelect"
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
 #define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
+#define SCIM_PRIME_CONFIG_SHOW_COMMENT                        "/IMEngine/PRIME/ShowComment"
 #define SCIM_PRIME_CONFIG_SPACE_CHAR                          "/IMEngine/PRIME/SpaceChar"
 #define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR              "/IMEngine/PRIME/AlternativeSpaceChar"
 
@@ -74,6 +75,7 @@
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT    false
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
 #define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  false
+#define SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT                false
 #define SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT                  " "
 #define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT      "\xE3\x80\x80"
 

@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "prime_connection.h"
+#include "prime_session.h"
 #include "prime_commands.h"
 
 
@@ -300,13 +301,13 @@ PrimeConnection::lookup (const String &sequence,
     bool success = send_command (command, sequence.c_str (), NULL);
     if (success) {
         std::vector<String> rows;
-        split_string (m_last_reply, rows, "\n");
+        scim_prime_util_split_string (m_last_reply, rows, "\n");
 
         for (unsigned int i = 0; i < rows.size (); i++) {
             candidates.push_back (PrimeCandidate ());
 
             std::vector<String> cols;
-            split_string (rows[i], cols, "\t");
+            scim_prime_util_split_string (rows[i], cols, "\t");
 
             if (cols.size () >= 2) {
                 m_iconv.convert (candidates[i].m_preedition, cols[0]);
@@ -315,7 +316,7 @@ PrimeConnection::lookup (const String &sequence,
 
             for (unsigned int j = 2; j < cols.size (); j++) {
                 std::vector<String> pair;
-                split_string (cols[j], pair, "=", 2);
+                scim_prime_util_split_string (cols[j], pair, "=", 2);
                 m_iconv.convert (candidates[i].m_values[pair[0]], pair[1]);
             }
         }
@@ -470,13 +471,13 @@ PrimeConnection::get_reply (WideString &reply)
 void
 PrimeConnection::get_reply (std::vector<String> &str_list, char *delim)
 {
-    split_string (m_last_reply, str_list, delim);
+    scim_prime_util_split_string (m_last_reply, str_list, delim);
 }
 
 
 void
-PrimeConnection::split_string (String &str, std::vector<String> &str_list,
-                               char *delim, int num)
+scim_prime_util_split_string (String &str, std::vector<String> &str_list,
+                              char *delim, int num)
 {
     String::size_type start = 0, end;
 

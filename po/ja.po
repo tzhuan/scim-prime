@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-03-29 11:52+0900\n"
+"POT-Creation-Date: 2005-03-31 14:19+0900\n"
 "PO-Revision-Date: 2005-03-29 11:52+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -13,19 +13,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:304
+#: src/scim_prime_imengine.cpp:306
 msgid "Register a word:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine.cpp:309
+#: src/scim_prime_imengine.cpp:311
 msgid "["
 msgstr "["
 
-#: src/scim_prime_imengine.cpp:314
+#: src/scim_prime_imengine.cpp:316
 msgid "|"
 msgstr "|"
 
-#: src/scim_prime_imengine.cpp:334
+#: src/scim_prime_imengine.cpp:336
 msgid "]"
 msgstr "]"
 
@@ -37,484 +37,498 @@ msgstr "PRIME"
 msgid "An PRIME IMEngine Module."
 msgstr "PRIME IMEngineモジュール"
 
-#: src/scim_prime_imengine_setup.cpp:157
+#: src/scim_prime_imengine_setup.cpp:159
 msgid "Commit keys:"
 msgstr "確定:"
 
-#: src/scim_prime_imengine_setup.cpp:158
+#: src/scim_prime_imengine_setup.cpp:160
 msgid "Select commit keys"
 msgstr "確定キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:159
+#: src/scim_prime_imengine_setup.cpp:161
 msgid "The key events to commit the preedit string. "
 msgstr "文字列を確定するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:166
+#: src/scim_prime_imengine_setup.cpp:168
 msgid "Commit witout learn keys:"
 msgstr "学習せずに確定:"
 
-#: src/scim_prime_imengine_setup.cpp:167
+#: src/scim_prime_imengine_setup.cpp:169
 msgid "Select commit witout learn keys"
 msgstr "学習せずに文字列を確定するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:168
+#: src/scim_prime_imengine_setup.cpp:170
 msgid "The key events to commit the preedit string without learn. "
 msgstr "学習せずに文字列を確定するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:175
+#: src/scim_prime_imengine_setup.cpp:177
 msgid "Convert keys:"
 msgstr "変換:"
 
-#: src/scim_prime_imengine_setup.cpp:176
+#: src/scim_prime_imengine_setup.cpp:178
 msgid "Select convert keys"
 msgstr "変換キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:177
+#: src/scim_prime_imengine_setup.cpp:179
 msgid "The key events to convert the preedit string to kanji. "
 msgstr "文字列を漢字に変換するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:184
+#: src/scim_prime_imengine_setup.cpp:186
 msgid "Cancel keys:"
 msgstr "キャンセル:"
 
-#: src/scim_prime_imengine_setup.cpp:185
+#: src/scim_prime_imengine_setup.cpp:187
 msgid "Select cancel keys"
 msgstr "キャンセルキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:186
+#: src/scim_prime_imengine_setup.cpp:188
 msgid "The key events to cancel preediting or converting. "
 msgstr "文字変換や文字入力をキャンセルするキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:193
+#: src/scim_prime_imengine_setup.cpp:195
 msgid "Backspace keys:"
 msgstr "バックスペース:"
 
-#: src/scim_prime_imengine_setup.cpp:194
+#: src/scim_prime_imengine_setup.cpp:196
 msgid "Select backspace keys"
 msgstr "バックスペースキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:195
+#: src/scim_prime_imengine_setup.cpp:197
 msgid "The key events to delete a character before caret. "
 msgstr "キャレットの前の文字を削除するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:202
+#: src/scim_prime_imengine_setup.cpp:204
 msgid "Delete keys:"
 msgstr "削除:"
 
-#: src/scim_prime_imengine_setup.cpp:203
+#: src/scim_prime_imengine_setup.cpp:205
 msgid "Select delete keys"
 msgstr "削除キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:204
+#: src/scim_prime_imengine_setup.cpp:206
 msgid "The key events to delete a character after caret. "
 msgstr "キャレットの後の文字を削除するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:211
+#: src/scim_prime_imengine_setup.cpp:213
 msgid "Space keys:"
 msgstr "スペース:"
 
-#: src/scim_prime_imengine_setup.cpp:212
+#: src/scim_prime_imengine_setup.cpp:214
 msgid "Select space keys"
 msgstr "スペースキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:213
+#: src/scim_prime_imengine_setup.cpp:215
 msgid "The key events to insert space letter on non-preediting state. "
 msgstr "入力文字列が無い時にスペースを入力するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:220
+#: src/scim_prime_imengine_setup.cpp:222
 msgid "Alternative space keys:"
 msgstr "全角スペース:"
 
-#: src/scim_prime_imengine_setup.cpp:221
+#: src/scim_prime_imengine_setup.cpp:223
 msgid "Select alternative space keys"
 msgstr "全角スペースキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:222
+#: src/scim_prime_imengine_setup.cpp:224
 msgid ""
 "The key events to insert alterenative space letter on non-preediting state. "
 msgstr "入力文字列が無い時に全角スペースを入力するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:229
+#: src/scim_prime_imengine_setup.cpp:231
 msgid "Register a word keys:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine_setup.cpp:230
+#: src/scim_prime_imengine_setup.cpp:232
 msgid "Select register a word keys"
 msgstr "単語登録キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:231
+#: src/scim_prime_imengine_setup.cpp:233
 msgid "The key events to invoke registering a word mode. "
 msgstr "単語登録モードを起動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:251
+#: src/scim_prime_imengine_setup.cpp:253
 msgid "Default mode keys:"
 msgstr "デフォルトモード:"
 
-#: src/scim_prime_imengine_setup.cpp:252
+#: src/scim_prime_imengine_setup.cpp:254
 msgid "Select default mode keys"
 msgstr "デフォルトモードキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:253
+#: src/scim_prime_imengine_setup.cpp:255
 msgid "The key events to set to default mode. "
 msgstr "デフォルトモードへ移行するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:260
+#: src/scim_prime_imengine_setup.cpp:262
 msgid "Katakana mode keys:"
 msgstr "カタカナモード："
 
-#: src/scim_prime_imengine_setup.cpp:261
+#: src/scim_prime_imengine_setup.cpp:263
 msgid "Select katakana mode keys"
 msgstr "カタカナモードキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:262
+#: src/scim_prime_imengine_setup.cpp:264
 msgid "The key events to set to katakana mode. "
 msgstr "カタカナモードへ移行するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:269
+#: src/scim_prime_imengine_setup.cpp:271
 msgid "Half katakana mode keys:"
 msgstr "半角カタカナモード:"
 
-#: src/scim_prime_imengine_setup.cpp:270
+#: src/scim_prime_imengine_setup.cpp:272
 msgid "Select half katakana mode keys"
 msgstr "半角カタカナモードキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:271
+#: src/scim_prime_imengine_setup.cpp:273
 msgid "The key events to set to half katakana mode. "
 msgstr "半角カタカナモードへ移行するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:278
+#: src/scim_prime_imengine_setup.cpp:280
 msgid "Wide ascii mode keys:"
 msgstr "全角英数モード:"
 
-#: src/scim_prime_imengine_setup.cpp:279
+#: src/scim_prime_imengine_setup.cpp:281
 msgid "Select wide ascii mode keys"
 msgstr "全角英数モードキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:280
+#: src/scim_prime_imengine_setup.cpp:282
 msgid "The key events to set to wide ascii mode. "
 msgstr "全角英数モードへ移行するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:287
+#: src/scim_prime_imengine_setup.cpp:289
 msgid "Raw mode keys:"
 msgstr "英数モード:"
 
-#: src/scim_prime_imengine_setup.cpp:288
+#: src/scim_prime_imengine_setup.cpp:290
 msgid "Select raw mode keys"
 msgstr "英数モードキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:289
+#: src/scim_prime_imengine_setup.cpp:291
 msgid "The key events to set to raw mode. "
 msgstr "英数モードへ移行するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:296
+#: src/scim_prime_imengine_setup.cpp:298
 msgid "Toggle language keys:"
 msgstr "言語切り替え:"
 
-#: src/scim_prime_imengine_setup.cpp:297
+#: src/scim_prime_imengine_setup.cpp:299
 msgid "Select toggle language keys"
 msgstr "言語切り替キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:298
+#: src/scim_prime_imengine_setup.cpp:300
 msgid "The key events to toggle language. "
 msgstr "言語を切り替えるキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:318
+#: src/scim_prime_imengine_setup.cpp:320
 msgid "Move to first keys:"
 msgstr "最初へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:319
+#: src/scim_prime_imengine_setup.cpp:321
 msgid "Select move caret to first keys"
 msgstr "最初へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:320
+#: src/scim_prime_imengine_setup.cpp:322
 msgid "The key events to move the caret to the first of preedit string. "
 msgstr "キャレットを文字列の先頭に移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:327
+#: src/scim_prime_imengine_setup.cpp:329
 msgid "Move to last keys:"
 msgstr "最後へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:328
+#: src/scim_prime_imengine_setup.cpp:330
 msgid "Select move caret to last keys"
 msgstr "最後へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:329
+#: src/scim_prime_imengine_setup.cpp:331
 msgid "The key events to move the caret to the last of the preedit string. "
 msgstr "キャレットを文字列の最後に移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:336
+#: src/scim_prime_imengine_setup.cpp:338
 msgid "Move forward keys:"
 msgstr "前方へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:337
+#: src/scim_prime_imengine_setup.cpp:339
 msgid "Select move caret forward keys"
 msgstr "前方へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:338
+#: src/scim_prime_imengine_setup.cpp:340
 msgid "The key events to move the caret to forward. "
 msgstr "キャレットを前方に移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:345
+#: src/scim_prime_imengine_setup.cpp:347
 msgid "Move backward keys:"
 msgstr "後方へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:346
+#: src/scim_prime_imengine_setup.cpp:348
 msgid "Select move caret backward keys"
 msgstr "後方へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:347
+#: src/scim_prime_imengine_setup.cpp:349
 msgid "The key events to move the caret to backward. "
 msgstr "キャレットを後方へ移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:367
+#: src/scim_prime_imengine_setup.cpp:369
 msgid "Next keys:"
 msgstr "次へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:368
+#: src/scim_prime_imengine_setup.cpp:370
 msgid "Select next candidate keys"
 msgstr "次へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:369
+#: src/scim_prime_imengine_setup.cpp:371
 msgid "The key events to select next candidate. "
 msgstr "次の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:376
+#: src/scim_prime_imengine_setup.cpp:378
 msgid "Previous keys:"
 msgstr "前へ移動:"
 
-#: src/scim_prime_imengine_setup.cpp:377
+#: src/scim_prime_imengine_setup.cpp:379
 msgid "Select previous candidate keys"
 msgstr "前へ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:378
+#: src/scim_prime_imengine_setup.cpp:380
 msgid "The key events to select previous candidate. "
 msgstr "前の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:385
+#: src/scim_prime_imengine_setup.cpp:387
 msgid "Page down keys:"
 msgstr "次のページ："
 
-#: src/scim_prime_imengine_setup.cpp:386
+#: src/scim_prime_imengine_setup.cpp:388
 msgid "Select page down candidates keys"
 msgstr "次のページへ移動キーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:387
+#: src/scim_prime_imengine_setup.cpp:389
 msgid "The key events to select page down candidates. "
 msgstr "次の候補ページへ移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:394
+#: src/scim_prime_imengine_setup.cpp:396
 msgid "Page up keys:"
 msgstr "前のページ:"
 
-#: src/scim_prime_imengine_setup.cpp:395
+#: src/scim_prime_imengine_setup.cpp:397
 msgid "Select page up candidates keys"
 msgstr "前のページへ移動するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:396
+#: src/scim_prime_imengine_setup.cpp:398
 msgid "The key events to select page up candidates. "
 msgstr "前の候補ページへ移動するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:416
+#: src/scim_prime_imengine_setup.cpp:418
 msgid "1st candidate keys:"
 msgstr "最初の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:417
+#: src/scim_prime_imengine_setup.cpp:419
 msgid "Select keys to select 1st candidate"
 msgstr "最初の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:418
+#: src/scim_prime_imengine_setup.cpp:420
 msgid "The key events to select 1st candidate. "
 msgstr "最初の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:425
+#: src/scim_prime_imengine_setup.cpp:427
 msgid "2nd candidate keys:"
 msgstr "2番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:426
+#: src/scim_prime_imengine_setup.cpp:428
 msgid "Select keys to select 2nd candidate"
 msgstr "2番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:427
+#: src/scim_prime_imengine_setup.cpp:429
 msgid "The key events to select 2nd candidate. "
 msgstr "2番得目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:434
+#: src/scim_prime_imengine_setup.cpp:436
 msgid "3rd candidate keys:"
 msgstr "3番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:435
+#: src/scim_prime_imengine_setup.cpp:437
 msgid "Select keys to select 3rd candidate"
 msgstr "3番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:436
+#: src/scim_prime_imengine_setup.cpp:438
 msgid "The key events to select 3rd candidate. "
 msgstr "3番得目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:443
+#: src/scim_prime_imengine_setup.cpp:445
 msgid "4th candidate keys:"
 msgstr "4番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:444
+#: src/scim_prime_imengine_setup.cpp:446
 msgid "Select keys to select 4th candidate"
 msgstr "4番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:445
+#: src/scim_prime_imengine_setup.cpp:447
 msgid "The key events to select 4th candidate. "
 msgstr "4番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:452
+#: src/scim_prime_imengine_setup.cpp:454
 msgid "5th candidate keys:"
 msgstr "5番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:453
+#: src/scim_prime_imengine_setup.cpp:455
 msgid "Select keys to select 5th candidate"
 msgstr "5番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:454
+#: src/scim_prime_imengine_setup.cpp:456
 msgid "The key events to select 5th candidate. "
 msgstr "5番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:461
+#: src/scim_prime_imengine_setup.cpp:463
 msgid "6th candidate keys:"
 msgstr "6番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:462
+#: src/scim_prime_imengine_setup.cpp:464
 msgid "Select keys to select 6th candidate"
 msgstr "6番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:463
+#: src/scim_prime_imengine_setup.cpp:465
 msgid "The key events to select 6th candidate. "
 msgstr "6番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:470
+#: src/scim_prime_imengine_setup.cpp:472
 msgid "7th candidate keys:"
 msgstr "7番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:471
+#: src/scim_prime_imengine_setup.cpp:473
 msgid "Select keys to select 7th candidate"
 msgstr "7番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:472
+#: src/scim_prime_imengine_setup.cpp:474
 msgid "The key events to select 7th candidate. "
 msgstr "7番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:479
+#: src/scim_prime_imengine_setup.cpp:481
 msgid "8th candidate keys:"
 msgstr "8番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:480
+#: src/scim_prime_imengine_setup.cpp:482
 msgid "Select keys to select 8th candidate"
 msgstr "8番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:481
+#: src/scim_prime_imengine_setup.cpp:483
 msgid "The key events to select 8th candidate. "
 msgstr "8番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:488
+#: src/scim_prime_imengine_setup.cpp:490
 msgid "9th candidate keys:"
 msgstr "9番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:489
+#: src/scim_prime_imengine_setup.cpp:491
 msgid "Select keys to select 9th candidate"
 msgstr "9番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:490
+#: src/scim_prime_imengine_setup.cpp:492
 msgid "The key events to select 9th candidate. "
 msgstr "9番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:497
+#: src/scim_prime_imengine_setup.cpp:499
 msgid "10th candidate keys:"
 msgstr "10番目の候補:"
 
-#: src/scim_prime_imengine_setup.cpp:498
+#: src/scim_prime_imengine_setup.cpp:500
 msgid "Select keys to select 10th candidate"
 msgstr "10番目の候補を選択するキーの設定"
 
-#: src/scim_prime_imengine_setup.cpp:499
+#: src/scim_prime_imengine_setup.cpp:501
 msgid "The key events to select 10th candidate. "
 msgstr "10番目の候補を選択するキーイベント"
 
-#: src/scim_prime_imengine_setup.cpp:516
+#: src/scim_prime_imengine_setup.cpp:518
 msgid "Common keys"
 msgstr "一般キー"
 
-#: src/scim_prime_imengine_setup.cpp:517
+#: src/scim_prime_imengine_setup.cpp:519
 msgid "Mode keys"
 msgstr "モードキー"
 
-#: src/scim_prime_imengine_setup.cpp:518
+#: src/scim_prime_imengine_setup.cpp:520
 msgid "Caret keys"
 msgstr "キャレットキー"
 
-#: src/scim_prime_imengine_setup.cpp:520
+#: src/scim_prime_imengine_setup.cpp:522
 msgid "Candidates keys"
 msgstr "候補選択キー"
 
-#: src/scim_prime_imengine_setup.cpp:521
+#: src/scim_prime_imengine_setup.cpp:523
 msgid "Candidates keys (Direct select)"
 msgstr "候補選択キー (直接選択)"
 
-#: src/scim_prime_imengine_setup.cpp:606
+#: src/scim_prime_imengine_setup.cpp:608
 msgid "PRIME command:"
 msgstr "PRIMEコマンド:"
 
-#: src/scim_prime_imengine_setup.cpp:606
+#: src/scim_prime_imengine_setup.cpp:608
 msgid "The PRIME command to use as conversion engine."
 msgstr "変換エンジンとして使用する PRIMEコマンド"
 
-#: src/scim_prime_imengine_setup.cpp:611 src/scim_prime_imengine_setup.cpp:616
+#: src/scim_prime_imengine_setup.cpp:613 src/scim_prime_imengine_setup.cpp:618
 msgid "Predict while typing letters."
 msgstr "文字入力中に予測する"
 
-#: src/scim_prime_imengine_setup.cpp:620
+#: src/scim_prime_imengine_setup.cpp:622
 msgid "Use auto registering a word feature"
 msgstr "自動単語登録機能を使用する"
 
-#: src/scim_prime_imengine_setup.cpp:625
+#: src/scim_prime_imengine_setup.cpp:627
 msgid ""
 "Invoke the registering a word mode when the cursor in the candidates window "
 "is move to out of range."
 msgstr "候補ウィンドウのカーソルが範囲外へ移動した時に単語登録機能を起動する"
 
-#: src/scim_prime_imengine_setup.cpp:629
+#: src/scim_prime_imengine_setup.cpp:631
 msgid "Commit on inputting upper letter"
 msgstr "大文字入力時に確定する"
 
-#: src/scim_prime_imengine_setup.cpp:634
+#: src/scim_prime_imengine_setup.cpp:636
 msgid "Commit previous preedit string when a upper letter is entered."
 msgstr "大文字が入力された時にそれ以前の入力文字列を確定する"
 
-#: src/scim_prime_imengine_setup.cpp:638 src/scim_prime_imengine_setup.cpp:643
+#: src/scim_prime_imengine_setup.cpp:640 src/scim_prime_imengine_setup.cpp:645
 msgid "Close candidates window when a candidate is selected directly."
 msgstr "候補を直接選択した時に候補ウィンドウを閉じる"
 
-#: src/scim_prime_imengine_setup.cpp:647
+#: src/scim_prime_imengine_setup.cpp:649
 msgid "Show annotation of the word on the candidates window"
 msgstr "候補ウィンドウ上に単語の注釈を表示する"
 
-#: src/scim_prime_imengine_setup.cpp:652
-msgid "Show annotation of the word on candidates window."
+#: src/scim_prime_imengine_setup.cpp:654
+msgid "Show annotation of the word on the candidates window."
 msgstr "候補ウィンドウ上に単語の注釈を表示する"
 
-#: src/scim_prime_imengine_setup.cpp:656
-msgid "Show usage of the word on candidates window"
+#: src/scim_prime_imengine_setup.cpp:658
+msgid "Show usage of the word on the candidates window"
 msgstr "候補ウィンドウ上に単語の用例を表示する"
 
-#: src/scim_prime_imengine_setup.cpp:661
+#: src/scim_prime_imengine_setup.cpp:663
 msgid "Show usage of the word on the candidates window."
 msgstr "候補ウィンドウ上に単語の用例を表示する"
 
-#: src/scim_prime_imengine_setup.cpp:778
+#: src/scim_prime_imengine_setup.cpp:667
+msgid "Show comment of the word on the candidates window"
+msgstr "候補ウィンドウ上に単語のコメントを表示する"
+
+#: src/scim_prime_imengine_setup.cpp:672
+msgid "Show comment of the word on the candidates window."
+msgstr "候補ウィンドウ上に単語のコメントを表示する"
+
+#: src/scim_prime_imengine_setup.cpp:792
 msgid "Options"
 msgstr "オプション"
 
-#: src/scim_prime_imengine_setup.cpp:785
+#: src/scim_prime_imengine_setup.cpp:799
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:791
+#: src/scim_prime_imengine_setup.cpp:805
 msgid "Dictionary"
 msgstr "辞書"
+
+#~ msgid "Show annotation of the word on candidates window."
+#~ msgstr "候補ウィンドウ上に単語の注釈を表示する"
+
+#~ msgid "Show usage of the word on candidates window"
+#~ msgstr "候補ウィンドウ上に単語の用例を表示する"
 
 #~ msgid "Show annotation on candidates window."
 #~ msgstr "候補ウィンドウ上に単語の注釈を表示する"

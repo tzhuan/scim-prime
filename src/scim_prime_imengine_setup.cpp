@@ -137,6 +137,7 @@ static bool   __config_commit_on_upper          = SCIM_PRIME_CONFIG_COMMIT_ON_UP
 static bool   __config_close_cand_win_on_select = SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT;
 static bool   __config_show_annotation          = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
 static bool   __config_show_usage               = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
+static bool   __config_show_comment             = SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT;
 
 static bool __have_changed    = true;
 
@@ -147,6 +148,7 @@ static GtkWidget    * __widget_commit_on_upper          = 0;
 static GtkWidget    * __widget_close_cand_win_on_select = 0;
 static GtkWidget    * __widget_show_annotation          = 0;
 static GtkWidget    * __widget_show_usage               = 0;
+static GtkWidget    * __widget_show_comment             = 0;
 static GtkTooltips  * __widget_tooltips                 = 0;
 
 static KeyboardConfigData __config_keyboards_common [] =
@@ -649,16 +651,25 @@ create_options_page ()
     gtk_box_pack_start (GTK_BOX (vbox), __widget_show_annotation, FALSE, FALSE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (__widget_show_annotation), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_show_annotation,
-                          _("Show annotation of the word on candidates window."), NULL);
+                          _("Show annotation of the word on the candidates window."), NULL);
 
-    /* show annotation */
+    /* show usage */
     __widget_show_usage
-        = gtk_check_button_new_with_mnemonic (_("Show usage of the word on candidates window"));
+        = gtk_check_button_new_with_mnemonic (_("Show usage of the word on the candidates window"));
     gtk_widget_show (__widget_show_usage);
     gtk_box_pack_start (GTK_BOX (vbox), __widget_show_usage, FALSE, FALSE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (__widget_show_usage), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_show_usage,
                           _("Show usage of the word on the candidates window."), NULL);
+
+    /* show comment */
+    __widget_show_comment
+        = gtk_check_button_new_with_mnemonic (_("Show comment of the word on the candidates window"));
+    gtk_widget_show (__widget_show_comment);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_show_comment, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_show_comment), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_show_comment,
+                          _("Show comment of the word on the candidates window."), NULL);
 
     // Connect all signals.
     g_signal_connect ((gpointer) __widget_command, "changed",
@@ -682,6 +693,9 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_show_usage, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_show_usage);
+    g_signal_connect ((gpointer) __widget_show_comment, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_show_comment);
 
     return vbox;
 }
@@ -878,6 +892,12 @@ setup_widget_value ()
             __config_show_usage);
     }
 
+    if (__widget_show_comment) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_show_comment),
+            __config_show_comment);
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; ++j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             if (__key_conf_pages[j].data[i].entry) {
@@ -916,6 +936,9 @@ load_config (const ConfigPointer &config)
     __config_show_usage =
         config->read (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
                       __config_show_usage);
+    __config_show_comment =
+        config->read (String (SCIM_PRIME_CONFIG_SHOW_COMMENT),
+                      __config_show_comment);
 
     for (unsigned int j = 0; j < __key_conf_pages_num; ++ j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
@@ -950,6 +973,8 @@ save_config (const ConfigPointer &config)
                    __config_show_annotation);
     config->write (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
                    __config_show_usage);
+    config->write (String (SCIM_PRIME_CONFIG_SHOW_COMMENT),
+                   __config_show_comment);
 
     for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {

@@ -1,3 +1,14 @@
+2005-03-31 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/prime_session.cpp, src/prime_session.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Use "conv_*" protocol instead of "lookup_*" one to get candidates.
+	Other minor fixes are made.
+	* po/ja.po. po/scim-prime.pot: Updated.
+
 2005-03-29 Takuro Ashie <ashie@homa.ne.jp>
 
 	* configure.ac: Version-0.1.0.

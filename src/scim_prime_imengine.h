@@ -27,7 +27,9 @@
 #define __SCIM_PRIME_IMENGINE_H__
 
 #include <scim.h>
-#include <prime_connection.h>
+
+#include "prime_connection.h"
+#include "prime_session.h"
 
 using namespace scim;
 
@@ -52,7 +54,6 @@ private:
 
     /* values */
     PrimeCandidates         m_candidates;
-    WideString              m_context;
 
     /* flags */
     bool                    m_converting;
