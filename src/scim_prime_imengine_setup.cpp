@@ -142,11 +142,12 @@ struct ComboConfigData
 
 // Internal data declaration.
 static String __config_command         = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
-static bool   __config_auto_regist     = SCIM_PRIME_CONFIG_AUTO_REGIST_DEFAULT;
+static bool   __config_auto_register   = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
 static bool   __config_commit_on_upper = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
 
 static bool __have_changed    = true;
 
+static GtkWidget    * __widget_auto_register   = 0;
 static GtkWidget    * __widget_command         = 0;
 static GtkWidget    * __widget_commit_on_upper = 0;
 static GtkTooltips  * __widget_tooltips        = 0;
@@ -554,7 +555,7 @@ create_options_page ()
     gtk_widget_show (vbox);
 
     table = gtk_table_new (2, 2, FALSE);
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
     gtk_widget_show (table);
 
     if (!__widget_tooltips)
@@ -563,8 +564,18 @@ create_options_page ()
     APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as convert engine."),
                  __widget_command, 0);
 
+    /* auto register */
+    __widget_auto_register
+        = gtk_check_button_new_with_mnemonic (_("Use auto registering a word feature"));
+    gtk_widget_show (__widget_auto_register);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_auto_register, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_auto_register), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_auto_register,
+                          _("Invoke the registering a word mode when the cursor in the candidates window is move to out of range."), NULL);
+
     /* commit on upper */
-    __widget_commit_on_upper = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter"));
+    __widget_commit_on_upper
+        = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter"));
     gtk_widget_show (__widget_commit_on_upper);
     gtk_box_pack_start (GTK_BOX (vbox), __widget_commit_on_upper, FALSE, FALSE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (__widget_commit_on_upper), 4);
@@ -572,6 +583,9 @@ create_options_page ()
                           _("Commit previous preedit string when a upper letter is entered."), NULL);
 
     // Connect all signals.
+    g_signal_connect ((gpointer) __widget_command, "changed",
+                      G_CALLBACK (on_default_editable_changed),
+                      &__config_command);
     g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_commit_on_upper);
@@ -735,7 +749,13 @@ setup_widget_value ()
             __config_command.c_str ());
     }
 
-   if (__widget_commit_on_upper) {
+    if (__widget_auto_register) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_auto_register),
+            __config_auto_register);
+    }
+
+    if (__widget_commit_on_upper) {
         gtk_toggle_button_set_active (
             GTK_TOGGLE_BUTTON (__widget_commit_on_upper),
             __config_commit_on_upper);
@@ -761,9 +781,9 @@ load_config (const ConfigPointer &config)
     __config_command =
         config->read (String (SCIM_PRIME_CONFIG_COMMAND),
                       __config_command);
-    __config_auto_regist =
-        config->read (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
-                      __config_auto_regist);
+    __config_auto_register =
+        config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
+                      __config_auto_register);
     __config_commit_on_upper =
         config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                       __config_commit_on_upper);
@@ -789,8 +809,8 @@ save_config (const ConfigPointer &config)
 
     config->write (String (SCIM_PRIME_CONFIG_COMMAND),
                    __config_command);
-    config->write (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
-                   __config_auto_regist);
+    config->write (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
+                   __config_auto_register);
     config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                    __config_commit_on_upper);
 

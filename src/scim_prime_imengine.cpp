@@ -202,9 +202,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_typing_method
         = config->read (String (SCIM_PRIME_CONFIG_TYPING_METHOD),
                         String (SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT));
-    m_auto_regist
-        = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
-                        SCIM_PRIME_CONFIG_AUTO_REGIST_DEFAULT);
+    m_auto_register
+        = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
+                        SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT);
     m_commit_on_upper
         = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);
@@ -662,7 +662,7 @@ PrimeInstance::set_preedition (void)
         AttributeList attr_list;
         int pos;
 
-        WideString str = utf8_mbstowcs (_("Learn a word:"));
+        WideString str = utf8_mbstowcs (_("Register a word:"));
         Attribute attr (0, str.length (), SCIM_ATTR_DECORATE);
         attr.set_value (SCIM_ATTR_DECORATE_HIGHLIGHT);
         attr_list.push_back (attr);
@@ -1000,10 +1000,16 @@ PrimeInstance::action_conv_next_candidate (void)
     if (!is_converting ())
         return false;
 
-    if (m_lookup_table.get_cursor_pos () == (int) (m_lookup_table.number_of_candidates () - 1))
-        m_lookup_table.set_cursor_pos (0);
-    else
+    int last_candidate = m_lookup_table.number_of_candidates () - 1;
+
+    if (m_lookup_table.get_cursor_pos () == last_candidate) {
+        if (m_factory->m_auto_register)
+            action_learn_a_word ();
+        else
+            m_lookup_table.set_cursor_pos (0);
+    } else {
         m_lookup_table.cursor_down ();
+    }
 
     select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
 

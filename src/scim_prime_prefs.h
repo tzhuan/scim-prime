@@ -23,7 +23,7 @@
 
 #define SCIM_PRIME_CONFIG_COMMAND                             "/IMEngine/PRIME/Command"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD                       "/IMEngine/PRIME/TypingMethod"
-#define SCIM_PRIME_CONFIG_AUTO_REGIST                         "/IMEngine/PRIME/AutoRegist"
+#define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 #define SCIM_PRIME_CONFIG_COMMIT_KEY                          "/IMEngine/PRIME/CommitKey"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY                         "/IMEngine/PRIME/ConvertKey"
@@ -57,7 +57,7 @@
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
-#define SCIM_PRIME_CONFIG_AUTO_REGIST_DEFAULT                 false
+#define SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT               false
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L"
