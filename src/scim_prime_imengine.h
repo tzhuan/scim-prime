@@ -28,7 +28,6 @@
 
 #include <scim.h>
 #include <prime_connection.h>
-#include "scim_prime_action.h"
 
 using namespace scim;
 
