@@ -39,6 +39,7 @@ class PrimeInstance : public IMEngineInstanceBase
 
 private:
     static PrimeConnection  m_prime;
+    static int              m_prime_major_version;
 
     PrimeSession           *m_session;
 
@@ -56,6 +57,7 @@ private:
     PrimeCandidates         m_candidates;
 
     /* flags */
+    bool                    m_disable;
     bool                    m_converting;
     bool                    m_modifying;
     bool                    m_registering;

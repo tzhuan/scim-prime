@@ -28,6 +28,9 @@
 #include "prime_commands.h"
 
 
+std::vector<PrimeConnection *> connection_list;
+
+
 PrimeCandidate::PrimeCandidate ()
 {
 }
@@ -37,11 +40,14 @@ PrimeCandidate::~PrimeCandidate ()
 }
 
 PrimeConnection::PrimeConnection ()
-    : m_pid (0),
+    : m_connection_type (PRIME_CONNECTION_PIPE),
+      m_pid (0),
       m_in_fd (0),
       m_out_fd (0),
       m_err_fd (0)
 {
+    connection_list.push_back (this);
+
     if (!m_iconv.set_encoding ("EUC-JP"))
         return;
 }
@@ -49,6 +55,48 @@ PrimeConnection::PrimeConnection ()
 PrimeConnection::~PrimeConnection ()
 {
     close_connection ();
+
+    std::vector<PrimeConnection *>::iterator it;
+    for (it = connection_list.begin (); it != connection_list.end (); it++) {
+        if ((*it) == this)
+            connection_list.erase (it);
+    }
+}
+
+#if 0
+static void
+handle_sigchld (int signo)
+{
+    int status;
+
+    pid_t pid = wait (&status);
+
+    std::vector<PrimeConnection *>::iterator it;
+    for (it = connection_list.begin (); it != connection_list.end (); it++) {
+        if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
+            ((*it)->get_child_pid() == pid))
+        {
+            (*it)->close_connection_with_error ();
+        }
+    }
+}
+#endif
+
+static void
+handle_sigpipe (int signo)
+{
+    int status;
+
+    pid_t pid = wait (&status);
+
+    std::vector<PrimeConnection *>::iterator it;
+    for (it = connection_list.begin (); it != connection_list.end (); it++) {
+        if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
+            ((*it)->get_child_pid() == pid))
+        {
+            (*it)->close_connection_with_error ();
+        }
+    }
 }
 
 void
@@ -87,6 +135,10 @@ PrimeConnection::open_connection (const char *command,
 
         m_err_fd = err_fd[0];
         close (err_fd[1]);
+
+        //signal (SIGCHLD, handle_sigpipe);
+        signal (SIGPIPE, handle_sigpipe);
+
         return;
     } else if (pid == 0) {
         /* child process */      
@@ -152,7 +204,7 @@ ERROR0:
 }
 
 void
-PrimeConnection::close_connection ()
+PrimeConnection::close_connection (void)
 {
     if (m_pid) {
         const char *command = PRIME_CLOSE "\n";
@@ -189,6 +241,31 @@ PrimeConnection::close_connection ()
 }
 
 void
+PrimeConnection::close_connection_with_error (void)
+{
+    if (m_in_fd)
+        close (m_in_fd);
+    if (m_out_fd)
+        close (m_out_fd);
+    if (m_err_fd)
+        close (m_err_fd);
+
+    m_pid    = 0;
+    m_in_fd  = 0;
+    m_out_fd = 0;
+    m_err_fd = 0;
+}
+
+bool
+PrimeConnection::is_connected (void)
+{
+    if (m_pid)
+        return true;
+    else
+        return false;
+}
+
+void
 PrimeConnection::version (String &version)
 {
     bool success = send_command (PRIME_VERSION, NULL);
@@ -197,6 +274,43 @@ PrimeConnection::version (String &version)
     } else {
         // error
     }
+}
+
+int
+PrimeConnection::get_version_int (int idx)
+{
+    if (idx < 0 || idx > 2)
+        return -1;
+
+    bool success = send_command (PRIME_VERSION, NULL);
+    if (success) {
+        std::vector<String> versions;
+        get_reply (versions, ".");
+        if (versions.size() > (unsigned int) idx)
+            return atoi (versions[idx].c_str());
+        else
+            return -1;
+    } else {
+        return -1;
+    }
+}
+
+int
+PrimeConnection::major_version (void)
+{
+    return get_version_int (0);
+}
+
+int
+PrimeConnection::minor_version (void)
+{
+    return get_version_int (1);
+}
+
+int
+PrimeConnection::micro_version (void)
+{
+    return get_version_int (2);
 }
 
 void
@@ -405,6 +519,9 @@ PrimeConnection::send_command (const char *command,
             remaining -= rv;
             break;
         }
+
+        if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
+            return false;
     } while (remaining > 0);
 
 
@@ -441,6 +558,9 @@ PrimeConnection::send_command (const char *command,
                 break;
             }
         }
+
+        if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
+            return false;
     }
 
     if (m_last_reply.length () > 3 && m_last_reply.substr (0, 3) == "ok\n") {

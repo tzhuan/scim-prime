@@ -69,6 +69,10 @@ public:
                                              const char *typing_method = NULL,
                                              bool save = true);
     void                close_connection    (void);
+    void                close_connection_with_error (void);
+    bool                is_connected        (void);
+    PrimeConnectionType get_connection_type (void) { return m_connection_type; }
+    pid_t               get_child_pid       (void) { return m_pid; }
 
     // comunication
     // Arguments must be terminated by NULL pointer.
@@ -84,6 +88,9 @@ public:
 
     // get prime version
     void                version             (String          &version);
+    int                 major_version       (void);
+    int                 minor_version       (void);
+    int                 micro_version       (void);
 
     // get variables
     void                get_env             (const String    &key,
@@ -119,18 +126,25 @@ public:
                                              WideString       suffix,
                                              WideString       rest);
 
+private:
+    int                 get_version_int     (int idx); // major: idx=0
+                                                       // minor: idx=1
+                                                       // micro: idx=2
+
 public:
-    IConvert         m_iconv;
+    IConvert            m_iconv;
 
 private:
-    pid_t            m_pid;
-    int              m_in_fd;
-    int              m_out_fd;
-    int              m_err_fd;
+    PrimeConnectionType m_connection_type;
 
-    String           m_typing_method;
+    pid_t               m_pid;
+    int                 m_in_fd;
+    int                 m_out_fd;
+    int                 m_err_fd;
 
-    String           m_last_reply; // EUC-JP
+    String              m_typing_method;
+
+    String              m_last_reply; // EUC-JP
 };
 
 

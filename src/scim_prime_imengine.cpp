@@ -46,6 +46,7 @@
 #include "intl.h"
 
 PrimeConnection PrimeInstance::m_prime = PrimeConnection();
+int             PrimeInstance::m_prime_major_version = -2;
 
 PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
@@ -54,6 +55,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_session (NULL),
       m_factory (factory),
       m_prev_key (0,0),
+      m_disable (false),
       m_converting (false),
       m_modifying (false),
       m_registering (false),
@@ -61,8 +63,11 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
-    m_prime.open_connection (m_factory->m_command.c_str(),
-                             m_factory->m_typing_method.c_str());
+    if (!m_prime.is_connected ()) {
+        m_prime.open_connection (m_factory->m_command.c_str(),
+                                 m_factory->m_typing_method.c_str());
+        m_prime_major_version = m_prime.major_version ();
+    }
 }
 
 PrimeInstance::~PrimeInstance ()
@@ -99,7 +104,9 @@ PrimeInstance::process_key_event (const KeyEvent& key)
             return true;
 
         return process_remaining_key_event (key);
+
     } else {
+        reset ();
         return false;
     }
 }
@@ -148,6 +155,10 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         set_preedition ();
 
         return true;
+
+    } else if (!get_session ()) {
+        reset ();
+        return false;
     }
 
     return false;
@@ -177,8 +188,10 @@ PrimeInstance::select_candidate_no_direct (unsigned int item)
 {
     SCIM_DEBUG_IMENGINE(2) << "select_candidate_no_direct.\n";
 
-    if (!get_session ())
+    if (!get_session ()) {
+        reset ();
         return;
+    }
 
     show_lookup_table ();
 
@@ -270,15 +283,35 @@ PrimeInstance::trigger_property (const String &property)
 PrimeSession *
 PrimeInstance::get_session (void)
 {
+    if (m_disable)
+        return NULL;
+
+    if (m_prime.major_version () < 0 || !m_prime.is_connected ()) {
+        delete m_session;
+        m_session = NULL;
+        m_disable = true;
+
+        update_aux_string (utf8_mbstowcs (_("PRIME process seems terminated abnormally.")));
+        show_aux_string ();
+
+        return NULL;
+
+    } else if (m_prime.major_version () < 1) {
+        update_aux_string (utf8_mbstowcs (_("Your PRIME is out of date. "
+                                            "Please install PRIME-1.0.0 or later.")));
+        show_aux_string ();
+        m_disable = true;
+        return NULL;
+    }
+
     if (!m_session)
         m_session = m_prime.session_start ();
 
-    // FIXME! check the connection
-
     if (!m_session) {
-        reset ();
-        // FIXME! set the flag
-        // FIXME! show error message
+        m_disable = true;
+
+        update_aux_string (utf8_mbstowcs (_("Couldn't start PRIME session.")));
+        show_aux_string ();
     }
 
     return m_session;
@@ -287,7 +320,10 @@ PrimeInstance::get_session (void)
 void
 PrimeInstance::set_preedition (void)
 {
-    // FIXME! check the session
+    if (!get_session ()) {
+        reset ();
+        return;
+    }
 
     if (is_registering ()) {
         set_preedition_on_register ();
@@ -433,13 +469,15 @@ PrimeInstance::set_preedition_on_register (void)
 void
 PrimeInstance::set_prediction (void)
 {
+    if (!get_session ()) {
+        reset ();
+        return;
+    }
+
     if (!m_factory->m_predict_on_preedition)
         return;
 
     if (is_converting () || is_modifying ())
-        return;
-
-    if (!get_session ())
         return;
 
     m_lookup_table.clear ();
@@ -491,14 +529,20 @@ PrimeInstance::is_registering (void)
 bool
 PrimeInstance::action_commit (bool learn)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering ()) {
         return action_commit_on_register (learn);
 
     } else if (is_modifying ()) {
-        WideString left, cursor, right;
+        WideString left, cursor, right, all;
         get_session()->modify_get_conversion (left, cursor, right);
-#warning FIXME! commit segment
-        commit_string (left + cursor + right);
+        all = left + cursor + right;
+        // FIXME! should use segment_commit?
+        if (learn)
+            get_session()->conv_commit (all);
+        commit_string (all);
 
         reset ();
 
@@ -528,6 +572,9 @@ PrimeInstance::action_commit (bool learn)
 bool
 PrimeInstance::action_commit_on_register (bool learn)
 {
+    if (!get_session ())
+        return false;
+
     if (!is_registering ())
         return false;
 
@@ -535,6 +582,8 @@ PrimeInstance::action_commit_on_register (bool learn)
         WideString left, cursor, right, all;
         get_session()->modify_get_conversion (left, cursor, right);
         all = left + cursor + right;
+        if (learn)
+            get_session()->conv_commit (all);
         m_registering_value.insert (m_registering_cursor, all);
         m_registering_cursor += all.length ();
 
@@ -601,6 +650,9 @@ PrimeInstance::action_commit_without_learn (void)
 bool
 PrimeInstance::action_convert (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -640,6 +692,9 @@ PrimeInstance::action_convert (void)
 bool
 PrimeInstance::action_revert (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!is_preediting () && !is_registering ())
         return false;
 
@@ -695,6 +750,9 @@ PrimeInstance::action_finish_selecting_candidates (void)
 bool
 PrimeInstance::action_modify_caret_left (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         if (m_registering_cursor > 0) {
             m_registering_cursor--;
@@ -719,6 +777,9 @@ PrimeInstance::action_modify_caret_left (void)
 bool
 PrimeInstance::action_modify_caret_right (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         if (m_registering_cursor < m_registering_value.length ()) {
             m_registering_cursor++;
@@ -743,6 +804,9 @@ PrimeInstance::action_modify_caret_right (void)
 bool
 PrimeInstance::action_modify_caret_left_edge (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         m_registering_cursor = 0;
         set_preedition ();
@@ -765,6 +829,9 @@ PrimeInstance::action_modify_caret_left_edge (void)
 bool
 PrimeInstance::action_modify_caret_right_edge (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         m_registering_cursor = m_registering_value.length ();
         set_preedition ();
@@ -787,6 +854,9 @@ PrimeInstance::action_modify_caret_right_edge (void)
 bool
 PrimeInstance::action_edit_backspace (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         if (m_registering_cursor > 0) {
             m_registering_value.erase (m_registering_cursor - 1, 1);
@@ -813,6 +883,9 @@ PrimeInstance::action_edit_backspace (void)
 bool
 PrimeInstance::action_edit_delete (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_registering () && !is_preediting ()) {
         if (m_registering_cursor < m_registering_value.length ()) {
             m_registering_value.erase (m_registering_cursor, 1);
@@ -1007,6 +1080,9 @@ PrimeInstance::action_select_candidate_10 (void)
 bool
 PrimeInstance::action_modify_start (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!is_converting () && !is_modifying ())
         return false;
 
@@ -1021,6 +1097,9 @@ PrimeInstance::action_modify_start (void)
 bool
 PrimeInstance::action_select_prev_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1034,6 +1113,9 @@ PrimeInstance::action_select_prev_segment (void)
 bool
 PrimeInstance::action_select_next_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1047,6 +1129,9 @@ PrimeInstance::action_select_next_segment (void)
 bool
 PrimeInstance::action_select_first_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1060,6 +1145,9 @@ PrimeInstance::action_select_first_segment (void)
 bool
 PrimeInstance::action_select_last_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1073,6 +1161,9 @@ PrimeInstance::action_select_last_segment (void)
 bool
 PrimeInstance::action_shrink_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1086,6 +1177,9 @@ PrimeInstance::action_shrink_segment (void)
 bool
 PrimeInstance::action_expand_segment (void)
 {
+    if (!get_session ())
+        return false;
+
     if (!action_modify_start ())
         return false;
 
@@ -1099,6 +1193,9 @@ PrimeInstance::action_expand_segment (void)
 bool
 PrimeInstance::action_set_mode_default (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_converting ())
         action_revert ();
 
@@ -1111,6 +1208,9 @@ PrimeInstance::action_set_mode_default (void)
 bool
 PrimeInstance::action_set_mode_katakana (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_converting ())
         action_revert ();
 
@@ -1123,6 +1223,9 @@ PrimeInstance::action_set_mode_katakana (void)
 bool
 PrimeInstance::action_set_mode_half_katakana (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_converting ())
         action_revert ();
 
@@ -1135,6 +1238,9 @@ PrimeInstance::action_set_mode_half_katakana (void)
 bool
 PrimeInstance::action_set_mode_raw (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_converting ())
         action_revert ();
 
@@ -1147,6 +1253,9 @@ PrimeInstance::action_set_mode_raw (void)
 bool
 PrimeInstance::action_set_mode_wide_ascii (void)
 {
+    if (!get_session ())
+        return false;
+
     if (is_converting ())
         action_revert ();
 
@@ -1194,6 +1303,9 @@ PrimeInstance::action_toggle_language (void)
 bool
 PrimeInstance::action_register_a_word (void)
 {
+    if (!get_session ())
+        return false;
+
     // CHECKME!
     if (!is_preediting ())
         return false;
