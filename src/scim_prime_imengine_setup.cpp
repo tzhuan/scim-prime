@@ -200,6 +200,15 @@ static KeyboardConfigData __config_keyboards_common [] =
         NULL,
     },
     {
+        SCIM_PRIME_CONFIG_REGISTER_WORD_KEY,
+        SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT,
+        N_("Register a word keys:"),
+        N_("Select register a word keys"),
+        N_("The key events to invoke registering a word mode. "),
+        NULL,
+        NULL,
+    },
+    {
         NULL,
         "",
         NULL,

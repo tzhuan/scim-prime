@@ -180,7 +180,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_factory (factory),
       m_prev_key (0,0),
       m_converting (false),
-      m_learning (false)
+      m_registering (false)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
@@ -325,10 +325,10 @@ PrimeFactory::reload_config (const ConfigPointer &config)
                         String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT));
     scim_string_to_key_list (m_set_mode_wide_ascii_keys, str);
 
-    // learn a word
-    str = config->read (String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY),
-                        String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY_DEFAULT));
-    scim_string_to_key_list (m_learn_word_keys, str);
+    // register a word
+    str = config->read (String (SCIM_PRIME_CONFIG_REGISTER_WORD_KEY),
+                        String (SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT));
+    scim_string_to_key_list (m_register_word_keys, str);
 }
 
 PrimeInstance::~PrimeInstance ()
@@ -457,9 +457,9 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
         action_set_mode_wide_ascii ())
         return true;
 
-    // learn a word
-    if (match_key_event (m_factory->m_learn_word_keys, key) &&
-        action_learn_a_word ())
+    // register a word
+    if (match_key_event (m_factory->m_register_word_keys, key) &&
+        action_register_a_word ())
         return true;
 
     return false;
@@ -608,9 +608,9 @@ PrimeInstance::reset ()
 {
     SCIM_DEBUG_IMENGINE(2) << "reset.\n";
 
-    m_learning       = false;
-    m_learning_key   = WideString ();
-    m_learning_value = WideString ();
+    m_registering       = false;
+    m_registering_key   = WideString ();
+    m_registering_value = WideString ();
 
     m_converting     = false;
 
@@ -658,7 +658,7 @@ PrimeInstance::trigger_property (const String &property)
 void
 PrimeInstance::set_preedition (void)
 {
-    if (is_learning ()) {
+    if (is_registering ()) {
         AttributeList attr_list;
         int pos;
 
@@ -670,12 +670,12 @@ PrimeInstance::set_preedition (void)
         WideString tmp = utf8_mbstowcs (_("["));
         ADD_SEPARATOR_ATTR();
 
-        str += m_learning_key;
+        str += m_registering_key;
 
         tmp = utf8_mbstowcs (_("|"));
         ADD_SEPARATOR_ATTR();
 
-        str += m_learning_value;
+        str += m_registering_value;
 
         pos = str.length ();
 
@@ -766,18 +766,18 @@ PrimeInstance::is_converting (void)
 }
 
 bool
-PrimeInstance::is_learning (void)
+PrimeInstance::is_registering (void)
 {
-    return m_learning;
+    return m_registering;
 }
 
 bool
 PrimeInstance::action_commit (void)
 {
-    if (is_learning ()) {
+    if (is_registering ()) {
         if (is_converting ()) {
             int pos = m_lookup_table.get_cursor_pos_in_current_page ();
-            m_learning_value += m_lookup_table.get_candidate_in_current_page (pos);
+            m_registering_value += m_lookup_table.get_candidate_in_current_page (pos);
 
             m_converting = false;
             if (m_session)
@@ -791,7 +791,7 @@ PrimeInstance::action_commit (void)
             if (m_session) {
                 WideString left, cursor, right, all;
                 m_session->edit_get_preedition (left, cursor, right);
-                m_learning_value += left + cursor + right;
+                m_registering_value += left + cursor + right;
             }
 
             if (m_session)
@@ -802,8 +802,8 @@ PrimeInstance::action_commit (void)
             set_preedition ();
 
         } else {
-            if (m_learning_key.length () > 0 && m_learning_value.length () > 0) {
-                m_prime.learn_word (m_learning_key, m_learning_value,
+            if (m_registering_key.length () > 0 && m_registering_value.length () > 0) {
+                m_prime.learn_word (m_registering_key, m_registering_value,
                                     WideString (), WideString (),
                                     WideString (), WideString ());
             }
@@ -871,7 +871,7 @@ PrimeInstance::action_convert (void)
 bool
 PrimeInstance::action_revert (void)
 {
-    if (!is_preediting () && !is_learning ())
+    if (!is_preediting () && !is_registering ())
         return false;
 
     if (is_converting ()) {
@@ -880,7 +880,7 @@ PrimeInstance::action_revert (void)
         m_converting = false;
         set_preedition ();
 
-    } else if (is_learning ()) {
+    } else if (is_registering ()) {
         if (is_preediting ()) {
             if (m_session)
                 m_session->edit_erase ();
@@ -1004,7 +1004,7 @@ PrimeInstance::action_conv_next_candidate (void)
 
     if (m_lookup_table.get_cursor_pos () == last_candidate) {
         if (m_factory->m_auto_register)
-            action_learn_a_word ();
+            return action_register_a_word ();
         else
             m_lookup_table.set_cursor_pos (0);
     } else {
@@ -1189,7 +1189,7 @@ PrimeInstance::action_set_mode_wide_ascii (void)
 }
 
 bool
-PrimeInstance::action_learn_a_word (void)
+PrimeInstance::action_register_a_word (void)
 {
     if (!m_session)
         return false;
@@ -1203,9 +1203,9 @@ PrimeInstance::action_learn_a_word (void)
 
     WideString left, cursor, right;
     m_session->edit_get_preedition (left, cursor, right);
-    m_learning_key = left + cursor + right;
+    m_registering_key = left + cursor + right;
 
-    m_learning = true;
+    m_registering = true;
 
     m_session->edit_erase();
     m_lookup_table.clear ();

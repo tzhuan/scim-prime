@@ -72,7 +72,7 @@ class PrimeFactory : public IMEngineFactoryBase
     KeyEventList m_set_mode_raw_keys;
     KeyEventList m_set_mode_wide_ascii_keys;
 
-    KeyEventList m_learn_word_keys;
+    KeyEventList m_register_word_keys;
 
 public:
     PrimeFactory (const String &lang,
@@ -113,9 +113,9 @@ private:
 
     /* flags */
     bool                    m_converting;
-    bool                    m_learning;
-    WideString              m_learning_key;
-    WideString              m_learning_value;
+    bool                    m_registering;
+    WideString              m_registering_key;
+    WideString              m_registering_value;
 
 public:
     PrimeInstance (PrimeFactory   *factory,
@@ -137,7 +137,7 @@ public:
 public:
     virtual bool is_preediting                 (void);
     virtual bool is_converting                 (void);
-    virtual bool is_learning                   (void);
+    virtual bool is_registering                (void);
 
 private:
     void   set_preedition                      (void);
@@ -188,7 +188,7 @@ private:
     bool   action_set_mode_raw                 (void);
     bool   action_set_mode_wide_ascii          (void);
 
-    bool   action_learn_a_word                 (void);
+    bool   action_register_a_word              (void);
 
     /* utility */
     bool   match_key_event (const KeyEventList &keys,
