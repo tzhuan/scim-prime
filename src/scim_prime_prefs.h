@@ -25,6 +25,8 @@
 #define SCIM_PRIME_CONFIG_TYPING_METHOD                       "/IMEngine/PRIME/TypingMethod"
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
+#define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
+#define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
 #define SCIM_PRIME_CONFIG_COMMIT_KEY                          "/IMEngine/PRIME/CommitKey"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY                         "/IMEngine/PRIME/ConvertKey"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY                          "/IMEngine/PRIME/CancelKey"
@@ -59,6 +61,8 @@
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT               false
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
+#define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
+#define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  false
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT                  "Escape,Control+g,Control+G"

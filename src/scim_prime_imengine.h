@@ -46,6 +46,8 @@ class PrimeFactory : public IMEngineFactoryBase
     String       m_typing_method;
     bool         m_auto_register;
     bool         m_commit_on_upper;
+    bool         m_show_annotation;
+    bool         m_show_usage;
 
     /* for key bindings */
     KeyEventList m_commit_keys;
@@ -147,7 +149,7 @@ private:
     void   set_preedition                      (void);
     void   set_prediction                      (void);
 
-    void   select_candidate_no_direct          (unsigned int item);
+    void   select_candidate_no_direct          (unsigned int    item);
 
     /* processing key event */
     bool   process_key_event_lookup_keybind    (const KeyEvent &key);
@@ -195,8 +197,10 @@ private:
     bool   action_register_a_word              (void);
 
     /* utility */
-    bool   match_key_event (const KeyEventList &keys,
-                            const KeyEvent &key) const;
+    bool   match_key_event     (const KeyEventList &keys,
+                                const KeyEvent     &key) const;
+    void   get_candidate_label (WideString         &label,
+                                PrimeCandidate     &cand);
 };
 #endif /* __SCIM_PRIME_IMENGINE_H__ */
 /*

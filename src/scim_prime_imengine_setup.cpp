@@ -144,12 +144,16 @@ struct ComboConfigData
 static String __config_command         = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
 static bool   __config_auto_register   = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
 static bool   __config_commit_on_upper = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
+static bool   __config_show_annotation = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
+static bool   __config_show_usage      = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
 
 static bool __have_changed    = true;
 
 static GtkWidget    * __widget_auto_register   = 0;
 static GtkWidget    * __widget_command         = 0;
 static GtkWidget    * __widget_commit_on_upper = 0;
+static GtkWidget    * __widget_show_annotation = 0;
+static GtkWidget    * __widget_show_usage      = 0;
 static GtkTooltips  * __widget_tooltips        = 0;
 
 static KeyboardConfigData __config_keyboards_common [] =
@@ -591,6 +595,24 @@ create_options_page ()
     gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_on_upper,
                           _("Commit previous preedit string when a upper letter is entered."), NULL);
 
+    /* show annotation */
+    __widget_show_annotation
+        = gtk_check_button_new_with_mnemonic (_("Show annotation of the word on the candidates window"));
+    gtk_widget_show (__widget_show_annotation);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_show_annotation, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_show_annotation), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_show_annotation,
+                          _("Show annotation of the word on candidates window."), NULL);
+
+    /* show annotation */
+    __widget_show_usage
+        = gtk_check_button_new_with_mnemonic (_("Show usage of the word on candidates window"));
+    gtk_widget_show (__widget_show_usage);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_show_usage, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_show_usage), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_show_usage,
+                          _("Show usage of the word on the candidates window."), NULL);
+
     // Connect all signals.
     g_signal_connect ((gpointer) __widget_command, "changed",
                       G_CALLBACK (on_default_editable_changed),
@@ -598,6 +620,12 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_commit_on_upper);
+    g_signal_connect ((gpointer) __widget_show_annotation, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_show_annotation);
+    g_signal_connect ((gpointer) __widget_show_usage, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_show_usage);
 
     return vbox;
 }
@@ -770,6 +798,18 @@ setup_widget_value ()
             __config_commit_on_upper);
     }
 
+    if (__widget_show_annotation) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_show_annotation),
+            __config_show_annotation);
+    }
+
+    if (__widget_show_usage) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_show_usage),
+            __config_show_usage);
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; ++j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             if (__key_conf_pages[j].data[i].entry) {
@@ -796,6 +836,12 @@ load_config (const ConfigPointer &config)
     __config_commit_on_upper =
         config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                       __config_commit_on_upper);
+    __config_show_annotation =
+        config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
+                      __config_show_annotation);
+    __config_show_usage =
+        config->read (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
+                      __config_show_usage);
 
     for (unsigned int j = 0; j < __key_conf_pages_num; ++ j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
@@ -822,6 +868,10 @@ save_config (const ConfigPointer &config)
                    __config_auto_register);
     config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                    __config_commit_on_upper);
+    config->write (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
+                   __config_show_annotation);
+    config->write (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
+                   __config_show_usage);
 
     for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {

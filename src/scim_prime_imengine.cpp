@@ -111,7 +111,11 @@ PrimeFactory::PrimeFactory (const String &lang,
                             const String &uuid,
                             const ConfigPointer &config)
     : m_uuid (uuid),
-      m_config (config)
+      m_config (config),
+      m_auto_register (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
+      m_commit_on_upper (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
+      m_show_annotation (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
+      m_show_usage (SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Factory :\n";
     SCIM_DEBUG_IMENGINE(1) << "  Lang : " << lang << "\n";
@@ -208,6 +212,12 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_commit_on_upper
         = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);
+    m_show_annotation
+        = config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
+                        SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT);
+    m_show_usage
+        = config->read (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
+                        SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT);
 
     // edit keys
     str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
@@ -682,8 +692,8 @@ PrimeInstance::set_preedition (void)
         pos = str.length ();
 
         if (is_converting ()) {
-            int candpos = m_lookup_table.get_cursor_pos_in_current_page ();
-            str += m_lookup_table.get_candidate_in_current_page (candpos);
+            int candpos = m_lookup_table.get_cursor_pos ();
+            str += m_candidates[candpos].m_conversion;
         } else {
             WideString left, cursor, right;
             m_session->edit_get_preedition (left, cursor, right);
@@ -699,8 +709,8 @@ PrimeInstance::set_preedition (void)
         show_preedit_string ();
 
     } else if (is_converting ()) {
-        int pos = m_lookup_table.get_cursor_pos_in_current_page ();
-        WideString cand = m_lookup_table.get_candidate_in_current_page (pos);
+        int pos = m_lookup_table.get_cursor_pos ();
+        WideString cand = m_candidates[pos].m_conversion;
         update_preedit_string (cand);
         update_preedit_caret (0);
         show_preedit_string ();
@@ -744,8 +754,11 @@ PrimeInstance::set_prediction (void)
             candidates.size () > 0 &&
             candidates[0].m_conversion.length () > 0)
         {
-            for (unsigned int i = 0; i < candidates.size (); i++)
-                m_lookup_table.append_candidate (candidates[i].m_conversion);
+            for (unsigned int i = 0; i < candidates.size (); i++) {
+                WideString label;
+                get_candidate_label (label, candidates[i]);
+                m_lookup_table.append_candidate (label);
+            }
             m_lookup_table.show_cursor (false);
             update_lookup_table (m_lookup_table);
             show_lookup_table ();
@@ -871,8 +884,11 @@ PrimeInstance::action_convert (void)
         m_candidates.clear();
         m_prime.set_context (m_context);
         m_prime.lookup (query, m_candidates, PRIME_LOOKUP_ALL);
-        for (unsigned int i = 0; i < m_candidates.size (); i++)
-            m_lookup_table.append_candidate (m_candidates[i].m_conversion);
+        for (unsigned int i = 0; i < m_candidates.size (); i++) {
+            WideString label;
+            get_candidate_label (label, m_candidates[i]);
+            m_lookup_table.append_candidate (label);
+        }
 
         m_lookup_table.set_cursor_pos (0);
         update_lookup_table (m_lookup_table);
@@ -1243,6 +1259,23 @@ PrimeInstance::match_key_event (const KeyEventList &keys, const KeyEvent &key) c
              return true;
     }
     return false;
+}
+
+void
+PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
+{
+    label = cand.m_conversion;
+
+    if (m_factory->m_show_annotation && cand.m_annotation.length () > 0) {
+        label += utf8_mbstowcs (" (");
+        label += cand.m_annotation;
+        label += utf8_mbstowcs (" )");
+    }
+
+    if (m_factory->m_show_usage && cand.m_usage.length () > 0) {
+        label += utf8_mbstowcs ("\t\xE2\x96\xBD");
+        label += cand.m_usage;
+    }
 }
 /*
 vi:ts=4:nowrap:ai:expandtab
