@@ -25,9 +25,18 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <scim.h>
+#include <map>
 #include "prime_session.h"
+#include "prime_commands.h"
 
 using namespace scim;
+
+
+typedef enum {
+    PRIME_CONNECTION_PIPE,
+    PRIME_CONNECTION_UNIX_SOCKET,
+    PRIME_CONNECTION_TCP_IP,
+} PrimeConnectionType;
 
 
 class PrimeCandidate
@@ -39,13 +48,12 @@ public:
 public:
     WideString m_preedition;
     WideString m_conversion;
-    int        m_priority;
-    WideString m_part;
-    WideString m_base;
-    WideString m_basekey;
-    WideString m_suffix;
-    WideString m_conjugation;
+    std::map<String, WideString> m_values;
 };
+
+
+typedef std::vector<String> Strings;
+typedef std::vector<PrimeCandidate> PrimeCandidates;
 
 
 class PrimeConnection
@@ -55,35 +63,64 @@ public:
     virtual ~PrimeConnection                ();
 
     // connection
-    void                open_connection     (void);
+    void                open_connection     (const char *command,
+                                             const char *typing_method = NULL,
+                                             bool save = true);
     void                close_connection    (void);
-
-    // session
-    PrimeSession       *session_start       (void);
-    void                session_end         (PrimeSession *session);
 
     // comunication
     // Arguments must be terminated by NULL pointer.
-    bool                send_command        (const char *command,
+    bool                send_command        (const char      *command,
                                              ...);
 
-    // lookup
-    bool                lookup              (const char                  *sequence,
-                                             PrimeCandidate              &candidate);
-    bool                lookup_all          (const char                  *sequence,
-                                             std::vector<PrimeCandidate> &candidates);
-
     // getting reply string
-    void                get_reply           (String &reply);
-    void                get_reply           (WideString &reply);
-    void                get_reply           (std::vector<String> &str_list,
-                                             char *delim);
+    void                get_reply           (String          &reply);
+    void                get_reply           (WideString      &reply);
+    void                get_reply           (Strings         &str_list,
+                                             char            *delim);
+
+    // get prime version
+    void                version             (String          &version);
+
+    // get variables
+    void                get_env             (const String    &key,
+                                             String          &type,
+                                             Strings         &values);
+
+    // refresh prime
+    void                refresh             (void);
+
+    // session
+    PrimeSession       *session_start       (const char      *language = NULL);
+    void                session_end         (PrimeSession    *session);
+
+    // context
+    void                set_context         (WideString      &context);
+    void                reset_context       (void);
+
+    // preedition
+    void                preedit_convert_input (const String  &pattern,
+                                               WideString    &preedition,
+                                               WideString    &pending);
+
+    // lookup
+    bool                lookup              (const String    &sequence,
+                                             PrimeCandidates &candidates,
+                                             const char      *command = PRIME_LOOKUP);
+
+    // learn
+    void                learn_word          (WideString       key,
+                                             WideString       value,
+                                             WideString       part,
+                                             WideString       context,
+                                             WideString       suffix,
+                                             WideString       rest);
 
 private:
-    void                split_string        (String &str,
-                                             std::vector<String> &str_list,
-                                             char *delim);
-
+    void                split_string        (String          &str,
+                                             Strings         &str_list,
+                                             char            *delim,
+                                             int              num = -1);
 
 public:
     IConvert         m_iconv;
@@ -94,9 +131,9 @@ private:
     int              m_out_fd;
     int              m_err_fd;
 
-    String           m_last_reply; // EUC-JP
+    String           m_typing_method;
 
-    std::vector<PrimeSession> m_sessions;
+    String           m_last_reply; // EUC-JP
 };
 
 #endif /* __SCIM_PRIME_CONNECTION_H__ */

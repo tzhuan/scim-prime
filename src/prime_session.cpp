@@ -21,13 +21,40 @@
 #include "prime_session.h"
 #include "prime_commands.h"
 
-PrimeSession::PrimeSession (PrimeConnection *connection, String id_str)
+PrimeSession::PrimeSession (PrimeConnection *connection,
+                            String id_str,
+                            const char *language)
     : m_connection (connection),
-      m_id_str (id_str)
+      m_id_str (id_str),
+      m_language (language ? language : "")
 {
 }
 
 PrimeSession::~PrimeSession ()
+{
+}
+
+void
+conv_commit (void)
+{
+    // FIXME!
+}
+
+void
+conv_convert (String &method, std::vector<WideString> &candidates)
+{
+    // FIXME!
+}
+
+void
+conv_predict (String &method, std::vector<WideString> &candidates)
+{
+    // FIXME!
+}
+
+void
+conv_select (int index)
+    // FIXME!
 {
 }
 
@@ -98,8 +125,6 @@ PrimeSession::edit_get_preedition (WideString &left,
             m_connection->m_iconv.convert (cursor, list[1]);
         if (list.size () >= 3)
             m_connection->m_iconv.convert (right, list[2]);
-
-        m_preedition = left + cursor + right;
     } else {
         // error
     }
@@ -117,40 +142,104 @@ PrimeSession::edit_get_query_string (String &string)
     }
 }
 
-WideString &
+void
 PrimeSession::edit_insert (const char *str)
 {
-    bool success = send_command (PRIME_EDIT_INSERT, str);
-
-    std::vector<String> list;
-    String preedition;
-
-    if (success) {
-        m_connection->get_reply (list, "\t");
-    } else {
-        // error
-    }
-
-    for (unsigned int i = 0; i < list.size (); i++)
-        preedition += list[i];
-
-    m_connection->m_iconv.convert (m_preedition, preedition);
-
-    return m_preedition;
+    send_command (PRIME_EDIT_INSERT, str);
 }
 
 void
-PrimeSession::set_context (WideString &context)
+PrimeSession::edit_set_mode (PrimePreeditionMode mode)
+{
+    char *command = "default";
+
+    switch (mode) {
+    case PRIME_PREEDITION_KATAKANA:
+        command = "katakana";
+        break;
+    case PRIME_PREEDITION_HALF_KATAKANA:
+        command = "half_katakana";
+        break;
+    case PRIME_PREEDITION_WIDE_ASCII:
+        command = "wide_ascii";
+        break;
+    case PRIME_PREEDITION_RAW:
+        command = "raw";
+        break;
+    case PRIME_PREEDITION_DEFAULT:
+    default:
+        command = "default";
+        break;
+    }
+
+    send_command (PRIME_EDIT_SET_MODE, command);
+}
+
+void
+PrimeSession::edit_undo (void)
+{
+    send_command (PRIME_EDIT_UNDO);
+}
+
+void
+PrimeSession::segment_commit (void)
+{
+    send_command (PRIME_SEGMENT_COMMIT);
+}
+
+void
+PrimeSession::segment_reconvert (void)
+{
+    send_command (PRIME_SEGMENT_RECONVERT);
+}
+
+void
+PrimeSession::segment_select (int index)
+{
+    char buf[32];
+    sprintf(buf, "%10d\n", index);
+    send_command (PRIME_SEGMENT_SELECT, buf);
+}
+
+void
+PrimeSession::context_set_previous_word(WideString &word)
 {
     String str;
-    m_connection->m_iconv.convert (str, context);
-    send_command (PRIME_SET_CONTEXT, str.c_str());
+    m_connection->m_iconv.convert(str, word);
+    send_command (PRIME_CONTEXT_SET_PREVIOUS_WORD, str.c_str());
+}
+
+void
+PrimeSession::context_reset (void)
+{
+    send_command (PRIME_CONTEXT_RESET);
+}
+
+void
+PrimeSession::get_env (const String &key,
+                       String &type, std::vector<String> &values)
+{
+    bool success = send_command (PRIME_SESSION_GET_ENV, key.c_str ());
+
+    if (success) {
+        m_connection->get_reply (values, "\t");
+        if (values.size () > 0) {
+            type = values[0];
+            values.erase (values.begin());
+        }
+    } else {
+        type = "nil";
+    }
 }
 
 bool
 PrimeSession::has_preedition (void)
 {
-    if (m_preedition.length () > 0)
+    WideString left, cursor, right;
+
+    edit_get_preedition (left, cursor, right);
+
+    if (left.length () + cursor.length () + right.length () > 0)
         return true;
     else
         return false;

@@ -28,20 +28,31 @@
 
 using namespace scim;
 
+typedef enum {
+    PRIME_PREEDITION_DEFAULT,
+    PRIME_PREEDITION_KATAKANA,
+    PRIME_PREEDITION_HALF_KATAKANA,
+    PRIME_PREEDITION_WIDE_ASCII,
+    PRIME_PREEDITION_RAW,
+} PrimePreeditionMode;
+
 class PrimeConnection;
 
 class PrimeSession
 {
 public:
     PrimeSession                  (PrimeConnection *connection,
-                                   String           id_str);
+                                   String           id_str,
+                                   const char      *language);
     virtual ~PrimeSession         ();
 
 public: // prime commands
     void        conv_commit              (void);
-    void        conv_convert             (char *method);
-    void        conv_predict             (char *method);
-    void        conv_select              (int index);
+    void        conv_convert             (String &method,
+                                          std::vector<WideString> candidates);
+    void        conv_predict             (String &method,
+                                          std::vector<WideString> candidates);
+    void        conv_select              (int   index);
 
     void        edit_backspace           (void);
     void        edit_commit              (void);
@@ -55,8 +66,8 @@ public: // prime commands
                                           WideString &cursor,
                                           WideString &right);
     void        edit_get_query_string    (String     &string);
-    WideString &edit_insert              (const char *str);
-    void        edit_set_mode            (void);
+    void        edit_insert              (const char *str);
+    void        edit_set_mode            (PrimePreeditionMode mode);
     void        edit_undo                (void);
 
     void        modify_cursor_expand     (void);
@@ -70,12 +81,14 @@ public: // prime commands
 
     void        segment_commit           (void);
     void        segment_reconvert        (void);
-    void        segment_select           (void);
+    void        segment_select           (int index);
 
-    void        register_word            (void);
+    void        context_set_previous_word(WideString &word);
+    void        context_reset            (void);
 
-    void        set_context              (WideString &context);
-    void        reset_context            (void);
+    void        get_env                  (const String        &key,
+                                          String              &type,
+                                          std::vector<String> &values);
 
 public: // other functions
     bool        has_preedition           (void);
@@ -86,7 +99,7 @@ public: // other functions
 private:
     PrimeConnection *m_connection;
     String           m_id_str;
-    WideString       m_preedition;
+    String           m_language;
 };
 
 #endif /* __PRIME_SESSION_H__ */

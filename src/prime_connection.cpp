@@ -17,6 +17,7 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#include <stdarg.h>
 #include <sys/types.h>
 #include <signal.h>
 #include <errno.h>
@@ -50,7 +51,9 @@ PrimeConnection::~PrimeConnection ()
 }
 
 void
-PrimeConnection::open_connection ()
+PrimeConnection::open_connection (const char *command,
+                                  const char *typing_method,
+                                  bool save)
 {
     pid_t pid;
     int in_fd[2], out_fd[2], err_fd[2];
@@ -71,6 +74,8 @@ PrimeConnection::open_connection ()
 
     if (pid > 0) {
         /* parent process */
+        m_typing_method = typing_method ? typing_method : "";
+
         m_pid = pid;
 
         m_in_fd = in_fd[1];
@@ -85,9 +90,29 @@ PrimeConnection::open_connection ()
     } else if (pid == 0) {
         /* child process */      
 
-        char *argv[2];
-        argv[0] = "prime";
-        argv[1] = NULL;
+        char *argv[4];
+        String method = "--typing-method=";
+
+        argv[0] = (char *) command;
+        if (typing_method && *typing_method) {
+            method += typing_method;
+            argv[1] = (char *) method.c_str();
+        } else {
+            argv[1] = NULL;
+        }
+
+        if (save) {
+            argv[2] = NULL;
+        } else {
+            if (argv[1]) {
+                argv[2] = "--no-save";
+            } else {
+                argv[1] = "--no-save";
+                argv[2] = NULL;
+            }
+        }
+
+        argv[3] = NULL;
 
         /* set pipe */
         close (out_fd[0]);
@@ -110,7 +135,7 @@ PrimeConnection::open_connection ()
         }
 
         _exit (255);
-   }
+    }
 
     close (in_fd[0]);
     close (in_fd[1]);
@@ -134,7 +159,9 @@ PrimeConnection::close_connection ()
         len = remaining = strlen (command);
 
         do {
-            ssize_t rv = write (m_in_fd, command + (len - remaining), remaining);
+            ssize_t rv = write (m_in_fd,
+                                command + (len - remaining),
+                                remaining);
             switch (errno) {
             case EBADF:
             case EINVAL:
@@ -160,13 +187,52 @@ PrimeConnection::close_connection ()
     }
 }
 
-PrimeSession *
-PrimeConnection::session_start (void)
+void
+PrimeConnection::version (String &version)
 {
-    bool success = send_command (PRIME_SESSION_START, NULL);
+    bool success = send_command (PRIME_VERSION, NULL);
     if (success) {
-        m_sessions.push_back (PrimeSession(this, m_last_reply.c_str ()));
-        return &m_sessions[m_sessions.size () - 1];
+        get_reply (version);
+    } else {
+        // error
+    }
+}
+
+void
+PrimeConnection::get_env (const String &key,
+                          String &type, std::vector<String> &values)
+{
+    type = String ();
+    values.clear ();
+
+    bool success = send_command (PRIME_GET_ENV, key.c_str(), NULL);
+
+    if (success) {
+        get_reply (values, "\t");
+        if (values.size () > 0) {
+            type = values[0];
+            values.erase (values.begin());
+        }
+    } else {
+        type = "nil";
+    }
+}
+
+void
+PrimeConnection::refresh (void)
+{
+    send_command (PRIME_REFRESH, NULL);
+}
+
+PrimeSession *
+PrimeConnection::session_start (const char *language)
+{
+    bool success = send_command (PRIME_SESSION_START, language, NULL);
+    if (success) {
+        PrimeSession *session = new PrimeSession(this, m_last_reply.c_str(), language);
+        return session;
+    } else {
+        // error
     }
 
     return NULL;
@@ -178,48 +244,60 @@ PrimeConnection::session_end (PrimeSession *session)
     if (!session)
         return;
 
-#if 0
     bool success = send_command (PRIME_SESSION_END,
                                  session->get_id_str().c_str(),
                                  NULL);
     if (success) {
-        for (std::vector<PrimeSession>::iterator it = m_sessions.begin ();
-             it != m_sessions.end ();
-             it++)
-        {
-            if ((*it).get_id_str() == session->get_id_str())
-                m_sessions.erase(it);
-        }
-    }
-#endif
-}
-
-bool
-PrimeConnection::lookup (const char *sequence, PrimeCandidate &candidate)
-{
-    bool success = send_command (PRIME_LOOKUP, sequence, NULL);
-    if (success) {
-        std::vector<String> cols;
-        split_string (m_last_reply, cols, "\t");
-
-        if (cols.size () >= 2) {
-            m_iconv.convert (candidate.m_preedition, cols[0]);
-            m_iconv.convert (candidate.m_conversion, cols[1]);
-        }
     } else {
         // error
     }
+}
 
-    return false;
+void
+PrimeConnection::set_context (WideString &context)
+{
+    String str;
+    m_iconv.convert (str, context);
+    send_command (PRIME_SET_CONTEXT, str.c_str(), NULL);
+}
+
+void
+PrimeConnection::reset_context (void)
+{
+    send_command (PRIME_RESET_CONTEXT, NULL);
+}
+
+void
+PrimeConnection::preedit_convert_input (const String &pattern,
+                                        WideString &preedition,
+                                        WideString &pending)
+{
+    bool success = send_command (PRIME_PREEDIT_CONVERT_INPUT,
+                                 pattern.c_str(), NULL);
+
+    if (success) {
+        std::vector<String> list;
+        get_reply (list, "\t");
+        if (list.size () > 0)
+            m_iconv.convert (preedition, list[0]);
+        if (list.size () > 1)
+            m_iconv.convert (pending, list[1]);
+    } else {
+        // error
+    }
 }
 
 bool
-PrimeConnection::lookup_all (const char *sequence,
-                             std::vector<PrimeCandidate> &candidates)
+PrimeConnection::lookup (const String &sequence,
+                         PrimeCandidates &candidates,
+                         const char *command)
 {
     candidates.clear ();
 
-    bool success = send_command (PRIME_LOOKUP_ALL, sequence, NULL);
+    if (!command)
+        command = PRIME_LOOKUP;
+
+    bool success = send_command (command, sequence.c_str (), NULL);
     if (success) {
         std::vector<String> rows;
         split_string (m_last_reply, rows, "\n");
@@ -234,6 +312,12 @@ PrimeConnection::lookup_all (const char *sequence,
                 m_iconv.convert (candidates[i].m_preedition, cols[0]);
                 m_iconv.convert (candidates[i].m_conversion, cols[1]);
             }
+
+            for (unsigned int j = 2; j < cols.size (); j++) {
+                std::vector<String> pair;
+                split_string (cols[j], pair, "=", 2);
+                m_iconv.convert (candidates[i].m_values[pair[0]], pair[1]);
+            }
         }
     } else {
         // error
@@ -242,8 +326,27 @@ PrimeConnection::lookup_all (const char *sequence,
     return false;
 }
 
-// FIXME
-#include <stdarg.h>
+void
+PrimeConnection::learn_word (WideString wkey, WideString wvalue,
+                             WideString wpart, WideString wcontext,
+                             WideString wsuffix, WideString wrest)
+{
+    String key, value, part, context, suffix, rest;
+
+    m_iconv.convert (key, wkey);
+    m_iconv.convert (value, wvalue);
+    m_iconv.convert (part, wpart);
+    m_iconv.convert (context, wcontext);
+    m_iconv.convert (suffix, wsuffix);
+    m_iconv.convert (rest, wrest);
+
+    send_command (PRIME_LEARN_WORD,
+                  key.c_str(), value.c_str(),
+                  part.c_str(), context.c_str(),
+                  suffix.c_str(), rest.c_str(),
+                  NULL);
+}
+
 bool
 PrimeConnection::send_command (const char *command,
                                ...)
@@ -283,7 +386,9 @@ PrimeConnection::send_command (const char *command,
     len = remaining = str.length ();
 
     do {
-        ssize_t rv = write (m_in_fd, str.c_str () + (len - remaining), remaining);
+        ssize_t rv = write (m_in_fd,
+                            str.c_str() + (len - remaining),
+                            remaining);
         switch (errno) {
         case EBADF:
         case EINVAL:
@@ -359,7 +464,7 @@ PrimeConnection::get_reply (String &reply)
 void
 PrimeConnection::get_reply (WideString &reply)
 {
-    m_iconv.convert(reply, m_last_reply);
+    m_iconv.convert (reply, m_last_reply);
 }
 
 void
@@ -371,16 +476,20 @@ PrimeConnection::get_reply (std::vector<String> &str_list, char *delim)
 
 void
 PrimeConnection::split_string (String &str, std::vector<String> &str_list,
-                               char *delim)
+                               char *delim, int num)
 {
     String::size_type start = 0, end;
 
-    do {
-        end = str.find(delim, start);
-        if (end == String::npos)
+    for (int i = 0; (num > 0 && i < num) || start < str.length (); i++) {
+        end = str.find (delim, start);
+        if ((num > 0 && i == num - 1) || (end == String::npos))
             end = str.length ();
 
-        str_list.push_back (str.substr(start, end - start));
-        start = end + strlen(delim);
-    } while (start < str.length ());
+        if (start < str.length ()) {
+            str_list.push_back (str.substr (start, end - start));
+            start = end + strlen (delim);
+        } else {
+            str_list.push_back (String ());
+        }
+    }
 }
