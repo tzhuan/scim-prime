@@ -143,6 +143,8 @@ struct ComboConfigData
 // Internal data declaration.
 static bool __have_changed    = true;
 
+static GtkTooltips  * __widget_tooltips = 0;
+
 static KeyboardConfigData __config_keyboards_common [] =
 {
     {
@@ -352,15 +354,20 @@ static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (K
 
 static void on_default_editable_changed       (GtkEditable     *editable,
                                                gpointer         user_data);
+#if 0
 static void on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
                                                gpointer         user_data);
+#endif
 static void on_default_key_selection_clicked  (GtkButton       *button,
                                                gpointer         user_data);
+#if 0
 static void on_default_combo_changed          (GtkEditable     *editable,
                                                gpointer         user_data);
+#endif
 static void setup_widget_value ();
 
 
+#if 0
 static GtkWidget *
 create_combo_widget (const char *label_text, GtkWidget **widget,
                      gpointer data_p, gpointer candidates_p)
@@ -390,6 +397,7 @@ create_combo_widget (const char *label_text, GtkWidget **widget,
 
     return hbox;
 }
+#endif
 
 static GtkWidget *
 create_options_page ()
@@ -402,6 +410,7 @@ create_options_page ()
     return vbox;
 }
 
+#if 0
 static GtkWidget *
 create_toolbar_page ()
 {
@@ -412,6 +421,7 @@ create_toolbar_page ()
 
     return vbox;
 }
+#endif
 
 #define APPEND_ENTRY(text, widget, i) \
 { \
@@ -430,6 +440,7 @@ create_toolbar_page ()
                       (GtkAttachOptions) (GTK_FILL), 4, 4); \
 }
 
+#if 0
 static GtkWidget *
 create_dict_page (void)
 {
@@ -441,6 +452,7 @@ create_dict_page (void)
 
     return table;
 }
+#endif
 
 static GtkWidget *
 create_keyboard_page (unsigned int page)
@@ -478,14 +490,12 @@ create_keyboard_page (unsigned int page)
                           &(data[i].data));
     }
 
-#if 0
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
     for (unsigned int i = 0; data[i].key; ++ i) {
         gtk_tooltips_set_tip (__widget_tooltips, data[i].entry,
                               _(data[i].tooltip), NULL);
     }
-#endif
 
     return table;
 }
@@ -539,6 +549,7 @@ create_setup_window ()
     return window;
 }
 
+#if 0
 static void
 setup_combo_value (GtkCombo *combo,
                    ComboConfigData *data, const String & str)
@@ -558,6 +569,7 @@ setup_combo_value (GtkCombo *combo,
     if (defval)
         gtk_entry_set_text (GTK_ENTRY (combo->entry), defval);
 }
+#endif
 
 static void
 setup_widget_value ()
@@ -613,6 +625,7 @@ query_changed ()
 }
 
 
+#if 0
 static void
 on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
                                   gpointer         user_data)
@@ -624,6 +637,7 @@ on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
         __have_changed = true;
     }
 }
+#endif
 
 static void
 on_default_editable_changed (GtkEditable *editable,
@@ -667,6 +681,7 @@ on_default_key_selection_clicked (GtkButton *button,
     }
 }
 
+#if 0
 static void
 on_default_combo_changed (GtkEditable *editable,
                           gpointer user_data)
@@ -689,6 +704,7 @@ on_default_combo_changed (GtkEditable *editable,
         }
     }
 }
+#endif
 /*
 vi:ts=4:nowrap:ai:expandtab
 */
