@@ -496,7 +496,8 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    if (isspace (key.get_ascii_code ()))
+    // FIXME!: does it correct?
+    if (!is_registering () && isspace (key.get_ascii_code ()))
         return false;
 
     if (m_session && isprint (key.get_ascii_code ())) {
@@ -1132,7 +1133,7 @@ bool
 PrimeInstance::action_set_mode_default (void)
 {
     if (is_converting ())
-        return false;
+        action_revert ();
 
     m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
     set_preedition ();
@@ -1144,7 +1145,7 @@ bool
 PrimeInstance::action_set_mode_katakana (void)
 {
     if (is_converting ())
-        return false;
+        action_revert ();
 
     m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
     set_preedition ();
@@ -1156,7 +1157,7 @@ bool
 PrimeInstance::action_set_mode_half_katakana (void)
 {
     if (is_converting ())
-        return false;
+        action_revert ();
 
     m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
     set_preedition ();
@@ -1168,7 +1169,7 @@ bool
 PrimeInstance::action_set_mode_raw (void)
 {
     if (is_converting ())
-        return false;
+        action_revert ();
 
     m_session->edit_set_mode (PRIME_PREEDITION_RAW);
     set_preedition ();
@@ -1180,7 +1181,7 @@ bool
 PrimeInstance::action_set_mode_wide_ascii (void)
 {
     if (is_converting ())
-        return false;
+        action_revert ();
 
     m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
