@@ -52,7 +52,8 @@ PrimeConnection::~PrimeConnection ()
 
 void
 PrimeConnection::open_connection (const char *command,
-                                  const char *typing_method)
+                                  const char *typing_method,
+                                  bool save)
 {
     pid_t pid;
     int in_fd[2], out_fd[2], err_fd[2];
@@ -89,7 +90,7 @@ PrimeConnection::open_connection (const char *command,
     } else if (pid == 0) {
         /* child process */      
 
-        char *argv[3];
+        char *argv[4];
         String method = "--typing-method=";
 
         argv[0] = (char *) command;
@@ -99,7 +100,19 @@ PrimeConnection::open_connection (const char *command,
         } else {
             argv[1] = NULL;
         }
-        argv[2] = NULL;
+
+        if (save) {
+            argv[2] = NULL;
+        } else {
+            if (argv[1]) {
+                argv[2] = "--no-save";
+            } else {
+                argv[1] = "--no-save";
+                argv[2] = NULL;
+            }
+        }
+
+        argv[3] = NULL;
 
         /* set pipe */
         close (out_fd[0]);
@@ -122,7 +135,7 @@ PrimeConnection::open_connection (const char *command,
         }
 
         _exit (255);
-   }
+    }
 
     close (in_fd[0]);
     close (in_fd[1]);

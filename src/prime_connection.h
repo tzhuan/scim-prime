@@ -70,7 +70,8 @@ public:
 
     // connection
     void                open_connection     (const char *command,
-                                             const char *typing_method = NULL);
+                                             const char *typing_method = NULL,
+                                             bool save = true);
     void                close_connection    (void);
 
     // comunication

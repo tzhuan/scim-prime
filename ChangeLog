@@ -1,5 +1,10 @@
 2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/prime_connection.cpp, src/prime_connection.h:
+	Added "--no-save" option.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
 	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
 	Added space key preferences.
