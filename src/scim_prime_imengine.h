@@ -129,6 +129,9 @@ private: // actions
     bool   action_register_a_word              (void);
 
 private:
+    PrimeSession *
+           get_session                         (void);
+
     void   set_preedition                      (void);
     void   set_prediction                      (void);
 

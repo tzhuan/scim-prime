@@ -60,14 +60,16 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 
     m_prime.open_connection (m_factory->m_command.c_str(),
                              m_factory->m_typing_method.c_str());
-    m_session = m_prime.session_start ();
+    //m_session = m_prime.session_start ();
 }
 
 PrimeInstance::~PrimeInstance ()
 {
-    m_prime.session_end (m_session);
-    delete m_session;
-    m_session = NULL;
+    if (m_session) {
+        m_prime.session_end (m_session);
+        delete m_session;
+        m_session = NULL;
+    }
 }
 
 bool
@@ -89,7 +91,7 @@ PrimeInstance::process_key_event (const KeyEvent& key)
         key.code == SCIM_KEY_Alt_L || key.code == SCIM_KEY_Alt_R)
         return false;
 
-    if (m_session) {
+    if (get_session ()) {
         // lookup user defined key binds
         if (process_key_event_lookup_keybind (key))
             return true;
@@ -152,7 +154,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
     if (!is_registering () && isspace (key.get_ascii_code ()))
         return false;
 
-    if (m_session && isprint (key.get_ascii_code ())) {
+    if (get_session () && isprint (key.get_ascii_code ())) {
         if (is_converting () ||
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
@@ -163,7 +165,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
 
-        m_session->edit_insert (buf);
+        get_session()->edit_insert (buf);
         set_preedition ();
 
         return true;
@@ -235,8 +237,8 @@ PrimeInstance::reset ()
     m_candidates.clear();
     m_converting = false;
 
-    if (m_session)
-        m_session->edit_erase();
+    if (get_session())
+        get_session()->edit_erase();
     m_lookup_table.clear ();
     update_preedit_caret (0);
     update_preedit_string (utf8_mbstowcs (""));
@@ -276,6 +278,14 @@ PrimeInstance::trigger_property (const String &property)
     attr_list.push_back (attr); \
 }
 
+PrimeSession *
+PrimeInstance::get_session (void)
+{
+    if (!m_session)
+        m_session = m_prime.session_start ();
+    return m_session;
+}
+
 void
 PrimeInstance::set_preedition (void)
 {
@@ -304,7 +314,7 @@ PrimeInstance::set_preedition (void)
             str += m_candidates[candpos].m_conversion;
         } else {
             WideString left, cursor, right;
-            m_session->edit_get_preedition (left, cursor, right);
+            get_session()->edit_get_preedition (left, cursor, right);
             pos += left.length ();
             str += left + cursor + right;
         }
@@ -327,9 +337,9 @@ PrimeInstance::set_preedition (void)
         update_preedit_caret (0);
         show_preedit_string ();
 
-    } else if (m_session) {
+    } else if (get_session()) {
         WideString left, cursor, right;
-        m_session->edit_get_preedition (left, cursor, right);
+        get_session()->edit_get_preedition (left, cursor, right);
 
         update_preedit_string (left + cursor + right);
         update_preedit_caret (left.length ());
@@ -355,11 +365,11 @@ PrimeInstance::set_prediction (void)
         return;
 
     // prediction
-    if (!is_converting () && m_session) {
+    if (!is_converting () && get_session()) {
         m_lookup_table.clear ();
 
         String query;
-        m_session->edit_get_query_string (query);
+        get_session()->edit_get_query_string (query);
 
         PrimeCandidates candidates;
         m_prime.set_context (m_context);
@@ -387,7 +397,7 @@ PrimeInstance::set_prediction (void)
 bool
 PrimeInstance::is_preediting (void)
 {
-    return m_session && m_session->has_preedition ();
+    return get_session() && get_session()->has_preedition ();
 }
 
 bool
@@ -428,24 +438,24 @@ PrimeInstance::action_commit_on_register (bool learn)
 
         m_candidates.clear();
         m_converting = false;
-        if (m_session)
-            m_session->edit_erase();
+        if (get_session())
+            get_session()->edit_erase();
         m_lookup_table.clear ();
         hide_lookup_table ();
 
         set_preedition ();
 
     } else if (is_preediting ()) {
-        if (m_session) {
+        if (get_session()) {
             WideString left, cursor, right, all;
-            m_session->edit_get_preedition (left, cursor, right);
+            get_session()->edit_get_preedition (left, cursor, right);
             all = left + cursor + right;
             m_registering_value.insert (m_registering_cursor, all);
             m_registering_cursor += all.length ();
         }
 
-        if (m_session)
-            m_session->edit_erase();
+        if (get_session())
+            get_session()->edit_erase();
         m_lookup_table.clear ();
         hide_lookup_table ();
 
@@ -494,9 +504,9 @@ PrimeInstance::action_commit (bool learn)
         reset ();
 
     } else if (is_preediting ()) {
-        if (m_session) {
+        if (get_session()) {
             WideString left, cursor, right, all;
-            m_session->edit_get_preedition (left, cursor, right);
+            get_session()->edit_get_preedition (left, cursor, right);
             commit_string (left + cursor + right);
             all = left + cursor + right;
         }
@@ -530,13 +540,13 @@ PrimeInstance::action_convert (void)
     if (is_converting ())
         return false;
 
-    if (m_session) {
+    if (get_session()) {
         m_converting = true;
 
         m_lookup_table.clear ();
 
         String query;
-        m_session->edit_get_query_string (query);
+        get_session()->edit_get_query_string (query);
 
         m_candidates.clear();
         m_prime.set_context (m_context);
@@ -572,8 +582,8 @@ PrimeInstance::action_revert (void)
 
     } else if (is_registering ()) {
         if (is_preediting ()) {
-            if (m_session)
-                m_session->edit_erase ();
+            if (get_session())
+                get_session()->edit_erase ();
             m_lookup_table.clear ();
             hide_lookup_table ();
             set_preedition ();
@@ -604,8 +614,8 @@ PrimeInstance::action_modify_caret_left (void)
     if (is_converting ())
         return false;
 
-    if (m_session)
-        m_session->edit_cursor_left ();
+    if (get_session())
+        get_session()->edit_cursor_left ();
 
     set_preedition ();
 
@@ -628,8 +638,8 @@ PrimeInstance::action_modify_caret_right (void)
     if (is_converting ())
         return false;
 
-    if (m_session)
-        m_session->edit_cursor_right ();
+    if (get_session())
+        get_session()->edit_cursor_right ();
     
     set_preedition ();
 
@@ -650,8 +660,8 @@ PrimeInstance::action_modify_caret_left_edge (void)
     if (is_converting ())
         return false;
 
-    if (m_session)
-        m_session->edit_cursor_left_edge ();
+    if (get_session())
+        get_session()->edit_cursor_left_edge ();
     
     set_preedition ();
 
@@ -672,8 +682,8 @@ PrimeInstance::action_modify_caret_right_edge (void)
     if (is_converting ())
         return false;
 
-    if (m_session)
-        m_session->edit_cursor_right_edge ();
+    if (get_session())
+        get_session()->edit_cursor_right_edge ();
     
     set_preedition ();
 
@@ -700,8 +710,8 @@ PrimeInstance::action_edit_backspace (void)
         return true;
     }
 
-    if (m_session)
-        m_session->edit_backspace ();
+    if (get_session())
+        get_session()->edit_backspace ();
 
     set_preedition ();
 
@@ -724,8 +734,8 @@ PrimeInstance::action_edit_delete (void)
     if (is_converting ())
         return false;
 
-    if (m_session)
-        m_session->edit_delete ();
+    if (get_session())
+        get_session()->edit_delete ();
 
     set_preedition();
 
@@ -896,7 +906,7 @@ PrimeInstance::action_set_mode_default (void)
     if (is_converting ())
         action_revert ();
 
-    m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
+    get_session()->edit_set_mode (PRIME_PREEDITION_DEFAULT);
     set_preedition ();
 
     return true;
@@ -908,7 +918,7 @@ PrimeInstance::action_set_mode_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
+    get_session()->edit_set_mode (PRIME_PREEDITION_KATAKANA);
     set_preedition ();
 
     return true;
@@ -920,7 +930,7 @@ PrimeInstance::action_set_mode_half_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
+    get_session()->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
     set_preedition ();
 
     return true;
@@ -932,7 +942,7 @@ PrimeInstance::action_set_mode_raw (void)
     if (is_converting ())
         action_revert ();
 
-    m_session->edit_set_mode (PRIME_PREEDITION_RAW);
+    get_session()->edit_set_mode (PRIME_PREEDITION_RAW);
     set_preedition ();
 
     return true;
@@ -944,7 +954,7 @@ PrimeInstance::action_set_mode_wide_ascii (void)
     if (is_converting ())
         action_revert ();
 
-    m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
+    get_session()->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
 
     return true;
@@ -962,7 +972,7 @@ PrimeInstance::action_toggle_language (void)
 
     String key = "language", type;
     std::vector<String> list;
-    m_session->get_env (key, type, list);
+    get_session()->get_env (key, type, list);
 
     // FIXME! should be stored using map container
     m_prime.session_end (m_session);
@@ -988,7 +998,7 @@ PrimeInstance::action_toggle_language (void)
 bool
 PrimeInstance::action_register_a_word (void)
 {
-    if (!m_session)
+    if (!get_session())
         return false;
 
     // FIXME!
@@ -999,12 +1009,12 @@ PrimeInstance::action_register_a_word (void)
         action_revert ();
 
     WideString left, cursor, right;
-    m_session->edit_get_preedition (left, cursor, right);
+    get_session()->edit_get_preedition (left, cursor, right);
     m_registering_key = left + cursor + right;
 
     m_registering = true;
 
-    m_session->edit_erase();
+    get_session()->edit_erase();
     m_lookup_table.clear ();
     hide_lookup_table ();
 

@@ -1,10 +1,16 @@
-2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't call session_start in constructor
+	for performance issue. Call it when inputting is started instead.
+	Thank you for reporting > Bando-san.
+
+2005-03-16 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine.cpp: Revert to preediting state on pressing
 	backspace key. Thanks to UTSUMI-san.
 	* src/scim_prime_prefs.h: Fixed typo.
 
-2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+2005-03-16 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/prime_commands.h: Fixed typo. Thanks to komatsu-san.
 
