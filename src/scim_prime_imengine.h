@@ -44,6 +44,8 @@ class PrimeFactory : public IMEngineFactoryBase
     /* for preference */
     String       m_command;
     String       m_typing_method;
+    bool         m_auto_regist;
+    bool         m_commit_on_upper;
 
     /* for key bindings */
     KeyEventList m_commit_keys;

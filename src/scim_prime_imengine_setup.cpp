@@ -141,9 +141,15 @@ struct ComboConfigData
 };
 
 // Internal data declaration.
+static String __config_command         = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
+static bool   __config_auto_regist     = SCIM_PRIME_CONFIG_AUTO_REGIST_DEFAULT;
+static bool   __config_commit_on_upper = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
+
 static bool __have_changed    = true;
 
-static GtkTooltips  * __widget_tooltips = 0;
+static GtkWidget    * __widget_command         = 0;
+static GtkWidget    * __widget_commit_on_upper = 0;
+static GtkTooltips  * __widget_tooltips        = 0;
 
 static KeyboardConfigData __config_keyboards_common [] =
 {
@@ -476,10 +482,8 @@ static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (K
 
 static void on_default_editable_changed       (GtkEditable     *editable,
                                                gpointer         user_data);
-#if 0
 static void on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
                                                gpointer         user_data);
-#endif
 static void on_default_key_selection_clicked  (GtkButton       *button,
                                                gpointer         user_data);
 #if 0
@@ -521,13 +525,56 @@ create_combo_widget (const char *label_text, GtkWidget **widget,
 }
 #endif
 
+#define APPEND_ENTRY(text, tooltip, widget, i)   \
+{ \
+    label = gtk_label_new (NULL); \
+    gtk_label_set_text_with_mnemonic (GTK_LABEL (label), text); \
+    gtk_widget_show (label); \
+    gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5); \
+    gtk_misc_set_padding (GTK_MISC (label), 4, 0); \
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, i, i+1, \
+                      (GtkAttachOptions) (GTK_FILL), \
+                      (GtkAttachOptions) (GTK_FILL), 4, 4); \
+    widget = gtk_entry_new (); \
+    gtk_widget_show (widget); \
+    gtk_table_attach (GTK_TABLE (table), widget, 1, 2, i, i+1, \
+                      (GtkAttachOptions) (GTK_FILL|GTK_EXPAND), \
+                      (GtkAttachOptions) (GTK_FILL), 4, 4); \
+    if (tooltip && *tooltip) \
+        gtk_tooltips_set_tip (__widget_tooltips, widget, \
+                              tooltip, NULL); \
+}
+
 static GtkWidget *
 create_options_page ()
 {
-    GtkWidget *vbox, *widget;
+    GtkWidget *vbox, *table, *label;
 
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
+
+    table = gtk_table_new (2, 2, FALSE);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+    gtk_widget_show (table);
+
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+
+    APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as convert engine."),
+                 __widget_command, 0);
+
+    /* commit on upper */
+    __widget_commit_on_upper = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter"));
+    gtk_widget_show (__widget_commit_on_upper);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_commit_on_upper, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_commit_on_upper), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_on_upper,
+                          _("Commit previous preedit string when a upper letter is entered."), NULL);
+
+    // Connect all signals.
+    g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_commit_on_upper);
 
     return vbox;
 }
@@ -544,23 +591,6 @@ create_toolbar_page ()
     return vbox;
 }
 #endif
-
-#define APPEND_ENTRY(text, widget, i) \
-{ \
-    label = gtk_label_new (NULL); \
-    gtk_label_set_text_with_mnemonic (GTK_LABEL (label), text); \
-    gtk_widget_show (label); \
-    gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5); \
-    gtk_misc_set_padding (GTK_MISC (label), 4, 0); \
-    gtk_table_attach (GTK_TABLE (table), label, 0, 1, i, i+1, \
-                      (GtkAttachOptions) (GTK_FILL), \
-                      (GtkAttachOptions) (GTK_FILL), 4, 4); \
-    widget = gtk_entry_new (); \
-    gtk_widget_show (widget); \
-    gtk_table_attach (GTK_TABLE (table), widget, 1, 2, i, i+1, \
-                      (GtkAttachOptions) (GTK_FILL|GTK_EXPAND), \
-                      (GtkAttachOptions) (GTK_FILL), 4, 4); \
-}
 
 #if 0
 static GtkWidget *
@@ -590,9 +620,12 @@ create_keyboard_page (unsigned int page)
     table = gtk_table_new (3, 3, FALSE);
     gtk_widget_show (table);
 
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+
     // Create keyboard setting.
     for (unsigned int i = 0; data[i].key; ++ i) {
-        APPEND_ENTRY(_(data[i].label), data[i].entry, i);
+        APPEND_ENTRY(_(data[i].label),  _(data[i].tooltip), data[i].entry, i);
         gtk_entry_set_editable (GTK_ENTRY (data[i].entry), FALSE);
 
         data[i].button = gtk_button_new_with_label ("...");
@@ -612,12 +645,12 @@ create_keyboard_page (unsigned int page)
                           &(data[i].data));
     }
 
-    if (!__widget_tooltips)
-        __widget_tooltips = gtk_tooltips_new();
+#if 0
     for (unsigned int i = 0; data[i].key; ++ i) {
         gtk_tooltips_set_tip (__widget_tooltips, data[i].entry,
                               _(data[i].tooltip), NULL);
     }
+#endif
 
     return table;
 }
@@ -696,6 +729,18 @@ setup_combo_value (GtkCombo *combo,
 static void
 setup_widget_value ()
 {
+    if (__widget_command) {
+        gtk_entry_set_text (
+            GTK_ENTRY (__widget_command),
+            __config_command.c_str ());
+    }
+
+   if (__widget_commit_on_upper) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_commit_on_upper),
+            __config_commit_on_upper);
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; ++j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             if (__key_conf_pages[j].data[i].entry) {
@@ -710,34 +755,53 @@ setup_widget_value ()
 static void
 load_config (const ConfigPointer &config)
 {
-    if (!config.null ()) {
-        for (unsigned int j = 0; j < __key_conf_pages_num; ++ j) {
-            for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
-                __key_conf_pages[j].data[i].data =
-                    config->read (String (__key_conf_pages[j].data[i].key),
-                                  __key_conf_pages[j].data[i].data);
-            }
+    if (config.null ())
+        return;
+
+    __config_command =
+        config->read (String (SCIM_PRIME_CONFIG_COMMAND),
+                      __config_command);
+    __config_auto_regist =
+        config->read (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
+                      __config_auto_regist);
+    __config_commit_on_upper =
+        config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
+                      __config_commit_on_upper);
+
+    for (unsigned int j = 0; j < __key_conf_pages_num; ++ j) {
+        for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
+            __key_conf_pages[j].data[i].data =
+                config->read (String (__key_conf_pages[j].data[i].key),
+                              __key_conf_pages[j].data[i].data);
         }
-
-        setup_widget_value ();
-
-        __have_changed = false;
     }
+
+    setup_widget_value ();
+
+    __have_changed = false;
 }
 
 static void
 save_config (const ConfigPointer &config)
 {
-    if (!config.null ()) {
-        for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
-            for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
-                config->write (String (__key_conf_pages[j].data[i].key),
-                               __key_conf_pages[j].data[i].data);
-            }
-        }
+    if (config.null ())
+        return;
 
-        __have_changed = false;
+    config->write (String (SCIM_PRIME_CONFIG_COMMAND),
+                   __config_command);
+    config->write (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
+                   __config_auto_regist);
+    config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
+                   __config_commit_on_upper);
+
+    for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
+        for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
+            config->write (String (__key_conf_pages[j].data[i].key),
+                           __key_conf_pages[j].data[i].data);
+        }
     }
+
+    __have_changed = false;
 }
 
 static bool
@@ -747,7 +811,6 @@ query_changed ()
 }
 
 
-#if 0
 static void
 on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
                                   gpointer         user_data)
@@ -759,7 +822,6 @@ on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
         __have_changed = true;
     }
 }
-#endif
 
 static void
 on_default_editable_changed (GtkEditable *editable,

@@ -184,137 +184,151 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
-    m_prime.open_connection ("prime");
+    m_prime.open_connection (m_factory->m_command.c_str(),
+                             m_factory->m_typing_method.c_str());
     m_session = m_prime.session_start ();
 }
 
 void
 PrimeFactory::reload_config (const ConfigPointer &config)
 {
-    if (config) {
-        String str;
+    if (!config) return;
 
-        // edit keys
-        str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
-                            String (SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT));
-        scim_string_to_key_list (m_commit_keys, str);
+    String str;
 
-        str = config->read (String (SCIM_PRIME_CONFIG_CONVERT_KEY),
-                            String (SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT));
-        scim_string_to_key_list (m_convert_keys, str);
+    m_command
+        = config->read (String (SCIM_PRIME_CONFIG_COMMAND),
+                        String (SCIM_PRIME_CONFIG_COMMAND_DEFAULT));
+    m_typing_method
+        = config->read (String (SCIM_PRIME_CONFIG_TYPING_METHOD),
+                        String (SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT));
+    m_auto_regist
+        = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGIST),
+                        SCIM_PRIME_CONFIG_AUTO_REGIST_DEFAULT);
+    m_commit_on_upper
+        = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
+                        SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_CANCEL_KEY),
-                            String (SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT));
-        scim_string_to_key_list (m_cancel_keys, str);
+    // edit keys
+    str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
+                        String (SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT));
+    scim_string_to_key_list (m_commit_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_BACKSPACE_KEY),
-                            String (SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT));
-        scim_string_to_key_list (m_backspace_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_CONVERT_KEY),
+                        String (SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT));
+    scim_string_to_key_list (m_convert_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_DELETE_KEY),
-                            String (SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT));
-        scim_string_to_key_list (m_delete_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_CANCEL_KEY),
+                        String (SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT));
+    scim_string_to_key_list (m_cancel_keys, str);
 
-        // caret keys
-        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY),
-                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT));
-        scim_string_to_key_list (m_modify_caret_left_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_BACKSPACE_KEY),
+                        String (SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT));
+    scim_string_to_key_list (m_backspace_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY),
-                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT));
-        scim_string_to_key_list (m_modify_caret_right_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_DELETE_KEY),
+                        String (SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT));
+    scim_string_to_key_list (m_delete_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY),
-                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT));
-        scim_string_to_key_list (m_modify_caret_left_edge_keys, str);
+    // caret keys
+    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY),
+                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT));
+    scim_string_to_key_list (m_modify_caret_left_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY),
-                            String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT));
-        scim_string_to_key_list (m_modify_caret_right_edge_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY),
+                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT));
+    scim_string_to_key_list (m_modify_caret_right_keys, str);
 
-        // candidate keys
-        str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY),
-                            String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT));
-        scim_string_to_key_list (m_conv_next_candidate_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY),
+                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT));
+    scim_string_to_key_list (m_modify_caret_left_edge_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY),
-                            String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT));
-        scim_string_to_key_list (m_conv_prev_candidate_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY),
+                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT));
+    scim_string_to_key_list (m_modify_caret_right_edge_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY),
-                            String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT));
-        scim_string_to_key_list (m_conv_next_page_keys, str);
+    // candidate keys
+    str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY),
+                        String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT));
+    scim_string_to_key_list (m_conv_next_candidate_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY),
-                            String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT));
-        scim_string_to_key_list (m_conv_prev_page_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY),
+                        String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT));
+    scim_string_to_key_list (m_conv_prev_candidate_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[0], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY),
+                        String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT));
+    scim_string_to_key_list (m_conv_next_page_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[1], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY),
+                        String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT));
+    scim_string_to_key_list (m_conv_prev_page_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[2], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[0], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[3], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[1], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[4], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[2], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[5], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[3], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[6], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[4], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[7], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[5], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[8], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[6], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY),
-                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY_DEFAULT));
-        scim_string_to_key_list (m_select_candidate_keys[9], str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[7], str);
 
-        // mode keys
-        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY),
-                            String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT));
-        scim_string_to_key_list (m_set_mode_default_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[8], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY),
-                            String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY_DEFAULT));
-        scim_string_to_key_list (m_set_mode_katakana_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY),
+                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY_DEFAULT));
+    scim_string_to_key_list (m_select_candidate_keys[9], str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY),
-                            String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY_DEFAULT));
-        scim_string_to_key_list (m_set_mode_half_katakana_keys, str);
+    // mode keys
+    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY),
+                        String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT));
+    scim_string_to_key_list (m_set_mode_default_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY),
-                            String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT));
-        scim_string_to_key_list (m_set_mode_raw_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY),
+                        String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY_DEFAULT));
+    scim_string_to_key_list (m_set_mode_katakana_keys, str);
 
-        str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY),
-                            String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT));
-        scim_string_to_key_list (m_set_mode_wide_ascii_keys, str);
+    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY),
+                        String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY_DEFAULT));
+    scim_string_to_key_list (m_set_mode_half_katakana_keys, str);
 
-        // learn a word
-        str = config->read (String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY),
-                            String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY_DEFAULT));
-        scim_string_to_key_list (m_learn_word_keys, str);
-    }
+    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY),
+                        String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT));
+    scim_string_to_key_list (m_set_mode_raw_keys, str);
+
+    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY),
+                        String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT));
+    scim_string_to_key_list (m_set_mode_wide_ascii_keys, str);
+
+    // learn a word
+    str = config->read (String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY),
+                        String (SCIM_PRIME_CONFIG_LEARN_WORD_KEY_DEFAULT));
+    scim_string_to_key_list (m_learn_word_keys, str);
 }
 
 PrimeInstance::~PrimeInstance ()
@@ -486,8 +500,11 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
 
     if (m_session && isprint (key.get_ascii_code ())) {
-        if (is_converting ())
+        if (is_converting () ||
+            (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
+        {
             action_commit();
+        }
 
         char buf[2];
         buf[0] = key.get_ascii_code ();

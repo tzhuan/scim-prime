@@ -93,7 +93,7 @@ PrimeConnection::open_connection (const char *command,
         String method = "--typing-method=";
 
         argv[0] = (char *) command;
-        if (typing_method) {
+        if (typing_method && *typing_method) {
             method += typing_method;
             argv[1] = (char *) method.c_str();
         } else {
