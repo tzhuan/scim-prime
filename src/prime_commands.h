@@ -21,6 +21,12 @@
 #ifndef __PRIME_COMMANDS_H__
 #define __PRIME_COMMANDS_H__
 
+
+#define PRIME_LANG_JAPANESE "Japanese"
+#define PRIME_LANG_ENGLISH  "English"
+#define PRIME_LANG_PRIME08  "Prime08"
+
+
 #define PRIME_VERSION                "version"                // noargs
 
 #define PRIME_REFRESH                "refresh"                // noargs

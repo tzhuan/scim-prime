@@ -181,9 +181,9 @@ PrimeConnection::refresh (void)
 }
 
 PrimeSession *
-PrimeConnection::session_start (void)
+PrimeConnection::session_start (const char *language)
 {
-    bool success = send_command (PRIME_SESSION_START, NULL);
+    bool success = send_command (PRIME_SESSION_START, language, NULL);
     if (success) {
         PrimeSession *session = new PrimeSession(this, m_last_reply.c_str());
         return session;

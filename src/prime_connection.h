@@ -87,7 +87,7 @@ public:
     void                refresh             (void);
 
     // session
-    PrimeSession       *session_start       (void);
+    PrimeSession       *session_start       (const char          *language = NULL);
     void                session_end         (PrimeSession        *session);
 
     // context
