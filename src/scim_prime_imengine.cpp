@@ -386,7 +386,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    if (isprint(key.get_ascii_code ())) {
+    if (m_session && isprint(key.get_ascii_code ())) {
         if (is_converting ())
             action_commit();
 
@@ -394,8 +394,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
 
-        if (m_session)
-            m_session->edit_insert (buf);
+        m_session->edit_insert (buf);
         set_preedition ();
 
         return true;
@@ -422,16 +421,20 @@ PrimeInstance::process_key_event (const KeyEvent& key)
         key.code == SCIM_KEY_Alt_L || key.code == SCIM_KEY_Alt_R)
         return false;
 
-    // lookup user defined key binds
-    if (process_key_event_lookup_keybind (key))
-        return true;
+    if (m_session) {
+        // lookup user defined key binds
+        if (process_key_event_lookup_keybind (key))
+            return true;
 
-    if (is_converting ())
-        return process_key_event_with_candidate (key);
-    else if (is_preediting ())
-        return process_key_event_with_preedit (key);
-    else
-        return process_key_event_without_preedit (key);
+        if (is_converting ())
+            return process_key_event_with_candidate (key);
+        else if (is_preediting ())
+            return process_key_event_with_preedit (key);
+        else
+            return process_key_event_without_preedit (key);
+    } else {
+        return false;
+    }
 }
 
 void
