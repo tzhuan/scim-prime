@@ -1,5 +1,10 @@
 2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine.cpp: Set caret position to last of string
+	when the candidates window is hidden.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Don't clear lookup table on hiding
 	candidates widnow.
 

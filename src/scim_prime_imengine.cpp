@@ -187,6 +187,8 @@ PrimeInstance::select_candidate (unsigned int item)
     select_candidate_no_direct (item);
 
     if (m_factory->m_close_cand_win_on_select) {
+        unsigned int pos = m_lookup_table.get_cursor_pos ();
+        update_preedit_caret (m_candidates[pos].m_conversion.length ());
         hide_lookup_table ();
     }
 }
