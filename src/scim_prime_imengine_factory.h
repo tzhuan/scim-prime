@@ -48,6 +48,7 @@ class PrimeFactory : public IMEngineFactoryBase
     bool         m_predict_on_preedition;
     bool         m_auto_register;
     bool         m_commit_on_upper;
+    bool         m_close_cand_win_on_select;
     bool         m_show_annotation;
     bool         m_show_usage;
     String       m_space_char;

@@ -104,6 +104,7 @@ PrimeFactory::PrimeFactory (const String &lang,
       m_predict_on_preedition (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
       m_auto_register (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_commit_on_upper (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
+      m_close_cand_win_on_select (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT),
       m_show_annotation (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
       m_show_usage (SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT)
 {
@@ -196,6 +197,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_commit_on_upper
         = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);
+    m_close_cand_win_on_select
+        = config->read (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
+                        SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT);
     m_show_annotation
         = config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
                         SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT);

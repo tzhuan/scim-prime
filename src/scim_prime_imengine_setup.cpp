@@ -130,22 +130,24 @@ struct ComboConfigData
 };
 
 // Internal data declaration.
-static String __config_command               = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
-static bool   __config_predict_on_preedition = SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT;
-static bool   __config_auto_register         = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
-static bool   __config_commit_on_upper       = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
-static bool   __config_show_annotation       = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
-static bool   __config_show_usage            = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
+static String __config_command                  = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
+static bool   __config_predict_on_preedition    = SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT;
+static bool   __config_auto_register            = SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT;
+static bool   __config_commit_on_upper          = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
+static bool   __config_close_cand_win_on_select = SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT;
+static bool   __config_show_annotation          = SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT;
+static bool   __config_show_usage               = SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT;
 
 static bool __have_changed    = true;
 
-static GtkWidget    * __widget_command               = 0;
-static GtkWidget    * __widget_predict_on_preedition = 0;
-static GtkWidget    * __widget_auto_register         = 0;
-static GtkWidget    * __widget_commit_on_upper       = 0;
-static GtkWidget    * __widget_show_annotation       = 0;
-static GtkWidget    * __widget_show_usage            = 0;
-static GtkTooltips  * __widget_tooltips              = 0;
+static GtkWidget    * __widget_command                  = 0;
+static GtkWidget    * __widget_predict_on_preedition    = 0;
+static GtkWidget    * __widget_auto_register            = 0;
+static GtkWidget    * __widget_commit_on_upper          = 0;
+static GtkWidget    * __widget_close_cand_win_on_select = 0;
+static GtkWidget    * __widget_show_annotation          = 0;
+static GtkWidget    * __widget_show_usage               = 0;
+static GtkTooltips  * __widget_tooltips                 = 0;
 
 static KeyboardConfigData __config_keyboards_common [] =
 {
@@ -631,6 +633,15 @@ create_options_page ()
     gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_on_upper,
                           _("Commit previous preedit string when a upper letter is entered."), NULL);
 
+    /* close candidate window on select */
+    __widget_close_cand_win_on_select
+        = gtk_check_button_new_with_mnemonic (_("Close candidates window when a candidate is selected directly."));
+    gtk_widget_show (__widget_close_cand_win_on_select);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_close_cand_win_on_select, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_close_cand_win_on_select), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_close_cand_win_on_select,
+                          _("Close candidates window when a candidate is selected directly."), NULL);
+
     /* show annotation */
     __widget_show_annotation
         = gtk_check_button_new_with_mnemonic (_("Show annotation of the word on the candidates window"));
@@ -662,6 +673,9 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_commit_on_upper);
+    g_signal_connect ((gpointer) __widget_close_cand_win_on_select, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_close_cand_win_on_select);
     g_signal_connect ((gpointer) __widget_show_annotation, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_show_annotation);
@@ -846,6 +860,12 @@ setup_widget_value ()
             __config_commit_on_upper);
     }
 
+    if (__widget_close_cand_win_on_select) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_close_cand_win_on_select),
+            __config_close_cand_win_on_select);
+    }
+
     if (__widget_show_annotation) {
         gtk_toggle_button_set_active (
             GTK_TOGGLE_BUTTON (__widget_show_annotation),
@@ -887,6 +907,9 @@ load_config (const ConfigPointer &config)
     __config_commit_on_upper =
         config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                       __config_commit_on_upper);
+    __config_close_cand_win_on_select =
+        config->read (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
+                      __config_close_cand_win_on_select);
     __config_show_annotation =
         config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
                       __config_show_annotation);
@@ -921,6 +944,8 @@ save_config (const ConfigPointer &config)
                    __config_auto_register);
     config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                    __config_commit_on_upper);
+    config->write (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
+                   __config_close_cand_win_on_select);
     config->write (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
                    __config_show_annotation);
     config->write (String (SCIM_PRIME_CONFIG_SHOW_USAGE),

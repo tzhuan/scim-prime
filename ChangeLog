@@ -1,5 +1,14 @@
 2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine_setup.cpp:
+	Added a option to close candidates window when a candidate is selected
+	directly.
+	* po/ja.po: Updated.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Don't call session_start in constructor
 	for performance issue. Call it when inputting is started instead.
 	Thank you for reporting > Bando-san.
