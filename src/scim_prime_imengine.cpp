@@ -460,6 +460,8 @@ PrimeInstance::action_commit_on_register (bool learn)
                                 WideString (), WideString ());
         }
 
+        commit_string (m_registering_value);
+
         reset ();
     }
 
@@ -692,8 +694,11 @@ PrimeInstance::action_edit_backspace (void)
 
     if (!is_preediting ())
         return false;
-    if (is_converting ())
-        return false;
+
+    if (is_converting ()) {
+        action_revert ();
+        return true;
+    }
 
     if (m_session)
         m_session->edit_backspace ();
