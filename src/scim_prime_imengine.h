@@ -26,56 +26,11 @@
 #ifndef __SCIM_PRIME_IMENGINE_H__
 #define __SCIM_PRIME_IMENGINE_H__
 
-#define Uses_SCIM_ICONV
 #include <scim.h>
 #include <prime_connection.h>
 #include "scim_prime_action.h"
 
 using namespace scim;
-
-class PrimeFactory : public IMEngineFactoryBase
-{
-    String m_uuid;
-
-    friend class PrimeInstance;
-
-    /* config */
-    ConfigPointer  m_config;
-    Connection     m_reload_signal_connection;
-
-    /* for preference */
-    String       m_command;
-    String       m_typing_method;
-    bool         m_predict_on_preedition;
-    bool         m_auto_register;
-    bool         m_commit_on_upper;
-    bool         m_show_annotation;
-    bool         m_show_usage;
-    String       m_space_char;
-    String       m_alt_space_char;
-
-    /* for key bindings */
-    std::vector<PrimeAction> m_actions;
-
-public:
-    PrimeFactory (const String &lang,
-                  const String &uuid,
-                  const ConfigPointer &config);
-    virtual ~PrimeFactory ();
-
-    virtual WideString  get_name () const;
-    virtual WideString  get_authors () const;
-    virtual WideString  get_credits () const;
-    virtual WideString  get_help () const;
-    virtual String      get_uuid () const;
-    virtual String      get_icon_file () const;
-
-    virtual IMEngineInstancePointer create_instance (const String& encoding,
-                                                     int id = -1);
-
-private:
-    void reload_config (const ConfigPointer &config);
-};
 
 class PrimeInstance : public IMEngineInstanceBase
 {
