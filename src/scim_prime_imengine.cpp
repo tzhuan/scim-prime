@@ -1369,9 +1369,17 @@ PrimeInstance::action_set_language_japanese (void)
     //reset ();
 
     if (m_session) {
-        m_prime.session_end (m_session);
-        delete m_session;
-        m_session = NULL;
+        String key = "language", type;
+        std::vector<String> list;
+        get_session()->get_env (key, type, list);
+
+        if (!list.empty () && list[0] == "Japanese") {
+            return false;
+        } else {
+            m_prime.session_end (m_session);
+            delete m_session;
+            m_session = NULL;
+        }
     }
 
     m_session = m_prime.session_start ("Japanese");
@@ -1401,9 +1409,17 @@ PrimeInstance::action_set_language_english (void)
     //reset ();
 
     if (m_session) {
-        m_prime.session_end (m_session);
-        delete m_session;
-        m_session = NULL;
+        String key = "language", type;
+        std::vector<String> list;
+        get_session()->get_env (key, type, list);
+
+        if (!list.empty () && list[0] == "English") {
+            return false;
+        } else {
+            m_prime.session_end (m_session);
+            delete m_session;
+            m_session = NULL;
+        }
     }
 
     m_session = m_prime.session_start ("English");
