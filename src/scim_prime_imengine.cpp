@@ -187,7 +187,6 @@ PrimeInstance::select_candidate (unsigned int item)
     select_candidate_no_direct (item);
 
     if (m_factory->m_close_cand_win_on_select) {
-        m_lookup_table.clear ();
         hide_lookup_table ();
     }
 }
@@ -196,6 +195,8 @@ void
 PrimeInstance::select_candidate_no_direct (unsigned int item)
 {
     SCIM_DEBUG_IMENGINE(2) << "select_candidate_no_direct.\n";
+
+    show_lookup_table ();
 
     m_lookup_table.set_cursor_pos_in_current_page (item);
     update_lookup_table (m_lookup_table);
