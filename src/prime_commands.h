@@ -110,7 +110,7 @@
 #define PRIME_PREEDIT_CONVERT_INPUT  "preedit_convert_input"  // arg1:PATTERN
 
 #define PRIME_GET_ENV                "get_env"                // arg1:KEY
-#define PRIME_GET_LABEL              "get_lanel"              // arg1:PATTERN
+#define PRIME_GET_LABEL              "get_label"              // arg1:PATTERN
 
 #define PRIME_SET_CONTEXT            "set_context"            // CONTEXT
 #define PRIME_RESET_CONTEXT          "reset_context"          // noargs
