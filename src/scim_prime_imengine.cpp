@@ -874,7 +874,7 @@ PrimeInstance::action_conv_next_candidate (void)
     int last_candidate = m_lookup_table.number_of_candidates () - 1;
 
     if (m_lookup_table.get_cursor_pos () == last_candidate) {
-        if (m_factory->m_auto_register && !is_registering ())
+        if (m_factory->m_auto_register && !is_modifying () && !is_registering ())
             return action_register_a_word ();
         else
             m_lookup_table.set_cursor_pos (0);
@@ -1194,8 +1194,10 @@ PrimeInstance::action_toggle_language (void)
 bool
 PrimeInstance::action_register_a_word (void)
 {
-    // FIXME!
+    // CHECKME!
     if (!is_preediting ())
+        return false;
+    if (is_modifying ())
         return false;
 
     if (is_converting ())
@@ -1206,6 +1208,7 @@ PrimeInstance::action_register_a_word (void)
     WideString left, cursor, right;
     get_session()->edit_get_preedition (left, cursor, right);
     m_registering_key = left + cursor + right;
+    m_registering_value = WideString ();
 
     m_registering = true;
 
