@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-03-17 09:09+0900\n"
+"POT-Creation-Date: 2005-03-29 11:39+0900\n"
 "PO-Revision-Date: 2005-03-17 09:09+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -13,19 +13,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:301
+#: src/scim_prime_imengine.cpp:304
 msgid "Register a word:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine.cpp:306
+#: src/scim_prime_imengine.cpp:309
 msgid "["
 msgstr "["
 
-#: src/scim_prime_imengine.cpp:311
+#: src/scim_prime_imengine.cpp:314
 msgid "|"
 msgstr "|"
 
-#: src/scim_prime_imengine.cpp:331
+#: src/scim_prime_imengine.cpp:334
 msgid "]"
 msgstr "]"
 
