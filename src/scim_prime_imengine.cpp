@@ -476,7 +476,7 @@ PrimeInstance::reset ()
     update_preedit_caret (0);
     update_preedit_string (utf8_mbstowcs (""));
     hide_lookup_table ();
-    //hide_preedit_string ();
+    hide_preedit_string ();
 }
 
 void
@@ -509,15 +509,18 @@ PrimeInstance::set_preedition (void)
         WideString cand = m_lookup_table.get_candidate_in_current_page (pos);
         update_preedit_string (cand);
         update_preedit_caret (0);
+        show_preedit_string ();
     } else if (m_session) {
         WideString left, cursor, right;
         m_session->edit_get_preedition (left, cursor, right);
 
         update_preedit_string (left + cursor + right);
         update_preedit_caret (left.length ());
+        show_preedit_string ();
     } else {
         update_preedit_string (WideString());
         update_preedit_caret (0);
+        hide_preedit_string ();
     }
 }
 
