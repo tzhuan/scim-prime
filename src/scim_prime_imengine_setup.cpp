@@ -33,6 +33,7 @@
 
 #include <scim.h>
 #include <gtk/scimkeyselection.h>
+#include "scim_prime_prefs.h"
 
 #ifdef HAVE_GETTEXT
   #include <libintl.h>
@@ -90,12 +91,12 @@ extern "C" {
 
     String scim_setup_module_get_name (void)
     {
-        return String (_("Prime"));
+        return String (_("PRIME"));
     }
 
     String scim_setup_module_get_description (void)
     {
-        return String (_("An Prime IMEngine Module."));
+        return String (_("An PRIME IMEngine Module."));
     }
 
     void scim_setup_module_load_config (const ConfigPointer &config)
@@ -145,6 +146,189 @@ static bool __have_changed    = true;
 static KeyboardConfigData __config_keyboards_common [] =
 {
     {
+        SCIM_PRIME_CONFIG_COMMIT_KEY,
+        SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT,
+        N_("Commit keys:"),
+        N_("Select commit keys"),
+        N_("The key events to commit the preedit string. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_CONVERT_KEY,
+        SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT,
+        N_("Convert keys:"),
+        N_("Select convert keys"),
+        N_("The key events to convert the preedit string to kanji. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_CANCEL_KEY,
+        SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT,
+        N_("Cancel keys:"),
+        N_("Select cancel keys"),
+        N_("The key events to cancel preediting or converting. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_BACKSPACE_KEY,
+        SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT,
+        N_("Backspace keys:"),
+        N_("Select backspace keys"),
+        N_("The key events to delete a character before caret. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_DELETE_KEY,
+        SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT,
+        N_("Delete keys:"),
+        N_("Select delete keys"),
+        N_("The key events to delete a character after caret. "),
+        NULL,
+        NULL,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+    },
+};
+
+static KeyboardConfigData __config_keyboards_mode [] =
+{
+    {
+        SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY,
+        SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT,
+        N_("Default mode keys:"),
+        N_("Select default mode keys"),
+        N_("The key events to set to default mode. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY,
+        SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY_DEFAULT,
+        N_("Katakana mode keys:"),
+        N_("Select katakana mode keys"),
+        N_("The key events to set to katakana mode. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY,
+        SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY_DEFAULT,
+        N_("Half katakana mode keys:"),
+        N_("Select half katakana mode keys"),
+        N_("The key events to set to half katakana mode. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY,
+        SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT,
+        N_("Wide ascii mode keys:"),
+        N_("Select wide ascii mode keys"),
+        N_("The key events to set to wide ascii mode. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY,
+        SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT,
+        N_("Raw mode keys:"),
+        N_("Select raw mode keys"),
+        N_("The key events to set to raw mode. "),
+        NULL,
+        NULL,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+    },
+};
+
+static KeyboardConfigData __config_keyboards_caret [] =
+{
+    {
+        SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY,
+        SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT,
+        N_("Move to first keys:"),
+        N_("Select move caret to first keys"),
+        N_("The key events to move the caret to the first of preedit string. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY,
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT,
+        N_("Move to last keys:"),
+        N_("Select move caret to last keys"),
+        N_("The key events to move the caret to the last of the preedit string. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY,
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT,
+        N_("Move forward keys:"),
+        N_("Select move caret forward keys"),
+        N_("The key events to move the caret to forward. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY,
+        SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT,
+        N_("Move backward keys:"),
+        N_("Select move caret backward keys"),
+        N_("The key events to move the caret to backward. "),
+        NULL,
+        NULL,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+    },
+};
+
+static KeyboardConfigData __config_keyboards_candidates [] =
+{
+    {
+        SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY,
+        SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT,
+        N_("Next keys:"),
+        N_("Select next candidate keys"),
+        N_("The key events to select next candidate. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY,
+        SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT,
+        N_("Previous keys:"),
+        N_("Select previous candidate keys"),
+        N_("The key events to select previous candidate. "),
+        NULL,
+        NULL,
+    },
+    {
         NULL,
         "",
         NULL,
@@ -158,6 +342,10 @@ static KeyboardConfigData __config_keyboards_common [] =
 static struct KeyboardConfigPage __key_conf_pages[] =
 {
     {N_("Common keys"),     __config_keyboards_common},
+    {N_("Mode keys"),       __config_keyboards_mode},
+    {N_("Caret keys"),      __config_keyboards_caret},
+    //{N_("Segments keys"),   __config_keyboards_segments},
+    {N_("Candidates keys"), __config_keyboards_candidates},
 };
 static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (KeyboardConfigPage);
 
@@ -319,6 +507,7 @@ create_setup_window ()
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
 
+#if 0
         // Create the second page.
         page = create_toolbar_page ();
         label = gtk_label_new (_("Toolbar"));
@@ -330,6 +519,7 @@ create_setup_window ()
         label = gtk_label_new (_("Dictionary"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+#endif
 
         // Create the key bind pages.
         for (unsigned int i = 0; i < __key_conf_pages_num; i++) {
