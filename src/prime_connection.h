@@ -25,6 +25,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <scim.h>
+#include <map>
 #include "prime_session.h"
 #include "prime_commands.h"
 
@@ -47,15 +48,7 @@ public:
 public:
     WideString m_preedition;
     WideString m_conversion;
-    String     m_priority;
-    WideString m_part;
-    WideString m_base;
-    WideString m_basekey;
-    WideString m_suffix;
-    WideString m_rest;
-    WideString m_conjugation;
-    WideString m_usage;
-    WideString m_annotation;
+    std::map<String, WideString> m_values;
 };
 
 

@@ -628,10 +628,15 @@ PrimeInstance::action_commit_on_register (bool learn)
         m_registering_cursor += cand.m_conversion.length ();
 
         if (learn)
-            m_prime.learn_word (cand.m_basekey, cand.m_base,
-                                cand.m_part,    m_context,
-                                cand.m_suffix,  cand.m_rest);
-        m_context = cand.m_base + cand.m_suffix + cand.m_rest;
+            m_prime.learn_word (cand.m_values["basekey"],
+                                cand.m_values["base"],
+                                cand.m_values["part"],
+                                cand.m_values["context"],
+                                cand.m_values["suffix"],
+                                cand.m_values["rest"]);
+        m_context = cand.m_values["base"]
+                  + cand.m_values["suffix"]
+                  + cand.m_values["rest"];
 
         m_candidates.clear();
         m_converting = false;
@@ -685,11 +690,16 @@ PrimeInstance::action_commit (bool learn)
         commit_string (cand.m_conversion);
 
         if (learn)
-            m_prime.learn_word (cand.m_basekey, cand.m_base,
-                                cand.m_part,    m_context,
-                                cand.m_suffix,  cand.m_rest);
+            m_prime.learn_word (cand.m_values["basekey"],
+                                cand.m_values["base"],
+                                cand.m_values["part"],
+                                cand.m_values["context"],
+                                cand.m_values["suffix"],
+                                cand.m_values["rest"]);
 
-        m_context = cand.m_base + cand.m_suffix + cand.m_rest;
+        m_context = cand.m_values["base"]
+                  + cand.m_values["suffix"]
+                  + cand.m_values["rest"];
 
         reset ();
 
@@ -1227,15 +1237,19 @@ PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
 {
     label = cand.m_conversion;
 
-    if (m_factory->m_show_annotation && cand.m_annotation.length () > 0) {
+    if (m_factory->m_show_annotation &&
+        cand.m_values["annotation"].length () > 0)
+    {
         label += utf8_mbstowcs (" (");
-        label += cand.m_annotation;
+        label += cand.m_values["annotation"];
         label += utf8_mbstowcs (" )");
     }
 
-    if (m_factory->m_show_usage && cand.m_usage.length () > 0) {
+    if (m_factory->m_show_usage &&
+        cand.m_values["usage"].length () > 0)
+    {
         label += utf8_mbstowcs ("\t\xE2\x96\xBD");
-        label += cand.m_usage;
+        label += cand.m_values["usage"];
     }
 }
 /*

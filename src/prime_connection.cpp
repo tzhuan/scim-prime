@@ -316,25 +316,7 @@ PrimeConnection::lookup (const String &sequence,
             for (unsigned int j = 2; j < cols.size (); j++) {
                 std::vector<String> pair;
                 split_string (cols[j], pair, "=", 2);
-
-                if (pair[0] == "priority")
-                    candidates[i].m_priority = pair[1];
-                else if (pair[0] == "part")
-                    m_iconv.convert (candidates[i].m_part, pair[1]);
-                else if (pair[0] == "base")
-                    m_iconv.convert (candidates[i].m_base, pair[1]);
-                else if (pair[0] == "basekey")
-                    m_iconv.convert (candidates[i].m_basekey, pair[1]);
-                else if (pair[0] == "suffix")
-                    m_iconv.convert (candidates[i].m_suffix, pair[1]);
-                else if (pair[0] == "rest")
-                    m_iconv.convert (candidates[i].m_rest, pair[1]);
-                else if (pair[0] == "conjugation")
-                    m_iconv.convert (candidates[i].m_conjugation, pair[1]);
-                else if (pair[0] == "usage")
-                    m_iconv.convert (candidates[i].m_usage, pair[1]);
-                else if (pair[0] == "annotation")
-                    m_iconv.convert (candidates[i].m_annotation, pair[1]);
+                m_iconv.convert (candidates[i].m_values[pair[0]], pair[1]);
             }
         }
     } else {

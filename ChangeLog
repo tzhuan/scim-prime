@@ -1,5 +1,11 @@
 2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/scim_prime_imengine.cpp:
+	Use std::map to store meta data of candidates.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Call session_end command before delete
 	session object.
 
