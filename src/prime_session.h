@@ -55,7 +55,7 @@ public: // prime commands
                                           WideString &cursor,
                                           WideString &right);
     void        edit_get_query_string    (String     &string);
-    WideString &edit_insert              (const char *str);
+    void        edit_insert              (const char *str);
     void        edit_set_mode            (void);
     void        edit_undo                (void);
 

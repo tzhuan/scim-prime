@@ -165,8 +165,8 @@ PrimeConnection::session_start (void)
 {
     bool success = send_command (PRIME_SESSION_START, NULL);
     if (success) {
-        m_sessions.push_back (PrimeSession(this, m_last_reply.c_str ()));
-        return &m_sessions[m_sessions.size () - 1];
+        PrimeSession *session = new PrimeSession(this, m_last_reply.c_str());
+        return session;
     }
 
     return NULL;
@@ -178,20 +178,13 @@ PrimeConnection::session_end (PrimeSession *session)
     if (!session)
         return;
 
-#if 0
     bool success = send_command (PRIME_SESSION_END,
                                  session->get_id_str().c_str(),
                                  NULL);
     if (success) {
-        for (std::vector<PrimeSession>::iterator it = m_sessions.begin ();
-             it != m_sessions.end ();
-             it++)
-        {
-            if ((*it).get_id_str() == session->get_id_str())
-                m_sessions.erase(it);
-        }
+    } else {
+        // error
     }
-#endif
 }
 
 bool

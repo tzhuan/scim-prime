@@ -192,6 +192,7 @@ PrimeFactory::reload_config (const ConfigPointer &config)
 PrimeInstance::~PrimeInstance ()
 {
     m_prime.session_end (m_session);
+    delete m_session;
     m_session = NULL;
 }
 

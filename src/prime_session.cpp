@@ -98,8 +98,6 @@ PrimeSession::edit_get_preedition (WideString &left,
             m_connection->m_iconv.convert (cursor, list[1]);
         if (list.size () >= 3)
             m_connection->m_iconv.convert (right, list[2]);
-
-        m_preedition = left + cursor + right;
     } else {
         // error
     }
@@ -117,26 +115,10 @@ PrimeSession::edit_get_query_string (String &string)
     }
 }
 
-WideString &
+void
 PrimeSession::edit_insert (const char *str)
 {
-    bool success = send_command (PRIME_EDIT_INSERT, str);
-
-    std::vector<String> list;
-    String preedition;
-
-    if (success) {
-        m_connection->get_reply (list, "\t");
-    } else {
-        // error
-    }
-
-    for (unsigned int i = 0; i < list.size (); i++)
-        preedition += list[i];
-
-    m_connection->m_iconv.convert (m_preedition, preedition);
-
-    return m_preedition;
+    send_command (PRIME_EDIT_INSERT, str);
 }
 
 void
@@ -150,7 +132,11 @@ PrimeSession::set_context (WideString &context)
 bool
 PrimeSession::has_preedition (void)
 {
-    if (m_preedition.length () > 0)
+    WideString left, cursor, right;
+
+    edit_get_preedition (left, cursor, right);
+
+    if (left.length () + cursor.length () + right.length () > 0)
         return true;
     else
         return false;
