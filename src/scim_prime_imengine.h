@@ -132,7 +132,8 @@ public:
     virtual bool is_registering                (void);
 
 private: // actions
-    bool   action_commit                       (void);
+    bool   action_commit_with_learn            (void);
+    bool   action_commit_without_learn         (void);
     bool   action_convert                      (void);
     bool   action_revert                       (void);
 
@@ -187,7 +188,8 @@ private:
     bool   process_remaining_key_event         (const KeyEvent &key);
 
     /* utility */
-    bool   action_commit_on_register           (void);
+    bool   action_commit                       (bool learn);
+    bool   action_commit_on_register           (bool learn);
     bool   action_select_candidate             (unsigned int i);
     bool   match_key_event                     (const KeyEventList &keys,
                                                 const KeyEvent     &key) const;

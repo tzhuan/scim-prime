@@ -230,7 +230,8 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_actions.clear ();
 
     // edit keys
-    APPEND_ACTION (COMMIT,                  action_commit);
+    APPEND_ACTION (COMMIT,                  action_commit_with_learn);
+    APPEND_ACTION (COMMIT_WITHOUT_LEARN,    action_commit_without_learn);
     APPEND_ACTION (CONVERT,                 action_convert);
     APPEND_ACTION (CANCEL,                  action_revert);
     APPEND_ACTION (BACKSPACE,               action_edit_backspace);
@@ -332,7 +333,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         if (is_converting () ||
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
-            action_commit ();
+            action_commit (true);
         }
 
         char buf[2];
@@ -614,7 +615,7 @@ PrimeInstance::is_registering (void)
 }
 
 bool
-PrimeInstance::action_commit_on_register (void)
+PrimeInstance::action_commit_on_register (bool learn)
 {
     if (!is_registering ())
         return false;
@@ -626,9 +627,10 @@ PrimeInstance::action_commit_on_register (void)
         m_registering_value.insert (m_registering_cursor, cand.m_conversion);
         m_registering_cursor += cand.m_conversion.length ();
 
-        m_prime.learn_word (cand.m_basekey, cand.m_base,
-                            cand.m_part,    m_context,
-                            cand.m_suffix,  cand.m_rest);
+        if (learn)
+            m_prime.learn_word (cand.m_basekey, cand.m_base,
+                                cand.m_part,    m_context,
+                                cand.m_suffix,  cand.m_rest);
         m_context = cand.m_base + cand.m_suffix + cand.m_rest;
 
         m_candidates.clear();
@@ -672,18 +674,21 @@ PrimeInstance::action_commit_on_register (void)
 }
 
 bool
-PrimeInstance::action_commit (void)
+PrimeInstance::action_commit (bool learn)
 {
     if (is_registering ()) {
-        return action_commit_on_register ();
+        return action_commit_on_register (learn);
 
     } else if (is_converting ()) {
         int pos = m_lookup_table.get_cursor_pos ();
         PrimeCandidate &cand = m_candidates[pos];
         commit_string (cand.m_conversion);
-        m_prime.learn_word (cand.m_basekey, cand.m_base,
-                            cand.m_part,    m_context,
-                            cand.m_suffix,  cand.m_rest);
+
+        if (learn)
+            m_prime.learn_word (cand.m_basekey, cand.m_base,
+                                cand.m_part,    m_context,
+                                cand.m_suffix,  cand.m_rest);
+
         m_context = cand.m_base + cand.m_suffix + cand.m_rest;
 
         reset ();
@@ -703,6 +708,18 @@ PrimeInstance::action_commit (void)
     }
 
     return true;
+}
+
+bool
+PrimeInstance::action_commit_with_learn (void)
+{
+    return action_commit (true);
+}
+
+bool
+PrimeInstance::action_commit_without_learn (void)
+{
+    return action_commit (false);
 }
 
 bool

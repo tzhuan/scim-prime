@@ -159,6 +159,15 @@ static KeyboardConfigData __config_keyboards_common [] =
         NULL,
     },
     {
+        SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY,
+        SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY_DEFAULT,
+        N_("Commit witout learn keys:"),
+        N_("Select commit witout learn keys"),
+        N_("The key events to commit the preedit string without learn. "),
+        NULL,
+        NULL,
+    },
+    {
         SCIM_PRIME_CONFIG_CONVERT_KEY,
         SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT,
         N_("Convert keys:"),
