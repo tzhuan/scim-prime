@@ -163,7 +163,7 @@ PrimeFactory::get_uuid () const
 String
 PrimeFactory::get_icon_file () const
 {
-    return String ();
+    return String (SCIM_PRIME_ICON_FILE);
 }
 
 IMEngineInstancePointer
@@ -386,7 +386,10 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    if (m_session && isprint(key.get_ascii_code ())) {
+    if (isspace (key.get_ascii_code ()))
+        return false;
+
+    if (m_session && isprint (key.get_ascii_code ())) {
         if (is_converting ())
             action_commit();
 
