@@ -1,3 +1,8 @@
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Added "Down" key for Converting function.
+	Thanks to UTSUMI-san.
+
 2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine.cpp: Dont't recreate the session when the

@@ -89,7 +89,7 @@
 
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M,Henkan"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY_DEFAULT    "Muhenkan"
-#define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L"
+#define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L,Down"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT                  "Escape,Control+g,Control+G"
 #define SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT               "BackSpace,Control+h,Control+H"
 #define SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT                  "Delete,Control+d,Control+D"
