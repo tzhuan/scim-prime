@@ -61,6 +61,7 @@ private:
     bool                    m_registering;
 
     /* for register mode */
+    String                  m_query_string;
     WideString              m_registering_key;
     WideString              m_registering_value;
     unsigned int            m_registering_cursor;

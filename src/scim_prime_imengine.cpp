@@ -227,6 +227,7 @@ PrimeInstance::reset ()
     SCIM_DEBUG_IMENGINE(2) << "reset.\n";
 
     m_registering        = false;
+    m_query_string       = String ();
     m_registering_key    = WideString ();
     m_registering_value  = WideString ();
     m_registering_cursor = 0;
@@ -293,7 +294,7 @@ PrimeInstance::set_preedition (void)
 
     } else if (is_modifying ()) {
         WideString left, cursor, right;
-        get_session ()->modify_get_conversion (left, cursor, right);
+        get_session()->modify_get_conversion (left, cursor, right);
 
         AttributeList attr_list;
         Attribute attr (left.length (), cursor.length (), SCIM_ATTR_DECORATE);
@@ -566,10 +567,14 @@ PrimeInstance::action_convert (void)
         m_lookup_table.append_candidate (label);
     }
 
-    update_lookup_table (m_lookup_table);
-    show_lookup_table ();
-
-    select_candidate_no_direct (idx);
+    if (m_candidates.size () > 0) {
+        update_lookup_table (m_lookup_table);
+        show_lookup_table ();
+        select_candidate_no_direct (idx);
+    } else {
+        m_converting = false;
+        hide_lookup_table ();
+    }
 
     set_preedition ();
 
@@ -592,7 +597,10 @@ PrimeInstance::action_revert (void)
             hide_lookup_table ();
             set_preedition ();
         } else {
-            reset ();
+            String query_string = m_query_string;
+            reset (); 
+            get_session()->edit_insert (query_string.c_str());
+            set_preedition ();
         }
 
     } else {
@@ -760,11 +768,13 @@ PrimeInstance::action_edit_delete (void)
 bool
 PrimeInstance::action_insert_space (void)
 {
+    if (is_registering ())
+        return false;
+
     if (is_preediting ())
         return false;
 
-    if (!is_registering ())
-        commit_string (utf8_mbstowcs (m_factory->m_space_char));
+    commit_string (utf8_mbstowcs (m_factory->m_space_char));
 
     return true;
 }
@@ -772,11 +782,13 @@ PrimeInstance::action_insert_space (void)
 bool
 PrimeInstance::action_insert_alternative_space (void)
 {
+    if (is_registering ())
+        return false;
+
     if (is_preediting ())
         return false;
 
-    if (!is_registering ())
-        commit_string (utf8_mbstowcs (m_factory->m_alt_space_char.c_str()));
+    commit_string (utf8_mbstowcs (m_factory->m_alt_space_char.c_str()));
 
     return true;
 }
@@ -784,13 +796,18 @@ PrimeInstance::action_insert_alternative_space (void)
 bool
 PrimeInstance::action_conv_next_candidate (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        action_revert ();
+        return true;
+    }
+
     if (!is_converting ())
         return false;
 
     int last_candidate = m_lookup_table.number_of_candidates () - 1;
 
     if (m_lookup_table.get_cursor_pos () == last_candidate) {
-        if (m_factory->m_auto_register)
+        if (m_factory->m_auto_register && !is_registering ())
             return action_register_a_word ();
         else
             m_lookup_table.set_cursor_pos (0);
@@ -806,6 +823,11 @@ PrimeInstance::action_conv_next_candidate (void)
 bool
 PrimeInstance::action_conv_prev_candidate (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        action_revert ();
+        return true;
+    }
+
     if (!is_converting ())
         return false;
 
@@ -1111,6 +1133,8 @@ PrimeInstance::action_register_a_word (void)
 
     if (is_converting ())
         action_revert ();
+
+    get_session()->edit_get_query_string (m_query_string);
 
     WideString left, cursor, right;
     get_session()->edit_get_preedition (left, cursor, right);
