@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-03-29 11:39+0900\n"
+"POT-Creation-Date: 2005-03-29 11:52+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -462,7 +462,7 @@ msgid "PRIME command:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:606
-msgid "The PRIME command to use as convert engine."
+msgid "The PRIME command to use as conversion engine."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:611 src/scim_prime_imengine_setup.cpp:616

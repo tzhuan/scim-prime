@@ -603,7 +603,7 @@ create_options_page ()
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
 
-    APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as convert engine."),
+    APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as conversion engine."),
                  __widget_command, 0);
 
     /* predict on preedition */
