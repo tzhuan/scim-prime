@@ -543,7 +543,7 @@ PrimeInstance::set_preedition (void)
         AttributeList attr_list;
         int pos;
 
-        WideString str = utf8_mbstowcs (_("Lean a word:"));
+        WideString str = utf8_mbstowcs (_("Learn a word:"));
         Attribute attr (0, str.length (), SCIM_ATTR_DECORATE);
         attr.set_value (SCIM_ATTR_DECORATE_HIGHLIGHT);
         attr_list.push_back (attr);
