@@ -68,17 +68,18 @@ static void
 handle_sigchld (int signo)
 {
     int status;
+    pid_t pid;
 
-    pid_t pid = wait (&status);
-
-    std::vector<PrimeConnection *>::iterator it;
-    for (it = connection_list.begin (); it != connection_list.end (); it++) {
-        if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
-            ((*it)->get_child_pid() == pid))
-        {
-            (*it)->close_connection_with_error ();
+    while ((pid = waitpid (-1, &status, WNOHANG))) {
+        std::vector<PrimeConnection *>::iterator it;
+        for (it = connection_list.begin (); it != connection_list.end (); it++) {
+            if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
+                ((*it)->get_child_pid() == pid))
+            {
+                (*it)->close_connection_with_error ();
+            }
         }
-    }
+    };
 }
 #endif
 
@@ -86,17 +87,18 @@ static void
 handle_sigpipe (int signo)
 {
     int status;
+    pid_t pid;
 
-    pid_t pid = wait (&status);
-
-    std::vector<PrimeConnection *>::iterator it;
-    for (it = connection_list.begin (); it != connection_list.end (); it++) {
-        if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
-            ((*it)->get_child_pid() == pid))
-        {
-            (*it)->close_connection_with_error ();
+    while ((pid = waitpid (-1, &status, WNOHANG)) > 0) {
+        std::vector<PrimeConnection *>::iterator it;
+        for (it = connection_list.begin (); it != connection_list.end (); it++) {
+            if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
+                ((*it)->get_child_pid() == pid))
+            {
+                (*it)->close_connection_with_error ();
+            }
         }
-    }
+    };
 }
 
 void
@@ -136,7 +138,7 @@ PrimeConnection::open_connection (const char *command,
         m_err_fd = err_fd[0];
         close (err_fd[1]);
 
-        //signal (SIGCHLD, handle_sigpipe);
+        //signal (SIGCHLD,  handle_sigchld);
         signal (SIGPIPE, handle_sigpipe);
 
         return;
