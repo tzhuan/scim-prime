@@ -1340,7 +1340,7 @@ PrimeInstance::action_toggle_language (void)
     reset ();
 
     if (!m_session) {
-        m_session = m_prime.session_start ();
+        action_set_language_japanese ();
         return true;
     }
 
@@ -1376,6 +1376,8 @@ PrimeInstance::action_set_language_japanese (void)
 
     m_session = m_prime.session_start ("Japanese");
 
+    if (m_properties.empty ())
+        install_properties ();
     PropertyList::iterator it = std::find (m_properties.begin (),
                                            m_properties.end (),
                                            SCIM_PROP_LANGUAGE);
@@ -1406,6 +1408,8 @@ PrimeInstance::action_set_language_english (void)
 
     m_session = m_prime.session_start ("English");
 
+    if (m_properties.empty ())
+        install_properties ();
     PropertyList::iterator it = std::find (m_properties.begin (),
                                            m_properties.end (),
                                            SCIM_PROP_LANGUAGE);
