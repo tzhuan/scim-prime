@@ -759,7 +759,7 @@ PrimeInstance::action_modify_caret_left_edge (void)
     get_session()->edit_cursor_left_edge ();
     set_preedition ();
 
-    return false;
+    return true;
 }
 
 bool
@@ -781,7 +781,7 @@ PrimeInstance::action_modify_caret_right_edge (void)
     get_session()->edit_cursor_right_edge ();
     set_preedition ();
 
-    return false;
+    return true;
 }
 
 bool
