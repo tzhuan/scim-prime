@@ -280,6 +280,15 @@ static KeyboardConfigData __config_keyboards_mode [] =
         NULL,
     },
     {
+        SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY,
+        SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY_DEFAULT,
+        N_("Toggle language keys:"),
+        N_("Select toggle language keys"),
+        N_("The key events to toggle language. "),
+        NULL,
+        NULL,
+    },
+    {
         NULL,
         "",
         NULL,

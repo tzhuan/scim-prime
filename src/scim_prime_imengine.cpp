@@ -267,6 +267,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     APPEND_ACTION (SET_MODE_RAW,            action_set_mode_raw);
     APPEND_ACTION (SET_MODE_WIDE_ASCII,     action_set_mode_wide_ascii);
 
+    // language
+    APPEND_ACTION (TOGGLE_LANGUAGE,         action_toggle_language);
+
     // register a word
     APPEND_ACTION (REGISTER_WORD,           action_register_a_word);
 }
@@ -1123,6 +1126,40 @@ PrimeInstance::action_set_mode_wide_ascii (void)
 
     m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_toggle_language (void)
+{
+    reset ();
+
+    if (!m_session) {
+        m_session = m_prime.session_start ();
+        return true;
+    }
+
+    String key = "language", type;
+    std::vector<String> list;
+    m_session->get_env (key, type, list);
+
+    // FIXME! should be stored using map container
+    delete m_session;
+    m_session = NULL;
+
+    if (list.size() <= 0) {
+        m_session = m_prime.session_start ();
+        return true;
+    }
+
+    if (list[0] == "English") {
+        m_session = m_prime.session_start ("Japanese");
+    } else if (list[0] == "Japanese") {
+        m_session = m_prime.session_start ("English");
+    } else {
+        m_session = m_prime.session_start ("Japanese");
+    }
 
     return true;
 }

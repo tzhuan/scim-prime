@@ -169,6 +169,8 @@ private: // actions
     bool   action_set_mode_raw                 (void);
     bool   action_set_mode_wide_ascii          (void);
 
+    bool   action_toggle_language              (void);
+
     bool   action_register_a_word              (void);
 
 private:

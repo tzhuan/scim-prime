@@ -86,6 +86,10 @@ public: // prime commands
     void        context_set_previous_word(WideString &word);
     void        context_reset            (void);
 
+    void        get_env                  (const String        &key,
+                                          String              &type,
+                                          std::vector<String> &values);
+
 public: // other functions
     bool        has_preedition           (void);
     bool        send_command             (const char *command,

@@ -215,6 +215,23 @@ PrimeSession::context_reset (void)
     send_command (PRIME_CONTEXT_RESET);
 }
 
+void
+PrimeSession::get_env (const String &key,
+                       String &type, std::vector<String> &values)
+{
+    bool success = send_command (PRIME_SESSION_GET_ENV, key.c_str ());
+
+    if (success) {
+        m_connection->get_reply (values, "\t");
+        if (values.size () > 0) {
+            type = values[0];
+            values.erase (values.begin());
+        }
+    } else {
+        type = "nil";
+    }
+}
+
 bool
 PrimeSession::has_preedition (void)
 {
