@@ -120,8 +120,11 @@ private:
     /* flags */
     bool                    m_converting;
     bool                    m_registering;
+
+    /* for register mode */
     WideString              m_registering_key;
     WideString              m_registering_value;
+    unsigned int            m_registering_cursor;
 
 public:
     PrimeInstance (PrimeFactory   *factory,

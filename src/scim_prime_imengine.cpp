@@ -184,7 +184,8 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_factory (factory),
       m_prev_key (0,0),
       m_converting (false),
-      m_registering (false)
+      m_registering (false),
+      m_registering_cursor (0)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
@@ -514,7 +515,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         if (is_converting () ||
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
-            action_commit();
+            action_commit ();
         }
 
         char buf[2];
@@ -619,12 +620,13 @@ PrimeInstance::reset ()
 {
     SCIM_DEBUG_IMENGINE(2) << "reset.\n";
 
-    m_registering       = false;
-    m_registering_key   = WideString ();
-    m_registering_value = WideString ();
+    m_registering        = false;
+    m_registering_key    = WideString ();
+    m_registering_value  = WideString ();
+    m_registering_cursor = 0;
 
     m_candidates.clear();
-    m_converting     = false;
+    m_converting = false;
 
     if (m_session)
         m_session->edit_erase();
@@ -687,8 +689,7 @@ PrimeInstance::set_preedition (void)
         tmp = utf8_mbstowcs (_("|"));
         ADD_SEPARATOR_ATTR();
 
-        str += m_registering_value;
-
+        str += m_registering_value.substr (0, m_registering_cursor);
         pos = str.length ();
 
         if (is_converting ()) {
@@ -700,6 +701,10 @@ PrimeInstance::set_preedition (void)
             pos += left.length ();
             str += left + cursor + right;
         }
+
+        str += m_registering_value.substr (
+            m_registering_cursor,
+            m_registering_value.length () - m_registering_cursor);
 
         tmp = utf8_mbstowcs (_("]"));
         ADD_SEPARATOR_ATTR()
@@ -797,7 +802,8 @@ PrimeInstance::action_commit_on_register (void)
         int pos = m_lookup_table.get_cursor_pos ();
         PrimeCandidate &cand = m_candidates[pos];
 
-        m_registering_value += cand.m_conversion;
+        m_registering_value.insert (m_registering_cursor, cand.m_conversion);
+        m_registering_cursor += cand.m_conversion.length ();
 
         m_prime.learn_word (cand.m_basekey, cand.m_base,
                             cand.m_part,    m_context,
@@ -817,7 +823,9 @@ PrimeInstance::action_commit_on_register (void)
         if (m_session) {
             WideString left, cursor, right, all;
             m_session->edit_get_preedition (left, cursor, right);
-            m_registering_value += left + cursor + right;
+            all = left + cursor + right;
+            m_registering_value.insert (m_registering_cursor, all);
+            m_registering_cursor += all.length ();
         }
 
         if (m_session)
@@ -945,6 +953,14 @@ PrimeInstance::action_revert (void)
 bool
 PrimeInstance::action_modify_caret_left (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        if (m_registering_cursor > 0) {
+            m_registering_cursor--;
+            set_preedition ();
+        }
+        return true;
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -961,6 +977,14 @@ PrimeInstance::action_modify_caret_left (void)
 bool
 PrimeInstance::action_modify_caret_right (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        if (m_registering_cursor < m_registering_value.length ()) {
+            m_registering_cursor++;
+            set_preedition ();
+        }
+        return true;
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -977,6 +1001,12 @@ PrimeInstance::action_modify_caret_right (void)
 bool
 PrimeInstance::action_modify_caret_left_edge (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        m_registering_cursor = 0;
+        set_preedition ();
+        return true;
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -993,6 +1023,12 @@ PrimeInstance::action_modify_caret_left_edge (void)
 bool
 PrimeInstance::action_modify_caret_right_edge (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        m_registering_cursor = m_registering_value.length ();
+        set_preedition ();
+        return true;
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -1009,6 +1045,15 @@ PrimeInstance::action_modify_caret_right_edge (void)
 bool
 PrimeInstance::action_edit_backspace (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        if (m_registering_cursor > 0) {
+            m_registering_value.erase (m_registering_cursor - 1, 1);
+            m_registering_cursor--;
+            set_preedition ();
+            return true;
+        }
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
@@ -1025,6 +1070,14 @@ PrimeInstance::action_edit_backspace (void)
 bool
 PrimeInstance::action_edit_delete (void)
 {
+    if (is_registering () && !is_preediting ()) {
+        if (m_registering_cursor < m_registering_value.length ()) {
+            m_registering_value.erase (m_registering_cursor, 1);
+            set_preedition ();
+            return true;
+        }
+    }
+
     if (!is_preediting ())
         return false;
     if (is_converting ())
