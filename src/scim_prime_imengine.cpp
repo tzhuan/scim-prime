@@ -1162,6 +1162,7 @@ PrimeInstance::action_toggle_language (void)
     m_session->get_env (key, type, list);
 
     // FIXME! should be stored using map container
+    m_prime.session_end (m_session);
     delete m_session;
     m_session = NULL;
 
