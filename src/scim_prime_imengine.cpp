@@ -788,54 +788,65 @@ PrimeInstance::is_registering (void)
 }
 
 bool
+PrimeInstance::action_commit_on_register (void)
+{
+    if (!is_registering ())
+        return false;
+
+    if (is_converting ()) {
+        int pos = m_lookup_table.get_cursor_pos ();
+        PrimeCandidate &cand = m_candidates[pos];
+
+        m_registering_value += cand.m_conversion;
+
+        m_prime.learn_word (cand.m_basekey, cand.m_base,
+                            cand.m_part,    m_context,
+                            cand.m_suffix,  cand.m_rest);
+        m_context = cand.m_base + cand.m_suffix + cand.m_rest;
+
+        m_candidates.clear();
+        m_converting = false;
+        if (m_session)
+            m_session->edit_erase();
+        m_lookup_table.clear ();
+        hide_lookup_table ();
+
+        set_preedition ();
+
+    } else if (is_preediting ()) {
+        if (m_session) {
+            WideString left, cursor, right, all;
+            m_session->edit_get_preedition (left, cursor, right);
+            m_registering_value += left + cursor + right;
+        }
+
+        if (m_session)
+            m_session->edit_erase();
+        m_lookup_table.clear ();
+        hide_lookup_table ();
+
+        set_preedition ();
+
+    } else {
+        if (m_registering_key.length () > 0 &&
+            m_registering_value.length () > 0)
+        {
+            m_prime.learn_word (m_registering_key, m_registering_value,
+                                WideString (), WideString (),
+                                WideString (), WideString ());
+        }
+
+        reset ();
+    }
+
+    return true;
+}
+
+bool
 PrimeInstance::action_commit (void)
 {
     if (is_registering ()) {
-        if (is_converting ()) {
-            int pos = m_lookup_table.get_cursor_pos ();
-            PrimeCandidate &cand = m_candidates[pos];
-
-            m_registering_value += cand.m_conversion;
-
-            m_prime.learn_word (cand.m_basekey, cand.m_base,
-                                cand.m_part,    m_context,
-                                cand.m_suffix,  cand.m_rest);
-            m_context = cand.m_base + cand.m_suffix + cand.m_rest;
-
-            m_candidates.clear();
-            m_converting = false;
-            if (m_session)
-                m_session->edit_erase();
-            m_lookup_table.clear ();
-            hide_lookup_table ();
-
-            set_preedition ();
-
-        } else if (is_preediting ()) {
-            if (m_session) {
-                WideString left, cursor, right, all;
-                m_session->edit_get_preedition (left, cursor, right);
-                m_registering_value += left + cursor + right;
-            }
-
-            if (m_session)
-                m_session->edit_erase();
-            m_lookup_table.clear ();
-            hide_lookup_table ();
-
-            set_preedition ();
-
-        } else {
-            if (m_registering_key.length () > 0 &&
-                m_registering_value.length () > 0)
-            {
-                m_prime.learn_word (m_registering_key, m_registering_value,
-                                    WideString (), WideString (),
-                                    WideString (), WideString ());
-            }
-
-            reset ();
-        }
+        return action_commit_on_register ();
 
     } else if (is_converting ()) {
         int pos = m_lookup_table.get_cursor_pos ();

@@ -197,10 +197,11 @@ private:
     bool   action_register_a_word              (void);
 
     /* utility */
-    bool   match_key_event     (const KeyEventList &keys,
-                                const KeyEvent     &key) const;
-    void   get_candidate_label (WideString         &label,
-                                PrimeCandidate     &cand);
+    bool   action_commit_on_register           (void);
+    bool   match_key_event                     (const KeyEventList &keys,
+                                                const KeyEvent     &key) const;
+    void   get_candidate_label                 (WideString         &label,
+                                                PrimeCandidate     &cand);
 };
 #endif /* __SCIM_PRIME_IMENGINE_H__ */
 /*
