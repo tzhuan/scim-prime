@@ -122,11 +122,70 @@ PrimeSession::edit_insert (const char *str)
 }
 
 void
-PrimeSession::set_context (WideString &context)
+PrimeSession::edit_set_mode (PrimePreeditionMode mode)
+{
+    char *command = "default";
+
+    switch (mode) {
+    case PRIME_PREEDITION_KATAKANA:
+        command = "katakana";
+        break;
+    case PRIME_PREEDITION_HALF_KATAKANA:
+        command = "half_katakana";
+        break;
+    case PRIME_PREEDITION_WIDE_ASCII:
+        command = "wide_ascii";
+        break;
+    case PRIME_PREEDITION_RAW:
+        command = "raw";
+        break;
+    case PRIME_PREEDITION_DEFAULT:
+    default:
+        command = "default";
+        break;
+    }
+
+    send_command (PRIME_EDIT_SET_MODE, command);
+}
+
+void
+PrimeSession::edit_undo (void)
+{
+    send_command (PRIME_EDIT_UNDO);
+}
+
+void
+PrimeSession::segment_commit (void)
+{
+    send_command (PRIME_SEGMENT_COMMIT);
+}
+
+void
+PrimeSession::segment_reconvert (void)
+{
+    send_command (PRIME_SEGMENT_RECONVERT);
+}
+
+void
+PrimeSession::segment_select (int index)
+{
+    char buf[32];
+    sprintf(buf, "%10d\n", index);
+    send_command (PRIME_SEGMENT_SELECT, buf);
+}
+
+void
+PrimeSession::context_set_previous_word(WideString &word)
 {
     String str;
-    m_connection->m_iconv.convert (str, context);
-    send_command (PRIME_SET_CONTEXT, str.c_str());
+    m_connection->m_iconv.convert(str, word);
+    send_command (PRIME_CONTEXT_SET_PREVIOUS_WORD, str.c_str());
+}
+
+void
+PrimeSession::context_reset (void)
+{
+    send_command (PRIME_CONTEXT_RESET);
 }
 
 bool

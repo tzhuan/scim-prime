@@ -17,6 +17,7 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#include <stdarg.h>
 #include <sys/types.h>
 #include <signal.h>
 #include <errno.h>
@@ -134,7 +135,9 @@ PrimeConnection::close_connection ()
         len = remaining = strlen (command);
 
         do {
-            ssize_t rv = write (m_in_fd, command + (len - remaining), remaining);
+            ssize_t rv = write (m_in_fd,
+                                command + (len - remaining),
+                                remaining);
             switch (errno) {
             case EBADF:
             case EINVAL:
@@ -160,6 +163,23 @@ PrimeConnection::close_connection ()
     }
 }
 
+void
+PrimeConnection::version (String &version)
+{
+    bool success = send_command (PRIME_VERSION, NULL);
+    if (success) {
+        get_reply (version);
+    } else {
+        // error
+    }
+}
+
+void
+PrimeConnection::refresh (void)
+{
+    send_command (PRIME_REFRESH, NULL);
+}
+
 PrimeSession *
 PrimeConnection::session_start (void)
 {
@@ -167,6 +187,8 @@ PrimeConnection::session_start (void)
     if (success) {
         PrimeSession *session = new PrimeSession(this, m_last_reply.c_str());
         return session;
+    } else {
+        // error
     }
 
     return NULL;
@@ -187,32 +209,29 @@ PrimeConnection::session_end (PrimeSession *session)
     }
 }
 
-bool
-PrimeConnection::lookup (const char *sequence, PrimeCandidate &candidate)
+void
+PrimeConnection::set_context (WideString &context)
 {
-    bool success = send_command (PRIME_LOOKUP, sequence, NULL);
-    if (success) {
-        std::vector<String> cols;
-        split_string (m_last_reply, cols, "\t");
+    String str;
+    m_iconv.convert (str, context);
+    send_command (PRIME_SET_CONTEXT, str.c_str(), NULL);
+}
 
-        if (cols.size () >= 2) {
-            m_iconv.convert (candidate.m_preedition, cols[0]);
-            m_iconv.convert (candidate.m_conversion, cols[1]);
-        }
-    } else {
-        // error
-    }
-
-    return false;
+void
+PrimeConnection::reset_context (void)
+{
+    send_command (PRIME_RESET_CONTEXT, NULL);
 }
 
 bool
-PrimeConnection::lookup_all (const char *sequence,
-                             std::vector<PrimeCandidate> &candidates)
+PrimeConnection::lookup (const char *sequence, PrimeCandidates &candidates, const char *command)
 {
     candidates.clear ();
 
-    bool success = send_command (PRIME_LOOKUP_ALL, sequence, NULL);
+    if (!command)
+        command = PRIME_LOOKUP;
+
+    bool success = send_command (command, sequence, NULL);
     if (success) {
         std::vector<String> rows;
         split_string (m_last_reply, rows, "\n");
@@ -235,8 +254,6 @@ PrimeConnection::lookup_all (const char *sequence,
     return false;
 }
 
-// FIXME
-#include <stdarg.h>
 bool
 PrimeConnection::send_command (const char *command,
                                ...)
@@ -276,7 +293,9 @@ PrimeConnection::send_command (const char *command,
     len = remaining = str.length ();
 
     do {
-        ssize_t rv = write (m_in_fd, str.c_str () + (len - remaining), remaining);
+        ssize_t rv = write (m_in_fd,
+                            str.c_str () + (len - remaining),
+                            remaining);
         switch (errno) {
         case EBADF:
         case EINVAL:

@@ -26,8 +26,16 @@
 #include <unistd.h>
 #include <scim.h>
 #include "prime_session.h"
+#include "prime_commands.h"
 
 using namespace scim;
+
+
+typedef enum {
+    PRIME_CONNECTION_PIPE,
+    PRIME_CONNECTION_UNIX_SOCKET,
+    PRIME_CONNECTION_TCP_IP,
+} PrimeConnectionType;
 
 
 class PrimeCandidate
@@ -48,6 +56,9 @@ public:
 };
 
 
+typedef std::vector<PrimeCandidate> PrimeCandidates;
+
+
 class PrimeConnection
 {
 public:
@@ -58,31 +69,40 @@ public:
     void                open_connection     (void);
     void                close_connection    (void);
 
-    // session
-    PrimeSession       *session_start       (void);
-    void                session_end         (PrimeSession *session);
-
     // comunication
     // Arguments must be terminated by NULL pointer.
-    bool                send_command        (const char *command,
+    bool                send_command        (const char          *command,
                                              ...);
 
-    // lookup
-    bool                lookup              (const char                  *sequence,
-                                             PrimeCandidate              &candidate);
-    bool                lookup_all          (const char                  *sequence,
-                                             std::vector<PrimeCandidate> &candidates);
-
     // getting reply string
-    void                get_reply           (String &reply);
-    void                get_reply           (WideString &reply);
+    void                get_reply           (String              &reply);
+    void                get_reply           (WideString          &reply);
     void                get_reply           (std::vector<String> &str_list,
-                                             char *delim);
+                                             char                *delim);
+
+    // get prime version
+    void                version             (String              &version);
+
+    // refresh prime
+    void                refresh             (void);
+
+    // session
+    PrimeSession       *session_start       (void);
+    void                session_end         (PrimeSession        *session);
+
+    // context
+    void                set_context         (WideString          &context);
+    void                reset_context       (void);
+
+    // lookup
+    bool                lookup              (const char          *sequence,
+                                             PrimeCandidates     &candidates,
+                                             const char          *command = PRIME_LOOKUP);
 
 private:
-    void                split_string        (String &str,
+    void                split_string        (String              &str,
                                              std::vector<String> &str_list,
-                                             char *delim);
+                                             char                *delim);
 
 
 public:
@@ -95,8 +115,6 @@ private:
     int              m_err_fd;
 
     String           m_last_reply; // EUC-JP
-
-    std::vector<PrimeSession> m_sessions;
 };
 
 #endif /* __SCIM_PRIME_CONNECTION_H__ */

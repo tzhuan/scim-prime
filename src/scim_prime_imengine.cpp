@@ -247,6 +247,36 @@ PrimeInstance::process_key_event_with_preedit (const KeyEvent& key)
             return true;
         break;
 
+    case SCIM_KEY_F6:
+        m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F7:
+        m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F8:
+        m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F9:
+        m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F10:
+        m_session->edit_set_mode (PRIME_PREEDITION_RAW);
+        set_preedition ();
+        return true;
+        break;
+
     default:
         break;
     }
@@ -280,6 +310,41 @@ PrimeInstance::process_key_event_with_candidate (const KeyEvent &key)
             return true;
         break;
 
+    case SCIM_KEY_F6:
+        action_revert ();
+        m_session->edit_set_mode (PRIME_PREEDITION_DEFAULT);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F7:
+        action_revert ();
+        m_session->edit_set_mode (PRIME_PREEDITION_KATAKANA);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F8:
+        action_revert ();
+        m_session->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F9:
+        action_revert ();
+        m_session->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
+        set_preedition ();
+        return true;
+        break;
+
+    case SCIM_KEY_F10:
+        action_revert ();
+        m_session->edit_set_mode (PRIME_PREEDITION_RAW);
+        set_preedition ();
+        return true;
+        break;
+
     default:
         break;
     }
@@ -301,6 +366,9 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
     }
 
     if (isprint(key.get_ascii_code ())) {
+        if (is_converting ())
+            action_commit();
+
         char buf[2];
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
@@ -463,11 +531,15 @@ PrimeInstance::set_prediction (void)
         String query;
         m_session->edit_get_query_string (query);
 
-        PrimeCandidate candidate;
-        m_prime.lookup (query.c_str (), candidate);
+        PrimeCandidates candidates;
+        m_prime.lookup (query.c_str (), candidates);
 
-        if (is_preediting () && candidate.m_conversion.length () > 0) {
-            m_lookup_table.append_candidate (candidate.m_conversion);
+        if (is_preediting () &&
+            candidates.size () > 0 &&
+            candidates[0].m_conversion.length () > 0)
+        {
+            for (unsigned int i = 0; i < candidates.size (); i++)
+                m_lookup_table.append_candidate (candidates[i].m_conversion);
             m_lookup_table.show_cursor (false);
             update_lookup_table (m_lookup_table);
             show_lookup_table ();
@@ -509,7 +581,7 @@ PrimeInstance::action_commit (void)
             m_session->edit_get_preedition (left, cursor, right);
             commit_string (left + cursor + right);
             all = left + cursor + right;
-            m_session->set_context (all);
+            m_prime.set_context (all);
         }
     } else {
         return false;
@@ -536,8 +608,8 @@ PrimeInstance::action_convert (void)
         String query;
         m_session->edit_get_query_string (query);
 
-        std::vector<PrimeCandidate> candidates;
-        m_prime.lookup_all (query.c_str (), candidates);
+        PrimeCandidates candidates;
+        m_prime.lookup (query.c_str (), candidates, PRIME_LOOKUP_ALL);
         for (unsigned int i = 0; i < candidates.size (); i++)
             m_lookup_table.append_candidate (candidates[i].m_conversion);
 
