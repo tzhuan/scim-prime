@@ -223,6 +223,8 @@ PrimeFactory::reload_config (const ConfigPointer &config)
         = config->read (String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR),
                         String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT));
 
+    m_actions.clear ();
+
     // edit keys
     APPEND_ACTION (COMMIT,                  action_commit);
     APPEND_ACTION (CONVERT,                 action_convert);

@@ -1,5 +1,10 @@
 2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine.cpp:
+	Clear stored actions before reload config.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_action.cpp, src/scim_prime_action.h:
 	New file. Added action manager class.
 	I'll happy if the SCIM has such a class template.
