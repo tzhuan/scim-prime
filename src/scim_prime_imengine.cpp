@@ -889,6 +889,42 @@ PrimeInstance::action_select_candidate_10 (void)
 }
 
 bool
+PrimeInstance::action_select_prev_segment (void)
+{
+    return false;
+}
+
+bool
+PrimeInstance::action_select_next_segment (void)
+{
+    return false;
+}
+
+bool
+PrimeInstance::action_select_first_segment (void)
+{
+    return false;
+}
+
+bool
+PrimeInstance::action_select_last_segment (void)
+{
+    return false;
+}
+
+bool
+PrimeInstance::action_shrink_segment (void)
+{
+    return false;
+}
+
+bool
+PrimeInstance::action_expand_segment (void)
+{
+    return false;
+}
+
+bool
 PrimeInstance::action_set_mode_default (void)
 {
     if (is_converting ())

@@ -119,6 +119,13 @@ private: // actions
     bool   action_select_candidate_9           (void);
     bool   action_select_candidate_10          (void);
 
+    bool   action_select_prev_segment          (void);
+    bool   action_select_next_segment          (void);
+    bool   action_select_first_segment         (void);
+    bool   action_select_last_segment          (void);
+    bool   action_shrink_segment               (void);
+    bool   action_expand_segment               (void);
+
     bool   action_set_mode_default             (void);
     bool   action_set_mode_katakana            (void);
     bool   action_set_mode_half_katakana       (void);

@@ -251,6 +251,14 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     APPEND_ACTION (SELECT_CANDIDATE_9,      action_select_candidate_9);
     APPEND_ACTION (SELECT_CANDIDATE_10,     action_select_candidate_10);
 
+    // segment keys
+	APPEND_ACTION (SELECT_FIRST_SEGMENT,    action_select_first_segment);
+	APPEND_ACTION (SELECT_LAST_SEGMENT,     action_select_last_segment);
+	APPEND_ACTION (SELECT_NEXT_SEGMENT,     action_select_next_segment);
+	APPEND_ACTION (SELECT_PREV_SEGMENT,     action_select_prev_segment);
+	APPEND_ACTION (SHRINK_SEGMENT,          action_shrink_segment);
+	APPEND_ACTION (EXPAND_SEGMENT,          action_expand_segment);
+
     // mode keys
     APPEND_ACTION (SET_MODE_DEFAULT,        action_set_mode_default);
     APPEND_ACTION (SET_MODE_KATAKANA,       action_set_mode_katakana);

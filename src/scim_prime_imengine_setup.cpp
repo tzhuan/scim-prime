@@ -361,6 +361,73 @@ static KeyboardConfigData __config_keyboards_caret [] =
     },
 };
 
+static KeyboardConfigData __config_keyboards_segments [] =
+{
+    {
+        SCIM_PRIME_CONFIG_SELECT_FIRST_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_SELECT_FIRST_SEGMENT_KEY_DEFAULT,
+        N_("First segment keys:"),
+        N_("Select first segment keys"),
+        N_("The key events to select first segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SELECT_LAST_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_SELECT_LAST_SEGMENT_KEY_DEFAULT,
+        N_("Last segment keys:"),
+        N_("Select last segment keys"),
+        N_("The key events to select last segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SELECT_NEXT_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_SELECT_NEXT_SEGMENT_KEY_DEFAULT,
+        N_("Next segment keys:"),
+        N_("Select next segment keys"),
+        N_("The key events to select next segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SELECT_PREV_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_SELECT_PREV_SEGMENT_KEY_DEFAULT,
+        N_("Previous segment keys:"),
+        N_("Select previous segment keys"),
+        N_("The key events to select previous segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_SHRINK_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_SHRINK_SEGMENT_KEY_DEFAULT,
+        N_("Shrink segment keys:"),
+        N_("Select shrink segment keys"),
+        N_("The key events to shrink the selected segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_EXPAND_SEGMENT_KEY,
+        SCIM_PRIME_CONFIG_EXPAND_SEGMENT_KEY_DEFAULT,
+        N_("Expand segment keys:"),
+        N_("Select expand segment keys"),
+        N_("The key events to expand the selected segment. "),
+        NULL,
+        NULL,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+    },
+};
+
 static KeyboardConfigData __config_keyboards_candidates [] =
 {
     {
@@ -518,7 +585,7 @@ static struct KeyboardConfigPage __key_conf_pages[] =
     {N_("Common keys"),     __config_keyboards_common},
     {N_("Mode keys"),       __config_keyboards_mode},
     {N_("Caret keys"),      __config_keyboards_caret},
-    //{N_("Segments keys"),   __config_keyboards_segments},
+    {N_("Segments keys"),   __config_keyboards_segments},
     {N_("Candidates keys"), __config_keyboards_candidates},
     {N_("Candidates keys (Direct select)"), __config_keyboards_direct_select_candidate},
 };
@@ -783,6 +850,7 @@ create_setup_window ()
 
     if (!window) {
         GtkWidget *notebook = gtk_notebook_new();
+        gtk_notebook_popup_enable(GTK_NOTEBOOK(notebook));
         gtk_widget_show (notebook);
         window = notebook;
         gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
