@@ -259,7 +259,7 @@ PrimeInstance::focus_in ()
 {
     SCIM_DEBUG_IMENGINE(2) << "focus_in.\n";
 
-    hide_aux_string ();
+    register_properties (m_properties);
 }
 
 void
