@@ -45,6 +45,11 @@
 #include "prime_session.h"
 #include "intl.h"
 
+#define SCIM_PROP_PREFIX              "/IMEngine/PRIME"
+#define SCIM_PROP_LANGUAGE            "/IMEngine/PRIME/Lang"
+#define SCIM_PROP_LANGUAGE_JAPANESE   "/IMEngine/PRIME/Lang/Japanese"
+#define SCIM_PROP_LANGUAGE_ENGLISH    "/IMEngine/PRIME/Lang/English"
+
 PrimeConnection PrimeInstance::m_prime = PrimeConnection();
 int             PrimeInstance::m_prime_major_version = -2;
 
@@ -262,15 +267,37 @@ PrimeInstance::reset ()
 }
 
 void
-PrimeInstance::focus_in ()
+PrimeInstance::install_properties (void)
 {
-    SCIM_DEBUG_IMENGINE(2) << "focus_in.\n";
+    if (m_properties.empty ()) {
+        Property prop;
+
+        prop = Property (SCIM_PROP_LANGUAGE,
+                         "", String (""), _("Language"));
+        m_properties.push_back (prop);
+
+        prop = Property (SCIM_PROP_LANGUAGE_JAPANESE,
+                         _("Japanese"), String (""), _("Japanese"));
+        m_properties.push_back (prop);
+
+        prop = Property (SCIM_PROP_LANGUAGE_ENGLISH,
+                         _("English"), String (""), _("English"));
+        m_properties.push_back (prop);
+    }
 
     register_properties (m_properties);
 }
 
 void
-PrimeInstance::focus_out ()
+PrimeInstance::focus_in (void)
+{
+    SCIM_DEBUG_IMENGINE(2) << "focus_in.\n";
+
+    install_properties ();
+}
+
+void
+PrimeInstance::focus_out (void)
 {
     SCIM_DEBUG_IMENGINE(2) << "focus_out.\n";
 }
@@ -281,6 +308,12 @@ PrimeInstance::trigger_property (const String &property)
     String prime_prop = property.substr (property.find_last_of ('/') + 1);
 
     SCIM_DEBUG_IMENGINE(2) << "trigger_property : " << property << " - " << prime_prop << "\n";
+
+    if (property == SCIM_PROP_LANGUAGE_JAPANESE) {
+        action_set_language_japanese ();
+    } else if (property == SCIM_PROP_LANGUAGE_ENGLISH) {
+        action_set_language_english ();
+    }
 }
 
 PrimeSession *
@@ -289,31 +322,37 @@ PrimeInstance::get_session (void)
     if (m_disable)
         return NULL;
 
+    const char *message;
+
     if (m_prime.major_version () < 0 || !m_prime.is_connected ()) {
         delete m_session;
         m_session = NULL;
         m_disable = true;
 
-        update_aux_string (utf8_mbstowcs (_("PRIME process seems terminated abnormally.")));
+        message = _("PRIME process seems terminated abnormally.");
+        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
 
         return NULL;
 
     } else if (m_prime.major_version () < 1) {
-        update_aux_string (utf8_mbstowcs (_("Your PRIME is out of date. "
-                                            "Please install PRIME-1.0.0 or later.")));
+        message = _("Your PRIME is out of date. "
+                    "Please install PRIME-1.0.0 or later.");
+        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
         m_disable = true;
+
         return NULL;
     }
 
     if (!m_session)
-        m_session = m_prime.session_start ();
+        action_set_language_japanese ();
 
     if (!m_session) {
         m_disable = true;
 
-        update_aux_string (utf8_mbstowcs (_("Couldn't start PRIME session.")));
+        message = _("Couldn't start PRIME session.");
+        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
     }
 
@@ -492,9 +531,8 @@ PrimeInstance::set_prediction (void)
         candidates.size () > 0 &&
         candidates[0].m_conversion.length () > 0)
     {
-        for (unsigned int i = 0; i < candidates.size (); i++) {
+        for (unsigned int i = 0; i < candidates.size (); i++)
             m_lookup_table.append_candidate (candidates[i].m_conversion);
-        }
         m_lookup_table.show_cursor (false);
         update_lookup_table (m_lookup_table);
         show_lookup_table ();
@@ -1310,21 +1348,75 @@ PrimeInstance::action_toggle_language (void)
     std::vector<String> list;
     get_session()->get_env (key, type, list);
 
-    m_prime.session_end (m_session);
-    delete m_session;
-    m_session = NULL;
-
-    if (list.empty ()) {
-        m_session = m_prime.session_start ();
-        return true;
-    }
+    if (list.empty ())
+        return action_set_language_japanese ();
 
     if (list[0] == "English") {
-        m_session = m_prime.session_start ("Japanese");
+        return action_set_language_japanese ();
     } else if (list[0] == "Japanese") {
-        m_session = m_prime.session_start ("English");
+        return action_set_language_english ();
     } else {
-        m_session = m_prime.session_start ("Japanese");
+        return action_set_language_japanese ();
+    }
+
+    return false;
+}
+
+bool
+PrimeInstance::action_set_language_japanese (void)
+{
+    // This code causes endless loop. FIXME!
+    //reset ();
+
+    if (m_session) {
+        m_prime.session_end (m_session);
+        delete m_session;
+        m_session = NULL;
+    }
+
+    m_session = m_prime.session_start ("Japanese");
+
+    PropertyList::iterator it = std::find (m_properties.begin (),
+                                           m_properties.end (),
+                                           SCIM_PROP_LANGUAGE);
+    if (it != m_properties.end ()) {
+        if (m_session) {
+            it->set_label (_("Japanese"));
+            update_property (*it);
+        } else {
+            it->set_label ("");
+            update_property (*it);
+        }
+    }
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_language_english (void)
+{
+    // This code causes endless loop. FIXME!
+    //reset ();
+
+    if (m_session) {
+        m_prime.session_end (m_session);
+        delete m_session;
+        m_session = NULL;
+    }
+
+    m_session = m_prime.session_start ("English");
+
+    PropertyList::iterator it = std::find (m_properties.begin (),
+                                           m_properties.end (),
+                                           SCIM_PROP_LANGUAGE);
+    if (it != m_properties.end ()) {
+        if (m_session) {
+            it->set_label (_("English"));
+            update_property (*it);
+        } else {
+            it->set_label ("");
+            update_property (*it);
+        }
     }
 
     return true;

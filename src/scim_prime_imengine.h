@@ -141,6 +141,8 @@ private: // actions
     bool   action_set_mode_wide_ascii          (void);
 
     bool   action_toggle_language              (void);
+    bool   action_set_language_japanese        (void);
+    bool   action_set_language_english         (void);
 
     bool   action_register_a_word              (void);
 
@@ -153,6 +155,7 @@ private:
     void   set_prediction                      (void);
 
     void   select_candidate_no_direct          (unsigned int    item);
+    void   install_properties                  (void);
 
     /* processing key event */
     bool   process_key_event_lookup_keybind    (const KeyEvent &key);
