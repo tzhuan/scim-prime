@@ -1,7 +1,7 @@
 2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
 
-	* src/scim_prime_imengine.cpp: Dont't recreate the session when same
-	language with current session is selected.
+	* src/scim_prime_imengine.cpp: Dont't recreate the session when the
+	same language with the current session is selected.
 
 2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
 
