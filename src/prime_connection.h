@@ -47,12 +47,15 @@ public:
 public:
     WideString m_preedition;
     WideString m_conversion;
-    int        m_priority;
+    String     m_priority;
     WideString m_part;
     WideString m_base;
     WideString m_basekey;
     WideString m_suffix;
+    WideString m_rest;
     WideString m_conjugation;
+    WideString m_usage;
+    WideString m_annotation;
 };
 
 
@@ -111,7 +114,8 @@ public:
 private:
     void                split_string        (String              &str,
                                              std::vector<String> &str_list,
-                                             char                *delim);
+                                             char                *delim,
+                                             int                  num = -1);
 
 
 public:

@@ -613,6 +613,7 @@ PrimeInstance::reset ()
     m_registering_key   = WideString ();
     m_registering_value = WideString ();
 
+    m_candidates.clear();
     m_converting     = false;
 
     if (m_session)
@@ -736,6 +737,7 @@ PrimeInstance::set_prediction (void)
         m_session->edit_get_query_string (query);
 
         PrimeCandidates candidates;
+        m_prime.set_context (m_context);
         m_prime.lookup (query, candidates);
 
         if (is_preediting () &&
@@ -777,9 +779,17 @@ PrimeInstance::action_commit (void)
 {
     if (is_registering ()) {
         if (is_converting ()) {
-            int pos = m_lookup_table.get_cursor_pos_in_current_page ();
-            m_registering_value += m_lookup_table.get_candidate_in_current_page (pos);
+            int pos = m_lookup_table.get_cursor_pos ();
+            PrimeCandidate &cand = m_candidates[pos];
 
+            m_registering_value += cand.m_conversion;
+
+            m_prime.learn_word (cand.m_basekey, cand.m_base,
+                                cand.m_part,    m_context,
+                                cand.m_suffix,  cand.m_rest);
+            m_context = cand.m_base + cand.m_suffix + cand.m_rest;
+
+            m_candidates.clear();
             m_converting = false;
             if (m_session)
                 m_session->edit_erase();
@@ -803,7 +813,9 @@ PrimeInstance::action_commit (void)
             set_preedition ();
 
         } else {
-            if (m_registering_key.length () > 0 && m_registering_value.length () > 0) {
+            if (m_registering_key.length () > 0 &&
+                m_registering_value.length () > 0)
+            {
                 m_prime.learn_word (m_registering_key, m_registering_value,
                                     WideString (), WideString (),
                                     WideString (), WideString ());
@@ -813,10 +825,13 @@ PrimeInstance::action_commit (void)
         }
 
     } else if (is_converting ()) {
-        int pos = m_lookup_table.get_cursor_pos_in_current_page ();
-        WideString cand = m_lookup_table.get_candidate_in_current_page (pos);
-        commit_string (cand);
-        m_prime.set_context (cand);
+        int pos = m_lookup_table.get_cursor_pos ();
+        PrimeCandidate &cand = m_candidates[pos];
+        commit_string (cand.m_conversion);
+        m_prime.learn_word (cand.m_basekey, cand.m_base,
+                            cand.m_part,    m_context,
+                            cand.m_suffix,  cand.m_rest);
+        m_context = cand.m_base + cand.m_suffix + cand.m_rest;
 
         reset ();
 
@@ -826,7 +841,6 @@ PrimeInstance::action_commit (void)
             m_session->edit_get_preedition (left, cursor, right);
             commit_string (left + cursor + right);
             all = left + cursor + right;
-            m_prime.set_context (all);
         }
 
         reset ();
@@ -854,10 +868,11 @@ PrimeInstance::action_convert (void)
         String query;
         m_session->edit_get_query_string (query);
 
-        PrimeCandidates candidates;
-        m_prime.lookup (query, candidates, PRIME_LOOKUP_ALL);
-        for (unsigned int i = 0; i < candidates.size (); i++)
-            m_lookup_table.append_candidate (candidates[i].m_conversion);
+        m_candidates.clear();
+        m_prime.set_context (m_context);
+        m_prime.lookup (query, m_candidates, PRIME_LOOKUP_ALL);
+        for (unsigned int i = 0; i < m_candidates.size (); i++)
+            m_lookup_table.append_candidate (m_candidates[i].m_conversion);
 
         m_lookup_table.set_cursor_pos (0);
         update_lookup_table (m_lookup_table);
@@ -878,6 +893,7 @@ PrimeInstance::action_revert (void)
     if (is_converting ()) {
         m_lookup_table.clear ();
         hide_lookup_table ();
+        m_candidates.clear();
         m_converting = false;
         set_preedition ();
 

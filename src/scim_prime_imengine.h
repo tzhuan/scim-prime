@@ -111,6 +111,10 @@ private:
     /* for toolbar */
     PropertyList            m_properties;
 
+    /* values */
+    PrimeCandidates         m_candidates;
+    WideString              m_context;
+
     /* flags */
     bool                    m_converting;
     bool                    m_registering;
