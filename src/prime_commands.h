@@ -68,7 +68,7 @@
 
 #define PRIME_CONTEXT_RESET          "context_reset"          // arg1:SESSION
 #define PRIME_CONTEXT_SET_PREVIOUS_WORD \
-                                     "context_set_previous_word"
+                                     "context_set_previous_wor"
                                                               // arg1: SESSION
                                                               // arg2: WORD
 
@@ -90,12 +90,12 @@
 #define PRIME_SEGMENT_SELECT         "segment_select"         // arg1:SESSION
                                                               // arg1:INDEX
 
-#define PRIME_MODIFY_STRART             "modify_start"
+#define PRIME_MODIFY_START              "modify_start"
 #define PRIME_MODIFY_CURSOR_EXPAND      "modify_cursor_expand"
 #define PRIME_MODIFY_CURSOR_SHRINK      "modify_cursor_shrink"
 #define PRIME_MODIFY_CURSOR_LEFT        "modify_cusror_left"
 #define PRIME_MODIFY_CURSOR_LEFT_EDGE   "modify_cursor_left_edge"
-#define PRIME_MODIFY_CURSOR_RIGHT_EDGE  "modify_cursor_right_edge"
+#define PRIME_MODIFY_CURSOR_RIGHT       "modify_cursor_right"
 #define PRIME_MODIFY_CURSOR_RIGHT_EDGE  "modify_cursor_right_edge"
 #define PRIME_MODIFY_GET_CANDIDATES     "modify_get_candidates"
 #define PRIME_MODIFY_GET_CONVERSION     "modify_get_conversion"

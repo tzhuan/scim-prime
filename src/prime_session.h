@@ -47,14 +47,7 @@ public:
     virtual ~PrimeSession         ();
 
 public: // prime commands
-    void        conv_predict             (PrimeCandidates &candidates,
-                                          String method = String ());
-    void        conv_convert             (PrimeCandidates &candidates,
-                                          String method = String ());
-    void        conv_select              (WideString &selected_string,
-                                          int index);
-    void        conv_commit              (WideString &commited_string);
-
+    // edit
     void        edit_backspace           (void);
     void        edit_commit              (void);
     void        edit_cursor_left         (void);
@@ -71,22 +64,39 @@ public: // prime commands
     void        edit_set_mode            (PrimePreeditionMode mode);
     void        edit_undo                (void);
 
-    void        modify_cursor_expand     (void);
+    // conv
+    void        conv_predict             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_convert             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_select              (WideString &selected_string,
+                                          int index);
+    void        conv_commit              (WideString &commited_string);
+
+    // modify
+    void        modify_start             (void);
     void        modify_cursor_left       (void);
     void        modify_cusror_left_edge  (void);
     void        modify_cursor_right      (void);
     void        modify_cursor_right_edge (void);
+    void        modify_cursor_expand     (void);
     void        modify_cursor_shrink     (void);
-    void        modify_get_candidates    (void);
-    void        modify_start             (void);
+    void        modify_get_candidates    (PrimeCandidates &candidates,
+                                          int &index);
+    void        modify_get_conversion    (WideString &left,
+                                          WideString &cursor,
+                                          WideString &right);
 
-    void        segment_commit           (void);
-    void        segment_reconvert        (void);
+    // segment
+    void        segment_reconvert        (PrimeCandidates &candidates);
     void        segment_select           (int index);
+    void        segment_commit           (void);
 
+    // context
     void        context_set_previous_word(WideString &word);
     void        context_reset            (void);
 
+    // env
     void        get_env                  (const String        &key,
                                           String              &type,
                                           std::vector<String> &values);

@@ -35,6 +35,126 @@ PrimeSession::~PrimeSession ()
 }
 
 void
+PrimeSession::edit_backspace (void)
+{
+    send_command (PRIME_EDIT_BACKSPACE);
+}
+
+void
+PrimeSession::edit_commit (void)
+{
+    send_command (PRIME_EDIT_COMMIT);
+}
+
+void
+PrimeSession::edit_cursor_left (void)
+{
+    send_command (PRIME_EDIT_CURSOR_LEFT);
+}
+
+void
+PrimeSession::edit_cursor_left_edge (void)
+{
+    send_command (PRIME_EDIT_CURSOR_LEFT_EDGE);
+}
+
+void
+PrimeSession::edit_cursor_right (void)
+{
+    send_command (PRIME_EDIT_CURSOR_RIGHT);
+}
+
+void
+PrimeSession::edit_cursor_right_edge (void)
+{
+    send_command (PRIME_EDIT_CURSOR_RIGHT_EDGE);
+}
+
+void
+PrimeSession::edit_delete (void)
+{
+    send_command (PRIME_EDIT_DELETE);
+}
+
+void
+PrimeSession::edit_erase (void)
+{
+    send_command (PRIME_EDIT_ERASE);
+}
+
+void
+PrimeSession::edit_get_preedition (WideString &left,
+                                   WideString &cursor,
+                                   WideString &right)
+{
+    bool success = send_command (PRIME_EDIT_GET_PREEDITION);
+
+    std::vector<String> list;
+    String preedition;
+
+    if (success) {
+        m_connection->get_reply (list, "\t", 3);
+
+        m_connection->m_iconv.convert (left,   list[0]);
+        m_connection->m_iconv.convert (cursor, list[1]);
+        m_connection->m_iconv.convert (right,  list[2]);
+    } else {
+        // error
+    }
+}
+
+void
+PrimeSession::edit_get_query_string (String &string)
+{
+    bool success = send_command (PRIME_EDIT_GET_QUERY_STRING);
+
+    if (success) {
+        m_connection->get_reply (string);
+    } else {
+        // error
+    }
+}
+
+void
+PrimeSession::edit_insert (const char *str)
+{
+    send_command (PRIME_EDIT_INSERT, str);
+}
+
+void
+PrimeSession::edit_set_mode (PrimePreeditionMode mode)
+{
+    char *command = "default";
+
+    switch (mode) {
+    case PRIME_PREEDITION_KATAKANA:
+        command = "katakana";
+        break;
+    case PRIME_PREEDITION_HALF_KATAKANA:
+        command = "half_katakana";
+        break;
+    case PRIME_PREEDITION_WIDE_ASCII:
+        command = "wide_ascii";
+        break;
+    case PRIME_PREEDITION_RAW:
+        command = "raw";
+        break;
+    case PRIME_PREEDITION_DEFAULT:
+    default:
+        command = "default";
+        break;
+    }
+
+    send_command (PRIME_EDIT_SET_MODE, command);
+}
+
+void
+PrimeSession::edit_undo (void)
+{
+    send_command (PRIME_EDIT_UNDO);
+}
+
+void
 PrimeSession::conv_predict (PrimeCandidates &candidates, String method)
 {
     bool success = send_command (PRIME_CONV_PREDICT);
@@ -116,138 +236,89 @@ PrimeSession::conv_commit (WideString &commited_string)
 }
 
 void
-PrimeSession::edit_backspace (void)
+PrimeSession::modify_start (void)
 {
-    send_command (PRIME_EDIT_BACKSPACE);
+    send_command (PRIME_MODIFY_START);
 }
 
 void
-PrimeSession::edit_commit (void)
+PrimeSession::modify_cursor_left (void)
 {
-    send_command (PRIME_EDIT_COMMIT);
+    send_command (PRIME_MODIFY_CURSOR_LEFT);
 }
 
 void
-PrimeSession::edit_cursor_left (void)
+PrimeSession::modify_cusror_left_edge (void)
 {
-    send_command (PRIME_EDIT_CURSOR_LEFT);
+    send_command (PRIME_MODIFY_CURSOR_LEFT_EDGE);
 }
 
 void
-PrimeSession::edit_cursor_left_edge (void)
+PrimeSession::modify_cursor_right (void)
 {
-    send_command (PRIME_EDIT_CURSOR_LEFT_EDGE);
+    send_command (PRIME_MODIFY_CURSOR_RIGHT);
 }
 
 void
-PrimeSession::edit_cursor_right (void)
+PrimeSession::modify_cursor_right_edge (void)
 {
-    send_command (PRIME_EDIT_CURSOR_RIGHT);
+    send_command (PRIME_MODIFY_CURSOR_RIGHT_EDGE);
 }
 
 void
-PrimeSession::edit_cursor_right_edge (void)
+PrimeSession::modify_cursor_expand (void)
 {
-    send_command (PRIME_EDIT_CURSOR_RIGHT_EDGE);
+    send_command (PRIME_MODIFY_CURSOR_EXPAND);
 }
 
 void
-PrimeSession::edit_delete (void)
+PrimeSession::modify_cursor_shrink (void)
 {
-    send_command (PRIME_EDIT_DELETE);
+    send_command (PRIME_MODIFY_CURSOR_SHRINK);
 }
 
 void
-PrimeSession::edit_erase (void)
+PrimeSession::modify_get_candidates (PrimeCandidates &candidates,
+                                     int &index)
 {
-    send_command (PRIME_EDIT_ERASE);
-}
-
-void
-PrimeSession::edit_get_preedition (WideString &left,
-                                   WideString &cursor,
-                                   WideString &right)
-{
-    bool success = send_command (PRIME_EDIT_GET_PREEDITION);
-
-    std::vector<String> list;
-    String preedition;
+    bool success = send_command (PRIME_MODIFY_GET_CANDIDATES);
 
     if (success) {
-        m_connection->get_reply (list, "\t");
-
-        if (list.size () >= 1)
-            m_connection->m_iconv.convert (left, list[0]);
-        if (list.size () >= 2)
-            m_connection->m_iconv.convert (cursor, list[1]);
-        if (list.size () >= 3)
-            m_connection->m_iconv.convert (right, list[2]);
+        get_candidates (candidates);
     } else {
         // error
     }
 }
 
 void
-PrimeSession::edit_get_query_string (String &string)
+PrimeSession::modify_get_conversion (WideString &left,
+                                     WideString &cursor,
+                                     WideString &right)
 {
-    bool success = send_command (PRIME_EDIT_GET_QUERY_STRING);
+    bool success = send_command (PRIME_MODIFY_GET_CONVERSION);
 
     if (success) {
-        m_connection->get_reply (string);
+        std::vector<String> cols;
+        m_connection->get_reply (cols, "\t", 3);
+
+        m_connection->m_iconv.convert (left,   cols[0]);
+        m_connection->m_iconv.convert (cursor, cols[1]);
+        m_connection->m_iconv.convert (right,  cols[2]);
     } else {
         // error
     }
 }
 
 void
-PrimeSession::edit_insert (const char *str)
+PrimeSession::segment_reconvert (PrimeCandidates &candidates)
 {
-    send_command (PRIME_EDIT_INSERT, str);
-}
+    bool success = send_command (PRIME_SEGMENT_RECONVERT);
 
-void
-PrimeSession::edit_set_mode (PrimePreeditionMode mode)
-{
-    char *command = "default";
-
-    switch (mode) {
-    case PRIME_PREEDITION_KATAKANA:
-        command = "katakana";
-        break;
-    case PRIME_PREEDITION_HALF_KATAKANA:
-        command = "half_katakana";
-        break;
-    case PRIME_PREEDITION_WIDE_ASCII:
-        command = "wide_ascii";
-        break;
-    case PRIME_PREEDITION_RAW:
-        command = "raw";
-        break;
-    case PRIME_PREEDITION_DEFAULT:
-    default:
-        command = "default";
-        break;
+    if (success) {
+        get_candidates (candidates);
+    } else {
+        // error
     }
-
-    send_command (PRIME_EDIT_SET_MODE, command);
-}
-
-void
-PrimeSession::edit_undo (void)
-{
-    send_command (PRIME_EDIT_UNDO);
-}
-
-void
-PrimeSession::segment_commit (void)
-{
-    send_command (PRIME_SEGMENT_COMMIT);
-}
-
-void
-PrimeSession::segment_reconvert (void)
-{
-    send_command (PRIME_SEGMENT_RECONVERT);
 }
 
 void
@@ -256,6 +327,12 @@ PrimeSession::segment_select (int index)
     char buf[32];
     sprintf(buf, "%10d", index);
     send_command (PRIME_SEGMENT_SELECT, buf);
+}
+
+void
+PrimeSession::segment_commit (void)
+{
+    send_command (PRIME_SEGMENT_COMMIT);
 }
 
 void

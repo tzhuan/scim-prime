@@ -79,7 +79,8 @@ public:
     void                get_reply           (String          &reply);
     void                get_reply           (WideString      &reply);
     void                get_reply           (Strings         &str_list,
-                                             char            *delim);
+                                             char            *delim,
+                                             int              num = -1);
 
     // get prime version
     void                version             (String          &version);

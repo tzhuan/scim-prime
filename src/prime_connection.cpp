@@ -469,9 +469,9 @@ PrimeConnection::get_reply (WideString &reply)
 }
 
 void
-PrimeConnection::get_reply (std::vector<String> &str_list, char *delim)
+PrimeConnection::get_reply (std::vector<String> &str_list, char *delim, int num)
 {
-    scim_prime_util_split_string (m_last_reply, str_list, delim);
+    scim_prime_util_split_string (m_last_reply, str_list, delim, num);
 }
 
 
