@@ -617,6 +617,9 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_command, "changed",
                       G_CALLBACK (on_default_editable_changed),
                       &__config_command);
+    g_signal_connect ((gpointer) __widget_auto_register, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_auto_register);
     g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_commit_on_upper);
