@@ -41,6 +41,10 @@ class PrimeFactory : public IMEngineFactoryBase
     ConfigPointer  m_config;
     Connection     m_reload_signal_connection;
 
+    /* for preference */
+    String       m_command;
+    String       m_typing_method;
+
     /* for key bindings */
     KeyEventList m_commit_keys;
     KeyEventList m_convert_keys;
@@ -56,6 +60,9 @@ class PrimeFactory : public IMEngineFactoryBase
 
     KeyEventList m_conv_next_candidate_keys;
     KeyEventList m_conv_prev_candidate_keys;
+    KeyEventList m_conv_next_page_keys;
+    KeyEventList m_conv_prev_page_keys;
+    KeyEventList m_select_candidate_keys[10];
 
     KeyEventList m_set_mode_default_keys;
     KeyEventList m_set_mode_katakana_keys;
@@ -158,6 +165,20 @@ private:
 
     bool   action_conv_next_candidate          (void);
     bool   action_conv_prev_candidate          (void);
+    bool   action_conv_next_page               (void);
+    bool   action_conv_prev_page               (void);
+
+    bool   action_select_candidate             (unsigned int i);
+    bool   action_select_candidate_1           (void);
+    bool   action_select_candidate_2           (void);
+    bool   action_select_candidate_3           (void);
+    bool   action_select_candidate_4           (void);
+    bool   action_select_candidate_5           (void);
+    bool   action_select_candidate_6           (void);
+    bool   action_select_candidate_7           (void);
+    bool   action_select_candidate_8           (void);
+    bool   action_select_candidate_9           (void);
+    bool   action_select_candidate_10          (void);
 
     bool   action_set_mode_default             (void);
     bool   action_set_mode_katakana            (void);

@@ -66,7 +66,8 @@ public:
     virtual ~PrimeConnection                ();
 
     // connection
-    void                open_connection     (const char *typing_method = NULL);
+    void                open_connection     (const char *command,
+                                             const char *typing_method = NULL);
     void                close_connection    (void);
 
     // comunication
@@ -95,7 +96,7 @@ public:
     void                reset_context       (void);
 
     // lookup
-    bool                lookup              (const char          *sequence,
+    bool                lookup              (const String        &sequence,
                                              PrimeCandidates     &candidates,
                                              const char          *command = PRIME_LOOKUP);
 

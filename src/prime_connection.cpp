@@ -51,7 +51,8 @@ PrimeConnection::~PrimeConnection ()
 }
 
 void
-PrimeConnection::open_connection (const char *typing_method)
+PrimeConnection::open_connection (const char *command,
+                                  const char *typing_method)
 {
     pid_t pid;
     int in_fd[2], out_fd[2], err_fd[2];
@@ -91,7 +92,7 @@ PrimeConnection::open_connection (const char *typing_method)
         char *argv[3];
         String method = "--typing-method=";
 
-        argv[0] = "prime";
+        argv[0] = (char *) command;
         if (typing_method) {
             method += typing_method;
             argv[1] = (char *) method.c_str();
@@ -234,14 +235,16 @@ PrimeConnection::reset_context (void)
 }
 
 bool
-PrimeConnection::lookup (const char *sequence, PrimeCandidates &candidates, const char *command)
+PrimeConnection::lookup (const String &sequence,
+                         PrimeCandidates &candidates,
+                         const char *command)
 {
     candidates.clear ();
 
     if (!command)
         command = PRIME_LOOKUP;
 
-    bool success = send_command (command, sequence, NULL);
+    bool success = send_command (command, sequence.c_str (), NULL);
     if (success) {
         std::vector<String> rows;
         split_string (m_last_reply, rows, "\n");

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-03-12 21:07+0900\n"
+"POT-Creation-Date: 2005-03-13 10:29+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:546
+#: src/scim_prime_imengine.cpp:648
 msgid "Learn a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:551
+#: src/scim_prime_imengine.cpp:653
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:556
+#: src/scim_prime_imengine.cpp:658
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:573
+#: src/scim_prime_imengine.cpp:675
 msgid "]"
 msgstr ""
 
@@ -232,30 +232,178 @@ msgstr ""
 msgid "The key events to select previous candidate. "
 msgstr ""
 
+#: src/scim_prime_imengine_setup.cpp:336
+msgid "Page down keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:337
+msgid "Select page down candidates keys"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:338
+msgid "The key events to select page down candidates. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:345
+msgid "Page up keys:"
+msgstr ""
+
 #: src/scim_prime_imengine_setup.cpp:346
-msgid "Common keys"
+msgid "Select page up candidates keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:347
+msgid "The key events to select page up candidates. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:367
+msgid "1st candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:368
+msgid "Select keys to select 1st candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:369
+msgid "The key events to select 1st candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:376
+msgid "2nd candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:377
+msgid "Select keys to select 2nd candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:378
+msgid "The key events to select 2nd candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:385
+msgid "3rd candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:386
+msgid "Select keys to select 3rd candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:387
+msgid "The key events to select 3rd candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:394
+msgid "4th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:395
+msgid "Select keys to select 4th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:396
+msgid "The key events to select 4th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:403
+msgid "5th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:404
+msgid "Select keys to select 5th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:405
+msgid "The key events to select 5th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:412
+msgid "6th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:413
+msgid "Select keys to select 6th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:414
+msgid "The key events to select 6th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:421
+msgid "7th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:422
+msgid "Select keys to select 7th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:423
+msgid "The key events to select 7th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:430
+msgid "8th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:431
+msgid "Select keys to select 8th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:432
+msgid "The key events to select 8th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:439
+msgid "9th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:440
+msgid "Select keys to select 9th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:441
+msgid "The key events to select 9th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:448
+msgid "10th candidate keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:449
+msgid "Select keys to select 10th candidate"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:450
+msgid "The key events to select 10th candidate. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:467
+msgid "Common keys"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:468
 msgid "Mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:348
+#: src/scim_prime_imengine_setup.cpp:469
 msgid "Caret keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:350
+#: src/scim_prime_imengine_setup.cpp:471
 msgid "Candidates keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:516
+#: src/scim_prime_imengine_setup.cpp:472
+msgid "Candidates keys (Direct select)"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:638
 msgid "Options"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:523
+#: src/scim_prime_imengine_setup.cpp:645
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:529
+#: src/scim_prime_imengine_setup.cpp:651
 msgid "Dictionary"
 msgstr ""

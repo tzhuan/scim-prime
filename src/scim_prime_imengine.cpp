@@ -184,7 +184,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
-    m_prime.open_connection ();
+    m_prime.open_connection ("prime");
     m_session = m_prime.session_start ();
 }
 
@@ -240,6 +240,54 @@ PrimeFactory::reload_config (const ConfigPointer &config)
         str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY),
                             String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT));
         scim_string_to_key_list (m_conv_prev_candidate_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY),
+                            String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT));
+        scim_string_to_key_list (m_conv_next_page_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY),
+                            String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT));
+        scim_string_to_key_list (m_conv_prev_page_keys, str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[0], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[1], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[2], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[3], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[4], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[5], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[6], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[7], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[8], str);
+
+        str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY),
+                            String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY_DEFAULT));
+        scim_string_to_key_list (m_select_candidate_keys[9], str);
 
         // mode keys
         str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY),
@@ -324,6 +372,54 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 
     if (match_key_event (m_factory->m_conv_prev_candidate_keys, key) &&
         action_conv_prev_candidate ())
+        return true;
+
+    if (match_key_event (m_factory->m_conv_next_page_keys, key) &&
+        action_conv_next_page ())
+        return true;
+
+    if (match_key_event (m_factory->m_conv_prev_page_keys, key) &&
+        action_conv_prev_page ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[0], key) &&
+        action_select_candidate_1 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[1], key) &&
+        action_select_candidate_2 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[2], key) &&
+        action_select_candidate_3 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[3], key) &&
+        action_select_candidate_4 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[4], key) &&
+        action_select_candidate_5 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[5], key) &&
+        action_select_candidate_6 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[6], key) &&
+        action_select_candidate_7 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[7], key) &&
+        action_select_candidate_8 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[8], key) &&
+        action_select_candidate_9 ())
+        return true;
+
+    if (match_key_event (m_factory->m_select_candidate_keys[9], key) &&
+        action_select_candidate_10 ())
         return true;
 
     // mode keys
@@ -622,7 +718,7 @@ PrimeInstance::set_prediction (void)
         m_session->edit_get_query_string (query);
 
         PrimeCandidates candidates;
-        m_prime.lookup (query.c_str (), candidates);
+        m_prime.lookup (query, candidates);
 
         if (is_preediting () &&
             candidates.size () > 0 &&
@@ -741,7 +837,7 @@ PrimeInstance::action_convert (void)
         m_session->edit_get_query_string (query);
 
         PrimeCandidates candidates;
-        m_prime.lookup (query.c_str (), candidates, PRIME_LOOKUP_ALL);
+        m_prime.lookup (query, candidates, PRIME_LOOKUP_ALL);
         for (unsigned int i = 0; i < candidates.size (); i++)
             m_lookup_table.append_candidate (candidates[i].m_conversion);
 
@@ -911,6 +1007,102 @@ PrimeInstance::action_conv_prev_candidate (void)
     select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
 
     return true;
+}
+
+bool
+PrimeInstance::action_conv_next_page (void)
+{
+    if (!is_converting ())
+        return false;
+
+    m_lookup_table.page_down ();
+    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+
+    return true;
+}
+
+bool
+PrimeInstance::action_conv_prev_page (void)
+{
+    if (!is_converting ())
+        return false;
+
+    m_lookup_table.page_up ();
+    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+
+    return true;
+}
+
+bool
+PrimeInstance::action_select_candidate (unsigned int i)
+{
+    if (!is_converting ())
+        return false;
+
+    select_candidate (i);
+
+    return true;
+}
+
+bool
+PrimeInstance::action_select_candidate_1 (void)
+{
+    return action_select_candidate (0);
+}
+
+bool
+PrimeInstance::action_select_candidate_2 (void)
+{
+    return action_select_candidate (1);
+}
+
+bool
+PrimeInstance::action_select_candidate_3 (void)
+{
+    return action_select_candidate (2);
+}
+
+bool
+PrimeInstance::action_select_candidate_4 (void)
+{
+    return action_select_candidate (3);
+}
+
+bool
+PrimeInstance::action_select_candidate_5 (void)
+{
+    return action_select_candidate (4);
+}
+
+bool
+PrimeInstance::action_select_candidate_6 (void)
+{
+    return action_select_candidate (5);
+}
+
+bool
+PrimeInstance::action_select_candidate_7 (void)
+{
+    return action_select_candidate (6);
+}
+
+
+bool
+PrimeInstance::action_select_candidate_8 (void)
+{
+    return action_select_candidate (7);
+}
+
+bool
+PrimeInstance::action_select_candidate_9 (void)
+{
+    return action_select_candidate (8);
+}
+
+bool
+PrimeInstance::action_select_candidate_10 (void)
+{
+    return action_select_candidate (9);
 }
 
 bool
