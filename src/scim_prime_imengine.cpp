@@ -219,6 +219,12 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_show_usage
         = config->read (String (SCIM_PRIME_CONFIG_SHOW_USAGE),
                         SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT);
+    m_space_char
+        = config->read (String (SCIM_PRIME_CONFIG_SPACE_CHAR),
+                        String (SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT));
+    m_alt_space_char
+        = config->read (String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR),
+                        String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT));
 
     // edit keys
     str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
@@ -240,6 +246,14 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     str = config->read (String (SCIM_PRIME_CONFIG_DELETE_KEY),
                         String (SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT));
     scim_string_to_key_list (m_delete_keys, str);
+
+    str = config->read (String (SCIM_PRIME_CONFIG_SPACE_KEY),
+                        String (SCIM_PRIME_CONFIG_SPACE_KEY_DEFAULT));
+    scim_string_to_key_list (m_space_keys, str);
+
+    str = config->read (String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY),
+                        String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY_DEFAULT));
+    scim_string_to_key_list (m_alt_space_keys, str);
 
     // caret keys
     str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY),
@@ -371,6 +385,14 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 
     if (match_key_event (m_factory->m_delete_keys, key) &&
         action_edit_delete ())
+        return true;
+
+    if (match_key_event (m_factory->m_space_keys, key) &&
+        action_insert_space ())
+        return true;
+
+    if (match_key_event (m_factory->m_alt_space_keys, key) &&
+        action_insert_alternative_space ())
         return true;
 
     // caret keys
@@ -1087,6 +1109,30 @@ PrimeInstance::action_edit_delete (void)
         m_session->edit_delete ();
 
     set_preedition();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_insert_space (void)
+{
+    if (is_preediting ())
+        return false;
+
+    if (!is_registering ())
+        commit_string (utf8_mbstowcs (m_factory->m_space_char));
+
+    return true;
+}
+
+bool
+PrimeInstance::action_insert_alternative_space (void)
+{
+    if (is_preediting ())
+        return false;
+
+    if (!is_registering ())
+        commit_string (utf8_mbstowcs (m_factory->m_alt_space_char.c_str()));
 
     return true;
 }

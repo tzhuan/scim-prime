@@ -27,12 +27,17 @@
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
 #define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
+#define SCIM_PRIME_CONFIG_SPACE_CHAR                          "/IMEngine/PRIME/SpaceChar"
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR              "/IMEngine/PRIME/AlternativeSpaceChar"
+
 #define SCIM_PRIME_CONFIG_COMMIT_KEY                          "/IMEngine/PRIME/CommitKey"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY            "/IMEngine/PRIME/CommitWithoutLearnKey"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY                         "/IMEngine/PRIME/ConvertKey"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY                          "/IMEngine/PRIME/CancelKey"
 #define SCIM_PRIME_CONFIG_BACKSPACE_KEY                       "/IMEngine/PRIME/BackSpaceKey"
 #define SCIM_PRIME_CONFIG_DELETE_KEY                          "/IMEngine/PRIME/DeleteKey"
+#define SCIM_PRIME_CONFIG_SPACE_KEY                           "/IMEngine/PRIME/SpaceKey"
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY               "/IMEngine/PRIME/AlternativeSpaceKey"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY               "/IMEngine/PRIME/MoveCaretLeftKey"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY              "/IMEngine/PRIME/MoveCaretRightKey"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY          "/IMEngine/PRIME/MoveCaretLeftEdgeKey"
@@ -64,12 +69,17 @@
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
 #define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  false
+#define SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT                  " "
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT      "\xE3\x80\x80"
+
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M,Henkan"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY_DEFAULT    "Muhenkan"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT                  "Escape,Control+g,Control+G"
 #define SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT               "BackSpace,Control+h,Control+H"
 #define SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT                  "Delete,Control+d,Control+D"
+#define SCIM_PRIME_CONFIG_SPACE_KEY_DEFAULT                   "space"
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY_DEFAULT       "Shift+space,Alt+space"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT  "Control+a,Control+A,Home"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT "Control+e,Control+E,End"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT       "Left,Control+b,Control+B"

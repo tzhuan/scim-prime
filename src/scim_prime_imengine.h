@@ -48,6 +48,8 @@ class PrimeFactory : public IMEngineFactoryBase
     bool         m_commit_on_upper;
     bool         m_show_annotation;
     bool         m_show_usage;
+    String       m_space_char;
+    String       m_alt_space_char;
 
     /* for key bindings */
     KeyEventList m_commit_keys;
@@ -56,6 +58,9 @@ class PrimeFactory : public IMEngineFactoryBase
 
     KeyEventList m_backspace_keys;
     KeyEventList m_delete_keys;
+
+    KeyEventList m_space_keys;
+    KeyEventList m_alt_space_keys;
 
     KeyEventList m_modify_caret_left_keys;
     KeyEventList m_modify_caret_right_keys;
@@ -173,6 +178,9 @@ private:
 
     bool   action_edit_backspace               (void);
     bool   action_edit_delete                  (void);
+
+    bool   action_insert_space                 (void);
+    bool   action_insert_alternative_space     (void);
 
     bool   action_conv_next_candidate          (void);
     bool   action_conv_prev_candidate          (void);
