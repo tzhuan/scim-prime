@@ -183,6 +183,14 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
     m_session = m_prime.session_start ();
 }
 
+#define APPEND_ACTION(key, func) \
+{ \
+    String name = "func", str; \
+    str = config->read (String (SCIM_PRIME_CONFIG_##key##_KEY), \
+                        String (SCIM_PRIME_CONFIG_##key##_KEY_DEFAULT)); \
+    m_actions.push_back (PrimeAction (name, str, &PrimeInstance::func)); \
+}
+
 void
 PrimeFactory::reload_config (const ConfigPointer &config)
 {
@@ -216,133 +224,45 @@ PrimeFactory::reload_config (const ConfigPointer &config)
                         String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT));
 
     // edit keys
-    str = config->read (String (SCIM_PRIME_CONFIG_COMMIT_KEY),
-                        String (SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT));
-    scim_string_to_key_list (m_commit_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_CONVERT_KEY),
-                        String (SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT));
-    scim_string_to_key_list (m_convert_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_CANCEL_KEY),
-                        String (SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT));
-    scim_string_to_key_list (m_cancel_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_BACKSPACE_KEY),
-                        String (SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT));
-    scim_string_to_key_list (m_backspace_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_DELETE_KEY),
-                        String (SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT));
-    scim_string_to_key_list (m_delete_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SPACE_KEY),
-                        String (SCIM_PRIME_CONFIG_SPACE_KEY_DEFAULT));
-    scim_string_to_key_list (m_space_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY),
-                        String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY_DEFAULT));
-    scim_string_to_key_list (m_alt_space_keys, str);
+    APPEND_ACTION (COMMIT,                  action_commit);
+    APPEND_ACTION (CONVERT,                 action_convert);
+    APPEND_ACTION (CANCEL,                  action_revert);
+    APPEND_ACTION (BACKSPACE,               action_edit_backspace);
+    APPEND_ACTION (DELETE,                  action_edit_delete);
+    APPEND_ACTION (SPACE,                   action_insert_space);
+    APPEND_ACTION (ALTERNATIVE_SPACE,       action_insert_alternative_space);
 
     // caret keys
-    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY),
-                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT));
-    scim_string_to_key_list (m_modify_caret_left_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY),
-                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT));
-    scim_string_to_key_list (m_modify_caret_right_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY),
-                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT));
-    scim_string_to_key_list (m_modify_caret_left_edge_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY),
-                        String (SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT));
-    scim_string_to_key_list (m_modify_caret_right_edge_keys, str);
+    APPEND_ACTION (MODIFY_CARET_LEFT,       action_modify_caret_left);
+    APPEND_ACTION (MODIFY_CARET_RIGHT,      action_modify_caret_right);
+    APPEND_ACTION (MODIFY_CARET_LEFT_EDGE,  action_modify_caret_left_edge);
+    APPEND_ACTION (MODIFY_CARET_RIGHT_EDGE, action_modify_caret_right_edge);
 
     // candidate keys
-    str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY),
-                        String (SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT));
-    scim_string_to_key_list (m_conv_next_candidate_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY),
-                        String (SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT));
-    scim_string_to_key_list (m_conv_prev_candidate_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY),
-                        String (SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT));
-    scim_string_to_key_list (m_conv_next_page_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY),
-                        String (SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT));
-    scim_string_to_key_list (m_conv_prev_page_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[0], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[1], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[2], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_4_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[3], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_5_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[4], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_6_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[5], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_7_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[6], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_8_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[7], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_9_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[8], str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY),
-                        String (SCIM_PRIME_CONFIG_SELECT_CANDIDATE_10_KEY_DEFAULT));
-    scim_string_to_key_list (m_select_candidate_keys[9], str);
+    APPEND_ACTION (CONV_NEXT_CANDIDATE,     action_conv_next_candidate);
+    APPEND_ACTION (CONV_PREV_CANDIDATE,     action_conv_prev_candidate);
+    APPEND_ACTION (CONV_NEXT_PAGE,          action_conv_next_page);
+    APPEND_ACTION (CONV_PREV_PAGE,          action_conv_prev_page);
+    APPEND_ACTION (SELECT_CANDIDATE_1,      action_select_candidate_1);
+    APPEND_ACTION (SELECT_CANDIDATE_2,      action_select_candidate_2);
+    APPEND_ACTION (SELECT_CANDIDATE_3,      action_select_candidate_3);
+    APPEND_ACTION (SELECT_CANDIDATE_4,      action_select_candidate_4);
+    APPEND_ACTION (SELECT_CANDIDATE_5,      action_select_candidate_5);
+    APPEND_ACTION (SELECT_CANDIDATE_6,      action_select_candidate_6);
+    APPEND_ACTION (SELECT_CANDIDATE_7,      action_select_candidate_7);
+    APPEND_ACTION (SELECT_CANDIDATE_8,      action_select_candidate_8);
+    APPEND_ACTION (SELECT_CANDIDATE_9,      action_select_candidate_9);
+    APPEND_ACTION (SELECT_CANDIDATE_10,     action_select_candidate_10);
 
     // mode keys
-    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY),
-                        String (SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT));
-    scim_string_to_key_list (m_set_mode_default_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY),
-                        String (SCIM_PRIME_CONFIG_SET_MODE_KATAKANA_KEY_DEFAULT));
-    scim_string_to_key_list (m_set_mode_katakana_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY),
-                        String (SCIM_PRIME_CONFIG_SET_MODE_HALF_KATAKANA_KEY_DEFAULT));
-    scim_string_to_key_list (m_set_mode_half_katakana_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY),
-                        String (SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT));
-    scim_string_to_key_list (m_set_mode_raw_keys, str);
-
-    str = config->read (String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY),
-                        String (SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY_DEFAULT));
-    scim_string_to_key_list (m_set_mode_wide_ascii_keys, str);
+    APPEND_ACTION (SET_MODE_DEFAULT,        action_set_mode_default);
+    APPEND_ACTION (SET_MODE_KATAKANA,       action_set_mode_katakana);
+    APPEND_ACTION (SET_MODE_HALF_KATAKANA,  action_set_mode_half_katakana);
+    APPEND_ACTION (SET_MODE_RAW,            action_set_mode_raw);
+    APPEND_ACTION (SET_MODE_WIDE_ASCII,     action_set_mode_wide_ascii);
 
     // register a word
-    str = config->read (String (SCIM_PRIME_CONFIG_REGISTER_WORD_KEY),
-                        String (SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT));
-    scim_string_to_key_list (m_register_word_keys, str);
+    APPEND_ACTION (REGISTER_WORD,           action_register_a_word);
 }
 
 PrimeInstance::~PrimeInstance ()
@@ -355,134 +275,11 @@ PrimeInstance::~PrimeInstance ()
 bool
 PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 {
-    // edit keys
-    if (match_key_event (m_factory->m_commit_keys, key) &&
-        action_commit ())
-        return true;
-
-    if (match_key_event (m_factory->m_convert_keys, key) &&
-        action_convert ())
-        return true;
-
-    if (match_key_event (m_factory->m_cancel_keys, key) &&
-        action_revert ())
-        return true;
-
-    if (match_key_event (m_factory->m_backspace_keys, key) &&
-        action_edit_backspace ())
-        return true;
-
-    if (match_key_event (m_factory->m_delete_keys, key) &&
-        action_edit_delete ())
-        return true;
-
-    if (match_key_event (m_factory->m_space_keys, key) &&
-        action_insert_space ())
-        return true;
-
-    if (match_key_event (m_factory->m_alt_space_keys, key) &&
-        action_insert_alternative_space ())
-        return true;
-
-    // caret keys
-    if (match_key_event (m_factory->m_modify_caret_left_keys, key) &&
-        action_modify_caret_left ())
-        return true;
-
-    if (match_key_event (m_factory->m_modify_caret_right_keys, key) &&
-        action_modify_caret_right ())
-        return true;
-
-    if (match_key_event (m_factory->m_modify_caret_left_edge_keys, key) &&
-        action_modify_caret_left_edge ())
-        return true;
-
-    if (match_key_event (m_factory->m_modify_caret_right_edge_keys, key) &&
-        action_modify_caret_right_edge ())
-        return true;
-
-    // candidate keys
-    if (match_key_event (m_factory->m_conv_next_candidate_keys, key) &&
-        action_conv_next_candidate ())
-        return true;
-
-    if (match_key_event (m_factory->m_conv_prev_candidate_keys, key) &&
-        action_conv_prev_candidate ())
-        return true;
-
-    if (match_key_event (m_factory->m_conv_next_page_keys, key) &&
-        action_conv_next_page ())
-        return true;
-
-    if (match_key_event (m_factory->m_conv_prev_page_keys, key) &&
-        action_conv_prev_page ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[0], key) &&
-        action_select_candidate_1 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[1], key) &&
-        action_select_candidate_2 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[2], key) &&
-        action_select_candidate_3 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[3], key) &&
-        action_select_candidate_4 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[4], key) &&
-        action_select_candidate_5 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[5], key) &&
-        action_select_candidate_6 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[6], key) &&
-        action_select_candidate_7 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[7], key) &&
-        action_select_candidate_8 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[8], key) &&
-        action_select_candidate_9 ())
-        return true;
-
-    if (match_key_event (m_factory->m_select_candidate_keys[9], key) &&
-        action_select_candidate_10 ())
-        return true;
-
-    // mode keys
-    if (match_key_event (m_factory->m_set_mode_default_keys, key) &&
-        action_set_mode_default ())
-        return true;
-
-    if (match_key_event (m_factory->m_set_mode_katakana_keys, key) &&
-        action_set_mode_katakana ())
-        return true;
-
-    if (match_key_event (m_factory->m_set_mode_half_katakana_keys, key) &&
-        action_set_mode_half_katakana ())
-        return true;
-
-    if (match_key_event (m_factory->m_set_mode_raw_keys, key) &&
-        action_set_mode_raw ())
-        return true;
-
-    if (match_key_event (m_factory->m_set_mode_wide_ascii_keys, key) &&
-        action_set_mode_wide_ascii ())
-        return true;
-
-    // register a word
-    if (match_key_event (m_factory->m_register_word_keys, key) &&
-        action_register_a_word ())
-        return true;
+    std::vector<PrimeAction>::iterator it = m_factory->m_actions.begin();
+    for (; it != m_factory->m_actions.end(); it++) {
+        if ((*it).perform (this, key))
+            return true;
+    }
 
     return false;
 }

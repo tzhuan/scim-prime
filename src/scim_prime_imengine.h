@@ -29,6 +29,8 @@
 #define Uses_SCIM_ICONV
 #include <scim.h>
 #include <prime_connection.h>
+#include "scim_prime_action.h"
+
 using namespace scim;
 
 class PrimeFactory : public IMEngineFactoryBase
@@ -52,34 +54,7 @@ class PrimeFactory : public IMEngineFactoryBase
     String       m_alt_space_char;
 
     /* for key bindings */
-    KeyEventList m_commit_keys;
-    KeyEventList m_convert_keys;
-    KeyEventList m_cancel_keys;
-
-    KeyEventList m_backspace_keys;
-    KeyEventList m_delete_keys;
-
-    KeyEventList m_space_keys;
-    KeyEventList m_alt_space_keys;
-
-    KeyEventList m_modify_caret_left_keys;
-    KeyEventList m_modify_caret_right_keys;
-    KeyEventList m_modify_caret_left_edge_keys;
-    KeyEventList m_modify_caret_right_edge_keys;
-
-    KeyEventList m_conv_next_candidate_keys;
-    KeyEventList m_conv_prev_candidate_keys;
-    KeyEventList m_conv_next_page_keys;
-    KeyEventList m_conv_prev_page_keys;
-    KeyEventList m_select_candidate_keys[10];
-
-    KeyEventList m_set_mode_default_keys;
-    KeyEventList m_set_mode_katakana_keys;
-    KeyEventList m_set_mode_half_katakana_keys;
-    KeyEventList m_set_mode_raw_keys;
-    KeyEventList m_set_mode_wide_ascii_keys;
-
-    KeyEventList m_register_word_keys;
+    std::vector<PrimeAction> m_actions;
 
 public:
     PrimeFactory (const String &lang,
@@ -103,6 +78,8 @@ private:
 
 class PrimeInstance : public IMEngineInstanceBase
 {
+    friend class PrimeFactory;
+
 private:
     static PrimeConnection  m_prime;
 
@@ -153,20 +130,7 @@ public:
     virtual bool is_converting                 (void);
     virtual bool is_registering                (void);
 
-private:
-    void   set_preedition                      (void);
-    void   set_prediction                      (void);
-
-    void   select_candidate_no_direct          (unsigned int    item);
-
-    /* processing key event */
-    bool   process_key_event_lookup_keybind    (const KeyEvent &key);
-    bool   process_key_event_without_preedit   (const KeyEvent &key);
-    bool   process_key_event_with_preedit      (const KeyEvent &key);
-    bool   process_key_event_with_candidate    (const KeyEvent &key);
-    bool   process_remaining_key_event         (const KeyEvent &key);
-
-    /* actions */
+private: // actions
     bool   action_commit                       (void);
     bool   action_convert                      (void);
     bool   action_revert                       (void);
@@ -187,7 +151,6 @@ private:
     bool   action_conv_next_page               (void);
     bool   action_conv_prev_page               (void);
 
-    bool   action_select_candidate             (unsigned int i);
     bool   action_select_candidate_1           (void);
     bool   action_select_candidate_2           (void);
     bool   action_select_candidate_3           (void);
@@ -207,8 +170,22 @@ private:
 
     bool   action_register_a_word              (void);
 
+private:
+    void   set_preedition                      (void);
+    void   set_prediction                      (void);
+
+    void   select_candidate_no_direct          (unsigned int    item);
+
+    /* processing key event */
+    bool   process_key_event_lookup_keybind    (const KeyEvent &key);
+    bool   process_key_event_without_preedit   (const KeyEvent &key);
+    bool   process_key_event_with_preedit      (const KeyEvent &key);
+    bool   process_key_event_with_candidate    (const KeyEvent &key);
+    bool   process_remaining_key_event         (const KeyEvent &key);
+
     /* utility */
     bool   action_commit_on_register           (void);
+    bool   action_select_candidate             (unsigned int i);
     bool   match_key_event                     (const KeyEventList &keys,
                                                 const KeyEvent     &key) const;
     void   get_candidate_label                 (WideString         &label,

@@ -11,6 +11,7 @@ noinst_HEADERS = \
 	prime_commands.h \
 	prime_connection.h \
 	prime_session.h \
+	scim_prime_action.h \
 	scim_prime_imengine.h \
 	scim_prime_prefs.h
 
@@ -20,6 +21,7 @@ module_LTLIBRARIES = prime.la
 prime_la_SOURCES = \
 	prime_connection.cpp \
 	prime_session.cpp \
+	scim_prime_action.cpp \
 	scim_prime_imengine.cpp
 
 prime_la_CFLAGS = @SCIM_CFLAGS@  @SCIM_DEBUG_FLAGS@
