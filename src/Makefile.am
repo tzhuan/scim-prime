@@ -7,6 +7,7 @@ INCLUDE	= \
 	-I$(top_srcdir)/src 
 
 noinst_HEADERS = \
+	intl.h \
 	prime_commands.h \
 	prime_connection.h \
 	prime_session.h \

@@ -1,7 +1,7 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
  *  Copyright (C) Hiroyuki Ikezoe <poincare@ikezoe.net>
- *  Copyright (C) 2004 Takuro Ashie <ashie@homa.ne.jp>
+ *  Copyright (C) 2004 - 2005 Takuro Ashie <ashie@homa.ne.jp>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -40,18 +40,7 @@
 #include <scim.h>
 #include "scim_prime_imengine.h"
 #include "scim_prime_prefs.h"
-
-#ifdef HAVE_GETTEXT
-  #include <libintl.h>
-  #define _(String) dgettext(GETTEXT_PACKAGE,String)
-  #define N_(String) (String)
-#else
-  #define _(String) (String)
-  #define N_(String) (String)
-  #define bindtextdomain(Package,Directory)
-  #define textdomain(domain)
-  #define bind_textdomain_codeset(domain,codeset)
-#endif
+#include "intl.h"
 
 #define scim_module_init prime_LTX_scim_module_init
 #define scim_module_exit prime_LTX_scim_module_exit
