@@ -403,13 +403,38 @@ PrimeInstance::set_preedition (void)
         WideString left, cursor, right;
         get_session()->edit_get_preedition (left, cursor, right);
 
+#if 0
+        if (!left.empty () && cursor.empty () && right.empty ())
+            cursor = utf8_mbstowcs (" ");
+
+        AttributeList attr_list;
+        if (!cursor.empty ()) {
+            Attribute attr (left.length (), cursor.length(), SCIM_ATTR_DECORATE);
+            attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+            attr_list.push_back (attr);
+        }
+
+        if (left.length () + cursor.length () + right.length () > 0) {
+            show_preedit_string ();
+            show_aux_string ();
+        } else {
+            hide_preedit_string ();
+            hide_aux_string ();
+        }
+
+        m_candidates.clear ();
+        get_session()->conv_predict (m_candidates);
+
+        if (m_candidates.size () > 0)
+            update_preedit_string (m_candidates[0].m_conversion);
+        else
+            update_preedit_string (left + cursor +right, attr_list);
+        update_aux_string (left + cursor + right, attr_list);
+        update_preedit_caret (0);
+#else
         update_preedit_string (left + cursor + right);
         update_preedit_caret (left.length ());
-
-        if (left.length () + cursor.length () + right.length () > 0)
-            show_preedit_string ();
-        else
-            hide_preedit_string ();
+#endif
 
     } else {
         update_preedit_string (WideString());
@@ -713,6 +738,7 @@ PrimeInstance::action_convert (void)
     m_converting = true;
 
     m_lookup_table.clear ();
+    m_candidates.clear ();
 
     int idx = 0;
 
@@ -1108,17 +1134,12 @@ PrimeInstance::action_select_candidate (unsigned int i)
 
     // on prediction
     if (m_factory->m_direct_select_on_prediction &&
-        m_lookup_table.number_of_candidates () > i)
+        m_lookup_table.number_of_candidates () > i &&
+        m_candidates.size () > i)
     {
-        PrimeCandidates candidates;
-        get_session()->conv_predict (candidates);
-        if (candidates.size() > i) {
-            commit_string (candidates[i].m_conversion);
-            reset ();
-            return true;
-        } else {
-            return false;
-        }
+        commit_string (m_candidates[i].m_conversion);
+        reset ();
+        return true;
     }
 
     return false;
