@@ -159,7 +159,8 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
 
-        action_finish_selecting_candidates ();
+        //action_finish_selecting_candidates ();
+        m_lookup_table.show_cursor (false);
         get_session()->edit_insert (buf);
         set_preedition ();
 
@@ -985,7 +986,8 @@ PrimeInstance::action_edit_backspace (void)
         return true;
     }
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_backspace ();
     set_preedition ();
 
@@ -1011,7 +1013,8 @@ PrimeInstance::action_edit_delete (void)
     if (is_converting ())
         return false;
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_delete ();
     set_preedition();
 
@@ -1330,7 +1333,8 @@ PrimeInstance::action_set_mode_default (void)
     if (is_converting ())
         action_revert ();
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_DEFAULT);
     set_preedition ();
 
@@ -1346,7 +1350,8 @@ PrimeInstance::action_set_mode_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    action_finish_selecting_candidates ();
+    // action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_KATAKANA);
     set_preedition ();
 
@@ -1362,7 +1367,8 @@ PrimeInstance::action_set_mode_half_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
     set_preedition ();
 
@@ -1378,7 +1384,8 @@ PrimeInstance::action_set_mode_raw (void)
     if (is_converting ())
         action_revert ();
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_RAW);
     set_preedition ();
 
@@ -1394,7 +1401,8 @@ PrimeInstance::action_set_mode_wide_ascii (void)
     if (is_converting ())
         action_revert ();
 
-    action_finish_selecting_candidates ();
+    //action_finish_selecting_candidates ();
+    m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
 
