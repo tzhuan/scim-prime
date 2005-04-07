@@ -227,6 +227,7 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     APPEND_ACTION (COMMIT_WITHOUT_LEARN,    action_commit_without_learn);
     APPEND_ACTION (CONVERT,                 action_convert);
     APPEND_ACTION (CANCEL,                  action_revert);
+    APPEND_ACTION (SELECT_PREDICTION,       action_start_selecting_prediction);
     APPEND_ACTION (BACKSPACE,               action_edit_backspace);
     APPEND_ACTION (DELETE,                  action_edit_delete);
     APPEND_ACTION (SPACE,                   action_insert_space);

@@ -88,6 +88,7 @@ public:
 
 public:
     virtual bool is_preediting                 (void);
+    virtual bool is_selecting_prediction       (void);
     virtual bool is_converting                 (void);
     virtual bool is_modifying                  (void);
     virtual bool is_registering                (void);
@@ -97,6 +98,7 @@ private: // actions
     bool   action_commit_without_learn         (void);
     bool   action_convert                      (void);
     bool   action_revert                       (void);
+    bool   action_start_selecting_prediction   (void);
     bool   action_finish_selecting_candidates  (void);
 
     bool   action_modify_caret_left            (void);

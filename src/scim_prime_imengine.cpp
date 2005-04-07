@@ -149,7 +149,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
 
     if (get_session () && isprint (key.get_ascii_code ())) {
-        if (is_converting () ||
+        if (is_converting () || is_selecting_prediction () ||
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
             action_commit (true);
@@ -159,6 +159,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
 
+        action_finish_selecting_candidates ();
         get_session()->edit_insert (buf);
         set_preedition ();
 
@@ -260,6 +261,7 @@ PrimeInstance::reset ()
     if (get_session())
         get_session()->edit_erase();
     m_lookup_table.clear ();
+    m_lookup_table.show_cursor (false);
     update_preedit_caret (0);
     update_preedit_string (utf8_mbstowcs (""));
     hide_lookup_table ();
@@ -396,6 +398,19 @@ PrimeInstance::set_preedition (void)
         update_preedit_caret (0);
         show_preedit_string ();
 
+    } else if (is_selecting_prediction ()) {
+        int pos = m_lookup_table.get_cursor_pos ();
+        WideString prediction = m_lookup_table.get_candidate (pos);
+
+        AttributeList attr_list;
+        Attribute attr (0, prediction.length(), SCIM_ATTR_DECORATE);
+        attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+        attr_list.push_back (attr);
+
+        update_preedit_string (prediction, attr_list);
+        update_preedit_caret (0);
+        show_preedit_string ();
+
     } else if (get_session ()) {
         WideString left, cursor, right;
         get_session()->edit_get_preedition (left, cursor, right);
@@ -480,6 +495,16 @@ PrimeInstance::set_preedition_on_register (void)
         attr.set_length (m_candidates[candpos].m_conversion.length ());
         attr_list.push_back (attr);
 
+    } else if (is_selecting_prediction ()) {
+        int candpos = m_lookup_table.get_cursor_pos ();
+        str += m_lookup_table.get_candidate (candpos);
+
+        attr.set_type (SCIM_ATTR_DECORATE);
+        attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+        attr.set_start (pos);
+        attr.set_length (m_lookup_table.get_candidate(candpos).length());
+        attr_list.push_back (attr);
+
     } else {
         WideString left, cursor, right, all;
         get_session()->edit_get_preedition (left, cursor, right);
@@ -522,6 +547,9 @@ PrimeInstance::set_prediction (void)
     if (is_converting () || is_modifying ())
         return;
 
+    if (is_selecting_prediction ())
+        return;
+
     m_lookup_table.clear ();
 
     PrimeCandidates candidates;
@@ -547,6 +575,12 @@ bool
 PrimeInstance::is_preediting (void)
 {
     return get_session() && get_session()->has_preedition ();
+}
+
+bool
+PrimeInstance::is_selecting_prediction (void)
+{
+    return m_lookup_table.is_cursor_visible ();
 }
 
 bool
@@ -587,7 +621,7 @@ PrimeInstance::action_commit (bool learn)
 
         reset ();
 
-    } else if (is_converting ()) {
+    } else if (is_converting () || is_selecting_prediction ()) {
         WideString cand, sel;
         get_session()->conv_select (sel, m_lookup_table.get_cursor_pos ());
         if (learn)
@@ -633,7 +667,7 @@ PrimeInstance::action_commit_on_register (bool learn)
         get_session()->edit_erase();
         set_preedition ();
 
-    } else if (is_converting ()) {
+    } else if (is_converting () || is_selecting_prediction ()) {
         WideString cand, sel;
         int pos = m_lookup_table.get_cursor_pos ();
 
@@ -731,6 +765,29 @@ PrimeInstance::action_convert (void)
 }
 
 bool
+PrimeInstance::action_start_selecting_prediction (void)
+{
+    if (!get_session ())
+        return false;
+
+    if (!is_preediting ())
+        return false;
+
+    if (is_selecting_prediction ())
+        return false;
+
+    if (is_converting ())
+        return false;
+
+    if (m_lookup_table.number_of_candidates () <= 0)
+        return false;
+
+    select_candidate_no_direct (0);
+
+    return true;
+}
+
+bool
 PrimeInstance::action_revert (void)
 {
     if (!get_session ())
@@ -752,14 +809,16 @@ PrimeInstance::action_revert (void)
             action_finish_selecting_candidates ();
 
         } else if (is_preediting ()) {
+            action_finish_selecting_candidates ();
             get_session()->edit_erase ();
-            m_lookup_table.clear ();
-            hide_lookup_table ();
+            //m_lookup_table.clear ();
+            //hide_lookup_table ();
             set_preedition ();
 
         } else {
             String query_string = m_query_string;
             reset (); 
+            action_finish_selecting_candidates ();
             get_session()->edit_insert (query_string.c_str());
             set_preedition ();
         }
@@ -789,6 +848,7 @@ PrimeInstance::action_finish_selecting_candidates (void)
         return false;
 
     m_lookup_table.clear ();
+    m_lookup_table.show_cursor (false);
     m_candidates.clear();
     m_converting = false;
 
@@ -925,6 +985,7 @@ PrimeInstance::action_edit_backspace (void)
         return true;
     }
 
+    action_finish_selecting_candidates ();
     get_session()->edit_backspace ();
     set_preedition ();
 
@@ -950,6 +1011,7 @@ PrimeInstance::action_edit_delete (void)
     if (is_converting ())
         return false;
 
+    action_finish_selecting_candidates ();
     get_session()->edit_delete ();
     set_preedition();
 
@@ -992,7 +1054,7 @@ PrimeInstance::action_conv_next_candidate (void)
         return true;
     }
 
-    if (!is_converting ())
+    if (!is_converting () && !is_selecting_prediction ())
         return false;
 
     int last_candidate = m_lookup_table.number_of_candidates () - 1;
@@ -1019,7 +1081,7 @@ PrimeInstance::action_conv_prev_candidate (void)
         return true;
     }
 
-    if (!is_converting ())
+    if (!is_converting () && !is_selecting_prediction ())
         return false;
 
     if (m_lookup_table.get_cursor_pos () == 0)
@@ -1268,6 +1330,7 @@ PrimeInstance::action_set_mode_default (void)
     if (is_converting ())
         action_revert ();
 
+    action_finish_selecting_candidates ();
     get_session()->edit_set_mode (PRIME_PREEDITION_DEFAULT);
     set_preedition ();
 
@@ -1283,6 +1346,7 @@ PrimeInstance::action_set_mode_katakana (void)
     if (is_converting ())
         action_revert ();
 
+    action_finish_selecting_candidates ();
     get_session()->edit_set_mode (PRIME_PREEDITION_KATAKANA);
     set_preedition ();
 
@@ -1298,6 +1362,7 @@ PrimeInstance::action_set_mode_half_katakana (void)
     if (is_converting ())
         action_revert ();
 
+    action_finish_selecting_candidates ();
     get_session()->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
     set_preedition ();
 
@@ -1313,6 +1378,7 @@ PrimeInstance::action_set_mode_raw (void)
     if (is_converting ())
         action_revert ();
 
+    action_finish_selecting_candidates ();
     get_session()->edit_set_mode (PRIME_PREEDITION_RAW);
     set_preedition ();
 
@@ -1328,6 +1394,7 @@ PrimeInstance::action_set_mode_wide_ascii (void)
     if (is_converting ())
         action_revert ();
 
+    action_finish_selecting_candidates ();
     get_session()->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
 
@@ -1466,8 +1533,8 @@ PrimeInstance::action_register_a_word (void)
 
     m_registering = true;
 
-    get_session()->edit_erase();
     action_finish_selecting_candidates ();
+    get_session()->edit_erase();
     set_preedition ();
 
     return true;
