@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-04-06 18:30+0900\n"
+"POT-Creation-Date: 2005-04-07 17:57+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,43 +16,43 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:276
+#: src/scim_prime_imengine.cpp:278
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:280 src/scim_prime_imengine.cpp:1384
+#: src/scim_prime_imengine.cpp:282 src/scim_prime_imengine.cpp:1461
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:284 src/scim_prime_imengine.cpp:1414
+#: src/scim_prime_imengine.cpp:286 src/scim_prime_imengine.cpp:1501
 msgid "English"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:332
+#: src/scim_prime_imengine.cpp:334
 msgid "PRIME process seems terminated abnormally."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:339
+#: src/scim_prime_imengine.cpp:341
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:354
+#: src/scim_prime_imengine.cpp:356
 msgid "Couldn't start PRIME session."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:434
+#: src/scim_prime_imengine.cpp:449
 msgid "Register a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:439
+#: src/scim_prime_imengine.cpp:454
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:444
+#: src/scim_prime_imengine.cpp:459
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:501
+#: src/scim_prime_imengine.cpp:526
 msgid "]"
 msgstr ""
 
@@ -89,550 +89,562 @@ msgid "The key events to commit the preedit string without learn. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:179
-msgid "Convert keys:"
+msgid "Complete keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:180
-msgid "Select convert keys"
+msgid "Select complete keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:181
-msgid "The key events to convert the preedit string to kanji. "
+msgid "The key events to complete a word using predictions. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:188
-msgid "Cancel keys:"
+msgid "Convert keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:189
-msgid "Select cancel keys"
+msgid "Select convert keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:190
-msgid "The key events to cancel preediting or converting. "
+msgid "The key events to convert the preedit string to kanji. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:197
-msgid "Backspace keys:"
+msgid "Cancel keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:198
-msgid "Select backspace keys"
+msgid "Select cancel keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:199
-msgid "The key events to delete a character before caret. "
+msgid "The key events to cancel preediting or converting. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:206
-msgid "Delete keys:"
+msgid "Backspace keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:207
-msgid "Select delete keys"
+msgid "Select backspace keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:208
-msgid "The key events to delete a character after caret. "
+msgid "The key events to delete a character before caret. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:215
-msgid "Space keys:"
+msgid "Delete keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:216
-msgid "Select space keys"
+msgid "Select delete keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:217
-msgid "The key events to insert space letter on non-preediting state. "
+msgid "The key events to delete a character after caret. "
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:224
-msgid "Alternative space keys:"
+msgid "Space keys:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:225
-msgid "Select alternative space keys"
+msgid "Select space keys"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:226
+msgid "The key events to insert space letter on non-preediting state. "
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:233
+msgid "Alternative space keys:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:234
+msgid "Select alternative space keys"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:235
 msgid ""
 "The key events to insert alterenative space letter on non-preediting state. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:233
+#: src/scim_prime_imengine_setup.cpp:242
 msgid "Register a word keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:234
+#: src/scim_prime_imengine_setup.cpp:243
 msgid "Select register a word keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:235
+#: src/scim_prime_imengine_setup.cpp:244
 msgid "The key events to invoke registering a word mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:255
+#: src/scim_prime_imengine_setup.cpp:264
 msgid "Default mode keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:256
+#: src/scim_prime_imengine_setup.cpp:265
 msgid "Select default mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:257
+#: src/scim_prime_imengine_setup.cpp:266
 msgid "The key events to set to default mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:264
+#: src/scim_prime_imengine_setup.cpp:273
 msgid "Katakana mode keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:265
+#: src/scim_prime_imengine_setup.cpp:274
 msgid "Select katakana mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:266
+#: src/scim_prime_imengine_setup.cpp:275
 msgid "The key events to set to katakana mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:273
+#: src/scim_prime_imengine_setup.cpp:282
 msgid "Half katakana mode keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:274
+#: src/scim_prime_imengine_setup.cpp:283
 msgid "Select half katakana mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:275
+#: src/scim_prime_imengine_setup.cpp:284
 msgid "The key events to set to half katakana mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:282
+#: src/scim_prime_imengine_setup.cpp:291
 msgid "Wide ascii mode keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:283
+#: src/scim_prime_imengine_setup.cpp:292
 msgid "Select wide ascii mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:284
+#: src/scim_prime_imengine_setup.cpp:293
 msgid "The key events to set to wide ascii mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:291
+#: src/scim_prime_imengine_setup.cpp:300
 msgid "Raw mode keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:292
+#: src/scim_prime_imengine_setup.cpp:301
 msgid "Select raw mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:293
+#: src/scim_prime_imengine_setup.cpp:302
 msgid "The key events to set to raw mode. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:300
+#: src/scim_prime_imengine_setup.cpp:309
 msgid "Toggle language keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:301
+#: src/scim_prime_imengine_setup.cpp:310
 msgid "Select toggle language keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:302
+#: src/scim_prime_imengine_setup.cpp:311
 msgid "The key events to toggle language. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:322
+#: src/scim_prime_imengine_setup.cpp:331
 msgid "Move to first keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:323
+#: src/scim_prime_imengine_setup.cpp:332
 msgid "Select move caret to first keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:324
+#: src/scim_prime_imengine_setup.cpp:333
 msgid "The key events to move the caret to the first of preedit string. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:331
+#: src/scim_prime_imengine_setup.cpp:340
 msgid "Move to last keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:332
+#: src/scim_prime_imengine_setup.cpp:341
 msgid "Select move caret to last keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:333
+#: src/scim_prime_imengine_setup.cpp:342
 msgid "The key events to move the caret to the last of the preedit string. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:340
+#: src/scim_prime_imengine_setup.cpp:349
 msgid "Move forward keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:341
+#: src/scim_prime_imengine_setup.cpp:350
 msgid "Select move caret forward keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:342
+#: src/scim_prime_imengine_setup.cpp:351
 msgid "The key events to move the caret to forward. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:349
+#: src/scim_prime_imengine_setup.cpp:358
 msgid "Move backward keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:350
+#: src/scim_prime_imengine_setup.cpp:359
 msgid "Select move caret backward keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:351
+#: src/scim_prime_imengine_setup.cpp:360
 msgid "The key events to move the caret to backward. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:371
+#: src/scim_prime_imengine_setup.cpp:380
 msgid "First segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:372
+#: src/scim_prime_imengine_setup.cpp:381
 msgid "Select first segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:373
+#: src/scim_prime_imengine_setup.cpp:382
 msgid "The key events to select first segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:380
+#: src/scim_prime_imengine_setup.cpp:389
 msgid "Last segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:381
+#: src/scim_prime_imengine_setup.cpp:390
 msgid "Select last segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:382
+#: src/scim_prime_imengine_setup.cpp:391
 msgid "The key events to select last segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:389
+#: src/scim_prime_imengine_setup.cpp:398
 msgid "Next segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:390
+#: src/scim_prime_imengine_setup.cpp:399
 msgid "Select next segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:391
+#: src/scim_prime_imengine_setup.cpp:400
 msgid "The key events to select next segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:398
+#: src/scim_prime_imengine_setup.cpp:407
 msgid "Previous segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:399
+#: src/scim_prime_imengine_setup.cpp:408
 msgid "Select previous segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:400
+#: src/scim_prime_imengine_setup.cpp:409
 msgid "The key events to select previous segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:407
+#: src/scim_prime_imengine_setup.cpp:416
 msgid "Shrink segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:408
+#: src/scim_prime_imengine_setup.cpp:417
 msgid "Select shrink segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:409
+#: src/scim_prime_imengine_setup.cpp:418
 msgid "The key events to shrink the selected segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:416
+#: src/scim_prime_imengine_setup.cpp:425
 msgid "Expand segment keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:417
+#: src/scim_prime_imengine_setup.cpp:426
 msgid "Select expand segment keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:418
+#: src/scim_prime_imengine_setup.cpp:427
 msgid "The key events to expand the selected segment. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:438
+#: src/scim_prime_imengine_setup.cpp:447
 msgid "Next keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:439
+#: src/scim_prime_imengine_setup.cpp:448
 msgid "Select next candidate keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:440
+#: src/scim_prime_imengine_setup.cpp:449
 msgid "The key events to select next candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:447
+#: src/scim_prime_imengine_setup.cpp:456
 msgid "Previous keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:448
+#: src/scim_prime_imengine_setup.cpp:457
 msgid "Select previous candidate keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:449
+#: src/scim_prime_imengine_setup.cpp:458
 msgid "The key events to select previous candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:456
+#: src/scim_prime_imengine_setup.cpp:465
 msgid "Page down keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:457
+#: src/scim_prime_imengine_setup.cpp:466
 msgid "Select page down candidates keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:458
+#: src/scim_prime_imengine_setup.cpp:467
 msgid "The key events to select page down candidates. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:465
+#: src/scim_prime_imengine_setup.cpp:474
 msgid "Page up keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:466
+#: src/scim_prime_imengine_setup.cpp:475
 msgid "Select page up candidates keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:467
+#: src/scim_prime_imengine_setup.cpp:476
 msgid "The key events to select page up candidates. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:487
+#: src/scim_prime_imengine_setup.cpp:496
 msgid "1st candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:488
+#: src/scim_prime_imengine_setup.cpp:497
 msgid "Select keys to select 1st candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:489
+#: src/scim_prime_imengine_setup.cpp:498
 msgid "The key events to select 1st candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:496
+#: src/scim_prime_imengine_setup.cpp:505
 msgid "2nd candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:497
+#: src/scim_prime_imengine_setup.cpp:506
 msgid "Select keys to select 2nd candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:498
+#: src/scim_prime_imengine_setup.cpp:507
 msgid "The key events to select 2nd candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:505
+#: src/scim_prime_imengine_setup.cpp:514
 msgid "3rd candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:506
+#: src/scim_prime_imengine_setup.cpp:515
 msgid "Select keys to select 3rd candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:507
+#: src/scim_prime_imengine_setup.cpp:516
 msgid "The key events to select 3rd candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:514
+#: src/scim_prime_imengine_setup.cpp:523
 msgid "4th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:515
+#: src/scim_prime_imengine_setup.cpp:524
 msgid "Select keys to select 4th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:516
+#: src/scim_prime_imengine_setup.cpp:525
 msgid "The key events to select 4th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:523
+#: src/scim_prime_imengine_setup.cpp:532
 msgid "5th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:524
+#: src/scim_prime_imengine_setup.cpp:533
 msgid "Select keys to select 5th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:525
+#: src/scim_prime_imengine_setup.cpp:534
 msgid "The key events to select 5th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:532
+#: src/scim_prime_imengine_setup.cpp:541
 msgid "6th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:533
+#: src/scim_prime_imengine_setup.cpp:542
 msgid "Select keys to select 6th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:534
+#: src/scim_prime_imengine_setup.cpp:543
 msgid "The key events to select 6th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:541
+#: src/scim_prime_imengine_setup.cpp:550
 msgid "7th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:542
+#: src/scim_prime_imengine_setup.cpp:551
 msgid "Select keys to select 7th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:543
+#: src/scim_prime_imengine_setup.cpp:552
 msgid "The key events to select 7th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:550
+#: src/scim_prime_imengine_setup.cpp:559
 msgid "8th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:551
+#: src/scim_prime_imengine_setup.cpp:560
 msgid "Select keys to select 8th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:552
+#: src/scim_prime_imengine_setup.cpp:561
 msgid "The key events to select 8th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:559
+#: src/scim_prime_imengine_setup.cpp:568
 msgid "9th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:560
+#: src/scim_prime_imengine_setup.cpp:569
 msgid "Select keys to select 9th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:561
+#: src/scim_prime_imengine_setup.cpp:570
 msgid "The key events to select 9th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:568
+#: src/scim_prime_imengine_setup.cpp:577
 msgid "10th candidate keys:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:569
+#: src/scim_prime_imengine_setup.cpp:578
 msgid "Select keys to select 10th candidate"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:570
+#: src/scim_prime_imengine_setup.cpp:579
 msgid "The key events to select 10th candidate. "
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:587
+#: src/scim_prime_imengine_setup.cpp:596
 msgid "Common keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:588
+#: src/scim_prime_imengine_setup.cpp:597
 msgid "Mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:589
+#: src/scim_prime_imengine_setup.cpp:598
 msgid "Caret keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:590
+#: src/scim_prime_imengine_setup.cpp:599
 msgid "Segments keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:591
+#: src/scim_prime_imengine_setup.cpp:600
 msgid "Candidates keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:592
+#: src/scim_prime_imengine_setup.cpp:601
 msgid "Candidates keys (Direct select)"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:677
+#: src/scim_prime_imengine_setup.cpp:686
 msgid "PRIME command:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:677
+#: src/scim_prime_imengine_setup.cpp:686
 msgid "The PRIME command to use as conversion engine."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:682 src/scim_prime_imengine_setup.cpp:687
+#: src/scim_prime_imengine_setup.cpp:691 src/scim_prime_imengine_setup.cpp:696
 msgid "Predict while typing letters."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:691
+#: src/scim_prime_imengine_setup.cpp:700
 msgid "Use auto registering a word feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:696
+#: src/scim_prime_imengine_setup.cpp:705
 msgid ""
 "Invoke the registering a word mode when the cursor in the candidates window "
 "is move to out of range."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:700
+#: src/scim_prime_imengine_setup.cpp:709
 msgid "Commit on inputting upper letter"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:705
+#: src/scim_prime_imengine_setup.cpp:714
 msgid "Commit previous preedit string when a upper letter is entered."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:709 src/scim_prime_imengine_setup.cpp:714
+#: src/scim_prime_imengine_setup.cpp:718 src/scim_prime_imengine_setup.cpp:723
 msgid "Close candidates window when a candidate is selected directly."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:718
+#: src/scim_prime_imengine_setup.cpp:727
 msgid "Use direct select keys also on prediction."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:723
+#: src/scim_prime_imengine_setup.cpp:732
 msgid ""
 "Use direct select keys not only for conversion state but also for prediction "
 "state."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:727
+#: src/scim_prime_imengine_setup.cpp:736
 msgid "Show annotation of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:732
+#: src/scim_prime_imengine_setup.cpp:741
 msgid "Show annotation of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:736
+#: src/scim_prime_imengine_setup.cpp:745
 msgid "Show usage of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:741
+#: src/scim_prime_imengine_setup.cpp:750
 msgid "Show usage of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:745
+#: src/scim_prime_imengine_setup.cpp:754
 msgid "Show comment of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:750
+#: src/scim_prime_imengine_setup.cpp:759
 msgid "Show comment of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:874
+#: src/scim_prime_imengine_setup.cpp:883
 msgid "Options"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:881
+#: src/scim_prime_imengine_setup.cpp:890
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:887
+#: src/scim_prime_imengine_setup.cpp:896
 msgid "Dictionary"
 msgstr ""

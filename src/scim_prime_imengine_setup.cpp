@@ -174,6 +174,15 @@ static KeyboardConfigData __config_keyboards_common [] =
         NULL,
     },
     {
+        SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY,
+        SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY_DEFAULT,
+        N_("Complete keys:"),
+        N_("Select complete keys"),
+        N_("The key events to complete a word using predictions. "),
+        NULL,
+        NULL,
+    },
+    {
         SCIM_PRIME_CONFIG_CONVERT_KEY,
         SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT,
         N_("Convert keys:"),
