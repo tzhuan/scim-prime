@@ -42,17 +42,24 @@ class PrimeFactory : public IMEngineFactoryBase
     ConfigPointer  m_config;
     Connection     m_reload_signal_connection;
 
-    /* for preference */
+    /* for preferences */
     String       m_command;
     String       m_typing_method;
-    bool         m_predict_on_preedition;
-    bool         m_auto_register;
     bool         m_commit_on_upper;
-    bool         m_close_cand_win_on_select;
+
+    // preferences for predicttion
+    bool         m_predict_on_preedition;
     bool         m_direct_select_on_prediction;
+    bool         m_inline_prediction;
+
+    // preferences for candidates window
+    bool         m_auto_register;
+    bool         m_close_cand_win_on_select;
     bool         m_show_annotation;
     bool         m_show_usage;
     bool         m_show_comment;
+
+    // preferences for space character type
     String       m_space_char;
     String       m_alt_space_char;
 

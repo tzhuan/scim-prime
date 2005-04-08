@@ -686,6 +686,41 @@ create_options_page ()
     APPEND_ENTRY(_("PRIME command:"), _("The PRIME command to use as conversion engine."),
                  __widget_command, 0);
 
+    /* commit on upper */
+    __widget_commit_on_upper
+        = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter"));
+    gtk_widget_show (__widget_commit_on_upper);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_commit_on_upper, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_commit_on_upper), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_on_upper,
+                          _("Commit previous preedit string when a upper letter is entered."), NULL);
+
+    // Connect all signals.
+    g_signal_connect ((gpointer) __widget_command, "changed",
+                      G_CALLBACK (on_default_editable_changed),
+                      &__config_command);
+    g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_commit_on_upper);
+
+    return vbox;
+}
+
+static GtkWidget *
+create_prediction_page ()
+{
+    GtkWidget *vbox, *table;
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox);
+
+    table = gtk_table_new (2, 2, FALSE);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
+    gtk_widget_show (table);
+
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+
     /* predict on preedition */
     __widget_predict_on_preedition
         = gtk_check_button_new_with_mnemonic (_("Predict while typing letters."));
@@ -694,6 +729,41 @@ create_options_page ()
     gtk_container_set_border_width (GTK_CONTAINER (__widget_predict_on_preedition), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_predict_on_preedition,
                           _("Predict while typing letters."), NULL);
+
+    /* use direct select keys on prediction */
+    __widget_direct_select_on_prediction
+        = gtk_check_button_new_with_mnemonic (_("Use direct select keys also on prediction."));
+    gtk_widget_show (__widget_direct_select_on_prediction);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_direct_select_on_prediction, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_direct_select_on_prediction), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_direct_select_on_prediction,
+                          _("Use direct select keys not only for conversion state but also for prediction state."), NULL);
+
+    // Connect all signals.
+    g_signal_connect ((gpointer) __widget_predict_on_preedition, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_predict_on_preedition);
+    g_signal_connect ((gpointer) __widget_direct_select_on_prediction, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_direct_select_on_prediction);
+
+    return vbox;
+}
+
+static GtkWidget *
+create_candidates_window_page ()
+{
+    GtkWidget *vbox, *table;
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox);
+
+    table = gtk_table_new (2, 2, FALSE);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
+    gtk_widget_show (table);
+
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
 
     /* auto register */
     __widget_auto_register
@@ -704,15 +774,6 @@ create_options_page ()
     gtk_tooltips_set_tip (__widget_tooltips, __widget_auto_register,
                           _("Invoke the registering a word mode when the cursor in the candidates window is move to out of range."), NULL);
 
-    /* commit on upper */
-    __widget_commit_on_upper
-        = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter"));
-    gtk_widget_show (__widget_commit_on_upper);
-    gtk_box_pack_start (GTK_BOX (vbox), __widget_commit_on_upper, FALSE, FALSE, 4);
-    gtk_container_set_border_width (GTK_CONTAINER (__widget_commit_on_upper), 4);
-    gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_on_upper,
-                          _("Commit previous preedit string when a upper letter is entered."), NULL);
-
     /* close candidate window on select */
     __widget_close_cand_win_on_select
         = gtk_check_button_new_with_mnemonic (_("Close candidates window when a candidate is selected directly."));
@@ -721,15 +782,6 @@ create_options_page ()
     gtk_container_set_border_width (GTK_CONTAINER (__widget_close_cand_win_on_select), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_close_cand_win_on_select,
                           _("Close candidates window when a candidate is selected directly."), NULL);
-
-    /* use direct select keys on prediction */
-    __widget_direct_select_on_prediction
-        = gtk_check_button_new_with_mnemonic (_("Use direct select keys also on prediction."));
-    gtk_widget_show (__widget_direct_select_on_prediction);
-    gtk_box_pack_start (GTK_BOX (vbox), __widget_direct_select_on_prediction, FALSE, FALSE, 4);
-    gtk_container_set_border_width (GTK_CONTAINER (__widget_direct_select_on_prediction), 4);
-    gtk_tooltips_set_tip (__widget_tooltips, __widget_direct_select_on_prediction,
-                          _("Use direct select keys not only for conversion state but also for prediction state."), NULL);
 
     /* show annotation */
     __widget_show_annotation
@@ -759,24 +811,12 @@ create_options_page ()
                           _("Show comment of the word on the candidates window."), NULL);
 
     // Connect all signals.
-    g_signal_connect ((gpointer) __widget_command, "changed",
-                      G_CALLBACK (on_default_editable_changed),
-                      &__config_command);
-    g_signal_connect ((gpointer) __widget_predict_on_preedition, "toggled",
-                      G_CALLBACK (on_default_toggle_button_toggled),
-                      &__config_predict_on_preedition);
     g_signal_connect ((gpointer) __widget_auto_register, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_auto_register);
-    g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
-                      G_CALLBACK (on_default_toggle_button_toggled),
-                      &__config_commit_on_upper);
     g_signal_connect ((gpointer) __widget_close_cand_win_on_select, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_close_cand_win_on_select);
-    g_signal_connect ((gpointer) __widget_direct_select_on_prediction, "toggled",
-                      G_CALLBACK (on_default_toggle_button_toggled),
-                      &__config_direct_select_on_prediction);
     g_signal_connect ((gpointer) __widget_show_annotation, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_show_annotation);
@@ -878,20 +918,32 @@ create_setup_window ()
         window = notebook;
         gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 
-        // Create the first page.
+        // Create the 1st page.
         GtkWidget *page = create_options_page ();
         GtkWidget *label = gtk_label_new (_("Options"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
 
+        // Create the 2nd page.
+        page = create_prediction_page ();
+        label = gtk_label_new (_("Prediction"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
+        // Create the 3rd page.
+        page = create_candidates_window_page ();
+        label = gtk_label_new (_("Candidates window"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
 #if 0
-        // Create the second page.
+        // Create the 4th page.
         page = create_toolbar_page ();
         label = gtk_label_new (_("Toolbar"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
 
-        // Create the third page.
+        // Create the 5th page.
         page = create_dict_page ();
         label = gtk_label_new (_("Dictionary"));
         gtk_widget_show (label);

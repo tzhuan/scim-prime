@@ -23,14 +23,18 @@
 
 #define SCIM_PRIME_CONFIG_COMMAND                             "/IMEngine/PRIME/Command"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD                       "/IMEngine/PRIME/TypingMethod"
-#define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION               "/IMEngine/PRIME/PredictOnPreedition"
-#define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
-#define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT            "/IMEngine/PRIME/CloseCandWinOnSelect"
+
+#define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION               "/IMEngine/PRIME/PredictOnPreedition"
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION         "/IMEngine/PRIME/DirectSelectOnPrediction"
+#define SCIM_PRIME_CONFIG_INLINE_PREDICTION                   "/IMEngine/PRIME/InlinePrediction"
+
+#define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
+#define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT            "/IMEngine/PRIME/CloseCandWinOnSelect"
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
 #define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT                        "/IMEngine/PRIME/ShowComment"
+
 #define SCIM_PRIME_CONFIG_SPACE_CHAR                          "/IMEngine/PRIME/SpaceChar"
 #define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR              "/IMEngine/PRIME/AlternativeSpaceChar"
 
@@ -77,11 +81,15 @@
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
-#define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT       true
+
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT               false
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
-#define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT    false
+
+#define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT       true
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT true
+#define SCIM_PRIME_CONFIG_INLINE_PREDITION_DEFAULT            false
+
+#define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT    false
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
 #define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  false
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT                false

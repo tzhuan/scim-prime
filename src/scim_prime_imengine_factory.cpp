@@ -101,9 +101,10 @@ PrimeFactory::PrimeFactory (const String &lang,
                             const ConfigPointer &config)
     : m_uuid (uuid),
       m_config (config),
-      m_predict_on_preedition (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
-      m_auto_register (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_commit_on_upper (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
+      m_predict_on_preedition (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
+      m_inline_prediction (SCIM_PRIME_CONFIG_INLINE_PREDICTION),
+      m_auto_register (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_close_cand_win_on_select (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT),
       m_show_annotation (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
       m_show_usage (SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT),
@@ -189,21 +190,26 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_typing_method
         = config->read (String (SCIM_PRIME_CONFIG_TYPING_METHOD),
                         String (SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT));
-    m_predict_on_preedition
-        = config->read (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
-                        SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT);
-    m_auto_register
-        = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
-                        SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT);
     m_commit_on_upper
         = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);
-    m_close_cand_win_on_select
-        = config->read (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
-                        SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT);
+
+    m_predict_on_preedition
+        = config->read (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
+                        SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT);
     m_direct_select_on_prediction
         = config->read (String (SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION),
                         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT);
+    m_inline_prediction
+        = config->read (String (SCIM_PRIME_CONFIG_INLINE_PREDICTION),
+                        SCIM_PRIME_CONFIG_INLINE_PREDICTION);
+
+    m_auto_register
+        = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
+                        SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT);
+    m_close_cand_win_on_select
+        = config->read (String (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT),
+                        SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT);
     m_show_annotation
         = config->read (String (SCIM_PRIME_CONFIG_SHOW_ANNOTATION),
                         SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT);

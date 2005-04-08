@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-04-07 17:57+0900\n"
+"POT-Creation-Date: 2005-04-08 11:52+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,43 +16,43 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:278
+#: src/scim_prime_imengine.cpp:285
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:282 src/scim_prime_imengine.cpp:1461
+#: src/scim_prime_imengine.cpp:289 src/scim_prime_imengine.cpp:1478
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:286 src/scim_prime_imengine.cpp:1501
+#: src/scim_prime_imengine.cpp:293 src/scim_prime_imengine.cpp:1518
 msgid "English"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:334
+#: src/scim_prime_imengine.cpp:341
 msgid "PRIME process seems terminated abnormally."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:341
+#: src/scim_prime_imengine.cpp:348
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:356
+#: src/scim_prime_imengine.cpp:363
 msgid "Couldn't start PRIME session."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:449
+#: src/scim_prime_imengine.cpp:469
 msgid "Register a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:454
+#: src/scim_prime_imengine.cpp:474
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:459
+#: src/scim_prime_imengine.cpp:479
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:526
+#: src/scim_prime_imengine.cpp:536
 msgid "]"
 msgstr ""
 
@@ -577,74 +577,82 @@ msgstr ""
 msgid "The PRIME command to use as conversion engine."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:691 src/scim_prime_imengine_setup.cpp:696
-msgid "Predict while typing letters."
-msgstr ""
-
-#: src/scim_prime_imengine_setup.cpp:700
-msgid "Use auto registering a word feature"
-msgstr ""
-
-#: src/scim_prime_imengine_setup.cpp:705
-msgid ""
-"Invoke the registering a word mode when the cursor in the candidates window "
-"is move to out of range."
-msgstr ""
-
-#: src/scim_prime_imengine_setup.cpp:709
+#: src/scim_prime_imengine_setup.cpp:691
 msgid "Commit on inputting upper letter"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:714
+#: src/scim_prime_imengine_setup.cpp:696
 msgid "Commit previous preedit string when a upper letter is entered."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:718 src/scim_prime_imengine_setup.cpp:723
-msgid "Close candidates window when a candidate is selected directly."
+#: src/scim_prime_imengine_setup.cpp:726 src/scim_prime_imengine_setup.cpp:731
+msgid "Predict while typing letters."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:727
+#: src/scim_prime_imengine_setup.cpp:735
 msgid "Use direct select keys also on prediction."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:732
+#: src/scim_prime_imengine_setup.cpp:740
 msgid ""
 "Use direct select keys not only for conversion state but also for prediction "
 "state."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:736
+#: src/scim_prime_imengine_setup.cpp:770
+msgid "Use auto registering a word feature"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:775
+msgid ""
+"Invoke the registering a word mode when the cursor in the candidates window "
+"is move to out of range."
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:779 src/scim_prime_imengine_setup.cpp:784
+msgid "Close candidates window when a candidate is selected directly."
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:788
 msgid "Show annotation of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:741
+#: src/scim_prime_imengine_setup.cpp:793
 msgid "Show annotation of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:745
+#: src/scim_prime_imengine_setup.cpp:797
 msgid "Show usage of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:750
+#: src/scim_prime_imengine_setup.cpp:802
 msgid "Show usage of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:754
+#: src/scim_prime_imengine_setup.cpp:806
 msgid "Show comment of the word on the candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:759
+#: src/scim_prime_imengine_setup.cpp:811
 msgid "Show comment of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:883
+#: src/scim_prime_imengine_setup.cpp:923
 msgid "Options"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:890
+#: src/scim_prime_imengine_setup.cpp:929
+msgid "Prediction"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:935
+msgid "Candidates window"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:942
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:896
+#: src/scim_prime_imengine_setup.cpp:948
 msgid "Dictionary"
 msgstr ""

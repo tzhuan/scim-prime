@@ -406,19 +406,21 @@ PrimeInstance::set_preedition (void)
         update_preedit_caret (0);
 
     } else if (is_preediting ()) {
+        bool inline_prediction = false;
         WideString left, cursor, right;
         get_session()->edit_get_preedition (left, cursor, right);
 
-#if 0
         m_candidates.clear ();
-        get_session()->conv_predict (m_candidates);
+
+        if (inline_prediction)
+            get_session()->conv_predict (m_candidates);
 
         if (left.length () + cursor.length () + right.length () > 0)
             show_preedit_string ();
         else
             hide_preedit_string ();
 
-        if (m_candidates.size () > 0) {
+        if (m_candidates.size () > 0 && inline_prediction) {
             if (!left.empty () && cursor.empty () && right.empty ())
                 cursor = utf8_mbstowcs (" ");
 
@@ -429,19 +431,19 @@ PrimeInstance::set_preedition (void)
                 attr_list.push_back (attr);
             }
 
-            show_aux_string ();
             update_preedit_string (m_candidates[0].m_conversion);
-            update_aux_string (left + cursor + right, attr_list);
             update_preedit_caret (0);
+
+            show_aux_string ();
+            update_aux_string (left + cursor + right, attr_list);
+
         } else {
-            hide_aux_string ();
             update_preedit_string (left + cursor + right);
+            update_preedit_caret (left.length ());
+
+            hide_aux_string ();
             update_aux_string (utf8_mbstowcs (""));
         }
-#else
-        update_preedit_string (left + cursor + right);
-        update_preedit_caret (left.length ());
-#endif
 
     } else {
         reset ();
@@ -588,6 +590,9 @@ PrimeInstance::is_preediting (void)
 bool
 PrimeInstance::is_selecting_prediction (void)
 {
+    if (is_converting ())
+        return false;
+
     return m_lookup_table.is_cursor_visible ();
 }
 
