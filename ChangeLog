@@ -1,5 +1,9 @@
 2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine.cpp: Now I'm implementing a secret feature :D
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Sorry, candidates overflow at last
 	commited code.
 
