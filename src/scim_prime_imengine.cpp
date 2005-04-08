@@ -159,7 +159,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         buf[0] = key.get_ascii_code ();
         buf[1] = '\0';
 
-        //action_finish_selecting_candidates ();
+        // finish selecting predictions;
         m_lookup_table.show_cursor (false);
         get_session()->edit_insert (buf);
         set_preedition ();
@@ -406,13 +406,12 @@ PrimeInstance::set_preedition (void)
         update_preedit_caret (0);
 
     } else if (is_preediting ()) {
-        bool inline_prediction = false;
         WideString left, cursor, right;
         get_session()->edit_get_preedition (left, cursor, right);
 
         m_candidates.clear ();
 
-        if (inline_prediction)
+        if (m_factory->m_inline_prediction)
             get_session()->conv_predict (m_candidates);
 
         if (left.length () + cursor.length () + right.length () > 0)
@@ -420,7 +419,7 @@ PrimeInstance::set_preedition (void)
         else
             hide_preedit_string ();
 
-        if (m_candidates.size () > 0 && inline_prediction) {
+        if (m_candidates.size () > 0 && m_factory->m_inline_prediction) {
             if (!left.empty () && cursor.empty () && right.empty ())
                 cursor = utf8_mbstowcs (" ");
 
@@ -568,8 +567,10 @@ PrimeInstance::set_prediction (void)
         m_lookup_table.append_candidate (m_candidates[i].m_conversion);
     m_lookup_table.show_cursor (false);
 
+    unsigned int min_candidates = m_factory->m_inline_prediction ? 1: 0;
+
     if (is_preediting () &&
-        m_candidates.size () > 0 &&
+        m_candidates.size () > min_candidates &&
         m_candidates[0].m_conversion.length () > 0)
     {
         show_lookup_table ();
@@ -644,9 +645,24 @@ PrimeInstance::action_commit (bool learn)
         reset ();
 
     } else if (is_preediting ()) {
-        WideString left, cursor, right;
-        get_session()->edit_get_preedition (left, cursor, right);
-        commit_string (left + cursor + right);
+        WideString left, cursor, right, all;
+
+        if (m_factory->m_inline_prediction && m_candidates.size () > 0)
+            all = m_candidates[0].m_conversion;
+
+        if (all.empty ()) {
+            get_session()->edit_get_preedition (left, cursor, right);
+            all = left + cursor + right;
+            if (learn)
+                get_session()->edit_commit ();
+        } else {
+            if (learn) {
+                get_session()->conv_select (all, 0);
+                get_session()->conv_commit (all);
+            }
+        }
+
+        commit_string (all);
 
         reset ();
 
@@ -697,13 +713,28 @@ PrimeInstance::action_commit_on_register (bool learn)
 
     } else if (is_preediting ()) {
         WideString left, cursor, right, all;
-        get_session()->edit_get_preedition (left, cursor, right);
-        all = left + cursor + right;
+
+        if (m_factory->m_inline_prediction && m_candidates.size () > 0)
+            all = m_candidates[0].m_conversion;
+
+        if (all.empty ()) {
+            get_session()->edit_get_preedition (left, cursor, right);
+            all = left + cursor + right;
+            if (learn)
+                get_session()->edit_commit ();
+
+        } else {
+            if (learn) {
+                get_session()->conv_select (all, 0);
+                get_session()->conv_commit (all);
+            }
+        }
+
         m_registering_value.insert (m_registering_cursor, all);
         m_registering_cursor += all.length ();
 
         action_finish_selecting_candidates ();
-        get_session()->edit_erase();
+        get_session()->edit_erase ();
         set_preedition ();
 
     } else {
@@ -997,7 +1028,7 @@ PrimeInstance::action_edit_backspace (void)
         return true;
     }
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_backspace ();
     set_preedition ();
@@ -1024,7 +1055,7 @@ PrimeInstance::action_edit_delete (void)
     if (is_converting ())
         return false;
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_delete ();
     set_preedition();
@@ -1185,6 +1216,7 @@ PrimeInstance::action_select_candidate (unsigned int i)
         m_lookup_table.number_of_candidates () > i &&
         m_candidates.size () > i)
     {
+        get_session()->conv_commit (m_candidates[i].m_conversion);
         commit_string (m_candidates[i].m_conversion);
         reset ();
         return true;
@@ -1376,7 +1408,7 @@ PrimeInstance::action_set_mode_default (void)
     if (is_converting ())
         action_revert ();
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_DEFAULT);
     set_preedition ();
@@ -1393,7 +1425,7 @@ PrimeInstance::action_set_mode_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    // action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_KATAKANA);
     set_preedition ();
@@ -1410,7 +1442,7 @@ PrimeInstance::action_set_mode_half_katakana (void)
     if (is_converting ())
         action_revert ();
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_HALF_KATAKANA);
     set_preedition ();
@@ -1427,7 +1459,7 @@ PrimeInstance::action_set_mode_raw (void)
     if (is_converting ())
         action_revert ();
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_RAW);
     set_preedition ();
@@ -1444,7 +1476,7 @@ PrimeInstance::action_set_mode_wide_ascii (void)
     if (is_converting ())
         action_revert ();
 
-    //action_finish_selecting_candidates ();
+    // finish selecting predictions;
     m_lookup_table.show_cursor (false);
     get_session()->edit_set_mode (PRIME_PREEDITION_WIDE_ASCII);
     set_preedition ();
