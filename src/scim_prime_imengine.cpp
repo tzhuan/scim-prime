@@ -1071,15 +1071,25 @@ PrimeInstance::action_conv_next_candidate (void)
     if (!is_converting () && !is_selecting_prediction ())
         return false;
 
-    int last_candidate = m_lookup_table.number_of_candidates () - 1;
+    unsigned int current_pos    = m_lookup_table.get_cursor_pos ();
+    unsigned int last_candidate = m_lookup_table.number_of_candidates () - 1;
 
-    if (m_lookup_table.get_cursor_pos () == last_candidate) {
-        if (m_factory->m_auto_register &&
-            !is_modifying () &&
-            !is_registering () &&
-            !is_selecting_prediction ())
+    if (current_pos == last_candidate) {
+        if (is_selecting_prediction ()) {
+            action_convert ();
+            if (m_lookup_table.number_of_candidates () > current_pos + 1)
+                m_lookup_table.set_cursor_pos (current_pos + 1);
+            else if (m_lookup_table.number_of_candidates () > current_pos)
+                m_lookup_table.set_cursor_pos (0);
+            else
+                m_lookup_table.set_cursor_pos (0); //error
+
+        } else if (m_factory->m_auto_register &&
+                   !is_modifying () &&
+                   !is_registering ())
         {
             return action_register_a_word ();
+
         } else {
             m_lookup_table.set_cursor_pos (0);
         }
@@ -1104,10 +1114,31 @@ PrimeInstance::action_conv_prev_candidate (void)
     if (!is_converting () && !is_selecting_prediction ())
         return false;
 
-    if (m_lookup_table.get_cursor_pos () == 0)
-        m_lookup_table.set_cursor_pos (m_lookup_table.number_of_candidates () - 1);
-    else
+    unsigned int current_pos    = m_lookup_table.get_cursor_pos ();
+    unsigned int last_candidate = m_lookup_table.number_of_candidates () - 1;
+
+    if (current_pos == 0) {
+        if (is_selecting_prediction ()) {
+            action_convert ();
+            unsigned int len = m_lookup_table.number_of_candidates ();
+            if (len > 0)
+                m_lookup_table.set_cursor_pos (len - 1);
+            else
+                ; // error
+
+        } else if (m_factory->m_auto_register &&
+                   !is_modifying () &&
+                   !is_registering ())
+        {
+            return action_register_a_word ();
+
+        } else {
+            m_lookup_table.set_cursor_pos (last_candidate);
+        }
+
+    } else {
         m_lookup_table.cursor_up ();
+    }
 
     select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
 

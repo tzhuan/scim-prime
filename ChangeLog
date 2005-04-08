@@ -1,4 +1,9 @@
-2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Start conversion when the cursor in
+	candidates window is moved to out of range on predicttion.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
 	  src/scim_prime_imengine_factory.h, src/scim_prime_prefs.h:
@@ -6,12 +11,12 @@
 	* src/scim_prime_imengine_setup.cpp: Divide pages.
 	* po/ja.po, po/scim-prime.pot: Updated.
 
-2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine.cpp: Don't change to register mode on
 	selectig predictions.
 
-2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine.cpp: Now I'm implementing a secret feature :D
 
