@@ -568,7 +568,7 @@ PrimeInstance::set_prediction (void)
     update_lookup_table (m_lookup_table);
 
     if (is_preediting () &&
-        m_candidates.size () > 1 &&
+        m_candidates.size () > 0 &&
         m_candidates[0].m_conversion.length () > 0)
     {
         show_lookup_table ();
