@@ -339,16 +339,16 @@ PrimeInstance::get_session (void)
         m_disable = true;
 
         message = _("PRIME process seems terminated abnormally.");
-        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
+        update_aux_string (utf8_mbstowcs (message));
 
         return NULL;
 
     } else if (m_prime.major_version () < 1) {
         message = _("Your PRIME is out of date. "
                     "Please install PRIME-1.0.0 or later.");
-        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
+        update_aux_string (utf8_mbstowcs (message));
         m_disable = true;
 
         return NULL;
@@ -361,8 +361,8 @@ PrimeInstance::get_session (void)
         m_disable = true;
 
         message = _("Couldn't start PRIME session.");
-        update_aux_string (utf8_mbstowcs (message));
         show_aux_string ();
+        update_aux_string (utf8_mbstowcs (message));
     }
 
     return m_session;
@@ -388,9 +388,9 @@ PrimeInstance::set_preedition (void)
         attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
         attr_list.push_back (attr);
 
+        show_preedit_string ();
         update_preedit_string (left + cursor + right, attr_list);
         update_preedit_caret (left.length ());
-        show_preedit_string ();
 
     } else if (is_converting () || is_selecting_prediction ()) {
         int pos = m_lookup_table.get_cursor_pos ();
@@ -401,9 +401,9 @@ PrimeInstance::set_preedition (void)
         attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
         attr_list.push_back (attr);
 
+        show_preedit_string ();
         update_preedit_string (cand.m_conversion, attr_list);
         update_preedit_caret (0);
-        show_preedit_string ();
 
     } else if (is_preediting ()) {
         WideString left, cursor, right;
@@ -429,14 +429,14 @@ PrimeInstance::set_preedition (void)
                 attr_list.push_back (attr);
             }
 
+            show_aux_string ();
             update_preedit_string (m_candidates[0].m_conversion);
             update_aux_string (left + cursor + right, attr_list);
-            show_aux_string ();
             update_preedit_caret (0);
         } else {
+            hide_aux_string ();
             update_preedit_string (left + cursor + right);
             update_aux_string (utf8_mbstowcs (""));
-            hide_aux_string ();
         }
 #else
         update_preedit_string (left + cursor + right);
@@ -534,9 +534,9 @@ PrimeInstance::set_preedition_on_register (void)
     tmp = utf8_mbstowcs (_("]"));
     ADD_SEPARATOR_ATTR();
 
+    show_preedit_string ();
     update_preedit_string (str, attr_list);
     update_preedit_caret (pos);
-    show_preedit_string ();
 }
 
 #undef ADD_SEPARATOR_ATTR
@@ -565,7 +565,6 @@ PrimeInstance::set_prediction (void)
     for (unsigned int i = 0; i < m_candidates.size (); i++)
         m_lookup_table.append_candidate (m_candidates[i].m_conversion);
     m_lookup_table.show_cursor (false);
-    update_lookup_table (m_lookup_table);
 
     if (is_preediting () &&
         m_candidates.size () > 0 &&
@@ -576,6 +575,8 @@ PrimeInstance::set_prediction (void)
     } else {
         hide_lookup_table ();
     }
+
+    update_lookup_table (m_lookup_table);
 }
 
 bool
@@ -759,8 +760,8 @@ PrimeInstance::action_convert (void)
     }
 
     if (m_candidates.size () > 0) {
-        update_lookup_table (m_lookup_table);
         show_lookup_table ();
+        update_lookup_table (m_lookup_table);
         select_candidate_no_direct (idx);
     } else {
         m_converting = false;
@@ -1068,10 +1069,16 @@ PrimeInstance::action_conv_next_candidate (void)
     int last_candidate = m_lookup_table.number_of_candidates () - 1;
 
     if (m_lookup_table.get_cursor_pos () == last_candidate) {
-        if (m_factory->m_auto_register && !is_modifying () && !is_registering ())
+        if (m_factory->m_auto_register &&
+            !is_modifying () &&
+            !is_registering () &&
+            !is_selecting_prediction ())
+        {
             return action_register_a_word ();
-        else
+        } else {
             m_lookup_table.set_cursor_pos (0);
+        }
+
     } else {
         m_lookup_table.cursor_down ();
     }
