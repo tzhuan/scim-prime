@@ -409,28 +409,31 @@ PrimeInstance::set_preedition (void)
         WideString left, cursor, right;
         get_session()->edit_get_preedition (left, cursor, right);
 
-        m_candidates.clear ();
-
+        PrimeCandidates candidates;
         if (m_factory->m_inline_prediction)
-            get_session()->conv_predict (m_candidates);
+            get_session()->conv_predict (candidates);
 
         if (left.length () + cursor.length () + right.length () > 0)
             show_preedit_string ();
         else
             hide_preedit_string ();
 
-        if (m_candidates.size () > 0 && m_factory->m_inline_prediction) {
+        if (candidates.size () > 0 &&
+            m_factory->m_inline_prediction &&
+            !m_cancel_prediction)
+        {
             if (!left.empty () && cursor.empty () && right.empty ())
                 cursor = utf8_mbstowcs (" ");
 
             AttributeList attr_list;
             if (!cursor.empty ()) {
-                Attribute attr (left.length (), cursor.length(), SCIM_ATTR_DECORATE);
+                Attribute attr (left.length (), cursor.length(),
+                                SCIM_ATTR_DECORATE);
                 attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
                 attr_list.push_back (attr);
             }
 
-            update_preedit_string (m_candidates[0].m_conversion);
+            update_preedit_string (candidates[0].m_conversion);
             update_preedit_caret (0);
 
             show_aux_string ();
@@ -647,8 +650,11 @@ PrimeInstance::action_commit (bool learn)
     } else if (is_preediting ()) {
         WideString left, cursor, right, all;
 
-        if (m_factory->m_inline_prediction && m_candidates.size () > 0)
+        if (m_factory->m_inline_prediction &&
+            m_candidates.size () > 0)
+        {
             all = m_candidates[0].m_conversion;
+        }
 
         if (all.empty ()) {
             get_session()->edit_get_preedition (left, cursor, right);
@@ -714,8 +720,11 @@ PrimeInstance::action_commit_on_register (bool learn)
     } else if (is_preediting ()) {
         WideString left, cursor, right, all;
 
-        if (m_factory->m_inline_prediction && m_candidates.size () > 0)
+        if (m_factory->m_inline_prediction &&
+            m_candidates.size () > 0)
+        {
             all = m_candidates[0].m_conversion;
+        }
 
         if (all.empty ()) {
             get_session()->edit_get_preedition (left, cursor, right);
@@ -1216,10 +1225,10 @@ PrimeInstance::action_select_candidate (unsigned int i)
         m_lookup_table.number_of_candidates () > i &&
         m_candidates.size () > i)
     {
-        WideString prediction;
-        get_session()->conv_select (prediction, i);
-        get_session()->conv_commit (prediction);
-        commit_string (prediction);
+        WideString ret;
+        get_session()->conv_select (ret, i);
+        get_session()->conv_commit (ret);
+        commit_string (ret);
         reset ();
         return true;
     }
