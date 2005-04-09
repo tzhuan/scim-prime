@@ -961,6 +961,8 @@ PrimeInstance::action_modify_caret_left (void)
 
     if (!is_preediting ())
         return false;
+    if (is_selecting_prediction ())
+        return false;
     if (is_converting ())
         return false;
     if (is_modifying ())
@@ -988,6 +990,8 @@ PrimeInstance::action_modify_caret_right (void)
 
     if (!is_preediting ())
         return false;
+    if (is_selecting_prediction ())
+        return false;
     if (is_converting ())
         return false;
     if (is_modifying ())
@@ -1013,6 +1017,8 @@ PrimeInstance::action_modify_caret_left_edge (void)
 
     if (!is_preediting ())
         return false;
+    if (is_selecting_prediction ())
+        return false;
     if (is_converting ())
         return false;
     if (is_modifying ())
@@ -1037,6 +1043,8 @@ PrimeInstance::action_modify_caret_right_edge (void)
     }
 
     if (!is_preediting ())
+        return false;
+    if (is_selecting_prediction ())
         return false;
     if (is_converting ())
         return false;
@@ -1338,13 +1346,14 @@ PrimeInstance::action_modify_start (void)
     if (!get_session ())
         return false;
 
-    if (!is_converting () && !is_modifying ())
+    if (is_modifying ())
+        return true;
+
+    if (!is_converting () && !is_selecting_prediction ())
         return false;
 
-    if (!is_modifying ()) {
-        get_session()->modify_start ();
-        m_modifying = true;
-    }
+    get_session()->modify_start ();
+    m_modifying = true;
 
     return true;
 }
