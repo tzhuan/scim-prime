@@ -1216,8 +1216,10 @@ PrimeInstance::action_select_candidate (unsigned int i)
         m_lookup_table.number_of_candidates () > i &&
         m_candidates.size () > i)
     {
-        get_session()->conv_commit (m_candidates[i].m_conversion);
-        commit_string (m_candidates[i].m_conversion);
+        WideString prediction;
+        get_session()->conv_select (prediction, i);
+        get_session()->conv_commit (prediction);
+        commit_string (prediction);
         reset ();
         return true;
     }
