@@ -518,17 +518,52 @@ PrimeInstance::set_preedition_on_register (void)
         attr_list.push_back (attr);
 
     } else {
-        WideString left, cursor, right, all;
+        WideString left, cursor, right, reading, preedition;
         get_session()->edit_get_preedition (left, cursor, right);
+
+        PrimeCandidates candidates;
+        if (m_factory->m_inline_prediction && is_preediting ()) {
+            get_session()->conv_predict (candidates);
+        }
 
         attr.set_type (SCIM_ATTR_DECORATE);
         attr.set_value (SCIM_ATTR_DECORATE_HIGHLIGHT);
         attr.set_start (pos);
-        attr.set_length (left.length () + cursor.length () + right.length ());
-        attr_list.push_back (attr);
 
-        pos += left.length ();
-        str += left + cursor + right;
+        if (candidates.size () > 0 &&
+            m_factory->m_inline_prediction &&
+            !m_cancel_prediction)
+        {
+            if (!left.empty () && cursor.empty () && right.empty ())
+                cursor = utf8_mbstowcs (" ");
+            reading = left + cursor + right;
+
+            AttributeList reading_attr_list;
+            if (!cursor.empty ()) {
+                Attribute attr (left.length (), cursor.length(),
+                                SCIM_ATTR_DECORATE);
+                attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+                reading_attr_list.push_back (attr);
+            }
+
+            preedition = candidates[0].m_conversion;
+            str += preedition;
+
+            show_aux_string ();
+            update_aux_string (reading, reading_attr_list);
+
+        } else {
+            pos += left.length ();
+            reading = left + cursor + right;
+            preedition = reading;
+            str += preedition;
+
+            hide_aux_string ();
+            update_aux_string (utf8_mbstowcs (""));
+        }
+
+        attr.set_length (preedition.length ());
+        attr_list.push_back (attr);
     }
 
     str += m_registering_value.substr (
