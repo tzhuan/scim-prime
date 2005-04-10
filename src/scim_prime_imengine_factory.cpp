@@ -231,6 +231,7 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     // edit keys
     APPEND_ACTION (COMMIT,                  action_commit_with_learn);
     APPEND_ACTION (COMMIT_WITHOUT_LEARN,    action_commit_without_learn);
+    APPEND_ACTION (COMMIT_ALTERNATIVE,      action_commit_alternative);
     APPEND_ACTION (CONVERT,                 action_convert);
     APPEND_ACTION (CANCEL,                  action_revert);
     APPEND_ACTION (SELECT_PREDICTION,       action_start_selecting_prediction);

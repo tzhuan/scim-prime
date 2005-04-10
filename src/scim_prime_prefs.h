@@ -40,6 +40,7 @@
 
 #define SCIM_PRIME_CONFIG_COMMIT_KEY                          "/IMEngine/PRIME/CommitKey"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY            "/IMEngine/PRIME/CommitWithoutLearnKey"
+#define SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY              "/IMEngine/PRIME/CommitAlternativeKey"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY                         "/IMEngine/PRIME/ConvertKey"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY                          "/IMEngine/PRIME/CancelKey"
 #define SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY               "/IMEngine/PRIME/SelectPredictionKey"
@@ -98,6 +99,7 @@
 
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M,Henkan"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY_DEFAULT    "Muhenkan"
+#define SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY_DEFAULT      "Shift+Return"
 #define SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT                 "space,Control+l,Control+L,Down"
 #define SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT                  "Escape,Control+g,Control+G"
 #define SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY_DEFAULT       "Tab"

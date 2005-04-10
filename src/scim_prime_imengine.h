@@ -96,6 +96,7 @@ public:
 private: // actions
     bool   action_commit_with_learn            (void);
     bool   action_commit_without_learn         (void);
+    bool   action_commit_alternative           (void);
     bool   action_convert                      (void);
     bool   action_revert                       (void);
     bool   action_start_selecting_prediction   (void);

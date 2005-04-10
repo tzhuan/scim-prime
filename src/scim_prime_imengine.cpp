@@ -98,8 +98,6 @@ PrimeInstance::process_key_event (const KeyEvent& key)
         return true;
     }
 
-    //m_cancel_prediction = false;
-
     // ignore modifier keys
     if (key.code == SCIM_KEY_Shift_L || key.code == SCIM_KEY_Shift_R ||
         key.code == SCIM_KEY_Control_L || key.code == SCIM_KEY_Control_R ||
@@ -110,8 +108,9 @@ PrimeInstance::process_key_event (const KeyEvent& key)
     }
 
     if (get_session ()) {
-        // lookup user defined key binds
         bool prediction_canceled = m_cancel_prediction;
+
+        // lookup user defined key binds
         if (process_key_event_lookup_keybind (key)) {
             if (prediction_canceled)
                 m_cancel_prediction = false;
@@ -155,7 +154,6 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    // FIXME!: is it correct?
     if (!is_registering () && isspace (key.get_ascii_code ()))
         return false;
 
@@ -213,8 +211,6 @@ PrimeInstance::select_candidate_no_direct (unsigned int item)
         reset ();
         return;
     }
-
-    //show_lookup_table ();
 
     m_lookup_table.set_cursor_pos_in_current_page (item);
     update_lookup_table (m_lookup_table);
@@ -813,6 +809,44 @@ PrimeInstance::action_commit_without_learn (void)
 }
 
 bool
+PrimeInstance::action_commit_alternative (void)
+{
+    if (!is_preediting ())
+        return false;
+
+    if (is_selecting_prediction () || is_converting () || is_modifying ())
+        return action_commit (true);
+
+    WideString cand;
+
+    if (!m_factory->m_inline_prediction && !m_candidates.empty ()) {
+        get_session()->conv_select (cand, 0);
+        get_session()->conv_commit(cand);
+
+    } else {
+        WideString left, cursor, right;
+        get_session()->edit_get_preedition (left, cursor, right);
+        get_session()->edit_commit ();
+        cand = left + cursor + right;
+    }
+
+    if (is_registering ()) {
+        m_registering_value.insert (m_registering_cursor, cand);
+        m_registering_cursor += cand.length ();
+
+        action_finish_selecting_candidates ();
+        get_session()->edit_erase ();
+        set_preedition ();
+
+    } else {
+        commit_string (cand);
+        reset ();
+    }
+
+    return true;
+}
+
+bool
 PrimeInstance::action_convert (void)
 {
     if (!get_session ())
@@ -1266,6 +1300,7 @@ PrimeInstance::action_select_candidate (unsigned int i)
     }
 
     // on prediction
+
     if (m_factory->m_direct_select_on_prediction &&
         m_lookup_table.number_of_candidates () > i &&
         m_candidates.size () > i)
