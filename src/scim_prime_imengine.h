@@ -33,6 +33,14 @@
 
 using namespace scim;
 
+typedef enum {
+    SCIM_PRIME_LANGUAGE_UNKNOWN,
+    SCIM_PRIME_LANGUAGE_JAPANESE,
+    // sessions after this will ignore space and alternative space keys
+    // which conflicts with conversion keys
+    SCIM_PRIME_LANGUAGE_ENGLISH,
+} SCIMPrimeLanguage;
+
 class PrimeInstance : public IMEngineInstanceBase
 {
     friend class PrimeFactory;
@@ -57,6 +65,7 @@ private:
     PrimeCandidates         m_candidates;
 
     /* flags */
+    SCIMPrimeLanguage       m_language;
     bool                    m_disable;
     bool                    m_converting;
     bool                    m_modifying;

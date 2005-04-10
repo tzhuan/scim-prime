@@ -60,6 +60,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_session (NULL),
       m_factory (factory),
       m_prev_key (0,0),
+      m_language (SCIM_PRIME_LANGUAGE_UNKNOWN),
       m_disable (false),
       m_converting (false),
       m_modifying (false),
@@ -365,6 +366,7 @@ PrimeInstance::get_session (void)
         action_set_language_japanese ();
 
     if (!m_session) {
+        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
         m_disable = true;
 
         message = _("Couldn't start PRIME session.");
@@ -1157,8 +1159,12 @@ PrimeInstance::action_insert_space (void)
     if (is_registering ())
         return false;
 
-    if (is_preediting ())
-        return false;
+    if (is_preediting ()) {
+        if (m_language >= SCIM_PRIME_LANGUAGE_ENGLISH)
+            action_commit (true);
+        else
+            return false;
+    }
 
     commit_string (utf8_mbstowcs (m_factory->m_space_char));
 
@@ -1171,8 +1177,12 @@ PrimeInstance::action_insert_alternative_space (void)
     if (is_registering ())
         return false;
 
-    if (is_preediting ())
-        return false;
+    if (is_preediting ()) {
+        if (m_language >= SCIM_PRIME_LANGUAGE_ENGLISH)
+            action_commit (true);
+        else
+            return false;
+    }
 
     commit_string (utf8_mbstowcs (m_factory->m_alt_space_char.c_str()));
 
@@ -1633,9 +1643,12 @@ PrimeInstance::action_set_language_japanese (void)
 
     m_session = m_prime.session_start ("Japanese");
     if (m_session) {
+        m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
         m_session->edit_insert (query.c_str ());
         set_preedition ();
         set_prediction ();
+    } else {
+        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
     }
 
     if (m_properties.empty ())
@@ -1684,9 +1697,12 @@ PrimeInstance::action_set_language_english (void)
 
     m_session = m_prime.session_start ("English");
     if (m_session) {
+        m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
         m_session->edit_insert (query.c_str ());
         set_preedition ();
         set_prediction ();
+    } else {
+        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
     }
 
     if (m_properties.empty ())

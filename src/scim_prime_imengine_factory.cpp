@@ -229,6 +229,8 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_actions.clear ();
 
     // edit keys
+    APPEND_ACTION (SPACE,                   action_insert_space);
+    APPEND_ACTION (ALTERNATIVE_SPACE,       action_insert_alternative_space);
     APPEND_ACTION (COMMIT,                  action_commit_with_learn);
     APPEND_ACTION (COMMIT_WITHOUT_LEARN,    action_commit_without_learn);
     APPEND_ACTION (COMMIT_ALTERNATIVE,      action_commit_alternative);
@@ -237,8 +239,6 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     APPEND_ACTION (SELECT_PREDICTION,       action_start_selecting_prediction);
     APPEND_ACTION (BACKSPACE,               action_edit_backspace);
     APPEND_ACTION (DELETE,                  action_edit_delete);
-    APPEND_ACTION (SPACE,                   action_insert_space);
-    APPEND_ACTION (ALTERNATIVE_SPACE,       action_insert_alternative_space);
 
     // caret keys
     APPEND_ACTION (MODIFY_CARET_LEFT,       action_modify_caret_left);
