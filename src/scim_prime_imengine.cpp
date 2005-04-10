@@ -905,7 +905,7 @@ PrimeInstance::action_start_selecting_prediction (void)
         return false;
 
     if (m_lookup_table.number_of_candidates () <= 0)
-        return false;
+        return action_convert ();
 
     select_candidate_no_direct (0);
 
