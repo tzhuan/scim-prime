@@ -1542,6 +1542,9 @@ PrimeInstance::action_set_mode_wide_ascii (void)
 bool
 PrimeInstance::action_toggle_language (void)
 {
+    if (m_disable)
+        return false;
+
     if (!m_session) {
         action_set_language_japanese ();
         return true;
@@ -1568,6 +1571,9 @@ PrimeInstance::action_toggle_language (void)
 bool
 PrimeInstance::action_set_language_japanese (void)
 {
+    if (m_disable)
+        return false;
+
     m_modifying = false;
     action_finish_selecting_candidates ();
 
@@ -1616,6 +1622,9 @@ PrimeInstance::action_set_language_japanese (void)
 bool
 PrimeInstance::action_set_language_english (void)
 {
+    if (m_disable)
+        return false;
+
     m_modifying = false;
     action_finish_selecting_candidates ();
 
