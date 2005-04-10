@@ -1,5 +1,10 @@
 2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine.cpp: Cancel prediction correctly on certain
+	condition.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Don't process changing language action
 	when the PRIME is dead.
 
