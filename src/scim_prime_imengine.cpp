@@ -1542,8 +1542,6 @@ PrimeInstance::action_set_mode_wide_ascii (void)
 bool
 PrimeInstance::action_toggle_language (void)
 {
-    reset ();
-
     if (!m_session) {
         action_set_language_japanese ();
         return true;
@@ -1570,8 +1568,10 @@ PrimeInstance::action_toggle_language (void)
 bool
 PrimeInstance::action_set_language_japanese (void)
 {
-    // This code causes endless loop. FIXME!
-    //reset ();
+    m_modifying = false;
+    action_finish_selecting_candidates ();
+
+    String query;
 
     if (m_session) {
         String key = "language", type;
@@ -1581,6 +1581,7 @@ PrimeInstance::action_set_language_japanese (void)
         if (!list.empty () && list[0] == "Japanese") {
             return false;
         } else {
+            m_session->edit_get_query_string (query);
             m_prime.session_end (m_session);
             delete m_session;
             m_session = NULL;
@@ -1588,6 +1589,11 @@ PrimeInstance::action_set_language_japanese (void)
     }
 
     m_session = m_prime.session_start ("Japanese");
+    if (m_session) {
+        m_session->edit_insert (query.c_str ());
+        set_preedition ();
+        set_prediction ();
+    }
 
     if (m_properties.empty ())
         install_properties ();
@@ -1610,8 +1616,10 @@ PrimeInstance::action_set_language_japanese (void)
 bool
 PrimeInstance::action_set_language_english (void)
 {
-    // This code causes endless loop. FIXME!
-    //reset ();
+    m_modifying = false;
+    action_finish_selecting_candidates ();
+
+    String query;
 
     if (m_session) {
         String key = "language", type;
@@ -1621,6 +1629,7 @@ PrimeInstance::action_set_language_english (void)
         if (!list.empty () && list[0] == "English") {
             return false;
         } else {
+            m_session->edit_get_query_string (query);
             m_prime.session_end (m_session);
             delete m_session;
             m_session = NULL;
@@ -1628,6 +1637,11 @@ PrimeInstance::action_set_language_english (void)
     }
 
     m_session = m_prime.session_start ("English");
+    if (m_session) {
+        m_session->edit_insert (query.c_str ());
+        set_preedition ();
+        set_prediction ();
+    }
 
     if (m_properties.empty ())
         install_properties ();
