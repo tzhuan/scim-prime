@@ -36,8 +36,8 @@ using namespace scim;
 typedef enum {
     SCIM_PRIME_LANGUAGE_UNKNOWN,
     SCIM_PRIME_LANGUAGE_JAPANESE,
-    // sessions after this will ignore space and alternative space keys
-    // which conflicts with conversion keys
+    // Sessions after this will ignore conversion keys which conflicts with
+    // space and alternative space keys.
     SCIM_PRIME_LANGUAGE_ENGLISH,
 } SCIMPrimeLanguage;
 
