@@ -243,6 +243,16 @@ static KeyboardConfigData __config_keyboards_convert [] =
         NULL,
     },
     {
+        SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY,
+        SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY_DEFAULT,
+        N_("Alternative commit keys:"),
+        N_("Select alternative commit keys"),
+        N_("The key events to commit the first predicted string. "
+           "On inline prediction mode, reading string will be commited by this key events."),
+        NULL,
+        NULL,
+    },
+    {
         SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY,
         SCIM_PRIME_CONFIG_SELECT_PREDICTION_KEY_DEFAULT,
         N_("Complete keys:"),
@@ -744,7 +754,7 @@ create_prediction_page ()
     gtk_box_pack_start (GTK_BOX (vbox), __widget_predict_on_preedition, FALSE, FALSE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (__widget_predict_on_preedition), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_predict_on_preedition,
-                          _("Predict while typing letters."), NULL);
+                          _("Show candidates window to display predicted candidates while typing letters."), NULL);
 
     /* use direct select keys on prediction */
     __widget_direct_select_on_prediction
@@ -795,12 +805,12 @@ create_candidates_window_page ()
 
     /* auto register */
     __widget_auto_register
-        = gtk_check_button_new_with_mnemonic (_("Use auto registering a word feature"));
+        = gtk_check_button_new_with_mnemonic (_("Change to inline word register mode automatically."));
     gtk_widget_show (__widget_auto_register);
     gtk_box_pack_start (GTK_BOX (vbox), __widget_auto_register, FALSE, FALSE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (__widget_auto_register), 4);
     gtk_tooltips_set_tip (__widget_tooltips, __widget_auto_register,
-                          _("Invoke the registering a word mode when the cursor in the candidates window is move to out of range."), NULL);
+                          _("Invoke the inline word register mode when the cursor in the candidates window is move to out of range."), NULL);
 
     /* close candidate window on select */
     __widget_close_cand_win_on_select
