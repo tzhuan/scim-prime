@@ -1,3 +1,11 @@
-2005-03-29 Takuro Ashie <ashie@homa.ne.jp>
+Overview of Changes from scim-prime-0.1.0 to scim-prime-0.2.0
+=============================================================
+* Enable to edit sentence segments.
+* Add inline prediction feature.
+* Improve English mode.
+* Add some key bindings.
+* Fix some default settings.
 
-        * Initial release.
+scim-prime-0.1.0
+=============================================================
+* Initial release.
