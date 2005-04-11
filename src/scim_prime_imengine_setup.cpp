@@ -155,7 +155,7 @@ static GtkWidget    * __widget_show_usage                  = 0;
 static GtkWidget    * __widget_show_comment                = 0;
 static GtkTooltips  * __widget_tooltips                    = 0;
 
-static KeyboardConfigData __config_keyboards_common [] =
+static KeyboardConfigData __config_keyboards_edit [] =
 {
     {
         SCIM_PRIME_CONFIG_SPACE_KEY,
@@ -172,6 +172,55 @@ static KeyboardConfigData __config_keyboards_common [] =
         N_("Alternative space keys:"),
         N_("Select alternative space keys"),
         N_("The key events to insert alterenative space letter on non-preediting state. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_BACKSPACE_KEY,
+        SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT,
+        N_("Backspace keys:"),
+        N_("Select backspace keys"),
+        N_("The key events to delete a character before caret. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_DELETE_KEY,
+        SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT,
+        N_("Delete keys:"),
+        N_("Select delete keys"),
+        N_("The key events to delete a character after caret. "),
+        NULL,
+        NULL,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+    },
+};
+
+static KeyboardConfigData __config_keyboards_convert [] =
+{
+    {
+        SCIM_PRIME_CONFIG_CONVERT_KEY,
+        SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT,
+        N_("Convert keys:"),
+        N_("Select convert keys"),
+        N_("The key events to convert the preedit string to kanji. "),
+        NULL,
+        NULL,
+    },
+    {
+        SCIM_PRIME_CONFIG_CANCEL_KEY,
+        SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT,
+        N_("Cancel keys:"),
+        N_("Select cancel keys"),
+        N_("The key events to cancel preediting or converting. "),
         NULL,
         NULL,
     },
@@ -199,42 +248,6 @@ static KeyboardConfigData __config_keyboards_common [] =
         N_("Complete keys:"),
         N_("Select complete keys"),
         N_("The key events to complete a word using predictions. "),
-        NULL,
-        NULL,
-    },
-    {
-        SCIM_PRIME_CONFIG_CONVERT_KEY,
-        SCIM_PRIME_CONFIG_CONVERT_KEY_DEFAULT,
-        N_("Convert keys:"),
-        N_("Select convert keys"),
-        N_("The key events to convert the preedit string to kanji. "),
-        NULL,
-        NULL,
-    },
-    {
-        SCIM_PRIME_CONFIG_CANCEL_KEY,
-        SCIM_PRIME_CONFIG_CANCEL_KEY_DEFAULT,
-        N_("Cancel keys:"),
-        N_("Select cancel keys"),
-        N_("The key events to cancel preediting or converting. "),
-        NULL,
-        NULL,
-    },
-    {
-        SCIM_PRIME_CONFIG_BACKSPACE_KEY,
-        SCIM_PRIME_CONFIG_BACKSPACE_KEY_DEFAULT,
-        N_("Backspace keys:"),
-        N_("Select backspace keys"),
-        N_("The key events to delete a character before caret. "),
-        NULL,
-        NULL,
-    },
-    {
-        SCIM_PRIME_CONFIG_DELETE_KEY,
-        SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT,
-        N_("Delete keys:"),
-        N_("Select delete keys"),
-        N_("The key events to delete a character after caret. "),
         NULL,
         NULL,
     },
@@ -595,7 +608,8 @@ static KeyboardConfigData __config_keyboards_direct_select_candidate [] =
 
 static struct KeyboardConfigPage __key_conf_pages[] =
 {
-    {N_("Common keys"),     __config_keyboards_common},
+    {N_("Edit keys"),       __config_keyboards_edit},
+    {N_("Convert keys"),    __config_keyboards_convert},
     {N_("Mode keys"),       __config_keyboards_mode},
     {N_("Caret keys"),      __config_keyboards_caret},
     {N_("Segments keys"),   __config_keyboards_segments},
