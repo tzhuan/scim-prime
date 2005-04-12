@@ -166,6 +166,7 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
             action_commit (true);
+            was_preediting = false;
         }
 
         char buf[2];
