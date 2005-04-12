@@ -132,6 +132,7 @@ struct ComboConfigData
 // Internal data declaration.
 static String __config_command                     = SCIM_PRIME_CONFIG_COMMAND_DEFAULT;
 static bool   __config_convert_on_period           = SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT;
+static bool   __config_commit_period               = SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT;
 static bool   __config_commit_on_upper             = SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT;
 static bool   __config_predict_on_preedition       = SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT;
 static bool   __config_direct_select_on_prediction = SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT;
@@ -146,6 +147,7 @@ static bool __have_changed    = true;
 
 static GtkWidget    * __widget_command                     = 0;
 static GtkWidget    * __widget_convert_on_period           = 0;
+static GtkWidget    * __widget_commit_period               = 0;
 static GtkWidget    * __widget_commit_on_upper             = 0;
 static GtkWidget    * __widget_predict_on_preedition       = 0;
 static GtkWidget    * __widget_direct_select_on_prediction = 0;
@@ -723,6 +725,15 @@ create_options_page ()
     gtk_tooltips_set_tip (__widget_tooltips, __widget_convert_on_period,
                           _("Start conversion on inputting comma or period."), NULL);
 
+    /* commit comma and period */
+    __widget_commit_period
+        = gtk_check_button_new_with_mnemonic (_("Commit comma and period immediately."));
+    gtk_widget_show (__widget_commit_period);
+    gtk_box_pack_start (GTK_BOX (vbox), __widget_commit_period, FALSE, FALSE, 4);
+    gtk_container_set_border_width (GTK_CONTAINER (__widget_commit_period), 4);
+    gtk_tooltips_set_tip (__widget_tooltips, __widget_commit_period,
+                          _("Commit comma and period immediatly on inputting these characters when no preedition string exists."), NULL);
+
     /* commit on upper */
     __widget_commit_on_upper
         = gtk_check_button_new_with_mnemonic (_("Commit on inputting upper letter."));
@@ -739,6 +750,9 @@ create_options_page ()
     g_signal_connect ((gpointer) __widget_convert_on_period, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_convert_on_period);
+    g_signal_connect ((gpointer) __widget_commit_period, "toggled",
+                      G_CALLBACK (on_default_toggle_button_toggled),
+                      &__config_commit_period);
     g_signal_connect ((gpointer) __widget_commit_on_upper, "toggled",
                       G_CALLBACK (on_default_toggle_button_toggled),
                       &__config_commit_on_upper);
@@ -1055,6 +1069,11 @@ setup_widget_value ()
             GTK_TOGGLE_BUTTON (__widget_convert_on_period),
             __config_convert_on_period);
     }
+    if (__widget_commit_period) {
+        gtk_toggle_button_set_active (
+            GTK_TOGGLE_BUTTON (__widget_commit_period),
+            __config_commit_period);
+    }
     if (__widget_commit_on_upper) {
         gtk_toggle_button_set_active (
             GTK_TOGGLE_BUTTON (__widget_commit_on_upper),
@@ -1126,6 +1145,9 @@ load_config (const ConfigPointer &config)
     __config_convert_on_period =
         config->read (String (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD),
                       __config_convert_on_period);
+    __config_commit_period =
+        config->read (String (SCIM_PRIME_CONFIG_COMMIT_PERIOD),
+                      __config_commit_period);
     __config_commit_on_upper =
         config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                       __config_commit_on_upper);
@@ -1179,6 +1201,8 @@ save_config (const ConfigPointer &config)
                    __config_command);
     config->write (String (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD),
                    __config_convert_on_period);
+    config->write (String (SCIM_PRIME_CONFIG_COMMIT_PERIOD),
+                   __config_commit_period);
     config->write (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                    __config_commit_on_upper);
 

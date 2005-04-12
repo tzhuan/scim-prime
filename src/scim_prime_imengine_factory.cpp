@@ -102,6 +102,7 @@ PrimeFactory::PrimeFactory (const String &lang,
     : m_uuid                     (uuid),
       m_config                   (config),
       m_convert_on_period        (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT),
+      m_commit_period            (SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT),
       m_commit_on_upper          (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
       m_predict_on_preedition    (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT),
       m_inline_prediction        (SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT),
@@ -194,6 +195,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_convert_on_period
         = config->read (String (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD),
                         SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT);
+    m_commit_period
+        = config->read (String (SCIM_PRIME_CONFIG_COMMIT_PERIOD),
+                        SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT);
     m_commit_on_upper
         = config->read (String (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER),
                         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT);

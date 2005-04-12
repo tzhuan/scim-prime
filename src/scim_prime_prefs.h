@@ -24,6 +24,7 @@
 #define SCIM_PRIME_CONFIG_COMMAND                             "/IMEngine/PRIME/Command"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD                       "/IMEngine/PRIME/TypingMethod"
 #define SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD                   "/IMEngine/PRIME/ConvertOnPeriod"
+#define SCIM_PRIME_CONFIG_COMMIT_PERIOD                       "/IMEngine/PRIME/CommitPeriod"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION               "/IMEngine/PRIME/PredictOnPreedition"
@@ -84,6 +85,7 @@
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
 #define SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT           false
+#define SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT               true
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
 
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT       true

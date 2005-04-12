@@ -46,6 +46,7 @@ class PrimeFactory : public IMEngineFactoryBase
     String       m_command;
     String       m_typing_method;
     bool         m_convert_on_period;
+    bool         m_commit_period;
     bool         m_commit_on_upper;
 
     // preferences for predicttion
