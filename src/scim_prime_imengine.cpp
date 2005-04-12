@@ -159,7 +159,8 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
 
     if (get_session () && isprint (key.get_ascii_code ())) {
-        if (is_converting () || is_selecting_prediction () ||
+        if (is_converting () ||
+            is_selecting_prediction () ||
             (isupper (key.get_ascii_code ()) && m_factory->m_commit_on_upper))
         {
             action_commit (true);
@@ -172,6 +173,13 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         // finish selecting predictions;
         m_lookup_table.show_cursor (false);
         get_session()->edit_insert (buf);
+
+        if (m_factory->m_convert_on_period &&
+            (key.get_ascii_code () == ',' || key.get_ascii_code () == '.'))
+        {
+            action_convert ();
+        }
+
         set_preedition ();
 
         return true;
