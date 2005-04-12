@@ -445,14 +445,20 @@ PrimeInstance::set_preedition (void)
 
             AttributeList attr_list;
             if (!cursor.empty ()) {
-                Attribute attr (left.length (), cursor.length(),
-                                SCIM_ATTR_DECORATE);
-                attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+                Attribute attr (0, m_candidates[0].m_conversion.length (),
+                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
                 attr_list.push_back (attr);
             }
 
-            update_preedit_string (m_candidates[0].m_conversion);
+            update_preedit_string (m_candidates[0].m_conversion, attr_list);
             update_preedit_caret (0);
+
+            attr_list.clear ();
+            if (!cursor.empty ()) {
+                Attribute attr (left.length (), cursor.length(),
+                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
+                attr_list.push_back (attr);
+            }
 
             show_aux_string ();
             update_aux_string (left + cursor + right, attr_list);
@@ -552,6 +558,13 @@ PrimeInstance::set_preedition_on_register (void)
         attr.set_start (pos);
 
         if (!m_candidates.empty ()) {
+            // preedition
+            preedition = m_candidates[0].m_conversion;
+            str += preedition;
+
+            attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+
+            // reading
             if (!left.empty () && cursor.empty () && right.empty ())
                 cursor = utf8_mbstowcs (" ");
             reading = left + cursor + right;
@@ -559,13 +572,9 @@ PrimeInstance::set_preedition_on_register (void)
             AttributeList reading_attr_list;
             if (!cursor.empty ()) {
                 Attribute attr (left.length (), cursor.length(),
-                                SCIM_ATTR_DECORATE);
-                attr.set_value (SCIM_ATTR_DECORATE_REVERSE);
+                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
                 reading_attr_list.push_back (attr);
             }
-
-            preedition = m_candidates[0].m_conversion;
-            str += preedition;
 
             show_aux_string ();
             update_aux_string (reading, reading_attr_list);
