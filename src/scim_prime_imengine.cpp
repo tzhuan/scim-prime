@@ -626,19 +626,22 @@ PrimeInstance::set_prediction (void)
 
     m_lookup_table.clear ();
     m_candidates.clear ();
-    get_session()->conv_predict (m_candidates);
-
-    for (unsigned int i = 0; i < m_candidates.size (); i++)
-        m_lookup_table.append_candidate (m_candidates[i].m_conversion);
     m_lookup_table.show_cursor (false);
 
-    unsigned int min_candidates = m_factory->m_inline_prediction ? 1: 0;
+    if (is_preediting ()) {
+        get_session()->conv_predict (m_candidates);
+        for (unsigned int i = 0; i < m_candidates.size (); i++)
+            m_lookup_table.append_candidate (m_candidates[i].m_conversion);
 
-    if (is_preediting () &&
-        m_candidates.size () > min_candidates &&
-        m_candidates[0].m_conversion.length () > 0)
-    {
-        show_lookup_table ();
+        unsigned int min_candidates = m_factory->m_inline_prediction ? 1: 0;
+
+        if (m_candidates.size () > min_candidates &&
+            m_candidates[0].m_conversion.length () > 0)
+        {
+            show_lookup_table ();
+        } else {
+            hide_lookup_table ();
+        }
 
     } else {
         hide_lookup_table ();
@@ -732,6 +735,7 @@ PrimeInstance::action_commit (bool learn)
         reset ();
 
     } else {
+        reset ();
         return false;
     }
 
@@ -1127,8 +1131,8 @@ PrimeInstance::action_edit_backspace (void)
             m_registering_value.erase (m_registering_cursor - 1, 1);
             m_registering_cursor--;
             set_preedition ();
-            return true;
         }
+        return true;
     }
 
     if (!is_preediting ())
@@ -1157,8 +1161,8 @@ PrimeInstance::action_edit_delete (void)
         if (m_registering_cursor < m_registering_value.length ()) {
             m_registering_value.erase (m_registering_cursor, 1);
             set_preedition ();
-            return true;
         }
+        return true;
     }
 
     if (!is_preediting ())
@@ -1213,7 +1217,10 @@ PrimeInstance::action_insert_alternative_space (void)
 bool
 PrimeInstance::action_conv_next_candidate (void)
 {
-    if (is_registering () && !is_preediting ()) {
+    if (is_registering () &&
+        !is_preediting () &&
+        m_registering_value.empty ())
+    {
         action_revert ();
         return true;
     }
@@ -1256,7 +1263,10 @@ PrimeInstance::action_conv_next_candidate (void)
 bool
 PrimeInstance::action_conv_prev_candidate (void)
 {
-    if (is_registering () && !is_preediting ()) {
+    if (is_registering () &&
+        !is_preediting () &&
+        m_registering_value.empty ())
+    {
         action_revert ();
         return true;
     }
