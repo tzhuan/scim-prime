@@ -28,21 +28,26 @@
 
 using namespace scim;
 
+typedef enum {
+    PRIME_PREEDITION_DEFAULT,
+    PRIME_PREEDITION_KATAKANA,
+    PRIME_PREEDITION_HALF_KATAKANA,
+    PRIME_PREEDITION_WIDE_ASCII,
+    PRIME_PREEDITION_RAW,
+} PrimePreeditionMode;
+
 class PrimeConnection;
 
 class PrimeSession
 {
 public:
     PrimeSession                  (PrimeConnection *connection,
-                                   String           id_str);
+                                   String           id_str,
+                                   const char      *language);
     virtual ~PrimeSession         ();
 
 public: // prime commands
-    void        conv_commit              (void);
-    void        conv_convert             (char *method);
-    void        conv_predict             (char *method);
-    void        conv_select              (int index);
-
+    // edit
     void        edit_backspace           (void);
     void        edit_commit              (void);
     void        edit_cursor_left         (void);
@@ -55,27 +60,46 @@ public: // prime commands
                                           WideString &cursor,
                                           WideString &right);
     void        edit_get_query_string    (String     &string);
-    WideString &edit_insert              (const char *str);
-    void        edit_set_mode            (void);
+    void        edit_insert              (const char *str);
+    void        edit_set_mode            (PrimePreeditionMode mode);
     void        edit_undo                (void);
 
-    void        modify_cursor_expand     (void);
+    // conv
+    void        conv_predict             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_convert             (PrimeCandidates &candidates,
+                                          String method = String ());
+    void        conv_select              (WideString &selected_string,
+                                          int index);
+    void        conv_commit              (WideString &commited_string);
+
+    // modify
+    void        modify_start             (void);
     void        modify_cursor_left       (void);
-    void        modify_cusror_left_edge  (void);
+    void        modify_cursor_left_edge  (void);
     void        modify_cursor_right      (void);
     void        modify_cursor_right_edge (void);
+    void        modify_cursor_expand     (void);
     void        modify_cursor_shrink     (void);
-    void        modify_get_candidates    (void);
-    void        modify_start             (void);
+    void        modify_get_candidates    (PrimeCandidates &candidates,
+                                          int &index);
+    void        modify_get_conversion    (WideString &left,
+                                          WideString &cursor,
+                                          WideString &right);
 
+    // segment
+    void        segment_reconvert        (PrimeCandidates &candidates);
+    void        segment_select           (int index);
     void        segment_commit           (void);
-    void        segment_reconvert        (void);
-    void        segment_select           (void);
 
-    void        register_word            (void);
+    // context
+    void        context_set_previous_word(WideString &word);
+    void        context_reset            (void);
 
-    void        set_context              (WideString &context);
-    void        reset_context            (void);
+    // env
+    void        get_env                  (const String        &key,
+                                          String              &type,
+                                          std::vector<String> &values);
 
 public: // other functions
     bool        has_preedition           (void);
@@ -84,9 +108,12 @@ public: // other functions
     String     &get_id_str               (void);
 
 private:
+    void        get_candidates           (PrimeCandidates &candidates);
+
+private:
     PrimeConnection *m_connection;
     String           m_id_str;
-    WideString       m_preedition;
+    String           m_language;
 };
 
 #endif /* __PRIME_SESSION_H__ */

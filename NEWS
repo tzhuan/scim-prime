@@ -1,0 +1,18 @@
+Overview of Changes from scim-prime-0.2.0 to scim-prime-0.2.1
+=============================================================
+* Add an option to choose whether starts converting on inputting comma/period
+  or not.
+* Add an option to choose whether commits comma/period immediatly or not.
+* Reverse color of preedit string on inline prediction mode.
+
+Overview of Changes from scim-prime-0.1.0 to scim-prime-0.2.0
+=============================================================
+* Enable to edit sentence segments.
+* Add inline prediction feature.
+* Improve English mode.
+* Add some key bindings.
+* Fix some default settings.
+
+scim-prime-0.1.0
+=============================================================
+* Initial release.

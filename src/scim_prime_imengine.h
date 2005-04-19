@@ -1,7 +1,7 @@
 /* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
  *  Copyright (C) 2004 Hiroyuki Ikezoe
- *  Copyright (C) 2004 Takuro Ashie
+ *  Copyright (C) 2004 - 2005 Takuro Ashie
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,44 +26,28 @@
 #ifndef __SCIM_PRIME_IMENGINE_H__
 #define __SCIM_PRIME_IMENGINE_H__
 
-#define Uses_SCIM_ICONV
 #include <scim.h>
-#include <prime_connection.h>
+
+#include "prime_connection.h"
+#include "prime_session.h"
+
 using namespace scim;
 
-class PrimeFactory : public IMEngineFactoryBase
-{
-    String m_uuid;
-
-    friend class PrimeInstance;
-
-    /* config */
-    ConfigPointer  m_config;
-
-public:
-    PrimeFactory (const String &lang,
-                  const String &uuid,
-                  const ConfigPointer &config);
-    virtual ~PrimeFactory ();
-
-    virtual WideString  get_name () const;
-    virtual WideString  get_authors () const;
-    virtual WideString  get_credits () const;
-    virtual WideString  get_help () const;
-    virtual String      get_uuid () const;
-    virtual String      get_icon_file () const;
-
-    virtual IMEngineInstancePointer create_instance (const String& encoding,
-                                                     int id = -1);
-
-private:
-    void reload_config (const ConfigPointer &config);
-};
+typedef enum {
+    SCIM_PRIME_LANGUAGE_UNKNOWN,
+    SCIM_PRIME_LANGUAGE_JAPANESE,
+    // Sessions after this will ignore conversion keys which conflicts with
+    // space and alternative space keys.
+    SCIM_PRIME_LANGUAGE_ENGLISH,
+} SCIMPrimeLanguage;
 
 class PrimeInstance : public IMEngineInstanceBase
 {
+    friend class PrimeFactory;
+
 private:
     static PrimeConnection  m_prime;
+    static int              m_prime_major_version;
 
     PrimeSession           *m_session;
 
@@ -77,11 +61,25 @@ private:
     /* for toolbar */
     PropertyList            m_properties;
 
+    /* values */
+    PrimeCandidates         m_candidates;
+
     /* flags */
+    SCIMPrimeLanguage       m_language;
+    bool                    m_disable;
     bool                    m_converting;
+    bool                    m_modifying;
+    bool                    m_registering;
+    bool                    m_cancel_prediction;
+
+    /* for register mode */
+    String                  m_query_string;
+    WideString              m_registering_key;
+    WideString              m_registering_value;
+    unsigned int            m_registering_cursor;
 
 public:
-   PrimeInstance (PrimeFactory   *factory,
+    PrimeInstance (PrimeFactory   *factory,
                    const String   &encoding,
                    int             id = -1);
     virtual ~PrimeInstance ();
@@ -99,40 +97,90 @@ public:
 
 public:
     virtual bool is_preediting                 (void);
+    virtual bool is_selecting_prediction       (void);
     virtual bool is_converting                 (void);
-    virtual bool is_learning                   (void);
+    virtual bool is_modifying                  (void);
+    virtual bool is_registering                (void);
+
+private: // actions
+    bool   action_commit_with_learn            (void);
+    bool   action_commit_without_learn         (void);
+    bool   action_commit_alternative           (void);
+    bool   action_convert                      (void);
+    bool   action_revert                       (void);
+    bool   action_start_selecting_prediction   (void);
+    bool   action_finish_selecting_candidates  (void);
+
+    bool   action_modify_caret_left            (void);
+    bool   action_modify_caret_right           (void);
+    bool   action_modify_caret_left_edge       (void);
+    bool   action_modify_caret_right_edge      (void);
+
+    bool   action_edit_backspace               (void);
+    bool   action_edit_delete                  (void);
+
+    bool   action_insert_space                 (void);
+    bool   action_insert_alternative_space     (void);
+
+    bool   action_conv_next_candidate          (void);
+    bool   action_conv_prev_candidate          (void);
+    bool   action_conv_next_page               (void);
+    bool   action_conv_prev_page               (void);
+
+    bool   action_select_candidate_1           (void);
+    bool   action_select_candidate_2           (void);
+    bool   action_select_candidate_3           (void);
+    bool   action_select_candidate_4           (void);
+    bool   action_select_candidate_5           (void);
+    bool   action_select_candidate_6           (void);
+    bool   action_select_candidate_7           (void);
+    bool   action_select_candidate_8           (void);
+    bool   action_select_candidate_9           (void);
+    bool   action_select_candidate_10          (void);
+
+    bool   action_modify_start                 (void);
+    bool   action_select_prev_segment          (void);
+    bool   action_select_next_segment          (void);
+    bool   action_select_first_segment         (void);
+    bool   action_select_last_segment          (void);
+    bool   action_shrink_segment               (void);
+    bool   action_expand_segment               (void);
+
+    bool   action_set_mode_default             (void);
+    bool   action_set_mode_katakana            (void);
+    bool   action_set_mode_half_katakana       (void);
+    bool   action_set_mode_raw                 (void);
+    bool   action_set_mode_wide_ascii          (void);
+
+    bool   action_toggle_language              (void);
+    bool   action_set_language_japanese        (void);
+    bool   action_set_language_english         (void);
+
+    bool   action_register_a_word              (void);
 
 private:
+    PrimeSession *
+           get_session                         (void);
+
     void   set_preedition                      (void);
+    void   set_preedition_on_register          (void);
     void   set_prediction                      (void);
 
-    void   select_candidate_no_direct          (unsigned int item);
+    void   select_candidate_no_direct          (unsigned int    item);
+    void   install_properties                  (void);
 
     /* processing key event */
     bool   process_key_event_lookup_keybind    (const KeyEvent &key);
-    bool   process_key_event_without_preedit   (const KeyEvent &key);
-    bool   process_key_event_with_preedit      (const KeyEvent &key);
-    bool   process_key_event_with_candidate    (const KeyEvent &key);
     bool   process_remaining_key_event         (const KeyEvent &key);
 
-    /* actions */
-    bool   action_commit                       (void);
-    bool   action_convert                      (void);
-    bool   action_revert                       (void);
-
-    bool   action_move_caret_backward          (void);
-    bool   action_move_caret_forward           (void);
-    bool   action_move_caret_first             (void);
-    bool   action_move_caret_last              (void);
-
-    bool   action_back                         (void);
-    bool   action_delete                       (void);
-    bool   action_select_next_candidate        (void);
-    bool   action_select_prev_candidate        (void);
-
     /* utility */
-    bool   match_key_event (const KeyEventList &keys,
-                            const KeyEvent &key) const;
+    bool   action_commit                       (bool learn);
+    bool   action_commit_on_register           (bool learn);
+    bool   action_select_candidate             (unsigned int i);
+    bool   match_key_event                     (const KeyEventList &keys,
+                                                const KeyEvent     &key) const;
+    void   get_candidate_label                 (WideString         &label,
+                                                PrimeCandidate     &cand);
 };
 #endif /* __SCIM_PRIME_IMENGINE_H__ */
 /*
