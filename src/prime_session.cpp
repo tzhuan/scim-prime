@@ -83,6 +83,7 @@ PrimeSession::edit_erase (void)
 }
 
 void
+
 PrimeSession::edit_get_preedition (WideString &left,
                                    WideString &cursor,
                                    WideString &right)

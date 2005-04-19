@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-04-12 12:54+0900\n"
+"POT-Creation-Date: 2005-04-18 17:37+0900\n"
 "PO-Revision-Date: 2005-03-29 11:52+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -13,43 +13,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:304
+#: src/scim_prime_imengine.cpp:305
 msgid "Language"
 msgstr "言語"
 
-#: src/scim_prime_imengine.cpp:308 src/scim_prime_imengine.cpp:1672
+#: src/scim_prime_imengine.cpp:309 src/scim_prime_imengine.cpp:1692
 msgid "Japanese"
 msgstr "日本語"
 
-#: src/scim_prime_imengine.cpp:312 src/scim_prime_imengine.cpp:1726
+#: src/scim_prime_imengine.cpp:313 src/scim_prime_imengine.cpp:1746
 msgid "English"
 msgstr "英語"
 
-#: src/scim_prime_imengine.cpp:360
+#: src/scim_prime_imengine.cpp:361
 msgid "PRIME process seems terminated abnormally."
 msgstr "PRIMEプロセスが異常終了しました。"
 
-#: src/scim_prime_imengine.cpp:367
+#: src/scim_prime_imengine.cpp:368
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr "PRIMEが古すぎます。PRIME-1.0.0以降をインストールして下さい。"
 
-#: src/scim_prime_imengine.cpp:383
+#: src/scim_prime_imengine.cpp:384
 msgid "Couldn't start PRIME session."
 msgstr "PRIMEセッションを開始できませんでした。"
 
-#: src/scim_prime_imengine.cpp:488
+#: src/scim_prime_imengine.cpp:495
 msgid "Register a word:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine.cpp:493
+#: src/scim_prime_imengine.cpp:500
 msgid "["
 msgstr "["
 
-#: src/scim_prime_imengine.cpp:498
+#: src/scim_prime_imengine.cpp:505
 msgid "|"
 msgstr "|"
 
-#: src/scim_prime_imengine.cpp:590
+#: src/scim_prime_imengine.cpp:600
 msgid "]"
 msgstr "]"
 
