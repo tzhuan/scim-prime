@@ -1677,13 +1677,11 @@ PrimeInstance::action_set_language_japanese (void)
         m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
         m_session->edit_insert (query.c_str ());
         set_preedition ();
-        set_prediction ();
     } else {
         m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
     }
 
-    if (m_properties.empty ())
-        install_properties ();
+    install_properties ();
     PropertyList::iterator it = std::find (m_properties.begin (),
                                            m_properties.end (),
                                            SCIM_PROP_LANGUAGE);
@@ -1731,13 +1729,11 @@ PrimeInstance::action_set_language_english (void)
         m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
         m_session->edit_insert (query.c_str ());
         set_preedition ();
-        set_prediction ();
     } else {
         m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
     }
 
-    if (m_properties.empty ())
-        install_properties ();
+    install_properties ();
     PropertyList::iterator it = std::find (m_properties.begin (),
                                            m_properties.end (),
                                            SCIM_PROP_LANGUAGE);
