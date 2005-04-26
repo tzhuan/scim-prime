@@ -130,6 +130,7 @@ private:
     int                 get_version_int     (int idx); // major: idx=0
                                                        // minor: idx=1
                                                        // micro: idx=2
+    void                clean_child         (void);
 
 public:
     IConvert            m_iconv;

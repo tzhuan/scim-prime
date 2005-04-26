@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-04-22 17:48+0900\n"
+"POT-Creation-Date: 2005-04-26 11:45+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:309 src/scim_prime_imengine.cpp:1692
+#: src/scim_prime_imengine.cpp:309 src/scim_prime_imengine.cpp:1690
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:313 src/scim_prime_imengine.cpp:1746
+#: src/scim_prime_imengine.cpp:313 src/scim_prime_imengine.cpp:1742
 msgid "English"
 msgstr ""
 

@@ -109,7 +109,7 @@ PrimeConnection::open_connection (const char *command,
     pid_t pid;
     int in_fd[2], out_fd[2], err_fd[2];
 
-    if (m_pid)
+    if (m_pid > 0)
         return;
 
     if (pipe (out_fd) < 0) goto ERROR0;
@@ -118,10 +118,8 @@ PrimeConnection::open_connection (const char *command,
 
     pid = fork ();
 
-    if (pid < 0) {
-        /* error */
-        return;
-    }
+    if (pid < 0)
+        goto ERROR3;
 
     if (pid > 0) {
         /* parent process */
@@ -142,6 +140,7 @@ PrimeConnection::open_connection (const char *command,
         signal (SIGPIPE, handle_sigpipe);
 
         return;
+
     } else if (pid == 0) {
         /* child process */      
 
@@ -192,9 +191,9 @@ PrimeConnection::open_connection (const char *command,
         _exit (255);
     }
 
+ERROR3:
     close (in_fd[0]);
     close (in_fd[1]);
-
 ERROR2:
     close (err_fd[0]);
     close (err_fd[1]);
@@ -222,7 +221,6 @@ PrimeConnection::close_connection (void)
             case EINVAL:
             case EPIPE:
             case EIO:
-                m_pid = 0;
                 remaining = 0;
                 break;
             default:
@@ -231,20 +229,35 @@ PrimeConnection::close_connection (void)
             }
         } while (remaining > 0);
 
-        close (m_in_fd);
-        close (m_out_fd);
-        close (m_err_fd);
-
-        m_pid    = 0;
-        m_in_fd  = 0;
-        m_out_fd = 0;
-        m_err_fd = 0;
+        clean_child ();
     }
 }
 
 void
 PrimeConnection::close_connection_with_error (void)
 {
+    if (m_in_fd)
+        close (m_in_fd);
+    if (m_out_fd)
+        close (m_out_fd);
+    if (m_err_fd)
+        close (m_err_fd);
+
+    m_pid    = 0;
+    m_in_fd  = 0;
+    m_out_fd = 0;
+    m_err_fd = 0;
+}
+
+void
+PrimeConnection::clean_child (void)
+{
+    pid_t pid;
+    int status;
+    do {
+        pid = waitpid (-1, &status, WNOHANG);
+    } while (pid > 0);
+
     if (m_in_fd)
         close (m_in_fd);
     if (m_out_fd)
@@ -511,10 +524,7 @@ PrimeConnection::send_command (const char *command,
         case EINVAL:
         case EPIPE:
         case EIO:
-            m_pid = 0;
-            close (m_in_fd);  m_in_fd  = 0;
-            close (m_out_fd); m_out_fd = 0;
-            close (m_err_fd); m_err_fd = 0;
+            clean_child ();
             return false;
             break;
         default:
@@ -541,10 +551,7 @@ PrimeConnection::send_command (const char *command,
             case EINVAL:
             case EPIPE:
             case EIO:
-                m_pid = 0;
-                close (m_in_fd);  m_in_fd  = 0;
-                close (m_out_fd); m_out_fd = 0;
-                close (m_err_fd); m_err_fd = 0;
+                clean_child ();
                 break;
             default:
                 break;
