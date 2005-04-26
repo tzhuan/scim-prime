@@ -51,7 +51,6 @@
 #define SCIM_PROP_LANGUAGE_ENGLISH    "/IMEngine/PRIME/Lang/English"
 
 PrimeConnection PrimeInstance::m_prime = PrimeConnection();
-int             PrimeInstance::m_prime_major_version = -2;
 
 PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
@@ -73,7 +72,6 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
     if (!m_prime.is_connected ()) {
         m_prime.open_connection (m_factory->m_command.c_str(),
                                  m_factory->m_typing_method.c_str());
-        m_prime_major_version = m_prime.major_version ();
     }
 }
 

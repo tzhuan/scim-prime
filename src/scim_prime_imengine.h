@@ -47,7 +47,6 @@ class PrimeInstance : public IMEngineInstanceBase
 
 private:
     static PrimeConnection  m_prime;
-    static int              m_prime_major_version;
 
     PrimeSession           *m_session;
 
