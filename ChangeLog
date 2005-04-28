@@ -4,6 +4,11 @@
 
 2005-04-28 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine_setup.cpp: Add m_lookup_table_visible flag,
+	and call show_lookup_table () on focus in if this value is true.
+
+2005-04-28 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine_setup.cpp: Minor bug fix.
 
 2005-04-26 Takuro Ashie <ashie@homa.ne.jp>

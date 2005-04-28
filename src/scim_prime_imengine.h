@@ -70,6 +70,7 @@ private:
     bool                    m_modifying;
     bool                    m_registering;
     bool                    m_cancel_prediction;
+    bool                    m_lookup_table_visible;
 
     /* for register mode */
     String                  m_query_string;

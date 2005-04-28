@@ -65,6 +65,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_modifying (false),
       m_registering (false),
       m_cancel_prediction (false),
+      m_lookup_table_visible (false),
       m_registering_cursor (0)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
@@ -210,6 +211,7 @@ PrimeInstance::select_candidate (unsigned int item)
         unsigned int pos = m_lookup_table.get_cursor_pos ();
         update_preedit_caret (m_candidates[pos].m_conversion.length ());
         hide_lookup_table ();
+        m_lookup_table_visible = false;
     }
 }
 
@@ -276,6 +278,7 @@ PrimeInstance::reset ()
     m_candidates.clear();
     m_converting = false;
     m_modifying = false;
+    m_lookup_table_visible = false;
 
     if (get_session())
         get_session()->edit_erase();
@@ -321,12 +324,18 @@ PrimeInstance::focus_in (void)
     SCIM_DEBUG_IMENGINE(2) << "focus_in.\n";
 
     install_properties ();
+
+    if (m_lookup_table_visible)
+        show_lookup_table ();
 }
 
 void
 PrimeInstance::focus_out (void)
 {
     SCIM_DEBUG_IMENGINE(2) << "focus_out.\n";
+
+    if (m_lookup_table_visible)
+        hide_lookup_table ();
 }
 
 void
@@ -637,12 +646,15 @@ PrimeInstance::set_prediction (void)
             m_candidates[0].m_conversion.length () > 0)
         {
             show_lookup_table ();
+            m_lookup_table_visible = true;
         } else {
             hide_lookup_table ();
+            m_lookup_table_visible = false;
         }
 
     } else {
         hide_lookup_table ();
+        m_lookup_table_visible = false;
     }
 
     update_lookup_table (m_lookup_table);
@@ -902,11 +914,13 @@ PrimeInstance::action_convert (void)
 
     if (m_candidates.size () > 0) {
         show_lookup_table ();
+        m_lookup_table_visible = true;
         update_lookup_table (m_lookup_table);
         select_candidate_no_direct (idx);
     } else {
         m_converting = false;
         hide_lookup_table ();
+        m_lookup_table_visible = false;
     }
 
     set_preedition ();
@@ -1002,6 +1016,7 @@ PrimeInstance::action_finish_selecting_candidates (void)
 
     set_preedition ();
     hide_lookup_table ();
+    m_lookup_table_visible = false;
 
     return true;
 }
