@@ -65,6 +65,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_modifying (false),
       m_registering (false),
       m_cancel_prediction (false),
+      m_preedition_visible (false),
       m_lookup_table_visible (false),
       m_registering_cursor (0)
 {
@@ -278,6 +279,8 @@ PrimeInstance::reset ()
     m_candidates.clear();
     m_converting = false;
     m_modifying = false;
+
+    m_preedition_visible   = false;
     m_lookup_table_visible = false;
 
     if (get_session())
@@ -325,8 +328,12 @@ PrimeInstance::focus_in (void)
 
     install_properties ();
 
-    if (m_lookup_table_visible)
+    if (m_preedition_visible)
+        set_preedition ();
+    if (m_lookup_table_visible) {
+        update_lookup_table (m_lookup_table);
         show_lookup_table ();
+    }
 }
 
 void
@@ -334,8 +341,12 @@ PrimeInstance::focus_out (void)
 {
     SCIM_DEBUG_IMENGINE(2) << "focus_out.\n";
 
+#if 0
+    if (m_preedition_visible)
+        hide_preedit_string ();
     if (m_lookup_table_visible)
         hide_lookup_table ();
+#endif
 }
 
 void
@@ -417,6 +428,7 @@ PrimeInstance::set_preedition (void)
         attr_list.push_back (attr);
 
         show_preedit_string ();
+        m_preedition_visible = true;
         update_preedit_string (left + cursor + right, attr_list);
         update_preedit_caret (left.length ());
 
@@ -430,6 +442,7 @@ PrimeInstance::set_preedition (void)
         attr_list.push_back (attr);
 
         show_preedit_string ();
+        m_preedition_visible = true;
         update_preedit_string (cand.m_conversion, attr_list);
         update_preedit_caret (0);
 
@@ -441,10 +454,13 @@ PrimeInstance::set_preedition (void)
         if (m_factory->m_inline_prediction && !m_cancel_prediction)
             get_session()->conv_predict (m_candidates);
 
-        if (left.length () + cursor.length () + right.length () > 0)
+        if (left.length () + cursor.length () + right.length () > 0) {
             show_preedit_string ();
-        else
+            m_preedition_visible = true;
+        } else {
             hide_preedit_string ();
+            m_preedition_visible = false;
+        }
 
         if (!m_candidates.empty ()) {
             if (!left.empty () && cursor.empty () && right.empty ())
@@ -608,6 +624,7 @@ PrimeInstance::set_preedition_on_register (void)
     ADD_SEPARATOR_ATTR();
 
     show_preedit_string ();
+    m_preedition_visible = true;
     update_preedit_string (str, attr_list);
     update_preedit_caret (pos);
 }
