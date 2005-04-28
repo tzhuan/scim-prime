@@ -1406,21 +1406,21 @@ save_config (const ConfigPointer &config)
     if (config.null ())
         return;
 
+    for (unsigned int i = 0; i < __config_bool_common_num; i++) {
+        BoolConfigData &entry = __config_bool_common[i];
+        if (entry.changed)
+            entry.value = config->write (String (entry.key), entry.value);
+        entry.changed = false;
+    }
+
+    for (unsigned int i = 0; i < __config_string_common_num; i++) {
+        StringConfigData &entry = __config_string_common[i];
+        if (entry.changed)
+            entry.value = config->write (String (entry.key), entry.value);
+        entry.changed = false;
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
-        for (unsigned int i = 0; i < __config_bool_common_num; i++) {
-            BoolConfigData &entry = __config_bool_common[i];
-            if (entry.changed)
-                entry.value = config->write (String (entry.key), entry.value);
-            entry.changed = false;
-        }
-
-        for (unsigned int i = 0; i < __config_string_common_num; i++) {
-            StringConfigData &entry = __config_string_common[i];
-            if (entry.changed)
-                entry.value = config->write (String (entry.key), entry.value);
-            entry.changed = false;
-        }
-
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             if (__key_conf_pages[j].data[i].changed)
                 config->write (String (__key_conf_pages[j].data[i].key),
