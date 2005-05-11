@@ -51,6 +51,7 @@ class PrimeFactory : public IMEngineFactoryBase
 
     // preferences for predicttion
     bool         m_predict_on_preedition;
+    bool         m_predict_win_pos_is_head;
     bool         m_direct_select_on_prediction;
     bool         m_inline_prediction;
 

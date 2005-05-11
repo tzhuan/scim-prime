@@ -28,6 +28,7 @@
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION               "/IMEngine/PRIME/PredictOnPreedition"
+#define SCIM_PRIME_CONFIG_PREDICT_WIN_POS_IS_HEAD             "/IMEngine/PRIME/PredictWinPosIsHead"
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION         "/IMEngine/PRIME/DirectSelectOnPrediction"
 #define SCIM_PRIME_CONFIG_INLINE_PREDICTION                   "/IMEngine/PRIME/InlinePrediction"
 
@@ -89,6 +90,7 @@
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
 
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT       true
+#define SCIM_PRIME_CONFIG_PREDICT_WIN_POS_IS_HEAD_DEDAULT     true
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT true
 #define SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT           false
 

@@ -105,6 +105,7 @@ PrimeFactory::PrimeFactory (const String &lang,
       m_commit_period            (SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT),
       m_commit_on_upper          (SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT),
       m_predict_on_preedition    (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT),
+      m_predict_win_pos_is_head  (SCIM_PRIME_CONFIG_PREDICT_WIN_POS_IS_HEAD),
       m_inline_prediction        (SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT),
       m_auto_register            (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_close_cand_win_on_select (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT),
@@ -205,6 +206,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_predict_on_preedition
         = config->read (String (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION),
                         SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT);
+    m_predict_win_pos_is_head
+        = config->read (String (SCIM_PRIME_CONFIG_PREDICT_WIN_POS_IS_HEAD),
+                        SCIM_PRIME_CONFIG_PREDICT_WIN_POS_IS_HEAD);
     m_direct_select_on_prediction
         = config->read (String (SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION),
                         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT);
