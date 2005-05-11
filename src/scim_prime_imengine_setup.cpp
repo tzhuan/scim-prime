@@ -163,7 +163,7 @@ static GtkWidget   * __widget_key_categories_menu = NULL;
 static GtkWidget   * __widget_key_filter          = NULL;
 static GtkWidget   * __widget_key_filter_button   = NULL;
 static GtkWidget   * __widget_key_list_view       = NULL;
-static GtkTooltips * __widget_tooltips           = NULL;
+static GtkTooltips * __widget_tooltips            = NULL;
 
 static BoolConfigData __config_bool_common [] =
 {
@@ -282,6 +282,15 @@ static StringConfigData __config_string_common [] =
         N_("PRIME command:"),
         NULL,
         N_("The PRIME command to use as conversion engine."),
+        NULL,
+        false,
+    },
+    {
+        SCIM_PRIME_CONFIG_PREDICT_WIN_POS,
+        SCIM_PRIME_CONFIG_PREDICT_WIN_POS_DEFAULT,
+        N_("Prediction window position:"),
+        NULL,
+        N_("The prediction window position to show."),
         NULL,
         false,
     },
@@ -764,6 +773,13 @@ static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (K
 const int INDEX_SEARCH_BY_KEY = __key_conf_pages_num;
 const int INDEX_ALL           = __key_conf_pages_num + 1;
 
+static ComboConfigCandidate predict_win_pos[] =
+{
+    {N_("Head of preedition area"), "head"},
+    {N_("Tail of preedition area"), "tail"},
+    {NULL, NULL},
+};
+
 
 static void on_default_editable_changed       (GtkEditable     *editable,
                                                gpointer         user_data);
@@ -772,9 +788,9 @@ static void on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
 #if 0
 static void on_default_key_selection_clicked  (GtkButton       *button,
                                                gpointer         user_data);
+#endif
 static void on_default_combo_changed          (GtkEditable     *editable,
                                                gpointer         user_data);
-#endif
 static void     on_key_filter_selection_clicked   (GtkButton       *button,
                                                    gpointer         user_data);
 static void     on_key_category_menu_changed      (GtkOptionMenu   *omenu,
@@ -854,7 +870,6 @@ match_key_event (const KeyEventList &list, const KeyEvent &key)
     return false;
 }
 
-#if 0
 static GtkWidget *
 create_combo (const char *config_key, gpointer candidates_p,
               GtkWidget *table, gint idx)
@@ -898,7 +913,6 @@ create_combo (const char *config_key, gpointer candidates_p,
 
     return entry->widget;
 }
-#endif
 
 #define APPEND_ENTRY(data, i)                                                  \
 {                                                                              \
@@ -1050,13 +1064,16 @@ create_prediction_page ()
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
 
-    table = gtk_table_new (2, 2, FALSE);
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
-    gtk_widget_show (table);
-
     /* predict on preedition */
     widget = create_check_button (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION);
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+
+    /* prediction window position */
+    table = gtk_table_new (2, 2, FALSE);
+    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
+    gtk_widget_show (table);
+    widget = create_combo (SCIM_PRIME_CONFIG_PREDICT_WIN_POS,
+                           predict_win_pos, table, 0);
 
     /* use direct select keys on prediction */
     widget = create_check_button (SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION);
@@ -1497,7 +1514,6 @@ on_default_key_selection_clicked (GtkButton *button,
 }
 #endif
 
-#if 0
 static void
 on_default_combo_changed (GtkEditable *editable,
                           gpointer user_data)
@@ -1521,7 +1537,6 @@ on_default_combo_changed (GtkEditable *editable,
         }
     }
 }
-#endif
 
 static void
 on_key_category_menu_changed (GtkOptionMenu *omenu, gpointer user_data)

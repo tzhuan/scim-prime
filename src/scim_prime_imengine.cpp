@@ -491,7 +491,7 @@ PrimeInstance::set_preedition (void)
         } else {
             // on normal prediction mode
 
-            if (m_factory->m_predict_win_pos_is_head &&
+            if (m_factory->m_predict_win_pos == "head" &&
                 !left.empty () && cursor.empty () && right.empty ())
                 cursor = utf8_mbstowcs (" ");
 
@@ -503,7 +503,7 @@ PrimeInstance::set_preedition (void)
             }
 
             update_preedit_string (left + cursor + right, attr_list);
-            if (m_factory->m_predict_win_pos_is_head)
+            if (m_factory->m_predict_win_pos == "head")
                 update_preedit_caret (0);
             else
                 update_preedit_caret (left.length ());
@@ -623,7 +623,7 @@ PrimeInstance::set_preedition_on_register (void)
             update_aux_string (reading, reading_attr_list);
 
         } else {
-            if (m_factory->m_predict_win_pos_is_head) {
+            if (m_factory->m_predict_win_pos == "head") {
                 if (!left.empty () && cursor.empty () && right.empty ())
                     cursor = utf8_mbstowcs (" ");
 
