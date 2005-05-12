@@ -155,10 +155,17 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    if (!is_registering () && isspace (key.get_ascii_code ()))
-        return false;
+    if (!is_registering () && isspace (key.get_ascii_code ())) {
+        if (is_preediting ())
+            return true;
+        else
+            return false;
+    }
 
-    if (get_session () && isprint (key.get_ascii_code ())) {
+    if (get_session () &&
+        isprint (key.get_ascii_code ()) &&
+        !isspace (key.get_ascii_code ()))
+    {
         bool was_preediting = is_preediting ();
 
         if (is_converting () ||
@@ -193,7 +200,10 @@ PrimeInstance::process_remaining_key_event (const KeyEvent &key)
         return false;
     }
 
-    return false;
+    if (is_preediting ())
+        return true;
+    else
+        return false;
 }
 
 void
