@@ -170,7 +170,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD,
         SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT,
-        N_("Start conversion on inputting comma or period."),
+        N_("_Start conversion on inputting comma or period."),
         NULL,
         N_("Start conversion on inputting comma or period."),
         NULL,
@@ -179,7 +179,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_COMMIT_PERIOD,
         SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT,
-        N_("Commit comma and period immediately."),
+        N_("Commit comma and period _immediately."),
         NULL,
         N_("Commit comma and period immediatly on inputting these characters "
            "when no preedition string exists."),
@@ -189,7 +189,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER,
         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT,
-        N_("Commit on inputting upper letter."),
+        N_("Commit on inputting _upper letter."),
         NULL,
         N_("Commit previous preedit string when a upper letter is entered."),
         NULL,
@@ -198,7 +198,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION,
         SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT,
-        N_("Predict while typing letters."),
+        N_("_Predict while typing letters."),
         NULL,
         N_("Show candidates window to display predicted candidates "
            "while typing letters."),
@@ -208,7 +208,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION,
         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT,
-        N_("Use direct select keys also on prediction."),
+        N_("Use _direct select keys also on prediction."),
         NULL,
         N_("Use direct select keys not only for conversion state "
            "but also for prediction state."),
@@ -218,7 +218,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_INLINE_PREDICTION,
         SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT,
-        N_("Inline prediction."),
+        N_("_Inline prediction."),
         NULL,
         N_("Show first candidate of predictions instead of reading on preedit area. "
            "Reading is shown by external window."),
@@ -228,7 +228,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_AUTO_REGISTER,
         SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT,
-        N_("Change to inline word register mode automatically."),
+        N_("Change to the inline word _register mode automatically."),
         NULL,
         N_("Invoke the inline word register mode when the cursor in the "
            "candidates window is move to out of range."),
@@ -238,7 +238,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT,
         SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT,
-        N_("Close candidates window when a candidate is selected directly."),
+        N_("_Close candidates window when a candidate is selected directly."),
         NULL,
         N_("Close candidates window when a candidate is selected directly."),
         NULL,
@@ -247,7 +247,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_SHOW_ANNOTATION,
         SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT,
-        N_("Show annotation of the word on the candidates window"),
+        N_("Show _annotation of the word on the candidates window"),
         NULL,
         N_("Show annotation of the word on the candidates window."),
         NULL,
@@ -256,7 +256,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_SHOW_USAGE,
         SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT,
-        N_("Show usage of the word on the candidates window"),
+        N_("Show _usage of the word on the candidates window"),
         NULL,
         N_("Show usage of the word on the candidates window."),
         NULL,
@@ -265,7 +265,7 @@ static BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_SHOW_COMMENT,
         SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT,
-        N_("Show comment of the word on the candidates window"),
+        N_("Show co_mment of the word on the candidates window"),
         NULL,
         N_("Show comment of the word on the candidates window."),
         NULL,
@@ -279,7 +279,7 @@ static StringConfigData __config_string_common [] =
     {
         SCIM_PRIME_CONFIG_COMMAND,
         SCIM_PRIME_CONFIG_COMMAND_DEFAULT,
-        N_("PRIME command:"),
+        N_("PRIME _command:"),
         NULL,
         N_("The PRIME command to use as conversion engine."),
         NULL,
@@ -288,7 +288,7 @@ static StringConfigData __config_string_common [] =
     {
         SCIM_PRIME_CONFIG_PREDICT_WIN_POS,
         SCIM_PRIME_CONFIG_PREDICT_WIN_POS_DEFAULT,
-        N_("Prediction window position:"),
+        N_("Prediction _window position:"),
         NULL,
         N_("The prediction window position to show."),
         NULL,
@@ -1162,10 +1162,16 @@ create_keyboard_page (void)
     gtk_widget_show(hbox);
 
     // category menu
+    GtkWidget *label = gtk_label_new_with_mnemonic (_("_Group:"));
+    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+    gtk_widget_show (label);
+
     GtkWidget *omenu = gtk_option_menu_new ();
     __widget_key_categories_menu = omenu;
     gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, FALSE, 2);
     gtk_widget_show (omenu);
+
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), omenu);
 
     GtkWidget *menu = gtk_menu_new ();
 

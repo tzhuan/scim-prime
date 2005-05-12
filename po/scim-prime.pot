@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-05-11 16:27+0900\n"
+"POT-Creation-Date: 2005-05-12 21:01+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,43 +16,43 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:309
+#: src/scim_prime_imengine.cpp:319
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:313 src/scim_prime_imengine.cpp:1764
+#: src/scim_prime_imengine.cpp:323 src/scim_prime_imengine.cpp:1782
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:317 src/scim_prime_imengine.cpp:1816
+#: src/scim_prime_imengine.cpp:327 src/scim_prime_imengine.cpp:1834
 msgid "English"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:379
+#: src/scim_prime_imengine.cpp:389
 msgid "PRIME process seems terminated abnormally."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:386
+#: src/scim_prime_imengine.cpp:396
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:402
+#: src/scim_prime_imengine.cpp:412
 msgid "Couldn't start PRIME session."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:536
+#: src/scim_prime_imengine.cpp:552
 msgid "Register a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:541
+#: src/scim_prime_imengine.cpp:557
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:546
+#: src/scim_prime_imengine.cpp:562
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:667
+#: src/scim_prime_imengine.cpp:685
 msgid "]"
 msgstr ""
 
@@ -64,12 +64,16 @@ msgstr ""
 msgid "An PRIME IMEngine Module."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:173 src/scim_prime_imengine_setup.cpp:175
+#: src/scim_prime_imengine_setup.cpp:173
+msgid "_Start conversion on inputting comma or period."
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:175
 msgid "Start conversion on inputting comma or period."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:182
-msgid "Commit comma and period immediately."
+msgid "Commit comma and period _immediately."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:184
@@ -79,7 +83,7 @@ msgid ""
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:192
-msgid "Commit on inputting upper letter."
+msgid "Commit on inputting _upper letter."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:194
@@ -87,7 +91,7 @@ msgid "Commit previous preedit string when a upper letter is entered."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:201
-msgid "Predict while typing letters."
+msgid "_Predict while typing letters."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:203
@@ -96,7 +100,7 @@ msgid ""
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:211
-msgid "Use direct select keys also on prediction."
+msgid "Use _direct select keys also on prediction."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:213
@@ -106,7 +110,7 @@ msgid ""
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:221
-msgid "Inline prediction."
+msgid "_Inline prediction."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:223
@@ -116,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:231
-msgid "Change to inline word register mode automatically."
+msgid "Change to the inline word _register mode automatically."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:233
@@ -125,12 +129,16 @@ msgid ""
 "window is move to out of range."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:241 src/scim_prime_imengine_setup.cpp:243
+#: src/scim_prime_imengine_setup.cpp:241
+msgid "_Close candidates window when a candidate is selected directly."
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:243
 msgid "Close candidates window when a candidate is selected directly."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:250
-msgid "Show annotation of the word on the candidates window"
+msgid "Show _annotation of the word on the candidates window"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:252
@@ -138,7 +146,7 @@ msgid "Show annotation of the word on the candidates window."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:259
-msgid "Show usage of the word on the candidates window"
+msgid "Show _usage of the word on the candidates window"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:261
@@ -146,7 +154,7 @@ msgid "Show usage of the word on the candidates window."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:268
-msgid "Show comment of the word on the candidates window"
+msgid "Show co_mment of the word on the candidates window"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:270
@@ -154,7 +162,7 @@ msgid "Show comment of the word on the candidates window."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:282
-msgid "PRIME command:"
+msgid "PRIME _command:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:284
@@ -162,7 +170,7 @@ msgid "The PRIME command to use as conversion engine."
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:291
-msgid "Prediction window position:"
+msgid "Prediction _window position:"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:293
@@ -700,47 +708,51 @@ msgstr ""
 msgid "Tail of preedition area"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1181
+#: src/scim_prime_imengine_setup.cpp:1165
+msgid "_Group:"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:1186
 msgid "Search by key"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1185
+#: src/scim_prime_imengine_setup.cpp:1190
 msgid "all"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1228
+#: src/scim_prime_imengine_setup.cpp:1233
 msgid "Feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1237
-#: src/scim_prime_imengine_setup.cpp:1305
+#: src/scim_prime_imengine_setup.cpp:1242
+#: src/scim_prime_imengine_setup.cpp:1310
 msgid "Key bindings"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1243
+#: src/scim_prime_imengine_setup.cpp:1248
 msgid "Description"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1273
+#: src/scim_prime_imengine_setup.cpp:1278
 msgid "Options"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1279
+#: src/scim_prime_imengine_setup.cpp:1284
 msgid "Prediction"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1285
+#: src/scim_prime_imengine_setup.cpp:1290
 msgid "Candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1292
+#: src/scim_prime_imengine_setup.cpp:1297
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1298
+#: src/scim_prime_imengine_setup.cpp:1303
 msgid "Dictionary"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1581
+#: src/scim_prime_imengine_setup.cpp:1586
 msgid "Set key filter"
 msgstr ""

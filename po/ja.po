@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-05-11 16:27+0900\n"
+"POT-Creation-Date: 2005-05-12 21:01+0900\n"
 "PO-Revision-Date: 2005-03-29 11:52+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -13,43 +13,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:309
+#: src/scim_prime_imengine.cpp:319
 msgid "Language"
 msgstr "言語"
 
-#: src/scim_prime_imengine.cpp:313 src/scim_prime_imengine.cpp:1764
+#: src/scim_prime_imengine.cpp:323 src/scim_prime_imengine.cpp:1782
 msgid "Japanese"
 msgstr "日本語"
 
-#: src/scim_prime_imengine.cpp:317 src/scim_prime_imengine.cpp:1816
+#: src/scim_prime_imengine.cpp:327 src/scim_prime_imengine.cpp:1834
 msgid "English"
 msgstr "英語"
 
-#: src/scim_prime_imengine.cpp:379
+#: src/scim_prime_imengine.cpp:389
 msgid "PRIME process seems terminated abnormally."
 msgstr "PRIMEプロセスが異常終了しました。"
 
-#: src/scim_prime_imengine.cpp:386
+#: src/scim_prime_imengine.cpp:396
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr "PRIMEが古すぎます。PRIME-1.0.0以降をインストールして下さい。"
 
-#: src/scim_prime_imengine.cpp:402
+#: src/scim_prime_imengine.cpp:412
 msgid "Couldn't start PRIME session."
 msgstr "PRIMEセッションを開始できませんでした。"
 
-#: src/scim_prime_imengine.cpp:536
+#: src/scim_prime_imengine.cpp:552
 msgid "Register a word:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine.cpp:541
+#: src/scim_prime_imengine.cpp:557
 msgid "["
 msgstr "["
 
-#: src/scim_prime_imengine.cpp:546
+#: src/scim_prime_imengine.cpp:562
 msgid "|"
 msgstr "|"
 
-#: src/scim_prime_imengine.cpp:667
+#: src/scim_prime_imengine.cpp:685
 msgid "]"
 msgstr "]"
 
@@ -61,13 +61,17 @@ msgstr "PRIME"
 msgid "An PRIME IMEngine Module."
 msgstr "PRIME IMEngineモジュール"
 
-#: src/scim_prime_imengine_setup.cpp:173 src/scim_prime_imengine_setup.cpp:175
+#: src/scim_prime_imengine_setup.cpp:173
+msgid "_Start conversion on inputting comma or period."
+msgstr "句読点入力時に変換を開始する(_S)"
+
+#: src/scim_prime_imengine_setup.cpp:175
 msgid "Start conversion on inputting comma or period."
 msgstr "句読点入力時に変換を開始する"
 
 #: src/scim_prime_imengine_setup.cpp:182
-msgid "Commit comma and period immediately."
-msgstr "句読点はすぐに確定する"
+msgid "Commit comma and period _immediately."
+msgstr "句読点はすぐに確定する(_I)"
 
 #: src/scim_prime_imengine_setup.cpp:184
 msgid ""
@@ -76,16 +80,16 @@ msgid ""
 msgstr "入力文字列が無い状態で句読点を入力した場合はすぐに確定する"
 
 #: src/scim_prime_imengine_setup.cpp:192
-msgid "Commit on inputting upper letter."
-msgstr "大文字入力時に確定する"
+msgid "Commit on inputting _upper letter."
+msgstr "大文字入力時に確定する(_U)"
 
 #: src/scim_prime_imengine_setup.cpp:194
 msgid "Commit previous preedit string when a upper letter is entered."
 msgstr "大文字が入力された時にそれ以前の入力文字列を確定する"
 
 #: src/scim_prime_imengine_setup.cpp:201
-msgid "Predict while typing letters."
-msgstr "文字入力中に予測する"
+msgid "_Predict while typing letters."
+msgstr "文字入力中に予測する(_P)"
 
 #: src/scim_prime_imengine_setup.cpp:203
 msgid ""
@@ -93,8 +97,8 @@ msgid ""
 msgstr "文字入力中も候補ウィンドウに予測候補を表示する"
 
 #: src/scim_prime_imengine_setup.cpp:211
-msgid "Use direct select keys also on prediction."
-msgstr "予測時にも直接選択キーを使用する"
+msgid "Use _direct select keys also on prediction."
+msgstr "予測時にも直接選択キーを使用する(_D)"
 
 #: src/scim_prime_imengine_setup.cpp:213
 msgid ""
@@ -103,8 +107,8 @@ msgid ""
 msgstr "変換状態だけではなく、予測状態の時にも直接選択キーを使用する"
 
 #: src/scim_prime_imengine_setup.cpp:221
-msgid "Inline prediction."
-msgstr "インライン予測"
+msgid "_Inline prediction."
+msgstr "インライン予測(_I)"
 
 #: src/scim_prime_imengine_setup.cpp:223
 msgid ""
@@ -115,8 +119,8 @@ msgstr ""
 "される。"
 
 #: src/scim_prime_imengine_setup.cpp:231
-msgid "Change to inline word register mode automatically."
-msgstr "自動的にインライン単語登録モードへ移行する"
+msgid "Change to the inline word _register mode automatically."
+msgstr "自動的にインライン単語登録モードへ移行する(_R)"
 
 #: src/scim_prime_imengine_setup.cpp:233
 msgid ""
@@ -126,45 +130,49 @@ msgstr ""
 "候補ウィンドウのカーソルが範囲外へ移動した時にインライン単語登録機能を起動す"
 "る"
 
-#: src/scim_prime_imengine_setup.cpp:241 src/scim_prime_imengine_setup.cpp:243
+#: src/scim_prime_imengine_setup.cpp:241
+msgid "_Close candidates window when a candidate is selected directly."
+msgstr "候補を直接選択した時に候補ウィンドウを閉じる(_C)"
+
+#: src/scim_prime_imengine_setup.cpp:243
 msgid "Close candidates window when a candidate is selected directly."
 msgstr "候補を直接選択した時に候補ウィンドウを閉じる"
 
 #: src/scim_prime_imengine_setup.cpp:250
-msgid "Show annotation of the word on the candidates window"
-msgstr "候補ウィンドウ上に単語の注釈を表示する"
+msgid "Show _annotation of the word on the candidates window"
+msgstr "候補ウィンドウ上に単語の注釈を表示する(_A)"
 
 #: src/scim_prime_imengine_setup.cpp:252
 msgid "Show annotation of the word on the candidates window."
 msgstr "候補ウィンドウ上に単語の注釈を表示する"
 
 #: src/scim_prime_imengine_setup.cpp:259
-msgid "Show usage of the word on the candidates window"
-msgstr "候補ウィンドウ上に単語の用例を表示する"
+msgid "Show _usage of the word on the candidates window"
+msgstr "候補ウィンドウ上に単語の用例を表示する(_U)"
 
 #: src/scim_prime_imengine_setup.cpp:261
 msgid "Show usage of the word on the candidates window."
 msgstr "候補ウィンドウ上に単語の用例を表示する"
 
 #: src/scim_prime_imengine_setup.cpp:268
-msgid "Show comment of the word on the candidates window"
-msgstr "候補ウィンドウ上に単語のコメントを表示する"
+msgid "Show co_mment of the word on the candidates window"
+msgstr "候補ウィンドウ上に単語のコメントを表示する(_M)"
 
 #: src/scim_prime_imengine_setup.cpp:270
 msgid "Show comment of the word on the candidates window."
 msgstr "候補ウィンドウ上に単語のコメントを表示する"
 
 #: src/scim_prime_imengine_setup.cpp:282
-msgid "PRIME command:"
-msgstr "PRIMEコマンド:"
+msgid "PRIME _command:"
+msgstr "PRIMEコマンド(_C):"
 
 #: src/scim_prime_imengine_setup.cpp:284
 msgid "The PRIME command to use as conversion engine."
 msgstr "変換エンジンとして使用する PRIMEコマンド"
 
 #: src/scim_prime_imengine_setup.cpp:291
-msgid "Prediction window position:"
-msgstr "予測ウィンドウの位置"
+msgid "Prediction _window position:"
+msgstr "予測ウィンドウの位置(_W)"
 
 #: src/scim_prime_imengine_setup.cpp:293
 msgid "The prediction window position to show."
@@ -703,48 +711,52 @@ msgstr "編集領域の先頭"
 msgid "Tail of preedition area"
 msgstr "編集領域の後ろ"
 
-#: src/scim_prime_imengine_setup.cpp:1181
+#: src/scim_prime_imengine_setup.cpp:1165
+msgid "_Group:"
+msgstr "グループ(_G):"
+
+#: src/scim_prime_imengine_setup.cpp:1186
 msgid "Search by key"
 msgstr "キ-で検索"
 
-#: src/scim_prime_imengine_setup.cpp:1185
+#: src/scim_prime_imengine_setup.cpp:1190
 msgid "all"
 msgstr "全て"
 
-#: src/scim_prime_imengine_setup.cpp:1228
+#: src/scim_prime_imengine_setup.cpp:1233
 msgid "Feature"
 msgstr "機能"
 
-#: src/scim_prime_imengine_setup.cpp:1237
-#: src/scim_prime_imengine_setup.cpp:1305
+#: src/scim_prime_imengine_setup.cpp:1242
+#: src/scim_prime_imengine_setup.cpp:1310
 msgid "Key bindings"
 msgstr "キ-バインド"
 
-#: src/scim_prime_imengine_setup.cpp:1243
+#: src/scim_prime_imengine_setup.cpp:1248
 msgid "Description"
 msgstr "説明"
 
-#: src/scim_prime_imengine_setup.cpp:1273
+#: src/scim_prime_imengine_setup.cpp:1278
 msgid "Options"
 msgstr "オプション"
 
-#: src/scim_prime_imengine_setup.cpp:1279
+#: src/scim_prime_imengine_setup.cpp:1284
 msgid "Prediction"
 msgstr "予測"
 
-#: src/scim_prime_imengine_setup.cpp:1285
+#: src/scim_prime_imengine_setup.cpp:1290
 msgid "Candidates window"
 msgstr "候補ウィンドウ"
 
-#: src/scim_prime_imengine_setup.cpp:1292
+#: src/scim_prime_imengine_setup.cpp:1297
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:1298
+#: src/scim_prime_imengine_setup.cpp:1303
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1581
+#: src/scim_prime_imengine_setup.cpp:1586
 msgid "Set key filter"
 msgstr "キ-フィルタ-をセット"
 
