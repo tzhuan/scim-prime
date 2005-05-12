@@ -145,16 +145,6 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 bool
 PrimeInstance::process_remaining_key_event (const KeyEvent &key)
 {
-    if (key.mask & SCIM_KEY_ControlMask ||
-        key.mask & SCIM_KEY_Mod1Mask ||
-        key.mask & SCIM_KEY_Mod2Mask ||
-        key.mask & SCIM_KEY_Mod3Mask ||
-        key.mask & SCIM_KEY_Mod4Mask ||
-        key.mask & SCIM_KEY_Mod5Mask)
-    {
-        return false;
-    }
-
     if (!is_registering () && isspace (key.get_ascii_code ())) {
         if (is_preediting ())
             return true;
