@@ -1,5 +1,10 @@
 2005-05-12 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine_setup.cpp:
+	Changed a message ("Option" -> "Common").
+
+2005-05-12 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine.cpp: Minor fix.
 	* src/scim_prime_imengine_setup.cpp: Add mnemonic.
 	* po/ja.po, po/scim-prime.pot: Update.

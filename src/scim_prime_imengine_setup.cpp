@@ -1275,7 +1275,7 @@ create_setup_window ()
 
         // Create the 1st page.
         GtkWidget *page = create_options_page ();
-        GtkWidget *label = gtk_label_new (_("Options"));
+        GtkWidget *label = gtk_label_new (_("Common"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
 

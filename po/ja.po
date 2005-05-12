@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-05-12 21:01+0900\n"
+"POT-Creation-Date: 2005-05-12 21:12+0900\n"
 "PO-Revision-Date: 2005-03-29 11:52+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -737,8 +737,8 @@ msgid "Description"
 msgstr "説明"
 
 #: src/scim_prime_imengine_setup.cpp:1278
-msgid "Options"
-msgstr "オプション"
+msgid "Common"
+msgstr "一般"
 
 #: src/scim_prime_imengine_setup.cpp:1284
 msgid "Prediction"
@@ -759,6 +759,9 @@ msgstr "辞書"
 #: src/scim_prime_imengine_setup.cpp:1586
 msgid "Set key filter"
 msgstr "キ-フィルタ-をセット"
+
+#~ msgid "Options"
+#~ msgstr "オプション"
 
 #~ msgid "Space keys:"
 #~ msgstr "スペース:"
@@ -783,9 +786,6 @@ msgstr "キ-フィルタ-をセット"
 
 #~ msgid "Use auto registering a word feature"
 #~ msgstr "自動単語登録機能を使用する"
-
-#~ msgid "Common keys"
-#~ msgstr "一般キー"
 
 #, fuzzy
 #~ msgid "Commit the first segment keys:"
