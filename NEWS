@@ -1,3 +1,10 @@
+Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
+=============================================================
+* Add a preference for the position of the prediction window.
+* Don't relay any key event to application while preediting.
+* Fix typo in Japanese traslation. Thanks Kazuhiro NISHIYAMA.
+* Other minor bug fixes. Thanks UTUMI Hirosi.
+
 Overview of Changes from scim-prime-0.2.1 to scim-prime-0.2.2
 =============================================================
 * Refine key preference UI.
