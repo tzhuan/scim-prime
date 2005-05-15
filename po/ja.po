@@ -180,7 +180,7 @@ msgstr "予測ウィンドウを表示する位置"
 
 #: src/scim_prime_imengine_setup.cpp:305
 msgid "Insert space"
-msgstr "スペ-スを挿入"
+msgstr "スペースを挿入"
 
 #: src/scim_prime_imengine_setup.cpp:306
 msgid "Select space keys"
@@ -717,7 +717,7 @@ msgstr "グループ(_G):"
 
 #: src/scim_prime_imengine_setup.cpp:1186
 msgid "Search by key"
-msgstr "キ-で検索"
+msgstr "キーで検索"
 
 #: src/scim_prime_imengine_setup.cpp:1190
 msgid "all"
@@ -730,7 +730,7 @@ msgstr "機能"
 #: src/scim_prime_imengine_setup.cpp:1242
 #: src/scim_prime_imengine_setup.cpp:1310
 msgid "Key bindings"
-msgstr "キ-バインド"
+msgstr "キーバインド"
 
 #: src/scim_prime_imengine_setup.cpp:1248
 msgid "Description"
@@ -758,7 +758,7 @@ msgstr "辞書"
 
 #: src/scim_prime_imengine_setup.cpp:1586
 msgid "Set key filter"
-msgstr "キ-フィルタ-をセット"
+msgstr "キ-フィルターをセット"
 
 #~ msgid "Options"
 #~ msgstr "オプション"
