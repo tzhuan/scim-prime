@@ -1,5 +1,12 @@
 Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
 =============================================================
+* Fix a bug that scim-prime eats all key events although it doesn't have
+  preedit string (Thanks! DAIRIKI-san).
+* Try recovery automatically when the PRIME connection is lost.
+* Other minor bug fixes.
+
+Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
+=============================================================
 * Add a preference for the position of the prediction window.
 * Don't relay any key event to application while preediting.
 * Fix typo in Japanese traslation. Thanks Kazuhiro NISHIYAMA.
