@@ -2,7 +2,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2004 Takuro Ashie <ashie@homa.ne.jp>.
 msgid ""
-
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
@@ -30,7 +29,8 @@ msgstr "英語"
 msgid ""
 "PRIME process seems terminated abnormally.Press Control+Alt+r to try "
 "recovery."
-msgstr "PRIMEプロセスが異常終了しました。Control+Alt+rを押すと再起動を試みます。"
+msgstr ""
+"PRIMEプロセスが異常終了しました。Control+Alt+rを押すと再起動を試みます。"
 
 #: src/scim_prime_imengine.cpp:416
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
