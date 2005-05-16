@@ -67,7 +67,8 @@ class PrimeFactory : public IMEngineFactoryBase
     String       m_alt_space_char;
 
     /* for key bindings */
-    std::vector<PrimeAction> m_actions;
+    std::vector<PrimeAction>  m_actions;
+    PrimeAction              *m_recovery_action;
 
 public:
     PrimeFactory (const String &lang,

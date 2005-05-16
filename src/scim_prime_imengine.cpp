@@ -50,7 +50,10 @@
 #define SCIM_PROP_LANGUAGE_JAPANESE   "/IMEngine/PRIME/Lang/Japanese"
 #define SCIM_PROP_LANGUAGE_ENGLISH    "/IMEngine/PRIME/Lang/English"
 
+#define MAX_TRY_RECOVERY 3
+
 PrimeConnection PrimeInstance::m_prime = PrimeConnection();
+unsigned int    PrimeInstance::m_recovery_count = 0;
 
 PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
@@ -108,26 +111,42 @@ PrimeInstance::process_key_event (const KeyEvent& key)
         return false;
     }
 
-    if (get_session ()) {
-        bool prediction_canceled = m_cancel_prediction;
-
-        // lookup user defined key binds
-        if (process_key_event_lookup_keybind (key)) {
-            if (prediction_canceled)
+    // try recovery on losting connection.
+    if (!get_session ()) {
+        if (m_recovery_count <= MAX_TRY_RECOVERY) {
+            action_recovery ();
+            if (!get_session ()) {
+                m_recovery_count++;
                 m_cancel_prediction = false;
-            return true;
+                reset ();
+                return false;
+            }
+        } else {
+            if (m_factory->m_recovery_action &&
+                m_factory->m_recovery_action->perform (this, key))
+            {
+                return true;
+            } else {
+                return false;
+            }
         }
+    }
 
+    m_recovery_count = 0;
+
+    bool prediction_canceled = m_cancel_prediction;
+
+    // lookup user defined key binds
+    if (process_key_event_lookup_keybind (key)) {
         if (prediction_canceled)
             m_cancel_prediction = false;
-
-        return process_remaining_key_event (key);
-
-    } else {
-        m_cancel_prediction = false;
-        reset ();
-        return false;
+        return true;
     }
+
+    if (prediction_canceled)
+        m_cancel_prediction = false;
+
+    return process_remaining_key_event (key);
 }
 
 bool
@@ -364,7 +383,8 @@ PrimeInstance::trigger_property (const String &property)
 {
     String prime_prop = property.substr (property.find_last_of ('/') + 1);
 
-    SCIM_DEBUG_IMENGINE(2) << "trigger_property : " << property << " - " << prime_prop << "\n";
+    SCIM_DEBUG_IMENGINE(2)
+        << "trigger_property : " << property << " - " << prime_prop << "\n";
 
     if (property == SCIM_PROP_LANGUAGE_JAPANESE) {
         action_set_language_japanese ();
@@ -379,22 +399,22 @@ PrimeInstance::get_session (void)
     if (m_disable)
         return NULL;
 
-    const char *message;
-
     if (m_prime.major_version () < 0 || !m_prime.is_connected ()) {
         delete m_session;
         m_session = NULL;
         m_disable = true;
 
-        message = _("PRIME process seems terminated abnormally.");
+        const char *message =
+            _("PRIME process seems terminated abnormally."
+              "Press Control+Alt+r to try recovery.");
         show_aux_string ();
         update_aux_string (utf8_mbstowcs (message));
 
         return NULL;
 
     } else if (m_prime.major_version () < 1) {
-        message = _("Your PRIME is out of date. "
-                    "Please install PRIME-1.0.0 or later.");
+        const char *message = _("Your PRIME is out of date. "
+                                "Please install PRIME-1.0.0 or later.");
         show_aux_string ();
         update_aux_string (utf8_mbstowcs (message));
         m_disable = true;
@@ -409,7 +429,7 @@ PrimeInstance::get_session (void)
         m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
         m_disable = true;
 
-        message = _("Couldn't start PRIME session.");
+        const char *message = _("Couldn't start PRIME session.");
         show_aux_string ();
         update_aux_string (utf8_mbstowcs (message));
     }
@@ -666,7 +686,9 @@ PrimeInstance::set_preedition_on_register (void)
                 attr.set_type (SCIM_ATTR_DECORATE);
                 attr.set_value (SCIM_ATTR_DECORATE_HIGHLIGHT);
                 attr.set_start (pos);
-                attr.set_length (left.length () + cursor.length () + right.length ());
+                attr.set_length (left.length ()
+                                 + cursor.length ()
+                                 + right.length ());
                 attr_list.push_back (attr);
             }
 
@@ -1869,6 +1891,21 @@ PrimeInstance::action_register_a_word (void)
     action_finish_selecting_candidates ();
     get_session()->edit_erase();
     set_preedition ();
+
+    return true;
+}
+
+bool
+PrimeInstance::action_recovery (void)
+{
+    if (!m_disable)
+        return false;
+
+    m_prime.open_connection (m_factory->m_command.c_str(),
+                             m_factory->m_typing_method.c_str());
+    m_disable = false;
+    update_aux_string (utf8_mbstowcs(""));
+    hide_aux_string ();
 
     return true;
 }

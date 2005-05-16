@@ -82,6 +82,7 @@
 #define SCIM_PRIME_CONFIG_SET_MODE_WIDE_ASCII_KEY             "/IMEngine/PRIME/SetModeWideAsciiKey"
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY                 "/IMEngine/PRIME/ToggleLanguageKey"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY                   "/IMEngine/PRIME/RegisterWordKey"
+#define SCIM_PRIME_CONFIG_RECOVERY_KEY                        "/IMEngine/PRIME/RecoveryKey"
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
@@ -143,6 +144,7 @@
 #define SCIM_PRIME_CONFIG_SET_MODE_RAW_KEY_DEFAULT            "F10"
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY_DEFAULT         "F11"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT           "Control+w, Control+W"
+#define SCIM_PRIME_CONFIG_RECOVERY_KEY_DEFAULT                "Control+Alt+r"
 
 #endif /* __SCIM_PRIME_PREFS_H__ */
 /*

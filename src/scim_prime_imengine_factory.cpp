@@ -294,4 +294,8 @@ PrimeFactory::reload_config (const ConfigPointer &config)
 
     // register a word
     APPEND_ACTION (REGISTER_WORD,           action_register_a_word);
+
+    // recovery
+    APPEND_ACTION (RECOVERY,                action_recovery);
+    m_recovery_action = &m_actions[m_actions.size () - 1];
 }

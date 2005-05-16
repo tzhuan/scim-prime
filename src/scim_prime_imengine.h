@@ -47,6 +47,7 @@ class PrimeInstance : public IMEngineInstanceBase
 
 private:
     static PrimeConnection  m_prime;
+    static unsigned int     m_recovery_count;
 
     PrimeSession           *m_session;
 
@@ -158,6 +159,8 @@ private: // actions
     bool   action_set_language_english         (void);
 
     bool   action_register_a_word              (void);
+
+    bool   action_recovery                     (void);
 
 private:
     PrimeSession *

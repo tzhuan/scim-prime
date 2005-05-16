@@ -137,7 +137,7 @@ PrimeConnection::open_connection (const char *command,
         close (err_fd[1]);
 
         //signal (SIGCHLD,  handle_sigchld);
-        signal (SIGPIPE, handle_sigpipe);
+        //signal (SIGPIPE, handle_sigpipe);
 
         return;
 
@@ -212,6 +212,8 @@ PrimeConnection::close_connection (void)
         size_t len, remaining;
         len = remaining = strlen (command);
 
+        sighandler_t prev_handler = signal (SIGPIPE, handle_sigpipe);
+
         do {
             ssize_t rv = write (m_in_fd,
                                 command + (len - remaining),
@@ -228,6 +230,11 @@ PrimeConnection::close_connection (void)
                 break;
             }
         } while (remaining > 0);
+
+        if (prev_handler == SIG_ERR)
+            signal (SIGPIPE, SIG_DFL);
+        else
+            signal (SIGPIPE, prev_handler);
 
         clean_child ();
     }
@@ -359,7 +366,9 @@ PrimeConnection::session_start (const char *language)
 {
     bool success = send_command (PRIME_SESSION_START, language, NULL);
     if (success) {
-        PrimeSession *session = new PrimeSession(this, m_last_reply.c_str(), language);
+        PrimeSession *session = new PrimeSession(this,
+                                                 m_last_reply.c_str(),
+                                                 language);
         return session;
     } else {
         // error
@@ -508,6 +517,8 @@ PrimeConnection::send_command (const char *command,
     str += "\n";
 
 
+    sighandler_t prev_handler = signal (SIGPIPE, handle_sigpipe);
+
     //
     // write the command
     //
@@ -525,7 +536,7 @@ PrimeConnection::send_command (const char *command,
         case EPIPE:
         case EIO:
             clean_child ();
-            return false;
+            goto ERROR;
             break;
         default:
             remaining -= rv;
@@ -533,7 +544,7 @@ PrimeConnection::send_command (const char *command,
         }
 
         if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
-            return false;
+            goto ERROR;
     } while (remaining > 0);
 
 
@@ -569,19 +580,30 @@ PrimeConnection::send_command (const char *command,
         }
 
         if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
-            return false;
+            goto ERROR;
     }
 
     if (m_last_reply.length () > 3 && m_last_reply.substr (0, 3) == "ok\n") {
         m_last_reply.erase (0, 3);
+
+        if (prev_handler == SIG_ERR)
+            signal (SIGPIPE, SIG_DFL);
+        else
+            signal (SIGPIPE, prev_handler);
+
         return true;
     }
 
     if (m_last_reply.length () > 6 && m_last_reply.substr (0, 6) == "error\n") {
         m_last_reply.erase (0, 6);
-        return false;
+        goto ERROR;
     }
 
+ERROR:
+    if (prev_handler == SIG_ERR)
+        signal (SIGPIPE, SIG_DFL);
+    else
+        signal (SIGPIPE, prev_handler);
     return false;
 }
 
