@@ -1,0 +1,37 @@
+Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
+=============================================================
+* Fix a bug that scim-prime eats all key events although it doesn't have
+  preedit string (Thanks! DAIRIKI-san).
+* Try recovery automatically when the PRIME connection is lost.
+* Other minor bug fixes.
+
+Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
+=============================================================
+* Add a preference for the position of the prediction window.
+* Don't relay any key event to application while preediting.
+* Fix typo in Japanese traslation. Thanks Kazuhiro NISHIYAMA.
+* Other minor bug fixes. Thanks UTUMI Hirosi.
+
+Overview of Changes from scim-prime-0.2.1 to scim-prime-0.2.2
+=============================================================
+* Refine key preference UI.
+* Minor bug fixes.
+
+Overview of Changes from scim-prime-0.2.0 to scim-prime-0.2.1
+=============================================================
+* Add an option to choose whether starts converting on inputting comma/period
+  or not.
+* Add an option to choose whether commits comma/period immediatly or not.
+* Reverse color of preedit string on inline prediction mode.
+
+Overview of Changes from scim-prime-0.1.0 to scim-prime-0.2.0
+=============================================================
+* Enable to edit sentence segments.
+* Add inline prediction feature.
+* Improve English mode.
+* Add some key bindings.
+* Fix some default settings.
+
+scim-prime-0.1.0
+=============================================================
+* Initial release.
