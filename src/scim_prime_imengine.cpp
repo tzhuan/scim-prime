@@ -145,6 +145,16 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 bool
 PrimeInstance::process_remaining_key_event (const KeyEvent &key)
 {
+    // ignore short cut keys of apllication.
+    if (key.mask & SCIM_KEY_ControlMask ||
+        key.mask & SCIM_KEY_AltMask)
+    {
+        if (is_preediting ())
+            return true;
+        else
+            return false;
+    }
+
     if (!is_registering () && isspace (key.get_ascii_code ())) {
         if (is_preediting ())
             return true;

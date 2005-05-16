@@ -1,3 +1,9 @@
+2005-05-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Revive key mask checking to enable
+	apllication's short cut key on non-preedition state.
+	Thanks DAIRIKI-san.
+
 2005-05-15 Takuro Ashie <ashie@homa.ne.jp>
 
 	* configure.ac: Version-0.2.3.
