@@ -1,4 +1,4 @@
-Overview of Changes from scim-prime-0.2.2 to scim-prime-0.2.3
+Overview of Changes from scim-prime-0.2.3 to scim-prime-0.2.4
 =============================================================
 * Fix a bug that scim-prime eats all key events although it doesn't have
   preedit string (Thanks! DAIRIKI-san).
