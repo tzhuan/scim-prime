@@ -1,3 +1,8 @@
+Overview of Changes from scim-prime-0.2.4 to scim-prime-0.2.5
+=============================================================
+* Update automake version because previous version reduce filename extension
+  of the module.
+
 Overview of Changes from scim-prime-0.2.3 to scim-prime-0.2.4
 =============================================================
 * Fix a bug that scim-prime eats all key events although it doesn't have

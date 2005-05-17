@@ -1,5 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT(scim-prime, 0.2.4, poincare@ikezoe.net)
+AM_PREREQ(1.9)
+AC_PREREQ(2.59)
+
+AC_INIT(scim-prime, 0.2.5, poincare@ikezoe.net)
 AC_CONFIG_SRCDIR([configure.ac])
 
 # Save this value here, since automake will set cflags and cxxflags later
@@ -8,7 +11,7 @@ cppflags_set=${CPPFLAGS+set}
 
 SCIM_PRIME_MAJOR_VERSION=0
 SCIM_PRIME_MINOR_VERSION=2
-SCIM_PRIME_MICRO_VERSION=4
+SCIM_PRIME_MICRO_VERSION=5
 
 SCIM_PRIME_VERSION=$SCIM_PRIME_MAJOR_VERSION.$SCIM_PRIME_MINOR_VERSION.$SCIM_PRIME_MICRO_VERSION
 
