@@ -172,13 +172,73 @@ PrimeFactory::create_instance (const String &encoding, int id)
     return new PrimeInstance (this, encoding, id);
 }
 
-#define APPEND_ACTION(key, func) \
-{ \
-    String name = "func", str; \
-    str = config->read (String (SCIM_PRIME_CONFIG_##key##_KEY), \
+#if 0
+#define APPEND_ACTION(key, func)                                         \
+{                                                                        \
+    String name = "func", str;                                           \
+    str = config->read (String (SCIM_PRIME_CONFIG_##key##_KEY),          \
                         String (SCIM_PRIME_CONFIG_##key##_KEY_DEFAULT)); \
     m_actions.push_back (PrimeAction (name, str, &PrimeInstance::func)); \
 }
+#else
+#define APPEND_ACTION(key, func)                                         \
+{                                                                        \
+    String name = "func", str;                                           \
+    str = config->read (String (SCIM_PRIME_CONFIG_##key##_KEY),          \
+                        String (SCIM_PRIME_CONFIG_##key##_KEY_DEFAULT)); \
+    m_actions.push_back (PrimeAction (name, str, func));                 \
+}
+#endif
+
+#define PRIME_DEFINE_ACTION(func) \
+static bool                       \
+func (PrimeInstance *anthy)       \
+{                                 \
+    return anthy->func ();        \
+}
+
+PRIME_DEFINE_ACTION (action_insert_space);
+PRIME_DEFINE_ACTION (action_insert_alternative_space);
+PRIME_DEFINE_ACTION (action_commit_with_learn);
+PRIME_DEFINE_ACTION (action_commit_without_learn);
+PRIME_DEFINE_ACTION (action_commit_alternative);
+PRIME_DEFINE_ACTION (action_convert);
+PRIME_DEFINE_ACTION (action_revert);
+PRIME_DEFINE_ACTION (action_start_selecting_prediction);
+PRIME_DEFINE_ACTION (action_edit_backspace);
+PRIME_DEFINE_ACTION (action_edit_delete);
+PRIME_DEFINE_ACTION (action_modify_caret_left);
+PRIME_DEFINE_ACTION (action_modify_caret_right);
+PRIME_DEFINE_ACTION (action_modify_caret_left_edge);
+PRIME_DEFINE_ACTION (action_modify_caret_right_edge);
+PRIME_DEFINE_ACTION (action_conv_next_candidate);
+PRIME_DEFINE_ACTION (action_conv_prev_candidate);
+PRIME_DEFINE_ACTION (action_conv_next_page);
+PRIME_DEFINE_ACTION (action_conv_prev_page);
+PRIME_DEFINE_ACTION (action_select_candidate_1);
+PRIME_DEFINE_ACTION (action_select_candidate_2);
+PRIME_DEFINE_ACTION (action_select_candidate_3);
+PRIME_DEFINE_ACTION (action_select_candidate_4);
+PRIME_DEFINE_ACTION (action_select_candidate_5);
+PRIME_DEFINE_ACTION (action_select_candidate_6);
+PRIME_DEFINE_ACTION (action_select_candidate_7);
+PRIME_DEFINE_ACTION (action_select_candidate_8);
+PRIME_DEFINE_ACTION (action_select_candidate_9);
+PRIME_DEFINE_ACTION (action_select_candidate_10);
+PRIME_DEFINE_ACTION (action_select_first_segment);
+PRIME_DEFINE_ACTION (action_select_last_segment);
+PRIME_DEFINE_ACTION (action_select_next_segment);
+PRIME_DEFINE_ACTION (action_select_prev_segment);
+PRIME_DEFINE_ACTION (action_shrink_segment);
+PRIME_DEFINE_ACTION (action_expand_segment);
+PRIME_DEFINE_ACTION (action_set_mode_default);
+PRIME_DEFINE_ACTION (action_set_mode_katakana);
+PRIME_DEFINE_ACTION (action_set_mode_half_katakana);
+PRIME_DEFINE_ACTION (action_set_mode_raw);
+PRIME_DEFINE_ACTION (action_set_mode_wide_ascii);
+PRIME_DEFINE_ACTION (action_toggle_language);
+PRIME_DEFINE_ACTION (action_register_a_word);
+PRIME_DEFINE_ACTION (action_recovery);
 
 void
 PrimeFactory::reload_config (const ConfigPointer &config)

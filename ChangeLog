@@ -1,3 +1,12 @@
+2005-06-02 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_action.{cpp,h}, src/scim_prime_imengine_factory.h:
+	Fix for gcc-4.0. But it's ad-hoc solution.
+
+2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Sorry, AM_INIT_AUTOMAKE(1.9), not AM_PREREQ.
+
 2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
 
 	* Update automake to 1.9.4

@@ -104,7 +104,7 @@ public:
     virtual bool is_modifying                  (void);
     virtual bool is_registering                (void);
 
-private: // actions
+public: // actions
     bool   action_commit_with_learn            (void);
     bool   action_commit_without_learn         (void);
     bool   action_commit_alternative           (void);

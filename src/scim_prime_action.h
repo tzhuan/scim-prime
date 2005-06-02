@@ -30,9 +30,11 @@ class PrimeInstance;
 class PrimeAction
 {
     typedef bool (PrimeInstance::*PMF) (void);
+    typedef bool (*Func)               (PrimeInstance *prime);
 
 public:
     PrimeAction  (const String &name, const String &key_bindings, PMF pmf);
+    PrimeAction  (const String &name, const String &key_bindings, Func func);
     ~PrimeAction ();
 
 public:
@@ -47,6 +49,7 @@ private:
     String         m_name;
     String         m_desc;
     PMF            m_pmf;
+    Func           m_func;
     KeyEventList   m_key_bindings;
 };
 
