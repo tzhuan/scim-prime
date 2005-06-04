@@ -1,3 +1,9 @@
+Overview of Changes from scim-prime-0.2.5 to scim-prime-0.2.6
+=============================================================
+* Fix for gcc-4.0.
+* Changed default setting of lookup window position to "tail" because "head"
+  doesn't work correctly on certain environment such as scim-qtimm.
+
 Overview of Changes from scim-prime-0.2.4 to scim-prime-0.2.5
 =============================================================
 * Update automake version because previous version reduce filename extension

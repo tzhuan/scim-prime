@@ -1,7 +1,17 @@
+2005-06-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.6.
+
+2005-06-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* scim_prime_prefs.h: Changed default setting of lookup window
+	position to "tail". "head" doesn't work correctly on certain
+	environment such as scim-qtimm.
+
 2005-06-02 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_action.{cpp,h}, src/scim_prime_imengine_factory.h:
-	Fix for gcc-4.0. But it's ad-hoc solution.
+	Fix for gcc-4.0. But it's a ad-hoc solution.
 
 2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
 
