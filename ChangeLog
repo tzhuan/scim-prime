@@ -1,3 +1,7 @@
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_action.cpp: Ignore CapsLock on matching key bindings.
+
 2005-06-04 Takuro Ashie <ashie@homa.ne.jp>
 
 	* configure.ac: Version-0.2.6.

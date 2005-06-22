@@ -78,7 +78,9 @@ PrimeAction::match_key_event (const KeyEvent &key)
     KeyEventList::const_iterator kit;
 
     for (kit = m_key_bindings.begin (); kit != m_key_bindings.end (); ++kit) {
-        if (key.code == kit->code && key.mask == kit->mask)
+        uint16 mask = key.mask;
+        mask &= ~SCIM_KEY_CapsLockMask;
+        if (key.code == kit->code && mask == kit->mask)
              return true;
     }
     return false;
