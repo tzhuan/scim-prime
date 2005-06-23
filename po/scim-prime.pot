@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-06-23 08:11+0900\n"
+"POT-Creation-Date: 2005-06-23 10:52+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -674,6 +674,11 @@ msgstr ""
 msgid "The key events to select 10th candidate. "
 msgstr ""
 
+#: src/scim_prime_imengine_setup.cpp:777 src/scim_prime_imengine_setup.cpp:786
+#: src/scim_prime_imengine_setup.cpp:795
+msgid "Co_lor:"
+msgstr ""
+
 #: src/scim_prime_imengine_setup.cpp:778
 msgid "The color of the annotaion text"
 msgstr ""
@@ -734,51 +739,51 @@ msgstr ""
 msgid "Tail of preedition area"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1262
+#: src/scim_prime_imengine_setup.cpp:1282
 msgid "_Group:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1283
+#: src/scim_prime_imengine_setup.cpp:1303
 msgid "Search by key"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1287
+#: src/scim_prime_imengine_setup.cpp:1307
 msgid "all"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1330
+#: src/scim_prime_imengine_setup.cpp:1350
 msgid "Feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1339
-#: src/scim_prime_imengine_setup.cpp:1407
+#: src/scim_prime_imengine_setup.cpp:1359
+#: src/scim_prime_imengine_setup.cpp:1427
 msgid "Key bindings"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1345
+#: src/scim_prime_imengine_setup.cpp:1365
 msgid "Description"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1375
+#: src/scim_prime_imengine_setup.cpp:1395
 msgid "Common"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1381
+#: src/scim_prime_imengine_setup.cpp:1401
 msgid "Prediction"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1387
+#: src/scim_prime_imengine_setup.cpp:1407
 msgid "Candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1394
+#: src/scim_prime_imengine_setup.cpp:1414
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1400
+#: src/scim_prime_imengine_setup.cpp:1420
 msgid "Dictionary"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1729
+#: src/scim_prime_imengine_setup.cpp:1749
 msgid "Set key filter"
 msgstr ""

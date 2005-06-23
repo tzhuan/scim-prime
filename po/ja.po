@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-06-23 08:11+0900\n"
-"PO-Revision-Date: 2005-03-29 11:52+0900\n"
+"POT-Creation-Date: 2005-06-23 10:52+0900\n"
+"PO-Revision-Date: 2005-06-23 10:53+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -678,6 +678,11 @@ msgstr "10番目の候補を選択するキーの設定"
 msgid "The key events to select 10th candidate. "
 msgstr "10番目の候補を選択するキーイベント"
 
+#: src/scim_prime_imengine_setup.cpp:777 src/scim_prime_imengine_setup.cpp:786
+#: src/scim_prime_imengine_setup.cpp:795
+msgid "Co_lor:"
+msgstr "色(_L):"
+
 #: src/scim_prime_imengine_setup.cpp:778
 msgid "The color of the annotaion text"
 msgstr "単語の注釈の色"
@@ -738,52 +743,52 @@ msgstr "編集領域の先頭"
 msgid "Tail of preedition area"
 msgstr "編集領域の後ろ"
 
-#: src/scim_prime_imengine_setup.cpp:1262
+#: src/scim_prime_imengine_setup.cpp:1282
 msgid "_Group:"
 msgstr "グループ(_G):"
 
-#: src/scim_prime_imengine_setup.cpp:1283
+#: src/scim_prime_imengine_setup.cpp:1303
 msgid "Search by key"
 msgstr "キーで検索"
 
-#: src/scim_prime_imengine_setup.cpp:1287
+#: src/scim_prime_imengine_setup.cpp:1307
 msgid "all"
 msgstr "全て"
 
-#: src/scim_prime_imengine_setup.cpp:1330
+#: src/scim_prime_imengine_setup.cpp:1350
 msgid "Feature"
 msgstr "機能"
 
-#: src/scim_prime_imengine_setup.cpp:1339
-#: src/scim_prime_imengine_setup.cpp:1407
+#: src/scim_prime_imengine_setup.cpp:1359
+#: src/scim_prime_imengine_setup.cpp:1427
 msgid "Key bindings"
 msgstr "キーバインド"
 
-#: src/scim_prime_imengine_setup.cpp:1345
+#: src/scim_prime_imengine_setup.cpp:1365
 msgid "Description"
 msgstr "説明"
 
-#: src/scim_prime_imengine_setup.cpp:1375
+#: src/scim_prime_imengine_setup.cpp:1395
 msgid "Common"
 msgstr "一般"
 
-#: src/scim_prime_imengine_setup.cpp:1381
+#: src/scim_prime_imengine_setup.cpp:1401
 msgid "Prediction"
 msgstr "予測"
 
-#: src/scim_prime_imengine_setup.cpp:1387
+#: src/scim_prime_imengine_setup.cpp:1407
 msgid "Candidates window"
 msgstr "候補ウィンドウ"
 
-#: src/scim_prime_imengine_setup.cpp:1394
+#: src/scim_prime_imengine_setup.cpp:1414
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:1400
+#: src/scim_prime_imengine_setup.cpp:1420
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1729
+#: src/scim_prime_imengine_setup.cpp:1749
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"
 

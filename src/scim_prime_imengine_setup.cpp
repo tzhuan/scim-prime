@@ -774,7 +774,7 @@ static ColorConfigData __config_color_common [] =
     {
         SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR,
         SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT,
-        NULL,
+        N_("Co_lor:"),
         N_("The color of the annotaion text"),
         N_("The color of the annotaion text in the candidate list."),
         NULL,
@@ -783,7 +783,7 @@ static ColorConfigData __config_color_common [] =
     {
         SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR,
         SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT,
-        NULL,
+        N_("Co_lor:"),
         N_("The color of the usage text"),
         N_("The color of the usage text in the candidate list."),
         NULL,
@@ -792,7 +792,7 @@ static ColorConfigData __config_color_common [] =
     {
         SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR,
         SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT,
-        NULL,
+        N_("Co_lor:"),
         N_("The color of the comment text"),
         N_("The color of the comment text in the candidate list."),
         NULL,
@@ -982,13 +982,27 @@ create_color_button (const char *config_key)
     if (!entry)
         return NULL;
 
+    GtkWidget *hbox = gtk_hbox_new (FALSE, 0);
+    gtk_widget_show (hbox);
+
+    GtkWidget *label = NULL;
+    if (entry->label) {
+        label = gtk_label_new_with_mnemonic (_(entry->label));
+        gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+        gtk_widget_show (label);
+    }
+
     entry->widget = gtk_color_button_new ();
     gtk_color_button_set_title (GTK_COLOR_BUTTON (entry->widget), entry->title);
     gtk_container_set_border_width (GTK_CONTAINER (entry->widget), 4);
     g_signal_connect (G_OBJECT (entry->widget), "color-set",
                       G_CALLBACK (on_default_color_button_set),
                       entry);
+    gtk_box_pack_start (GTK_BOX (hbox), entry->widget, FALSE, FALSE, 2);
     gtk_widget_show (entry->widget);
+
+    if (label)
+        gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry->widget);
 
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
@@ -996,7 +1010,7 @@ create_color_button (const char *config_key)
         gtk_tooltips_set_tip (__widget_tooltips, entry->widget,
                               _(entry->tooltip), NULL);
 
-    return entry->widget;
+    return hbox;
 }
 
 #define APPEND_ENTRY(data, i)                                                  \
