@@ -174,6 +174,7 @@ static GtkWidget   * __widget_key_categories_menu = NULL;
 static GtkWidget   * __widget_key_filter          = NULL;
 static GtkWidget   * __widget_key_filter_button   = NULL;
 static GtkWidget   * __widget_key_list_view       = NULL;
+static GtkWidget   * __widget_choose_keys_button  = NULL;
 static GtkTooltips * __widget_tooltips            = NULL;
 
 static BoolConfigData __config_bool_common [] =
@@ -847,6 +848,10 @@ static gboolean on_key_list_view_key_press        (GtkWidget       *widget,
 static gboolean on_key_list_view_button_press     (GtkWidget       *widget,
                                                    GdkEventButton  *event,
                                                    gpointer         user_data);
+static void     on_key_list_selection_changed     (GtkTreeSelection *selection,
+                                                   gpointer          data);
+static void     on_choose_keys_button_clicked     (GtkWidget        *button,
+                                                   gpointer          data);
 static void setup_widget_value ();
 
 
@@ -1370,6 +1375,24 @@ create_keyboard_page (void)
                                                        NULL);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
+    // for key bind theme
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 4);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+    gtk_widget_show(hbox);
+
+    // edit button
+    button = gtk_button_new_with_mnemonic (_("_Choose keys..."));
+    __widget_choose_keys_button = button;
+    g_signal_connect (G_OBJECT (button), "clicked",
+                      G_CALLBACK (on_choose_keys_button_clicked), treeview);
+    gtk_box_pack_end (GTK_BOX (hbox), button, FALSE, FALSE, 2);
+    gtk_widget_set_sensitive (button, false);
+    gtk_widget_show (button);
+
+    GtkTreeSelection *selection;
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+
     // connect signals
     g_signal_connect (G_OBJECT (omenu), "changed",
                       G_CALLBACK (on_key_category_menu_changed), treeview);
@@ -1377,6 +1400,8 @@ create_keyboard_page (void)
                       G_CALLBACK (on_key_list_view_key_press), NULL);
     g_signal_connect (G_OBJECT (treeview), "button-press-event",
                       G_CALLBACK (on_key_list_view_button_press), NULL);
+    g_signal_connect (G_OBJECT (selection), "changed",
+                      G_CALLBACK (on_key_list_selection_changed), treeview);
 
     return vbox;
 }
@@ -1393,43 +1418,43 @@ create_setup_window ()
         window = notebook;
         gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 
-        // Create the 1st page.
+        // Create the common page.
         GtkWidget *page = create_options_page ();
         GtkWidget *label = gtk_label_new (_("Common"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
-
-        // Create the 2nd page.
-        page = create_prediction_page ();
-        label = gtk_label_new (_("Prediction"));
-        gtk_widget_show (label);
-        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
-
-        // Create the 3rd page.
-        page = create_candidates_window_page ();
-        label = gtk_label_new (_("Candidates window"));
-        gtk_widget_show (label);
-        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
-
-#if 0
-        // Create the 4th page.
-        page = create_toolbar_page ();
-        label = gtk_label_new (_("Toolbar"));
-        gtk_widget_show (label);
-        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
-
-        // Create the 5th page.
-        page = create_dict_page ();
-        label = gtk_label_new (_("Dictionary"));
-        gtk_widget_show (label);
-        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
-#endif
 
         // Create the key bind pages.
         page = create_keyboard_page ();
         label = gtk_label_new (_("Key bindings"));
         gtk_widget_show (label);
         gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
+        // Create the prediction page.
+        page = create_prediction_page ();
+        label = gtk_label_new (_("Prediction"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
+        // Create the candidate page.
+        page = create_candidates_window_page ();
+        label = gtk_label_new (_("Candidates window"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
+#if 0
+        // Create the toolbar page.
+        page = create_toolbar_page ();
+        label = gtk_label_new (_("Toolbar"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+
+        // Create the dictionary page.
+        page = create_dict_page ();
+        label = gtk_label_new (_("Dictionary"));
+        gtk_widget_show (label);
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, label);
+#endif
 
         // for preventing enabling left arrow.
         gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), 1);
@@ -1807,6 +1832,32 @@ on_key_list_view_button_press (GtkWidget *widget, GdkEventButton *event,
     }
 
     return FALSE;
+}
+
+static void
+on_key_list_selection_changed (GtkTreeSelection *selection, gpointer data)
+{
+    GtkTreeModel *model = NULL;
+    GtkTreeIter iter;
+
+    gboolean selected;
+
+    selected = gtk_tree_selection_get_selected (selection, &model, &iter);
+
+    if (__widget_choose_keys_button) {
+        if (selected) {
+            gtk_widget_set_sensitive (__widget_choose_keys_button, true);
+        } else {
+            gtk_widget_set_sensitive (__widget_choose_keys_button, false);
+        }
+    }
+}
+
+static void
+on_choose_keys_button_clicked (GtkWidget *button, gpointer data)
+{
+    GtkTreeView *treeview = GTK_TREE_VIEW (data);
+    key_list_view_popup_key_selection (treeview);
 }
 /*
 vi:ts=4:nowrap:ai:expandtab
