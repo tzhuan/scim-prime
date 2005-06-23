@@ -297,6 +297,20 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_alt_space_char
         = config->read (String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR),
                         String (SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT));
+    // color settings
+    int red, green, blue;
+    str = config->read (String (SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR),
+                        String (SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT));
+    sscanf (str.c_str (), "#%02X%02X%02X", &red, &green, &blue);
+    m_candidate_form_color = SCIM_RGB_COLOR (red, green, blue);
+    str = config->read (String (SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR),
+                        String (SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT));
+    sscanf (str.c_str (), "#%02X%02X%02X", &red, &green, &blue);
+    m_candidate_usage_color = SCIM_RGB_COLOR (red, green, blue);
+    str = config->read (String (SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR),
+                        String (SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT));
+    sscanf (str.c_str (), "#%02X%02X%02X", &red, &green, &blue);
+    m_candidate_comment_color = SCIM_RGB_COLOR (red, green, blue);
 
     m_actions.clear ();
 

@@ -83,6 +83,9 @@
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY                 "/IMEngine/PRIME/ToggleLanguageKey"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY                   "/IMEngine/PRIME/RegisterWordKey"
 #define SCIM_PRIME_CONFIG_RECOVERY_KEY                        "/IMEngine/PRIME/RecoveryKey"
+#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR                "/IMEngine/PRIME/CandidateFormColor"
+#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR               "/IMEngine/PRIME/CandidateUsageColor"
+#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR             "/IMEngine/PRIME/CandidateCommentColor"
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
@@ -145,7 +148,9 @@
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY_DEFAULT         "F11"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT           "Control+w, Control+W"
 #define SCIM_PRIME_CONFIG_RECOVERY_KEY_DEFAULT                "Control+Alt+r"
-
+#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT        "#00007F"
+#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT       "#FF0000"
+#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT     "#0000FF"
 #endif /* __SCIM_PRIME_PREFS_H__ */
 /*
 vi:ts=4:nowrap:ai:expandtab

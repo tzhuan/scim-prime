@@ -1009,8 +1009,10 @@ PrimeInstance::action_convert (void)
 
     for (unsigned int i = 0; i < m_candidates.size (); i++) {
         WideString label;
-        get_candidate_label (label, m_candidates[i]);
-        m_lookup_table.append_candidate (label);
+        AttributeList attrs;
+        get_candidate_label (label, attrs, m_candidates[i]);
+
+        m_lookup_table.append_candidate (label, attrs);
     }
 
     if (m_candidates.size () > 0) {
@@ -1923,9 +1925,11 @@ PrimeInstance::match_key_event (const KeyEventList &keys, const KeyEvent &key) c
 }
 
 void
-PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
+PrimeInstance::get_candidate_label (WideString &label, AttributeList &attrs, PrimeCandidate &cand)
 {
     label = cand.m_conversion;
+    attrs.clear ();
+    int pos = label.length ();
 
     if (m_factory->m_show_annotation &&
         cand.m_values["form"].length () > 0)
@@ -1933,21 +1937,32 @@ PrimeInstance::get_candidate_label (WideString &label, PrimeCandidate &cand)
         label += utf8_mbstowcs ("  (");
         label += cand.m_values["form"];
         label += utf8_mbstowcs (" )");
+        attrs.push_back (Attribute (pos, label.length () - pos,
+                                    SCIM_ATTR_FOREGROUND, 
+                                    m_factory->m_candidate_form_color));
     }
 
+    pos = label.length ();
     if (m_factory->m_show_usage &&
         cand.m_values["usage"].length () > 0)
     {
-        label += utf8_mbstowcs ("\t\xE2\x96\xBD");
+        label += utf8_mbstowcs (" \xE2\x96\xBD");
         label += cand.m_values["usage"];
+        attrs.push_back (Attribute (pos, label.length () - pos,
+                                    SCIM_ATTR_FOREGROUND, 
+                                    m_factory->m_candidate_usage_color));
     }
 
+    pos = label.length ();
     if (m_factory->m_show_comment &&
         cand.m_values["comment"].length () > 0)
     {
-        label += utf8_mbstowcs ("\t<");
+        label += utf8_mbstowcs (" <");
         label += cand.m_values["comment"];
         label += utf8_mbstowcs (">");
+        attrs.push_back (Attribute (pos, label.length () - pos,
+                                    SCIM_ATTR_FOREGROUND, 
+                                    m_factory->m_candidate_comment_color));
     }
 }
 /*

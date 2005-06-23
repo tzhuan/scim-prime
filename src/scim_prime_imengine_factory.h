@@ -66,6 +66,11 @@ class PrimeFactory : public IMEngineFactoryBase
     String       m_space_char;
     String       m_alt_space_char;
 
+    // colors for candidate text
+    unsigned int m_candidate_form_color;
+    unsigned int m_candidate_usage_color;
+    unsigned int m_candidate_comment_color;
+
     /* for key bindings */
     std::vector<PrimeAction>  m_actions;
     PrimeAction              *m_recovery_action;

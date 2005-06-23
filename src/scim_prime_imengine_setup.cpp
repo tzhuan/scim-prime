@@ -130,6 +130,17 @@ struct StringConfigData
     bool        changed;
 };
 
+struct ColorConfigData
+{
+    const char *key;
+    String      value;
+    const char *label;
+    const char *title;
+    const char *tooltip;
+    GtkWidget  *widget;
+    bool        changed;
+};
+
 struct KeyboardConfigPage
 {
     const char       *label;
@@ -758,6 +769,38 @@ static StringConfigData __config_keyboards_direct_select_candidate [] =
     },
 };
 
+static ColorConfigData __config_color_common [] =
+{
+    {
+        SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR,
+        SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT,
+        NULL,
+        N_("The color of the annotaion text"),
+        N_("The color of the annotaion text in the candidate list."),
+        NULL,
+        false,
+    },
+    {
+        SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR,
+        SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT,
+        NULL,
+        N_("The color of the usage text"),
+        N_("The color of the usage text in the candidate list."),
+        NULL,
+        false,
+    },
+    {
+        SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR,
+        SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT,
+        NULL,
+        N_("The color of the comment text"),
+        N_("The color of the comment text in the candidate list."),
+        NULL,
+        false,
+    },
+};
+static unsigned int __config_color_common_num = sizeof (__config_color_common) / sizeof (ColorConfigData);
+
 static struct KeyboardConfigPage __key_conf_pages[] =
 {
     {N_("Edit keys"),       __config_keyboards_edit},
@@ -791,6 +834,9 @@ static void on_default_key_selection_clicked  (GtkButton       *button,
 #endif
 static void on_default_combo_changed          (GtkEditable     *editable,
                                                gpointer         user_data);
+static void on_default_color_button_set       (GtkColorButton  *colorbutton,
+                                               gpointer         user_data);
+
 static void     on_key_filter_selection_clicked   (GtkButton       *button,
                                                    gpointer         user_data);
 static void     on_key_category_menu_changed      (GtkOptionMenu   *omenu,
@@ -828,6 +874,21 @@ find_string_config_entry (const char *config_key)
 
     for (unsigned int i = 0; i < __config_string_common_num; i++) {
         StringConfigData *entry = &__config_string_common[i];
+        if (entry->key && !strcmp (entry->key, config_key))
+            return entry;
+    }
+
+    return NULL;
+}
+
+static ColorConfigData *
+find_color_config_entry (const char *config_key)
+{
+    if (!config_key)
+        return NULL;
+
+    for (unsigned int i = 0; i < __config_color_common_num; i++) {
+        ColorConfigData *entry = &__config_color_common[i];
         if (entry->key && !strcmp (entry->key, config_key))
             return entry;
     }
@@ -910,6 +971,24 @@ create_combo (const char *config_key, gpointer candidates_p,
     if (entry->tooltip)
         gtk_tooltips_set_tip (__widget_tooltips, entry->widget,
                               _(entry->tooltip), NULL);
+
+    return entry->widget;
+}
+
+static GtkWidget *
+create_color_button (const char *config_key)
+{
+    ColorConfigData *entry = find_color_config_entry (config_key);
+    if (!entry)
+        return NULL;
+
+    entry->widget = gtk_color_button_new ();
+    gtk_color_button_set_title (GTK_COLOR_BUTTON (entry->widget), entry->title);
+    gtk_container_set_border_width (GTK_CONTAINER (entry->widget), 4);
+    g_signal_connect (G_OBJECT (entry->widget), "color-set",
+                      G_CALLBACK (on_default_color_button_set),
+                      entry);
+    gtk_widget_show (entry->widget);
 
     return entry->widget;
 }
@@ -1089,7 +1168,7 @@ create_prediction_page ()
 static GtkWidget *
 create_candidates_window_page ()
 {
-    GtkWidget *vbox, *table, *widget;
+    GtkWidget *vbox, *hbox, *table, *widget;
 
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
@@ -1107,16 +1186,34 @@ create_candidates_window_page ()
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
 
     /* show annotation */
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_ANNOTATION);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    /* annotation color */
+    widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR);
+    gtk_box_pack_end (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
 
     /* show usage */
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_USAGE);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    /* usage text color */
+    widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
 
     /* show comment */
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_COMMENT);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    /* comment text color */
+    widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
 
     return vbox;
 }
@@ -1364,6 +1461,16 @@ setup_widget_value ()
                                 entry.value.c_str ());
     }
 
+    for (unsigned int i = 0; i < __config_color_common_num; i++) {
+        ColorConfigData &entry = __config_color_common[i];
+        if (entry.widget) {
+            GdkColor color;
+            gdk_color_parse (entry.value.c_str (), &color);
+            gtk_color_button_set_color (GTK_COLOR_BUTTON (entry.widget),
+                                        &color);
+        }
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; ++j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             if (__key_conf_pages[j].data[i].widget) {
@@ -1399,6 +1506,11 @@ load_config (const ConfigPointer &config)
         entry.value = config->read (String (entry.key), entry.value);
     }
 
+    for (unsigned int i = 0; i < __config_color_common_num; i++) {
+        ColorConfigData &entry = __config_color_common[i];
+        entry.value = config->read (String (entry.key), entry.value);
+    }
+
     for (unsigned int j = 0; j < __key_conf_pages_num; ++ j) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i) {
             __key_conf_pages[j].data[i].value =
@@ -1414,6 +1526,9 @@ load_config (const ConfigPointer &config)
 
     for (unsigned int i = 0; i < __config_string_common_num; i++)
         __config_string_common[i].changed = false;
+
+    for (unsigned int i = 0; i < __config_color_common_num; i++)
+        __config_color_common[i].changed = false;
 
     for (unsigned int j = 0; j < __key_conf_pages_num; j++) {
         for (unsigned int i = 0; __key_conf_pages[j].data[i].key; ++ i)
@@ -1438,6 +1553,13 @@ save_config (const ConfigPointer &config)
 
     for (unsigned int i = 0; i < __config_string_common_num; i++) {
         StringConfigData &entry = __config_string_common[i];
+        if (entry.changed)
+            entry.value = config->write (String (entry.key), entry.value);
+        entry.changed = false;
+    }
+
+    for (unsigned int i = 0; i < __config_color_common_num; i++) {
+        ColorConfigData &entry = __config_color_common[i];
         if (entry.changed)
             entry.value = config->write (String (entry.key), entry.value);
         entry.changed = false;
@@ -1541,6 +1663,27 @@ on_default_combo_changed (GtkEditable *editable,
             __have_changed = true;
             break;
         }
+    }
+}
+
+static void
+on_default_color_button_set (GtkColorButton *colorbutton,
+                             gpointer        user_data)
+{
+    ColorConfigData *entry = static_cast<ColorConfigData*> (user_data);
+
+    if (entry) {
+        GdkColor color;
+        gchar color_str[8];
+        gtk_color_button_get_color (colorbutton, &color);
+        g_snprintf (color_str, G_N_ELEMENTS (color_str),
+                    "#%02X%02X%02X", 
+                    (color.red>>8),
+                    (color.green>>8),
+                    (color.blue>>8));
+        entry->value = String (color_str);
+        entry->changed = true;
+        __have_changed = true;
     }
 }
 

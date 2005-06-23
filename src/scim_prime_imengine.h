@@ -184,6 +184,7 @@ private:
     bool   match_key_event                     (const KeyEventList &keys,
                                                 const KeyEvent     &key) const;
     void   get_candidate_label                 (WideString         &label,
+                                                AttributeList      &attrs,
                                                 PrimeCandidate     &cand);
 };
 #endif /* __SCIM_PRIME_IMENGINE_H__ */
