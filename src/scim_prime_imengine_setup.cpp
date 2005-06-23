@@ -990,6 +990,12 @@ create_color_button (const char *config_key)
                       entry);
     gtk_widget_show (entry->widget);
 
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+    if (entry->tooltip)
+        gtk_tooltips_set_tip (__widget_tooltips, entry->widget,
+                              _(entry->tooltip), NULL);
+
     return entry->widget;
 }
 

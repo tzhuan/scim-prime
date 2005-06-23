@@ -1,3 +1,7 @@
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Set tooltips for color buttons.
+
 2005-06-23 Hiroyuki Ikezoe <poincare@ikezoe.net>
 
 	* src/scim_prime_imengine.[cpp,h],
