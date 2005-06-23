@@ -931,6 +931,36 @@ match_key_event (const KeyEventList &list, const KeyEvent &key)
     return false;
 }
 
+static void
+create_entry (StringConfigData *data, GtkTable *table, int i)
+{
+    GtkWidget *label = gtk_label_new (NULL);
+    gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _(data->label));
+    gtk_widget_show (label);
+    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+    gtk_misc_set_padding (GTK_MISC (label), 4, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, i, i+1,
+                      (GtkAttachOptions) (GTK_FILL),
+                      (GtkAttachOptions) (GTK_FILL), 4, 4);
+    (data)->widget = gtk_entry_new ();
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label),
+                                   GTK_WIDGET (data->widget));
+    g_signal_connect ((gpointer) (data)->widget, "changed",
+                      G_CALLBACK (on_default_editable_changed),
+                      data);
+    gtk_widget_show (GTK_WIDGET (data->widget));
+    gtk_table_attach (GTK_TABLE (table), GTK_WIDGET (data->widget),
+                      1, 2, i, i+1,
+                      (GtkAttachOptions) (GTK_FILL|GTK_EXPAND),
+                      (GtkAttachOptions) (GTK_FILL), 4, 4);
+
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+    if (data->tooltip)
+        gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (data->widget),
+                              _(data->tooltip), NULL);
+}
+
 static GtkWidget *
 create_combo (const char *config_key, gpointer candidates_p,
               GtkWidget *table, gint idx)
@@ -1011,33 +1041,6 @@ create_color_button (const char *config_key)
                               _(entry->tooltip), NULL);
 
     return hbox;
-}
-
-#define APPEND_ENTRY(data, i)                                                  \
-{                                                                              \
-    label = gtk_label_new (NULL);                                              \
-    gtk_label_set_text_with_mnemonic (GTK_LABEL (label), _((data)->label));    \
-    gtk_widget_show (label);                                                   \
-    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);                       \
-    gtk_misc_set_padding (GTK_MISC (label), 4, 0);                             \
-    gtk_table_attach (GTK_TABLE (table), label, 0, 1, i, i+1,                  \
-                      (GtkAttachOptions) (GTK_FILL),                           \
-                      (GtkAttachOptions) (GTK_FILL), 4, 4);                    \
-    (data)->widget = gtk_entry_new ();                                         \
-    gtk_label_set_mnemonic_widget (GTK_LABEL (label), (data)->widget);         \
-    g_signal_connect ((gpointer) (data)->widget, "changed",                    \
-                      G_CALLBACK (on_default_editable_changed),                \
-                      (data));                                                 \
-    gtk_widget_show ((data)->widget);                                          \
-    gtk_table_attach (GTK_TABLE (table), (data)->widget, 1, 2, i, i+1,         \
-                      (GtkAttachOptions) (GTK_FILL|GTK_EXPAND),                \
-                      (GtkAttachOptions) (GTK_FILL), 4, 4);                    \
-                                                                               \
-    if (!__widget_tooltips)                                                    \
-        __widget_tooltips = gtk_tooltips_new();                                \
-    if ((data)->tooltip)                                                       \
-        gtk_tooltips_set_tip (__widget_tooltips, (data)->widget,               \
-                              _((data)->tooltip), NULL);                       \
 }
 
 static void
@@ -1127,7 +1130,7 @@ key_list_view_popup_key_selection (GtkTreeView *treeview)
 static GtkWidget *
 create_options_page ()
 {
-    GtkWidget *vbox, *table, *label, *widget;
+    GtkWidget *vbox, *table, *widget;
     StringConfigData *entry;
 
     vbox = gtk_vbox_new (FALSE, 0);
@@ -1138,7 +1141,7 @@ create_options_page ()
     gtk_widget_show (table);
 
     entry = find_string_config_entry (SCIM_PRIME_CONFIG_COMMAND);
-    APPEND_ENTRY(entry, 0);
+    create_entry (entry, GTK_TABLE (table), 0);
 
     /* start conversion on inputting comma or period */
     widget = create_check_button (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD);
