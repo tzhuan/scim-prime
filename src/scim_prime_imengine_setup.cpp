@@ -1196,26 +1196,22 @@ create_prediction_page ()
 static GtkWidget *
 create_candidates_window_page ()
 {
-    GtkWidget *vbox, *hbox, *table, *widget;
+    GtkWidget *vbox, *hbox, *widget;
 
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
 
-    table = gtk_table_new (2, 2, FALSE);
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
-    gtk_widget_show (table);
-
     /* auto register */
     widget = create_check_button (SCIM_PRIME_CONFIG_AUTO_REGISTER);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 2);
 
     /* close candidate window on select */
     widget = create_check_button (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT);
-    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 4);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 2);
 
     /* show annotation */
     hbox = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_ANNOTATION);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
@@ -1225,7 +1221,7 @@ create_candidates_window_page ()
 
     /* show usage */
     hbox = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_USAGE);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
@@ -1235,7 +1231,7 @@ create_candidates_window_page ()
 
     /* show comment */
     hbox = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 4);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_COMMENT);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
