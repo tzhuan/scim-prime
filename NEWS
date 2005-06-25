@@ -1,3 +1,7 @@
+Overview of Changes from scim-prime-0.2.6 to scim-prime-0.2.7
+=============================================================
+* Colorize annotation, usage, comment strings on the lookup window.
+
 Overview of Changes from scim-prime-0.2.5 to scim-prime-0.2.6
 =============================================================
 * Fix for gcc-4.0.

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-06-23 11:53+0900\n"
+"POT-Creation-Date: 2005-06-25 20:52+0900\n"
 "PO-Revision-Date: 2005-06-23 11:54+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -743,56 +743,56 @@ msgstr "編集領域の先頭"
 msgid "Tail of preedition area"
 msgstr "編集領域の後ろ"
 
-#: src/scim_prime_imengine_setup.cpp:1290
+#: src/scim_prime_imengine_setup.cpp:1286
 msgid "_Group:"
 msgstr "グループ(_G):"
 
-#: src/scim_prime_imengine_setup.cpp:1311
+#: src/scim_prime_imengine_setup.cpp:1307
 msgid "Search by key"
 msgstr "キーで検索"
 
-#: src/scim_prime_imengine_setup.cpp:1315
+#: src/scim_prime_imengine_setup.cpp:1311
 msgid "all"
 msgstr "全て"
 
-#: src/scim_prime_imengine_setup.cpp:1358
+#: src/scim_prime_imengine_setup.cpp:1354
 msgid "Feature"
 msgstr "機能"
 
-#: src/scim_prime_imengine_setup.cpp:1367
-#: src/scim_prime_imengine_setup.cpp:1429
+#: src/scim_prime_imengine_setup.cpp:1363
+#: src/scim_prime_imengine_setup.cpp:1425
 msgid "Key bindings"
 msgstr "キーバインド"
 
-#: src/scim_prime_imengine_setup.cpp:1373
+#: src/scim_prime_imengine_setup.cpp:1369
 msgid "Description"
 msgstr "説明"
 
-#: src/scim_prime_imengine_setup.cpp:1385
+#: src/scim_prime_imengine_setup.cpp:1381
 msgid "_Choose keys..."
 msgstr "キーを設定...(_C)"
 
-#: src/scim_prime_imengine_setup.cpp:1423
+#: src/scim_prime_imengine_setup.cpp:1419
 msgid "Common"
 msgstr "一般"
 
-#: src/scim_prime_imengine_setup.cpp:1435
+#: src/scim_prime_imengine_setup.cpp:1431
 msgid "Prediction"
 msgstr "予測"
 
-#: src/scim_prime_imengine_setup.cpp:1441
+#: src/scim_prime_imengine_setup.cpp:1437
 msgid "Candidates window"
 msgstr "候補ウィンドウ"
 
-#: src/scim_prime_imengine_setup.cpp:1448
+#: src/scim_prime_imengine_setup.cpp:1444
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:1454
+#: src/scim_prime_imengine_setup.cpp:1450
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1777
+#: src/scim_prime_imengine_setup.cpp:1773
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"
 
