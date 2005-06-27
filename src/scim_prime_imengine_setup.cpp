@@ -827,6 +827,9 @@ static ComboConfigCandidate predict_win_pos[] =
 
 static void on_default_editable_changed       (GtkEditable     *editable,
                                                gpointer         user_data);
+static void on_toggle_button_toggled_set_sensitive
+                                              (GtkToggleButton *togglebutton,
+                                               gpointer         user_data);
 static void on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
                                                gpointer         user_data);
 #if 0
@@ -1196,7 +1199,7 @@ create_prediction_page ()
 static GtkWidget *
 create_candidates_window_page ()
 {
-    GtkWidget *vbox, *hbox, *widget;
+    GtkWidget *vbox, *hbox, *widget, *widget2;
 
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
@@ -1215,9 +1218,13 @@ create_candidates_window_page ()
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_ANNOTATION);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    widget2 = widget;
     /* annotation color */
     widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR);
     gtk_box_pack_end (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (widget2), "toggled",
+                      G_CALLBACK (on_toggle_button_toggled_set_sensitive),
+                      widget);
 
     /* show usage */
     hbox = gtk_hbox_new (FALSE, 0);
@@ -1225,9 +1232,13 @@ create_candidates_window_page ()
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_USAGE);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    widget2 = widget;
     /* usage text color */
     widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR);
     gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (widget2), "toggled",
+                      G_CALLBACK (on_toggle_button_toggled_set_sensitive),
+                      widget);
 
     /* show comment */
     hbox = gtk_hbox_new (FALSE, 0);
@@ -1235,9 +1246,13 @@ create_candidates_window_page ()
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_COMMENT);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    widget2 = widget;
     /* comment text color */
     widget = create_color_button (SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR);
     gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (widget2), "toggled",
+                      G_CALLBACK (on_toggle_button_toggled_set_sensitive),
+                      widget);
 
     return vbox;
 }
@@ -1639,6 +1654,16 @@ on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
         entry->changed = true;
         __have_changed = true;
     }
+}
+
+static void
+on_toggle_button_toggled_set_sensitive (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+    GtkWidget *widget = static_cast<GtkWidget*> (user_data);
+
+    gboolean active = gtk_toggle_button_get_active (togglebutton);
+    gtk_widget_set_sensitive (widget, active);
 }
 
 static void
