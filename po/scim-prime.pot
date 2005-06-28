@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-06-25 20:52+0900\n"
+"POT-Creation-Date: 2005-06-28 11:46+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -739,55 +739,55 @@ msgstr ""
 msgid "Tail of preedition area"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1286
+#: src/scim_prime_imengine_setup.cpp:1301
 msgid "_Group:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1307
+#: src/scim_prime_imengine_setup.cpp:1322
 msgid "Search by key"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1311
+#: src/scim_prime_imengine_setup.cpp:1326
 msgid "all"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1354
+#: src/scim_prime_imengine_setup.cpp:1369
 msgid "Feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1363
-#: src/scim_prime_imengine_setup.cpp:1425
+#: src/scim_prime_imengine_setup.cpp:1378
+#: src/scim_prime_imengine_setup.cpp:1440
 msgid "Key bindings"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1369
+#: src/scim_prime_imengine_setup.cpp:1384
 msgid "Description"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1381
+#: src/scim_prime_imengine_setup.cpp:1396
 msgid "_Choose keys..."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1419
+#: src/scim_prime_imengine_setup.cpp:1434
 msgid "Common"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1431
+#: src/scim_prime_imengine_setup.cpp:1446
 msgid "Prediction"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1437
+#: src/scim_prime_imengine_setup.cpp:1452
 msgid "Candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1444
+#: src/scim_prime_imengine_setup.cpp:1459
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1450
+#: src/scim_prime_imengine_setup.cpp:1465
 msgid "Dictionary"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1773
+#: src/scim_prime_imengine_setup.cpp:1798
 msgid "Set key filter"
 msgstr ""
