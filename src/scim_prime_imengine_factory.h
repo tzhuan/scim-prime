@@ -44,6 +44,7 @@ class PrimeFactory : public IMEngineFactoryBase
 
     /* for preferences */
     String       m_command;
+    String       m_language;
     String       m_typing_method;
     bool         m_convert_on_period;
     bool         m_commit_period;

@@ -1,3 +1,8 @@
+Overview of Changes from scim-prime-0.2.7 to scim-prime-0.2.8
+=============================================================
+* Add default language setting.
+* Fix a build problem on non glibc system.
+
 Overview of Changes from scim-prime-0.2.6 to scim-prime-0.2.7
 =============================================================
 * Colorize annotation, usage, comment strings on the lookup window.

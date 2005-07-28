@@ -250,6 +250,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     m_command
         = config->read (String (SCIM_PRIME_CONFIG_COMMAND),
                         String (SCIM_PRIME_CONFIG_COMMAND_DEFAULT));
+    m_language
+        = config->read (String (SCIM_PRIME_CONFIG_LANGUAGE),
+                        String (SCIM_PRIME_CONFIG_LANGUAGE_DEFAULT));
     m_typing_method
         = config->read (String (SCIM_PRIME_CONFIG_TYPING_METHOD),
                         String (SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT));

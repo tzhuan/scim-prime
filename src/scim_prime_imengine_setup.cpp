@@ -298,6 +298,15 @@ static StringConfigData __config_string_common [] =
         false,
     },
     {
+        SCIM_PRIME_CONFIG_LANGUAGE,
+        SCIM_PRIME_CONFIG_LANGUAGE_DEFAULT,
+        N_("Default _language:"),
+        NULL,
+        N_("Default language:"),
+        NULL,
+        false,
+    },
+    {
         SCIM_PRIME_CONFIG_PREDICT_WIN_POS,
         SCIM_PRIME_CONFIG_PREDICT_WIN_POS_DEFAULT,
         N_("Prediction _window position:"),
@@ -817,6 +826,13 @@ static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (K
 const int INDEX_SEARCH_BY_KEY = __key_conf_pages_num;
 const int INDEX_ALL           = __key_conf_pages_num + 1;
 
+static ComboConfigCandidate default_language[] =
+{
+    {N_("Japanese"), "Japanese"},
+    {N_("English"),  "English"},
+    {NULL, NULL},
+};
+
 static ComboConfigCandidate predict_win_pos[] =
 {
     {N_("Head of preedition area"), "head"},
@@ -1144,12 +1160,15 @@ create_options_page ()
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
 
-    table = gtk_table_new (2, 2, FALSE);
+    table = gtk_table_new (3, 2, FALSE);
     gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 4);
     gtk_widget_show (table);
 
     entry = find_string_config_entry (SCIM_PRIME_CONFIG_COMMAND);
     create_entry (entry, GTK_TABLE (table), 0);
+
+    widget = create_combo (SCIM_PRIME_CONFIG_LANGUAGE,
+                           default_language, table, 1);
 
     /* start conversion on inputting comma or period */
     widget = create_check_button (SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD);

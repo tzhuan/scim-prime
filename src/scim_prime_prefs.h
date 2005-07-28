@@ -22,6 +22,7 @@
 #define __SCIM_PRIME_PREFS_H__
 
 #define SCIM_PRIME_CONFIG_COMMAND                             "/IMEngine/PRIME/Command"
+#define SCIM_PRIME_CONFIG_LANGUAGE                            "/IMEngine/PRIME/Language"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD                       "/IMEngine/PRIME/TypingMethod"
 #define SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD                   "/IMEngine/PRIME/ConvertOnPeriod"
 #define SCIM_PRIME_CONFIG_COMMIT_PERIOD                       "/IMEngine/PRIME/CommitPeriod"
@@ -88,6 +89,7 @@
 #define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR             "/IMEngine/PRIME/CandidateCommentColor"
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
+#define SCIM_PRIME_CONFIG_LANGUAGE_DEFAULT                    "Japanese"
 #define SCIM_PRIME_CONFIG_TYPING_METHOD_DEFAULT               ""
 #define SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT           false
 #define SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT               true

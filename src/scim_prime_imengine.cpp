@@ -390,6 +390,8 @@ PrimeInstance::trigger_property (const String &property)
         action_set_language_japanese ();
     } else if (property == SCIM_PROP_LANGUAGE_ENGLISH) {
         action_set_language_english ();
+    } else {
+        action_set_language_japanese ();
     }
 }
 
@@ -422,8 +424,14 @@ PrimeInstance::get_session (void)
         return NULL;
     }
 
-    if (!m_session)
-        action_set_language_japanese ();
+    if (!m_session) {
+        if (m_factory->m_language == "Japanese")
+            action_set_language_japanese ();
+        else if (m_factory->m_language == "English")
+            action_set_language_english ();
+        else
+            action_set_language_japanese ();
+    }
 
     if (!m_session) {
         m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
@@ -1740,7 +1748,12 @@ PrimeInstance::action_toggle_language (void)
         return false;
 
     if (!m_session) {
-        action_set_language_japanese ();
+        if (m_factory->m_language == "Japanese")
+            action_set_language_japanese ();
+        else if (m_factory->m_language == "English")
+            action_set_language_english ();
+        else
+            action_set_language_japanese ();
         return true;
     }
 
