@@ -136,7 +136,7 @@ PrimeConnection::open_connection (const char *command,
         m_err_fd = err_fd[0];
         close (err_fd[1]);
 
-        //signal (SIGCHLD,  handle_sigchld);
+        //signal (SIGCHLD, handle_sigchld);
         //signal (SIGPIPE, handle_sigpipe);
 
         return;
@@ -212,7 +212,7 @@ PrimeConnection::close_connection (void)
         size_t len, remaining;
         len = remaining = strlen (command);
 
-        sighandler_t prev_handler = signal (SIGPIPE, handle_sigpipe);
+        sig_t prev_handler = signal (SIGPIPE, handle_sigpipe);
 
         do {
             ssize_t rv = write (m_in_fd,
@@ -517,7 +517,7 @@ PrimeConnection::send_command (const char *command,
     str += "\n";
 
 
-    sighandler_t prev_handler = signal (SIGPIPE, handle_sigpipe);
+    sig_t prev_handler = signal (SIGPIPE, handle_sigpipe);
 
     //
     // write the command
