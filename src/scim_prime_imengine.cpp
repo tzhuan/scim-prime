@@ -47,6 +47,7 @@
 
 #define SCIM_PROP_PREFIX              "/IMEngine/PRIME"
 #define SCIM_PROP_LANGUAGE            "/IMEngine/PRIME/Lang"
+#define SCIM_PROP_LANGUAGE_OFF        "/IMEngine/PRIME/Lang/Off"
 #define SCIM_PROP_LANGUAGE_JAPANESE   "/IMEngine/PRIME/Lang/Japanese"
 #define SCIM_PROP_LANGUAGE_ENGLISH    "/IMEngine/PRIME/Lang/English"
 
@@ -62,7 +63,7 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
       m_session (NULL),
       m_factory (factory),
       m_prev_key (0,0),
-      m_language (SCIM_PRIME_LANGUAGE_UNKNOWN),
+      m_language (SCIM_PRIME_LANGUAGE_OFF),
       m_disable (false),
       m_converting (false),
       m_modifying (false),
@@ -164,6 +165,9 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 bool
 PrimeInstance::process_remaining_key_event (const KeyEvent &key)
 {
+    if (m_language == SCIM_PRIME_LANGUAGE_OFF)
+        return false;
+
     // ignore short cut keys of apllication.
     if (key.mask & SCIM_KEY_ControlMask ||
         key.mask & SCIM_KEY_AltMask)
@@ -338,6 +342,10 @@ PrimeInstance::install_properties (void)
                          "", String (""), _("Language"));
         m_properties.push_back (prop);
 
+        prop = Property (SCIM_PROP_LANGUAGE_OFF,
+                         _("Off"), String (""), _("Off"));
+        m_properties.push_back (prop);
+
         prop = Property (SCIM_PROP_LANGUAGE_JAPANESE,
                          _("Japanese"), String (""), _("Japanese"));
         m_properties.push_back (prop);
@@ -386,7 +394,9 @@ PrimeInstance::trigger_property (const String &property)
     SCIM_DEBUG_IMENGINE(2)
         << "trigger_property : " << property << " - " << prime_prop << "\n";
 
-    if (property == SCIM_PROP_LANGUAGE_JAPANESE) {
+    if (property == SCIM_PROP_LANGUAGE_OFF) {
+        action_set_off ();
+    } else if (property == SCIM_PROP_LANGUAGE_JAPANESE) {
         action_set_language_japanese ();
     } else if (property == SCIM_PROP_LANGUAGE_ENGLISH) {
         action_set_language_english ();
@@ -425,16 +435,21 @@ PrimeInstance::get_session (void)
     }
 
     if (!m_session) {
-        if (m_factory->m_language == "Japanese")
+        if (m_factory->m_language == "Japanese") {
             action_set_language_japanese ();
-        else if (m_factory->m_language == "English")
+        } else if (m_factory->m_language == "English") {
             action_set_language_english ();
-        else
+        } else if (m_factory->m_language == "Off") {
             action_set_language_japanese ();
+            action_set_off ();
+            return NULL;
+        } else {
+            action_set_language_japanese ();
+        }
     }
 
     if (!m_session) {
-        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
+        m_language = SCIM_PRIME_LANGUAGE_OFF;
         m_disable = true;
 
         const char *message = _("Couldn't start PRIME session.");
@@ -1742,6 +1757,72 @@ PrimeInstance::action_set_mode_wide_ascii (void)
 }
 
 bool
+PrimeInstance::action_toggle_on_off (void)
+{
+    if (m_disable)
+        return false;
+
+    if (m_language == SCIM_PRIME_LANGUAGE_OFF) {
+        return action_set_on ();
+    } else {
+        return action_set_off ();
+    }
+}
+
+bool
+PrimeInstance::action_set_on (void)
+{
+    if (m_disable)
+        return false;
+
+    if (m_session && m_language != SCIM_PRIME_LANGUAGE_OFF)
+        return false;
+
+    if (m_session) {
+        String key = "language", type;
+        std::vector<String> list;
+        get_session()->get_env (key, type, list);
+
+        if (!list.empty () && list[0] == "English") {
+            return action_set_language_english ();
+        } else if (!list.empty () && list[0] == "Japanese") {
+            return action_set_language_japanese ();
+        } else {
+            return action_set_language_japanese ();
+        }
+    } else if (m_factory->m_language != "Off") {
+        get_session ();
+    } else {
+        return action_set_language_japanese ();
+    }
+
+    return true;
+}
+
+bool
+PrimeInstance::action_set_off (void)
+{
+    if (m_disable)
+        return false;
+
+    if (m_session)
+        reset ();
+
+    m_language = SCIM_PRIME_LANGUAGE_OFF;
+
+    install_properties ();
+    PropertyList::iterator it = std::find (m_properties.begin (),
+                                           m_properties.end (),
+                                           SCIM_PROP_LANGUAGE);
+    if (it != m_properties.end ()) {
+        it->set_label (_("Off"));
+        update_property (*it);
+    }
+
+    return true;
+}
+
+bool
 PrimeInstance::action_toggle_language (void)
 {
     if (m_disable)
@@ -1753,7 +1834,7 @@ PrimeInstance::action_toggle_language (void)
         else if (m_factory->m_language == "English")
             action_set_language_english ();
         else
-            action_set_language_japanese ();
+            ; //action_set_language_japanese ();
         return true;
     }
 
@@ -1792,7 +1873,7 @@ PrimeInstance::action_set_language_japanese (void)
         get_session()->get_env (key, type, list);
 
         if (!list.empty () && list[0] == "Japanese") {
-            return false;
+            m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
         } else {
             m_session->edit_get_query_string (query);
             m_prime.session_end (m_session);
@@ -1801,13 +1882,15 @@ PrimeInstance::action_set_language_japanese (void)
         }
     }
 
-    m_session = m_prime.session_start ("Japanese");
-    if (m_session) {
-        m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
-        m_session->edit_insert (query.c_str ());
-        set_preedition ();
-    } else {
-        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
+    if (!m_session) {
+        m_session = m_prime.session_start ("Japanese");
+        if (m_session) {
+            m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
+            m_session->edit_insert (query.c_str ());
+            set_preedition ();
+        } else {
+            m_language = SCIM_PRIME_LANGUAGE_OFF;
+        }
     }
 
     install_properties ();
@@ -1819,7 +1902,7 @@ PrimeInstance::action_set_language_japanese (void)
             it->set_label (_("Japanese"));
             update_property (*it);
         } else {
-            it->set_label ("");
+            it->set_label (_("Off"));
             update_property (*it);
         }
     }
@@ -1844,7 +1927,7 @@ PrimeInstance::action_set_language_english (void)
         get_session()->get_env (key, type, list);
 
         if (!list.empty () && list[0] == "English") {
-            return false;
+            m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
         } else {
             m_session->edit_get_query_string (query);
             m_prime.session_end (m_session);
@@ -1853,13 +1936,15 @@ PrimeInstance::action_set_language_english (void)
         }
     }
 
-    m_session = m_prime.session_start ("English");
-    if (m_session) {
-        m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
-        m_session->edit_insert (query.c_str ());
-        set_preedition ();
-    } else {
-        m_language = SCIM_PRIME_LANGUAGE_UNKNOWN;
+    if (!m_session) {
+        m_session = m_prime.session_start ("English");
+        if (m_session) {
+            m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
+            m_session->edit_insert (query.c_str ());
+            set_preedition ();
+        } else {
+            m_language = SCIM_PRIME_LANGUAGE_OFF;
+        }
     }
 
     install_properties ();
@@ -1871,7 +1956,7 @@ PrimeInstance::action_set_language_english (void)
             it->set_label (_("English"));
             update_property (*it);
         } else {
-            it->set_label ("");
+            it->set_label (_("Off"));
             update_property (*it);
         }
     }

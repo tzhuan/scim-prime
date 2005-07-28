@@ -34,7 +34,7 @@
 using namespace scim;
 
 typedef enum {
-    SCIM_PRIME_LANGUAGE_UNKNOWN,
+    SCIM_PRIME_LANGUAGE_OFF,
     SCIM_PRIME_LANGUAGE_JAPANESE,
     // Sessions after this will ignore conversion keys which conflicts with
     // space and alternative space keys.
@@ -154,7 +154,11 @@ public: // actions
     bool   action_set_mode_raw                 (void);
     bool   action_set_mode_wide_ascii          (void);
 
+    bool   action_toggle_on_off                (void);
+    bool   action_set_on                       (void);
+    bool   action_set_off                      (void);
     bool   action_toggle_language              (void);
+    bool   action_set_language_raw             (void);
     bool   action_set_language_japanese        (void);
     bool   action_set_language_english         (void);
 

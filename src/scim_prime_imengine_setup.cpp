@@ -447,6 +447,15 @@ static StringConfigData __config_keyboards_convert [] =
 static StringConfigData __config_keyboards_mode [] =
 {
     {
+        SCIM_PRIME_CONFIG_TOGGLE_ON_OFF_KEY,
+        SCIM_PRIME_CONFIG_TOGGLE_ON_OFF_KEY_DEFAULT,
+        N_("On/Off"),
+        N_("Select on/off keys"),
+        N_("The key events to toggle on/off PRIME."),
+        NULL,
+        false,
+    },
+    {
         SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY,
         SCIM_PRIME_CONFIG_SET_MODE_DEFAULT_KEY_DEFAULT,
         N_("Default mode"),
@@ -828,6 +837,7 @@ const int INDEX_ALL           = __key_conf_pages_num + 1;
 
 static ComboConfigCandidate default_language[] =
 {
+    {N_("Off"),      "Off"},
     {N_("Japanese"), "Japanese"},
     {N_("English"),  "English"},
     {NULL, NULL},

@@ -236,6 +236,7 @@ PRIME_DEFINE_ACTION (action_set_mode_katakana);
 PRIME_DEFINE_ACTION (action_set_mode_half_katakana);
 PRIME_DEFINE_ACTION (action_set_mode_raw);
 PRIME_DEFINE_ACTION (action_set_mode_wide_ascii);
+PRIME_DEFINE_ACTION (action_toggle_on_off);
 PRIME_DEFINE_ACTION (action_toggle_language);
 PRIME_DEFINE_ACTION (action_register_a_word);
 PRIME_DEFINE_ACTION (action_recovery);
@@ -367,6 +368,7 @@ PrimeFactory::reload_config (const ConfigPointer &config)
     APPEND_ACTION (SET_MODE_WIDE_ASCII,     action_set_mode_wide_ascii);
 
     // language
+    APPEND_ACTION (TOGGLE_ON_OFF,           action_toggle_on_off);
     APPEND_ACTION (TOGGLE_LANGUAGE,         action_toggle_language);
 
     // register a word
