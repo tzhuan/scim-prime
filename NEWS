@@ -1,5 +1,6 @@
 Overview of Changes from scim-prime-0.2.7 to scim-prime-0.2.8
 =============================================================
+* Add a key binding to toggle on/off PRIME.
 * Add default language setting.
 * Fix a build problem on non glibc system.
 
