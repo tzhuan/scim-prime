@@ -45,41 +45,6 @@ class PrimeInstance : public IMEngineInstanceBase
 {
     friend class PrimeFactory;
 
-private:
-    static PrimeConnection  m_prime;
-    static unsigned int     m_recovery_count;
-
-    PrimeSession           *m_session;
-
-    PrimeFactory           *m_factory;
-
-    KeyEvent                m_prev_key;
-
-    /* for candidates window */
-    CommonLookupTable       m_lookup_table;
-
-    /* for toolbar */
-    PropertyList            m_properties;
-
-    /* values */
-    PrimeCandidates         m_candidates;
-
-    /* flags */
-    SCIMPrimeLanguage       m_language;
-    bool                    m_disable;
-    bool                    m_converting;
-    bool                    m_modifying;
-    bool                    m_registering;
-    bool                    m_cancel_prediction;
-    bool                    m_preedition_visible;
-    bool                    m_lookup_table_visible;
-
-    /* for register mode */
-    String                  m_query_string;
-    WideString              m_registering_key;
-    WideString              m_registering_value;
-    unsigned int            m_registering_cursor;
-
 public:
     PrimeInstance (PrimeFactory   *factory,
                    const String   &encoding,
@@ -190,6 +155,42 @@ private:
     void   get_candidate_label                 (WideString         &label,
                                                 AttributeList      &attrs,
                                                 PrimeCandidate     &cand);
+    void   set_error_message                   (void);
+
+private:
+    static PrimeConnection  m_prime;
+    static unsigned int     m_recovery_count;
+
+    PrimeSession           *m_session;
+
+    PrimeFactory           *m_factory;
+
+    KeyEvent                m_prev_key;
+
+    /* for candidates window */
+    CommonLookupTable       m_lookup_table;
+
+    /* for toolbar */
+    PropertyList            m_properties;
+
+    /* values */
+    PrimeCandidates         m_candidates;
+
+    /* flags */
+    SCIMPrimeLanguage       m_language;
+    bool                    m_disable;
+    bool                    m_converting;
+    bool                    m_modifying;
+    bool                    m_registering;
+    bool                    m_cancel_prediction;
+    bool                    m_preedition_visible;
+    bool                    m_lookup_table_visible;
+
+    /* for register mode */
+    String                  m_query_string;
+    WideString              m_registering_key;
+    WideString              m_registering_value;
+    unsigned int            m_registering_cursor;
 };
 #endif /* __SCIM_PRIME_IMENGINE_H__ */
 /*

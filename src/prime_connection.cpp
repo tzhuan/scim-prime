@@ -21,14 +21,26 @@
 #include <sys/types.h>
 #include <signal.h>
 #include <errno.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "prime_connection.h"
 #include "prime_session.h"
 #include "prime_commands.h"
+#include "intl.h"
 
+static const int PIPE_FAILD          = 1;
+static const int FORK_FAILD          = 2;
+static const int CHILD_DUP2_FAILD    = 3;
+static const int CHILD_EXEC_FAILD    = 4;
+static const int COMMUNICATION_FAILD = 5;
 
-std::vector<PrimeConnection *> connection_list;
+static std::vector<PrimeConnection *> connection_list;
+
+static int  sane_dup2      (int fd1,
+                            int fd2);
+static void handle_sigpipe (int signo);
 
 
 PrimeCandidate::PrimeCandidate ()
@@ -41,10 +53,11 @@ PrimeCandidate::~PrimeCandidate ()
 
 PrimeConnection::PrimeConnection ()
     : m_connection_type (PRIME_CONNECTION_PIPE),
-      m_pid (0),
-      m_in_fd (0),
-      m_out_fd (0),
-      m_err_fd (0)
+      m_pid         (0),
+      m_in_fd       (-1),
+      m_out_fd      (-1),
+      m_err_fd      (-1),
+      m_exit_status (0)
 {
     connection_list.push_back (this);
 
@@ -63,68 +76,48 @@ PrimeConnection::~PrimeConnection ()
     }
 }
 
-#if 0
-static void
-handle_sigchld (int signo)
-{
-    int status;
-    pid_t pid;
-
-    while ((pid = waitpid (-1, &status, WNOHANG))) {
-        std::vector<PrimeConnection *>::iterator it;
-        for (it = connection_list.begin (); it != connection_list.end (); it++) {
-            if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
-                ((*it)->get_child_pid() == pid))
-            {
-                (*it)->close_connection_with_error ();
-            }
-        }
-    };
-}
-#endif
-
-static void
-handle_sigpipe (int signo)
-{
-    int status;
-    pid_t pid;
-
-    while ((pid = waitpid (-1, &status, WNOHANG)) > 0) {
-        std::vector<PrimeConnection *>::iterator it;
-        for (it = connection_list.begin (); it != connection_list.end (); it++) {
-            if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
-                ((*it)->get_child_pid() == pid))
-            {
-                (*it)->close_connection_with_error ();
-            }
-        }
-    };
-}
-
-void
+bool
 PrimeConnection::open_connection (const char *command,
                                   const char *typing_method,
                                   bool save)
 {
     pid_t pid;
-    int in_fd[2], out_fd[2], err_fd[2];
+    int in_fd[2], out_fd[2], err_fd[2], report_fd[2];
+
+    m_command = command ? command : "";
+    m_typing_method = typing_method ? typing_method : "";
+    m_exit_status = 0;
+    m_err_msg = WideString ();
 
     if (m_pid > 0)
-        return;
+        return true;
 
-    if (pipe (out_fd) < 0) goto ERROR0;
-    if (pipe (err_fd) < 0) goto ERROR1;
-    if (pipe (in_fd)  < 0) goto ERROR2;
+    if (pipe (out_fd) < 0) {
+        set_error_message (PIPE_FAILD, errno);
+        goto ERROR0;
+    }
+    if (pipe (err_fd) < 0) {
+        set_error_message (PIPE_FAILD, errno);
+        goto ERROR1;
+    }
+    if (pipe (in_fd)  < 0) {
+        set_error_message (PIPE_FAILD, errno);
+        goto ERROR2;
+    }
+    if (pipe (report_fd) < 0) {
+        set_error_message (PIPE_FAILD, errno);
+        goto ERROR3;
+    }
 
     pid = fork ();
 
-    if (pid < 0)
-        goto ERROR3;
+    if (pid < 0) {
+        set_error_message (FORK_FAILD, errno);
+        goto ERROR4;
+    }
 
     if (pid > 0) {
         /* parent process */
-        m_typing_method = typing_method ? typing_method : "";
-
         m_pid = pid;
 
         m_in_fd = in_fd[1];
@@ -136,10 +129,14 @@ PrimeConnection::open_connection (const char *command,
         m_err_fd = err_fd[0];
         close (err_fd[1]);
 
-        //signal (SIGCHLD, handle_sigchld);
-        //signal (SIGPIPE, handle_sigpipe);
+        int rv;
+        close (report_fd[1]);
+        rv = check_child_err (report_fd[0]);
+        if (!rv)
+            clean_child ();
+        close (report_fd[0]);
 
-        return;
+        return rv;
 
     } else if (pid == 0) {
         /* child process */      
@@ -172,25 +169,35 @@ PrimeConnection::open_connection (const char *command,
         close (out_fd[0]);
         close (err_fd[0]);
         close (in_fd[1]);
-        dup2 (out_fd[1], STDOUT_FILENO);
-        dup2 (err_fd[1], STDERR_FILENO);
-        dup2 (in_fd[0],  STDIN_FILENO);
+        close (report_fd[0]);
+        fcntl (report_fd[1], F_SETFD, FD_CLOEXEC);
 
+        int rv;
+
+        rv = sane_dup2 (out_fd[1], STDOUT_FILENO);
+        if (rv < 0)
+            write_err_and_exit (report_fd[1], CHILD_DUP2_FAILD);
+
+        rv = sane_dup2 (err_fd[1], STDERR_FILENO);
+        if (rv < 0)
+            write_err_and_exit (report_fd[1], CHILD_DUP2_FAILD);
+
+        rv = sane_dup2 (in_fd[0],  STDIN_FILENO);
+        if (rv < 0)
+            write_err_and_exit (report_fd[1], CHILD_DUP2_FAILD);
+
+        // exec
         execvp (argv[0], argv);
 
-        /* error */
-        close (out_fd[1]);
-        close (err_fd[1]);
-        close (in_fd[0]);
+        // error
+        write_err_and_exit (report_fd[1], CHILD_EXEC_FAILD);
 
-        switch (errno) {
-        default:
-            break;
-        }
-
-        _exit (255);
+        return false;
     }
 
+ERROR4:
+    close (report_fd[0]);
+    close (report_fd[1]);
 ERROR3:
     close (in_fd[0]);
     close (in_fd[1]);
@@ -201,7 +208,7 @@ ERROR1:
     close (out_fd[0]);
     close (out_fd[1]);
 ERROR0:
-    return;
+    return false;
 }
 
 void
@@ -214,7 +221,15 @@ PrimeConnection::close_connection (void)
 
         sig_t prev_handler = signal (SIGPIPE, handle_sigpipe);
 
-        do {
+#if 0
+        bool rv;
+        rv = write_all (m_in_fd, command, len);
+        if (!rv) {
+            if (m_err_msg.empty ())
+                set_error_message (COMMUNICATION_FAILD, errno);
+        }
+#else
+        while (remaining > 0) {
             ssize_t rv = write (m_in_fd,
                                 command + (len - remaining),
                                 remaining);
@@ -224,12 +239,15 @@ PrimeConnection::close_connection (void)
             case EPIPE:
             case EIO:
                 remaining = 0;
+                if (m_err_msg.empty ())
+                    set_error_message (COMMUNICATION_FAILD, errno);
                 break;
             default:
                 remaining -= rv;
                 break;
             }
-        } while (remaining > 0);
+        }
+#endif
 
         if (prev_handler == SIG_ERR)
             signal (SIGPIPE, SIG_DFL);
@@ -243,26 +261,16 @@ PrimeConnection::close_connection (void)
 void
 PrimeConnection::close_connection_with_error (void)
 {
-    if (m_in_fd)
-        close (m_in_fd);
-    if (m_out_fd)
-        close (m_out_fd);
-    if (m_err_fd)
-        close (m_err_fd);
-
-    m_pid    = 0;
-    m_in_fd  = 0;
-    m_out_fd = 0;
-    m_err_fd = 0;
+    clean_child ();
+    set_error_message (COMMUNICATION_FAILD, errno);
 }
 
 void
 PrimeConnection::clean_child (void)
 {
     pid_t pid;
-    int status;
     do {
-        pid = waitpid (-1, &status, WNOHANG);
+        pid = waitpid (-1, &m_exit_status, WNOHANG);
     } while (pid > 0);
 
     if (m_in_fd)
@@ -273,9 +281,9 @@ PrimeConnection::clean_child (void)
         close (m_err_fd);
 
     m_pid    = 0;
-    m_in_fd  = 0;
-    m_out_fd = 0;
-    m_err_fd = 0;
+    m_in_fd  = -1;
+    m_out_fd = -1;
+    m_err_fd = -1;
 }
 
 bool
@@ -493,7 +501,7 @@ PrimeConnection::send_command (const char *command,
     if (!command || !*command)
         return false;
 
-    if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
+    if (!m_pid || m_in_fd < 0 || m_out_fd < 0)
         return false;
 
 
@@ -522,11 +530,21 @@ PrimeConnection::send_command (const char *command,
     //
     // write the command
     //
+#if 0
+    bool rv;
+    rv = write_all (m_in_fd, str.c_str (), str.length ());
+    if (!rv) {
+        clean_child ();
+        if (m_err_msg.empty ())
+            set_error_message (COMMUNICATION_FAILD, errno);
+        goto ERROR;
+    }
+#else
     ssize_t rv;
     size_t len, remaining;
     len = remaining = str.length ();
 
-    do {
+    while (remaining > 0) {
         ssize_t rv = write (m_in_fd,
                             str.c_str() + (len - remaining),
                             remaining);
@@ -536,16 +554,16 @@ PrimeConnection::send_command (const char *command,
         case EPIPE:
         case EIO:
             clean_child ();
+            if (m_err_msg.empty ())
+                set_error_message (COMMUNICATION_FAILD, errno);
             goto ERROR;
             break;
         default:
             remaining -= rv;
             break;
         }
-
-        if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
-            goto ERROR;
-    } while (remaining > 0);
+    }
+#endif
 
 
     //
@@ -563,6 +581,8 @@ PrimeConnection::send_command (const char *command,
             case EPIPE:
             case EIO:
                 clean_child ();
+                if (m_err_msg.empty ())
+                    set_error_message (COMMUNICATION_FAILD, errno);
                 break;
             default:
                 break;
@@ -579,7 +599,7 @@ PrimeConnection::send_command (const char *command,
             }
         }
 
-        if (!m_pid || m_in_fd <= 0 || m_out_fd <= 0)
+        if (!m_pid || m_in_fd < 0 || m_out_fd < 0)
             goto ERROR;
     }
 
@@ -623,6 +643,165 @@ void
 PrimeConnection::get_reply (std::vector<String> &str_list, char *delim, int num)
 {
     scim_prime_util_split_string (m_last_reply, str_list, delim, num);
+}
+
+void
+PrimeConnection::get_error_message (WideString &msg)
+{
+    msg = m_err_msg;
+}
+
+
+bool
+PrimeConnection::write_all (int fd, const char *buf, int size)
+{
+    int remaining = size;
+    if (fd < 0)
+        return false;
+
+    while (remaining > 0) {
+        int rv = write (fd, buf + (size - remaining), remaining);
+        switch (errno) {
+        case EBADF:
+        case EINVAL:
+        case EPIPE:
+        case EIO:
+            return false;
+        default:
+            remaining -= rv;
+            break;
+        }
+    }
+
+    return true;
+}
+
+void
+PrimeConnection::write_err_and_exit (int fd, int msg)
+{
+  int en = errno;
+
+  write_all (fd, (const char *) &msg, sizeof(msg));
+  write_all (fd, (const char *) &en,  sizeof(en));
+
+  _exit (255);
+}
+
+bool
+PrimeConnection::set_error_message (int erridx, int syserr)
+{
+    String msg_locale = strerror (syserr), enc;
+    IConvert aiconv;
+    WideString syserr_msg_wide;
+    String syserr_msg;
+
+    enc = scim_get_locale_encoding (scim_get_current_locale ());
+    aiconv.set_encoding (enc);
+
+    aiconv.convert (syserr_msg_wide, msg_locale);
+    syserr_msg = utf8_wcstombs (syserr_msg_wide);
+
+    switch (erridx) {
+    case PIPE_FAILD:
+    {
+        String format = _("Failed to create pipe (%s)");
+        char buf[format.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
+    case FORK_FAILD:
+    {
+        String format = _("Failed to create child process (%s)");
+        char buf[format.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
+    case CHILD_DUP2_FAILD:
+    {
+        String format = _("Failed to redirect output or input of child process (%s)");
+        char buf[format.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
+    case CHILD_EXEC_FAILD:
+    {
+        String format = _("Failed to execute child process \"%s\" (%s)");
+        char buf[format.length () + m_command.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), m_command.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
+    case COMMUNICATION_FAILD:
+    {
+        String format = _("Failed to communicate with PRIME (%s)");
+        char buf[format.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
+    default:
+        break;
+    }
+
+    return true;
+}
+
+bool
+PrimeConnection::check_child_err (int fd)
+{
+    if (fd < 0)
+        return false;
+
+    int buf[2];
+    int rv = true, n_bytes;
+
+    buf[0] = 0;
+    buf[1] = 0;
+
+    n_bytes = read (fd, buf, sizeof (int) * 2);
+
+    if (n_bytes >= (int) (sizeof (int) * 2))
+        rv = set_error_message (buf[0], buf[1]);
+
+    return rv;
+}
+
+
+static int
+sane_dup2 (int fd1, int fd2)
+{
+    int ret;
+
+retry:
+    ret = dup2 (fd1, fd2);
+    if (ret < 0 && errno == EINTR)
+        goto retry;
+
+    return ret;
+}
+
+static void
+handle_sigpipe (int signo)
+{
+    int status;
+    pid_t pid;
+
+    while ((pid = waitpid (-1, &status, WNOHANG)) > 0) {
+        std::vector<PrimeConnection *>::iterator it;
+        for (it = connection_list.begin ();
+             it != connection_list.end ();
+             it++)
+        {
+            if (((*it)->get_connection_type() == PRIME_CONNECTION_PIPE) &&
+                ((*it)->get_child_pid() == pid))
+            {
+                (*it)->close_connection_with_error ();
+            }
+        }
+    };
 }
 
 

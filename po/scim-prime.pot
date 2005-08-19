@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-07-28 20:13+0900\n"
+"POT-Creation-Date: 2005-08-19 11:21+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,54 +16,77 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/scim_prime_imengine.cpp:342
+#: src/prime_connection.cpp:710
+#, c-format
+msgid "Failed to create pipe (%s)"
+msgstr ""
+
+#: src/prime_connection.cpp:718
+#, c-format
+msgid "Failed to create child process (%s)"
+msgstr ""
+
+#: src/prime_connection.cpp:726
+#, c-format
+msgid "Failed to redirect output or input of child process (%s)"
+msgstr ""
+
+#: src/prime_connection.cpp:734
+#, c-format
+msgid "Failed to execute child process \"%s\" (%s)"
+msgstr ""
+
+#: src/prime_connection.cpp:742
+#, c-format
+msgid "Failed to communicate with PRIME (%s)"
+msgstr ""
+
+#: src/scim_prime_imengine.cpp:347
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:346 src/scim_prime_imengine.cpp:1818
-#: src/scim_prime_imengine.cpp:1905 src/scim_prime_imengine.cpp:1959
+#: src/scim_prime_imengine.cpp:351 src/scim_prime_imengine.cpp:1821
+#: src/scim_prime_imengine.cpp:1908 src/scim_prime_imengine.cpp:1962
 #: src/scim_prime_imengine_setup.cpp:840
 msgid "Off"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:350 src/scim_prime_imengine.cpp:1902
+#: src/scim_prime_imengine.cpp:355 src/scim_prime_imengine.cpp:1905
 #: src/scim_prime_imengine_setup.cpp:841
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:354 src/scim_prime_imengine.cpp:1956
+#: src/scim_prime_imengine.cpp:359 src/scim_prime_imengine.cpp:1959
 #: src/scim_prime_imengine_setup.cpp:842
 msgid "English"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:420
-msgid ""
-"PRIME process seems terminated abnormally.Press Control+Alt+r to try "
-"recovery."
-msgstr ""
-
-#: src/scim_prime_imengine.cpp:428
+#: src/scim_prime_imengine.cpp:431
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:455
+#: src/scim_prime_imengine.cpp:458
 msgid "Couldn't start PRIME session."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:595
+#: src/scim_prime_imengine.cpp:598
 msgid "Register a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:600
+#: src/scim_prime_imengine.cpp:603
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:605
+#: src/scim_prime_imengine.cpp:608
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:730
+#: src/scim_prime_imengine.cpp:733
 msgid "]"
+msgstr ""
+
+#: src/scim_prime_imengine.cpp:2089
+msgid "Disabled"
 msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:85

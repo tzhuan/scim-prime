@@ -60,24 +60,29 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
                               int             id)
     : IMEngineInstanceBase (factory, encoding, id),
-      m_session (NULL),
-      m_factory (factory),
-      m_prev_key (0,0),
-      m_language (SCIM_PRIME_LANGUAGE_OFF),
-      m_disable (false),
-      m_converting (false),
-      m_modifying (false),
-      m_registering (false),
-      m_cancel_prediction (false),
-      m_preedition_visible (false),
+      m_session              (NULL),
+      m_factory              (factory),
+      m_prev_key             (0,0),
+      m_language             (SCIM_PRIME_LANGUAGE_OFF),
+      m_disable              (false),
+      m_converting           (false),
+      m_modifying            (false),
+      m_registering          (false),
+      m_cancel_prediction    (false),
+      m_preedition_visible   (false),
       m_lookup_table_visible (false),
-      m_registering_cursor (0)
+      m_registering_cursor   (0)
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
     if (!m_prime.is_connected ()) {
-        m_prime.open_connection (m_factory->m_command.c_str(),
-                                 m_factory->m_typing_method.c_str());
+        bool rv;
+        rv = m_prime.open_connection (m_factory->m_command.c_str(),
+                                      m_factory->m_typing_method.c_str());
+        if (!rv) {
+            m_disable = true;
+            set_error_message ();
+        }
     }
 }
 
@@ -365,11 +370,15 @@ PrimeInstance::focus_in (void)
 
     install_properties ();
 
-    if (m_preedition_visible)
-        set_preedition ();
-    if (m_lookup_table_visible) {
-        update_lookup_table (m_lookup_table);
-        show_lookup_table ();
+    if (m_disable) {
+        set_error_message ();
+    } else {
+        if (m_preedition_visible)
+            set_preedition ();
+        if (m_lookup_table_visible) {
+            update_lookup_table (m_lookup_table);
+            show_lookup_table ();
+        }
     }
 }
 
@@ -415,13 +424,7 @@ PrimeInstance::get_session (void)
         delete m_session;
         m_session = NULL;
         m_disable = true;
-
-        const char *message =
-            _("PRIME process seems terminated abnormally."
-              "Press Control+Alt+r to try recovery.");
-        show_aux_string ();
-        update_aux_string (utf8_mbstowcs (message));
-
+        set_error_message ();
         return NULL;
 
     } else if (m_prime.major_version () < 1) {
@@ -2001,12 +2004,17 @@ PrimeInstance::action_recovery (void)
     if (!m_disable)
         return false;
 
-    m_prime.open_connection (m_factory->m_command.c_str(),
-                             m_factory->m_typing_method.c_str());
-    m_disable = false;
-    update_aux_string (utf8_mbstowcs(""));
-    hide_aux_string ();
-
+    bool rv;
+    rv = m_prime.open_connection (m_factory->m_command.c_str(),
+                                  m_factory->m_typing_method.c_str());
+    if (rv) {
+        m_disable = false;
+        update_aux_string (utf8_mbstowcs(""));
+        hide_aux_string ();
+    } else {
+        m_disable = true;
+        set_error_message ();
+    }
     return true;
 }
 
@@ -2061,6 +2069,26 @@ PrimeInstance::get_candidate_label (WideString &label, AttributeList &attrs, Pri
         attrs.push_back (Attribute (pos, label.length () - pos,
                                     SCIM_ATTR_FOREGROUND, 
                                     m_factory->m_candidate_comment_color));
+    }
+}
+
+void
+PrimeInstance::set_error_message (void)
+{
+    WideString msg;
+    m_prime.get_error_message (msg);
+
+    show_aux_string ();
+    update_aux_string (msg);
+
+    install_properties ();
+    PropertyList::iterator it = std::find (m_properties.begin (),
+                                           m_properties.end (),
+                                           SCIM_PROP_LANGUAGE);
+    if (it != m_properties.end ()) {
+        it->set_label (_("Disabled"));
+        it->set_tip (utf8_wcstombs (msg));
+        update_property (*it);
     }
 }
 /*

@@ -1,3 +1,12 @@
+2005-08-19 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.{cpp,h}: Show detailed error message.
+	* po/POTFILES.in, po/ja.po: Update.
+
+2005-08-19 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.{cpp,h}: Check error strictly.
+
 2005-07-29 Takuro Ashie <ashie@homa.ne.jp>
 
 	* configure.ac: Version-0.2.8.

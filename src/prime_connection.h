@@ -65,7 +65,7 @@ public:
     virtual ~PrimeConnection                ();
 
     // connection
-    void                open_connection     (const char *command,
+    bool                open_connection     (const char *command,
                                              const char *typing_method = NULL,
                                              bool save = true);
     void                close_connection    (void);
@@ -85,6 +85,7 @@ public:
     void                get_reply           (Strings         &str_list,
                                              char            *delim,
                                              int              num = -1);
+    void                get_error_message   (WideString      &msg);
 
     // get prime version
     void                version             (String          &version);
@@ -127,9 +128,17 @@ public:
                                              WideString       rest);
 
 private:
-    int                 get_version_int     (int idx); // major: idx=0
-                                                       // minor: idx=1
-                                                       // micro: idx=2
+    bool                write_all           (int         fd,
+                                             const char *buf,
+                                             int         size);
+    void                write_err_and_exit  (int         fd,
+                                             int         msg);
+    bool                set_error_message   (int         erridx,
+                                             int         syserr);
+    bool                check_child_err     (int         fd);
+    int                 get_version_int     (int         idx); // major: idx=0
+                                                               // minor: idx=1
+                                                               // micro: idx=2
     void                clean_child         (void);
 
 public:
@@ -143,9 +152,12 @@ private:
     int                 m_out_fd;
     int                 m_err_fd;
 
+    String              m_command;
     String              m_typing_method;
 
     String              m_last_reply; // EUC-JP
+    int                 m_exit_status;
+    WideString          m_err_msg;
 };
 
 
