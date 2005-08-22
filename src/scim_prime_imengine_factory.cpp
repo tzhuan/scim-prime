@@ -128,6 +128,7 @@ PrimeFactory::PrimeFactory (const String &lang,
 
 PrimeFactory::~PrimeFactory ()
 {
+    m_reload_signal_connection.disconnect ();
 }
 
 WideString
