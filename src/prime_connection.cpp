@@ -695,6 +695,9 @@ PrimeConnection::set_error_message (int erridx, int syserr)
     WideString syserr_msg_wide;
     String syserr_msg;
 
+    if (erridx == 0)
+        return true;
+
     enc = scim_get_locale_encoding (scim_get_current_locale ());
     aiconv.set_encoding (enc);
 
@@ -743,7 +746,13 @@ PrimeConnection::set_error_message (int erridx, int syserr)
         return false;
     }
     default:
-        break;
+    {
+        String format = _("An error occured (%s)");
+        char buf[format.length () + syserr_msg.length () + 1];
+        sprintf (buf, format.c_str (), syserr_msg.c_str ());
+        m_err_msg = utf8_mbstowcs (buf);
+        return false;
+    }
     }
 
     return true;
@@ -763,7 +772,7 @@ PrimeConnection::check_child_err (int fd)
 
     n_bytes = read (fd, buf, sizeof (int) * 2);
 
-    if (n_bytes >= (int) (sizeof (int) * 2))
+    if (n_bytes >= (int) (sizeof (int) * 2) && buf[0] != 0)
         rv = set_error_message (buf[0], buf[1]);
 
     return rv;
