@@ -140,7 +140,9 @@ PrimeFactory::get_name () const
 WideString
 PrimeFactory::get_authors () const
 {
-    return WideString ();
+    return utf8_mbstowcs (
+        _("Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
+          "Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>"));
 }
 
 WideString
