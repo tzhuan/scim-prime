@@ -1,5 +1,9 @@
 2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine_setup.cpp: Fix indent.
+
+2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_imengine_setup.cpp: Show all key bindings by default.
 
 2005-08-23 Takuro Ashie <ashie@homa.ne.jp>

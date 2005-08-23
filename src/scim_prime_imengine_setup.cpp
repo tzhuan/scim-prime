@@ -832,8 +832,8 @@ static struct KeyboardConfigPage __key_conf_pages[] =
 };
 static unsigned int __key_conf_pages_num = sizeof (__key_conf_pages) / sizeof (KeyboardConfigPage);
 
-const int INDEX_SEARCH_BY_KEY = __key_conf_pages_num;
-const int INDEX_ALL           = __key_conf_pages_num + 1;
+const int KEY_CATEGORY_INDEX_SEARCH_BY_KEY = __key_conf_pages_num;
+const int KEY_CATEGORY_INDEX_ALL           = __key_conf_pages_num + 1;
 
 static ComboConfigCandidate default_language[] =
 {
@@ -851,21 +851,22 @@ static ComboConfigCandidate predict_win_pos[] =
 };
 
 
-static void on_default_editable_changed       (GtkEditable     *editable,
-                                               gpointer         user_data);
-static void on_toggle_button_toggled_set_sensitive
-                                              (GtkToggleButton *togglebutton,
-                                               gpointer         user_data);
-static void on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
-                                               gpointer         user_data);
+static void     setup_widget_value ();
+static void     on_default_editable_changed       (GtkEditable     *editable,
+                                                   gpointer         user_data);
+static void     on_toggle_button_toggled_set_sensitive
+                                                  (GtkToggleButton *togglebutton,
+                                                   gpointer         user_data);
+static void     on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
+                                                   gpointer         user_data);
 #if 0
-static void on_default_key_selection_clicked  (GtkButton       *button,
-                                               gpointer         user_data);
+static void     on_default_key_selection_clicked  (GtkButton       *button,
+                                                   gpointer         user_data);
 #endif
-static void on_default_combo_changed          (GtkEditable     *editable,
-                                               gpointer         user_data);
-static void on_default_color_button_set       (GtkColorButton  *colorbutton,
-                                               gpointer         user_data);
+static void     on_default_combo_changed          (GtkEditable     *editable,
+                                                   gpointer         user_data);
+static void     on_default_color_button_set       (GtkColorButton  *colorbutton,
+                                                   gpointer         user_data);
 
 static void     on_key_filter_selection_clicked   (GtkButton       *button,
                                                    gpointer         user_data);
@@ -881,7 +882,6 @@ static void     on_key_list_selection_changed     (GtkTreeSelection *selection,
                                                    gpointer          data);
 static void     on_choose_keys_button_clicked     (GtkWidget        *button,
                                                    gpointer          data);
-static void setup_widget_value ();
 
 
 
@@ -1018,12 +1018,14 @@ create_combo (const char *config_key, gpointer candidates_p,
                                    GTK_COMBO (entry->widget)->entry);
     gtk_combo_set_value_in_list (GTK_COMBO (entry->widget), TRUE, FALSE);
     gtk_combo_set_case_sensitive (GTK_COMBO (entry->widget), TRUE);
-    gtk_entry_set_editable (GTK_ENTRY (GTK_COMBO (entry->widget)->entry), FALSE);
+    gtk_entry_set_editable (GTK_ENTRY (GTK_COMBO (entry->widget)->entry),
+                            FALSE);
     gtk_widget_show (entry->widget);
     gtk_table_attach (GTK_TABLE (table), entry->widget, 1, 2, idx, idx + 1,
                       (GtkAttachOptions) (GTK_FILL|GTK_EXPAND),
                       (GtkAttachOptions) (GTK_FILL), 4, 4);
-    g_object_set_data (G_OBJECT (GTK_COMBO (entry->widget)->entry), DATA_POINTER_KEY,
+    g_object_set_data (G_OBJECT (GTK_COMBO (entry->widget)->entry),
+                       DATA_POINTER_KEY,
                        (gpointer) candidates_p);
 
     g_signal_connect ((gpointer) GTK_COMBO (entry->widget)->entry, "changed",
@@ -1090,8 +1092,10 @@ append_key_bindings (GtkTreeView *treeview, gint idx, const gchar *filter)
         return;
 
     for (unsigned int i = 0; __key_conf_pages[idx].data[i].key; i++) {
+        StringConfigData *entry = &(__key_conf_pages[idx].data[i]);
+
         if (filter && *filter) {
-            scim_string_to_key_list (keys2, __key_conf_pages[idx].data[i].value.c_str());
+            scim_string_to_key_list (keys2, entry->value.c_str());
             KeyEventList::const_iterator kit;
             bool found = true;
             for (kit = keys1.begin (); kit != keys1.end (); ++kit) {
@@ -1107,10 +1111,10 @@ append_key_bindings (GtkTreeView *treeview, gint idx, const gchar *filter)
         GtkTreeIter iter;
         gtk_list_store_append (store, &iter);
         gtk_list_store_set (store, &iter,
-                            COLUMN_LABEL, _(__key_conf_pages[idx].data[i].label),
-                            COLUMN_VALUE, __key_conf_pages[idx].data[i].value.c_str (),
-                            COLUMN_DESC,  _(__key_conf_pages[idx].data[i].tooltip),
-                            COLUMN_DATA, &__key_conf_pages[idx].data[i],
+                            COLUMN_LABEL, _(entry->label),
+                            COLUMN_VALUE, entry->value.c_str (),
+                            COLUMN_DESC,  _(entry->tooltip),
+                            COLUMN_DATA,  entry,
                             -1);
     }
 }
@@ -1570,7 +1574,7 @@ setup_widget_value ()
     }
 
     gtk_option_menu_set_history (GTK_OPTION_MENU (__widget_key_categories_menu),
-                                 INDEX_ALL);
+                                 KEY_CATEGORY_INDEX_ALL);
     gtk_widget_set_sensitive (__widget_key_filter, FALSE);
     gtk_widget_set_sensitive (__widget_key_filter_button, FALSE);
 }
@@ -1797,14 +1801,14 @@ on_key_category_menu_changed (GtkOptionMenu *omenu, gpointer user_data)
     if (idx >= 0 && idx < (gint) __key_conf_pages_num) {
         append_key_bindings (treeview, idx, NULL);
 
-    } else if (idx == INDEX_SEARCH_BY_KEY) {
+    } else if (idx == KEY_CATEGORY_INDEX_SEARCH_BY_KEY) {
         // search by key
         use_filter = true;
         const char *str = gtk_entry_get_text (GTK_ENTRY (__widget_key_filter));
         for (unsigned int i = 0; i < __key_conf_pages_num; i++)
             append_key_bindings (treeview, i, str);
 
-    } else if (idx == INDEX_ALL) {
+    } else if (idx == KEY_CATEGORY_INDEX_ALL) {
         // all
         for (unsigned int i = 0; i < __key_conf_pages_num; i++)
             append_key_bindings (treeview, i, NULL);
