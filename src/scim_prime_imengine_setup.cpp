@@ -1569,13 +1569,10 @@ setup_widget_value ()
         }
     }
 
-    gtk_option_menu_set_history (GTK_OPTION_MENU (__widget_key_categories_menu), 0);
+    gtk_option_menu_set_history (GTK_OPTION_MENU (__widget_key_categories_menu),
+                                 INDEX_ALL);
     gtk_widget_set_sensitive (__widget_key_filter, FALSE);
     gtk_widget_set_sensitive (__widget_key_filter_button, FALSE);
-    GtkTreeModel *model;
-    model = gtk_tree_view_get_model (GTK_TREE_VIEW (__widget_key_list_view));
-    gtk_list_store_clear (GTK_LIST_STORE (model));
-    append_key_bindings (GTK_TREE_VIEW (__widget_key_list_view), 0, NULL);
 }
 
 static void
