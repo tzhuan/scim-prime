@@ -120,6 +120,9 @@ PrimeInstance::process_key_event (const KeyEvent& key)
     // try recovery on losting connection.
     if (!get_session ()) {
         if (m_recovery_count <= MAX_TRY_RECOVERY) {
+            //
+            // automatical recovery
+            //
             action_recovery ();
             if (!get_session ()) {
                 m_recovery_count++;
@@ -128,6 +131,9 @@ PrimeInstance::process_key_event (const KeyEvent& key)
                 return false;
             }
         } else {
+            //
+            // intentional recovery
+            //
             if (m_factory->m_recovery_action &&
                 m_factory->m_recovery_action->perform (this, key))
             {
@@ -137,7 +143,6 @@ PrimeInstance::process_key_event (const KeyEvent& key)
             }
         }
     }
-
     m_recovery_count = 0;
 
     bool prediction_canceled = m_cancel_prediction;
@@ -316,7 +321,7 @@ PrimeInstance::reset ()
 
     m_candidates.clear();
     m_converting = false;
-    m_modifying = false;
+    m_modifying  = false;
 
     m_preedition_visible   = false;
     m_lookup_table_visible = false;
@@ -2086,8 +2091,8 @@ PrimeInstance::set_error_message (void)
     WideString msg;
     m_prime.get_error_message (msg);
 
-    show_aux_string ();
     update_aux_string (msg);
+    show_aux_string ();
 
     install_properties ();
     PropertyList::iterator it = std::find (m_properties.begin (),
