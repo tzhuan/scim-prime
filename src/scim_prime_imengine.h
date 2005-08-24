@@ -144,7 +144,7 @@ private:
 
     /* processing key event */
     bool   process_key_event_lookup_keybind    (const KeyEvent &key);
-    bool   process_remaining_key_event         (const KeyEvent &key);
+    bool   process_input_key_event             (const KeyEvent &key);
 
     /* utility */
     bool   action_commit                       (bool learn);

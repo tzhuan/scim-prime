@@ -157,7 +157,7 @@ PrimeInstance::process_key_event (const KeyEvent& key)
     if (prediction_canceled)
         m_cancel_prediction = false;
 
-    return process_remaining_key_event (key);
+    return process_input_key_event (key);
 }
 
 bool
@@ -173,7 +173,7 @@ PrimeInstance::process_key_event_lookup_keybind (const KeyEvent& key)
 }
 
 bool
-PrimeInstance::process_remaining_key_event (const KeyEvent &key)
+PrimeInstance::process_input_key_event (const KeyEvent &key)
 {
     if (m_language == SCIM_PRIME_LANGUAGE_OFF)
         return false;
