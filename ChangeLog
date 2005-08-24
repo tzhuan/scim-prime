@@ -1,5 +1,10 @@
 2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
 
+	* src/scim_prime_imengine_setup.cpp: Make "Key bindings" column
+	resizable.
+
+2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
+
 	* src/scim_prime_prefs.h: Such key "10" doesn't exit m( )m
 	Thanks Bando-san.
 
