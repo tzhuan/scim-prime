@@ -1397,7 +1397,8 @@ PrimeInstance::action_conv_next_candidate (void)
         m_lookup_table.cursor_down ();
     }
 
-    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+    unsigned int pos = m_lookup_table.get_cursor_pos_in_current_page ();
+    select_candidate_no_direct (pos);
 
     return true;
 }
@@ -1442,7 +1443,8 @@ PrimeInstance::action_conv_prev_candidate (void)
         m_lookup_table.cursor_up ();
     }
 
-    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+    unsigned int pos = m_lookup_table.get_cursor_pos_in_current_page ();
+    select_candidate_no_direct (pos);
 
     return true;
 }
@@ -1454,7 +1456,9 @@ PrimeInstance::action_conv_next_page (void)
         return false;
 
     m_lookup_table.page_down ();
-    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+
+    unsigned int pos = m_lookup_table.get_cursor_pos_in_current_page ();
+    select_candidate_no_direct (pos);
 
     return true;
 }
@@ -1466,7 +1470,9 @@ PrimeInstance::action_conv_prev_page (void)
         return false;
 
     m_lookup_table.page_up ();
-    select_candidate_no_direct (m_lookup_table.get_cursor_pos_in_current_page ());
+
+    unsigned int pos = m_lookup_table.get_cursor_pos_in_current_page ();
+    select_candidate_no_direct (pos);
 
     return true;
 }
@@ -2031,7 +2037,9 @@ PrimeInstance::match_key_event (const KeyEventList &keys, const KeyEvent &key) c
 }
 
 void
-PrimeInstance::get_candidate_label (WideString &label, AttributeList &attrs, PrimeCandidate &cand)
+PrimeInstance::get_candidate_label (WideString &label,
+                                    AttributeList &attrs,
+                                    PrimeCandidate &cand)
 {
     label = cand.m_conversion;
     attrs.clear ();
