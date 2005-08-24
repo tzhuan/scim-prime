@@ -59,7 +59,7 @@ unsigned int    PrimeInstance::m_recovery_count = 0;
 PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
                               int             id)
-    : IMEngineInstanceBase (factory, encoding, id),
+    : IMEngineInstanceBase   (factory, encoding, id),
       m_session              (NULL),
       m_factory              (factory),
       m_prev_key             (0,0),
