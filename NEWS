@@ -3,6 +3,7 @@ Overview of Changes from scim-prime-0.2.8 to scim-prime-0.2.9
 * Fix clash bug of scim-setup. (Thanks James Su)
 * Show all key bindings by default on scim-setup.
 * Show detailed error message when fails to communicate with PRIME.
+* Fix a wrong key binding. (Thanks Bando-san)
 
 Overview of Changes from scim-prime-0.2.7 to scim-prime-0.2.8
 =============================================================

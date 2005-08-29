@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-08-25 17:42+0900\n"
+"POT-Creation-Date: 2005-08-29 10:44+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,18 +50,18 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:356 src/scim_prime_imengine.cpp:1832
-#: src/scim_prime_imengine.cpp:1919 src/scim_prime_imengine.cpp:1973
+#: src/scim_prime_imengine.cpp:356 src/scim_prime_imengine.cpp:1838
+#: src/scim_prime_imengine.cpp:1925 src/scim_prime_imengine.cpp:1979
 #: src/scim_prime_imengine_setup.cpp:840
 msgid "Off"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:360 src/scim_prime_imengine.cpp:1916
+#: src/scim_prime_imengine.cpp:360 src/scim_prime_imengine.cpp:1922
 #: src/scim_prime_imengine_setup.cpp:841
 msgid "Japanese"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:364 src/scim_prime_imengine.cpp:1970
+#: src/scim_prime_imengine.cpp:364 src/scim_prime_imengine.cpp:1976
 #: src/scim_prime_imengine_setup.cpp:842
 msgid "English"
 msgstr ""
@@ -74,23 +74,23 @@ msgstr ""
 msgid "Couldn't start PRIME session."
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:603
+#: src/scim_prime_imengine.cpp:609
 msgid "Register a word:"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:608
+#: src/scim_prime_imengine.cpp:614
 msgid "["
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:613
+#: src/scim_prime_imengine.cpp:619
 msgid "|"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:738
+#: src/scim_prime_imengine.cpp:744
 msgid "]"
 msgstr ""
 
-#: src/scim_prime_imengine.cpp:2102
+#: src/scim_prime_imengine.cpp:2108
 msgid "Disabled"
 msgstr ""
 
