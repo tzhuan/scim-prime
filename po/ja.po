@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-08-19 11:21+0900\n"
+"POT-Creation-Date: 2005-08-25 17:42+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -38,53 +38,64 @@ msgstr "子プロセス \"%s\" の実行に失敗しました (%s)"
 msgid "Failed to communicate with PRIME (%s)"
 msgstr "PRIMEとの通信に失敗しました (%s)"
 
-#: src/scim_prime_imengine.cpp:347
+#: src/prime_connection.cpp:750
+#, c-format
+msgid "An error occured (%s)"
+msgstr ""
+
+#: src/scim_prime_imengine.cpp:352
 msgid "Language"
 msgstr "言語"
 
-#: src/scim_prime_imengine.cpp:351 src/scim_prime_imengine.cpp:1821
-#: src/scim_prime_imengine.cpp:1908 src/scim_prime_imengine.cpp:1962
+#: src/scim_prime_imengine.cpp:356 src/scim_prime_imengine.cpp:1832
+#: src/scim_prime_imengine.cpp:1919 src/scim_prime_imengine.cpp:1973
 #: src/scim_prime_imengine_setup.cpp:840
 msgid "Off"
 msgstr "オフ"
 
-#: src/scim_prime_imengine.cpp:355 src/scim_prime_imengine.cpp:1905
+#: src/scim_prime_imengine.cpp:360 src/scim_prime_imengine.cpp:1916
 #: src/scim_prime_imengine_setup.cpp:841
 msgid "Japanese"
 msgstr "日本語"
 
-#: src/scim_prime_imengine.cpp:359 src/scim_prime_imengine.cpp:1959
+#: src/scim_prime_imengine.cpp:364 src/scim_prime_imengine.cpp:1970
 #: src/scim_prime_imengine_setup.cpp:842
 msgid "English"
 msgstr "英語"
 
-#: src/scim_prime_imengine.cpp:431
+#: src/scim_prime_imengine.cpp:436
 msgid "Your PRIME is out of date. Please install PRIME-1.0.0 or later."
 msgstr "PRIMEが古すぎます。PRIME-1.0.0以降をインストールして下さい。"
 
-#: src/scim_prime_imengine.cpp:458
+#: src/scim_prime_imengine.cpp:463
 msgid "Couldn't start PRIME session."
 msgstr "PRIMEセッションを開始できませんでした。"
 
-#: src/scim_prime_imengine.cpp:598
+#: src/scim_prime_imengine.cpp:603
 msgid "Register a word:"
 msgstr "単語登録:"
 
-#: src/scim_prime_imengine.cpp:603
+#: src/scim_prime_imengine.cpp:608
 msgid "["
 msgstr "["
 
-#: src/scim_prime_imengine.cpp:608
+#: src/scim_prime_imengine.cpp:613
 msgid "|"
 msgstr "|"
 
-#: src/scim_prime_imengine.cpp:733
+#: src/scim_prime_imengine.cpp:738
 msgid "]"
 msgstr "]"
 
-#: src/scim_prime_imengine.cpp:2089
+#: src/scim_prime_imengine.cpp:2102
 msgid "Disabled"
 msgstr "使用不可"
+
+#: src/scim_prime_imengine_factory.cpp:144
+msgid ""
+"Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
+"Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>"
+msgstr ""
 
 #: src/scim_prime_imengine_setup.cpp:85
 msgid "PRIME"
@@ -793,56 +804,56 @@ msgstr "編集領域の先頭"
 msgid "Tail of preedition area"
 msgstr "編集領域の後ろ"
 
-#: src/scim_prime_imengine_setup.cpp:1330
+#: src/scim_prime_imengine_setup.cpp:1334
 msgid "_Group:"
 msgstr "グループ(_G):"
 
-#: src/scim_prime_imengine_setup.cpp:1351
+#: src/scim_prime_imengine_setup.cpp:1355
 msgid "Search by key"
 msgstr "キーで検索"
 
-#: src/scim_prime_imengine_setup.cpp:1355
+#: src/scim_prime_imengine_setup.cpp:1359
 msgid "all"
 msgstr "全て"
 
-#: src/scim_prime_imengine_setup.cpp:1398
+#: src/scim_prime_imengine_setup.cpp:1402
 msgid "Feature"
 msgstr "機能"
 
-#: src/scim_prime_imengine_setup.cpp:1407
-#: src/scim_prime_imengine_setup.cpp:1469
+#: src/scim_prime_imengine_setup.cpp:1411
+#: src/scim_prime_imengine_setup.cpp:1476
 msgid "Key bindings"
 msgstr "キーバインド"
 
-#: src/scim_prime_imengine_setup.cpp:1413
+#: src/scim_prime_imengine_setup.cpp:1420
 msgid "Description"
 msgstr "説明"
 
-#: src/scim_prime_imengine_setup.cpp:1425
+#: src/scim_prime_imengine_setup.cpp:1432
 msgid "_Choose keys..."
 msgstr "キーを設定...(_C)"
 
-#: src/scim_prime_imengine_setup.cpp:1463
+#: src/scim_prime_imengine_setup.cpp:1470
 msgid "Common"
 msgstr "一般"
 
-#: src/scim_prime_imengine_setup.cpp:1475
+#: src/scim_prime_imengine_setup.cpp:1482
 msgid "Prediction"
 msgstr "予測"
 
-#: src/scim_prime_imengine_setup.cpp:1481
+#: src/scim_prime_imengine_setup.cpp:1488
 msgid "Candidates window"
 msgstr "候補ウィンドウ"
 
-#: src/scim_prime_imengine_setup.cpp:1488
+#: src/scim_prime_imengine_setup.cpp:1495
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:1494
+#: src/scim_prime_imengine_setup.cpp:1501
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1827
+#: src/scim_prime_imengine_setup.cpp:1831
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"
 
