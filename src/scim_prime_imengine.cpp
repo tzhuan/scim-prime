@@ -508,76 +508,7 @@ PrimeInstance::set_preedition (void)
         update_preedit_caret (0);
 
     } else if (is_preediting ()) {
-        WideString left, cursor, right;
-        get_session()->edit_get_preedition (left, cursor, right);
-
-        m_candidates.clear ();
-        if (m_factory->m_inline_prediction && !m_cancel_prediction)
-            get_session()->conv_predict (m_candidates);
-
-        if (left.length () + cursor.length () + right.length () > 0) {
-            show_preedit_string ();
-            m_preedition_visible = true;
-        } else {
-            hide_preedit_string ();
-            m_preedition_visible = false;
-        }
-
-        if (!m_candidates.empty ()) {
-            // on inline prediction mode
-
-            if (!left.empty () && cursor.empty () && right.empty ())
-                cursor = utf8_mbstowcs (" ");
-
-            AttributeList attr_list;
-            if (!cursor.empty ()) {
-                Attribute attr (0, m_candidates[0].m_conversion.length (),
-                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
-                attr_list.push_back (attr);
-            }
-
-            update_preedit_string (m_candidates[0].m_conversion, attr_list);
-            update_preedit_caret (0);
-
-            attr_list.clear ();
-            if (!cursor.empty ()) {
-                Attribute attr (left.length (), cursor.length(),
-                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
-                attr_list.push_back (attr);
-            }
-
-            show_aux_string ();
-            update_aux_string (left + cursor + right, attr_list);
-
-        } else {
-            // on normal prediction mode
-
-            bool place_cursor_head
-                =  m_factory->m_predict_on_preedition
-                && m_factory->m_predict_win_pos == "head";
-
-            if (place_cursor_head && !left.empty () &&
-                cursor.empty () && right.empty ())
-            {
-                cursor = utf8_mbstowcs (" ");
-            }
-
-            AttributeList attr_list;
-            if (!cursor.empty ()) {
-                Attribute attr (left.length (), cursor.length(),
-                                SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
-                attr_list.push_back (attr);
-            }
-
-            update_preedit_string (left + cursor + right, attr_list);
-            if (place_cursor_head)
-                update_preedit_caret (0);
-            else
-                update_preedit_caret (left.length ());
-
-            hide_aux_string ();
-            update_aux_string (utf8_mbstowcs (""));
-        }
+        set_preedition_on_preediting ();
 
     } else {
         reset ();
@@ -592,6 +523,81 @@ PrimeInstance::set_preedition (void)
     attr.set_value (SCIM_RGB_COLOR(255, 0, 0)); \
     str += tmp;                                 \
     attr_list.push_back (attr);                 \
+}
+
+void
+PrimeInstance::set_preedition_on_preediting (void)
+{
+    WideString left, cursor, right;
+    get_session()->edit_get_preedition (left, cursor, right);
+
+    m_candidates.clear ();
+    if (m_factory->m_inline_prediction && !m_cancel_prediction)
+        get_session()->conv_predict (m_candidates);
+
+    if (left.length () + cursor.length () + right.length () > 0) {
+        show_preedit_string ();
+        m_preedition_visible = true;
+    } else {
+        hide_preedit_string ();
+        m_preedition_visible = false;
+    }
+
+    if (!m_candidates.empty ()) {
+        // on inline prediction mode
+
+        if (!left.empty () && cursor.empty () && right.empty ())
+            cursor = utf8_mbstowcs (" ");
+
+        AttributeList attr_list;
+        if (!cursor.empty ()) {
+            Attribute attr (0, m_candidates[0].m_conversion.length (),
+                            SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
+            attr_list.push_back (attr);
+        }
+
+        update_preedit_string (m_candidates[0].m_conversion, attr_list);
+        update_preedit_caret (0);
+
+        attr_list.clear ();
+        if (!cursor.empty ()) {
+            Attribute attr (left.length (), cursor.length(),
+                            SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
+            attr_list.push_back (attr);
+        }
+
+        show_aux_string ();
+        update_aux_string (left + cursor + right, attr_list);
+
+    } else {
+        // on normal prediction mode
+
+        bool place_cursor_head
+            =  m_factory->m_predict_on_preedition
+            && m_factory->m_predict_win_pos == "head";
+
+        if (place_cursor_head && !left.empty () &&
+            cursor.empty () && right.empty ())
+        {
+            cursor = utf8_mbstowcs (" ");
+        }
+
+        AttributeList attr_list;
+        if (!cursor.empty ()) {
+            Attribute attr (left.length (), cursor.length(),
+                            SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_REVERSE);
+            attr_list.push_back (attr);
+        }
+
+        update_preedit_string (left + cursor + right, attr_list);
+        if (place_cursor_head)
+            update_preedit_caret (0);
+        else
+            update_preedit_caret (left.length ());
+
+        hide_aux_string ();
+        update_aux_string (utf8_mbstowcs (""));
+    }
 }
 
 void
@@ -772,7 +778,7 @@ PrimeInstance::set_prediction (void)
         for (unsigned int i = 0; i < m_candidates.size (); i++)
             m_lookup_table.append_candidate (m_candidates[i].m_conversion);
 
-        unsigned int min_candidates = m_factory->m_inline_prediction ? 1: 0;
+        unsigned int min_candidates = m_factory->m_inline_prediction ? 1 : 0;
 
         if (m_candidates.size () > min_candidates &&
             m_candidates[0].m_conversion.length () > 0)

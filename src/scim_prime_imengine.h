@@ -136,6 +136,7 @@ private:
            get_session                         (void);
 
     void   set_preedition                      (void);
+    void   set_preedition_on_preediting        (void);
     void   set_preedition_on_register          (void);
     void   set_prediction                      (void);
 
