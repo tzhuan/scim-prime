@@ -1578,6 +1578,11 @@ setup_widget_value ()
 
     gtk_option_menu_set_history (GTK_OPTION_MENU (__widget_key_categories_menu),
                                  KEY_CATEGORY_INDEX_ALL);
+    GtkTreeView *treeview = GTK_TREE_VIEW (__widget_key_list_view);
+    GtkListStore *store = GTK_LIST_STORE (gtk_tree_view_get_model (treeview));
+    gtk_list_store_clear (store);
+    for (unsigned int i = 0; i < __key_conf_pages_num; i++)
+        append_key_bindings (treeview, i, NULL);
     gtk_widget_set_sensitive (__widget_key_filter, FALSE);
     gtk_widget_set_sensitive (__widget_key_filter_button, FALSE);
 }
