@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-08-29 10:44+0900\n"
+"POT-Creation-Date: 2005-08-30 22:49+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -853,7 +853,7 @@ msgstr "ツールバー"
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1831
+#: src/scim_prime_imengine_setup.cpp:1836
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"
 

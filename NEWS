@@ -1,7 +1,7 @@
 Overview of Changes from scim-prime-0.2.9 to scim-prime-0.2.10
 =============================================================
-* The bug that set wrong key bind to key bindings view when startup the
-  scim-setup has been fixed.
+* Fix a bug that set wrong key bind to key bindings view when startup the
+  scim-setup.
 
 Overview of Changes from scim-prime-0.2.8 to scim-prime-0.2.9
 =============================================================
