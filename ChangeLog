@@ -1,3 +1,9 @@
+2005-10-12 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.[cpp|h]:
+	using namespace scim_prime.
+
 2005-10-11 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_imengine_factory.cpp: Fix typo.

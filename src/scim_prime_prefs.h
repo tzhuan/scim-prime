@@ -155,6 +155,76 @@
 #define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT        "#00007F"
 #define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT       "#FF0000"
 #define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT     "#0000FF"
+
+#include <scim.h>
+
+using namespace scim;
+
+namespace scim_prime {
+// Internal data structure
+struct BoolConfigData
+{
+    const char *key;
+    bool        value;
+    const char *label;
+    const char *title;
+    const char *tooltip;
+    void       *widget;
+    bool        changed;
+};
+
+struct StringConfigData
+{
+    const char *key;
+    String      value;
+    const char *label;
+    const char *title;
+    const char *tooltip;
+    void       *widget;
+    bool        changed;
+};
+
+struct ColorConfigData
+{
+    const char *key;
+    String      value;
+    const char *label;
+    const char *title;
+    const char *tooltip;
+    void       *widget;
+    bool        changed;
+};
+
+struct KeyboardConfigPage
+{
+    const char       *label;
+    StringConfigData *data;
+};
+
+struct ComboConfigData
+{
+    const char *label;
+    const char *data;
+};
+
+struct ComboConfigCandidate
+{
+    const char *label;
+    const char *data;
+};
+
+extern BoolConfigData   __config_bool_common [];
+extern StringConfigData __config_string_common [];
+extern ColorConfigData  __config_color_common [];
+extern ColorConfigData  __config_color_common [];
+extern StringConfigData __config_keyboards_edit [];
+extern StringConfigData __config_keyboards_convert [];
+extern StringConfigData __config_keyboards_mode [];
+extern StringConfigData __config_keyboards_caret [];
+extern StringConfigData __config_keyboards_segments [];
+extern StringConfigData __config_keyboards_candidates [];
+extern StringConfigData __config_keyboards_direct_select_candidate [];
+}
 #endif /* __SCIM_PRIME_PREFS_H__ */
 /*
 vi:ts=4:nowrap:ai:expandtab

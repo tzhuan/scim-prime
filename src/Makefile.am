@@ -43,7 +43,9 @@ endif
 setupmoduledir           = @SCIM_MODULEDIR@/SetupUI
 setupmodule_LTLIBRARIES  = $(SETUP_MODULE)
 
-prime_imengine_setup_la_SOURCES = scim_prime_imengine_setup.cpp
+prime_imengine_setup_la_SOURCES = \
+	scim_prime_imengine_setup.cpp \
+	scim_prime_prefs.cpp
 
 prime_imengine_setup_la_CFLAGS  = @SCIM_GTKUTILS_CFLAGS@ @SCIM_CFLAGS@ @SCIM_DEBUG_FLAGS@
 
