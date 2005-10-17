@@ -4,7 +4,7 @@ METASOURCES = AUTO
 kde_module_LTLIBRARIES =  kcm_skimplugin_scim_prime.la
 
 kcm_skimplugin_scim_prime_la_LDFLAGS = -module -no-undefined $(KDE_PLUGIN) $(all_libraries)
-kcm_skimplugin_scim_prime_la_SOURCES = prime.kcfgc prime.ui scimprimesettingplugin.cpp
+kcm_skimplugin_scim_prime_la_SOURCES = prime.kcfgc primeui.ui scimprimesettingplugin.cpp
 kcm_skimplugin_scim_prime_la_LIBADD = $(LIB_QT) $(LIB_KDEUI) $(LIB_KDECORE) @SCIM_KDEUTILS_LIBS@
 
 kde_kcfg_DATA = prime.kcfg
