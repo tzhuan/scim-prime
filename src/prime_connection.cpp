@@ -72,7 +72,10 @@ PrimeConnection::~PrimeConnection ()
     std::vector<PrimeConnection *>::iterator it;
     for (it = connection_list.begin (); it != connection_list.end (); it++) {
         if ((*it) == this)
+	{
             connection_list.erase (it);
+	    break;
+	}
     }
 }
 

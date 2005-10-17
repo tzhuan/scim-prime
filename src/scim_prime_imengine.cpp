@@ -53,8 +53,10 @@
 
 #define MAX_TRY_RECOVERY 3
 
-PrimeConnection PrimeInstance::m_prime = PrimeConnection();
 unsigned int    PrimeInstance::m_recovery_count = 0;
+
+unsigned int     m_prime_ref_count = 0;
+PrimeConnection* m_prime = NULL;
 
 PrimeInstance::PrimeInstance (PrimeFactory   *factory,
                               const String   &encoding,
@@ -75,9 +77,14 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 {
     SCIM_DEBUG_IMENGINE(1) << "Create PRIME Instance : ";
 
-    if (!m_prime.is_connected ()) {
+    if (!m_prime) {
+	m_prime = new PrimeConnection;
+    }
+    m_prime_ref_count++;
+
+    if (!m_prime->is_connected ()) {
         bool rv;
-        rv = m_prime.open_connection (m_factory->m_command.c_str(),
+        rv = m_prime->open_connection (m_factory->m_command.c_str(),
                                       m_factory->m_typing_method.c_str());
         if (!rv) {
             m_disable = true;
@@ -89,9 +96,15 @@ PrimeInstance::PrimeInstance (PrimeFactory   *factory,
 PrimeInstance::~PrimeInstance ()
 {
     if (m_session) {
-        m_prime.session_end (m_session);
+        m_prime->session_end (m_session);
         delete m_session;
         m_session = NULL;
+    }
+
+    m_prime_ref_count--;
+    if (m_prime_ref_count == 0 && m_prime) {
+	delete m_prime;
+	m_prime = NULL;
     }
 }
 
@@ -425,14 +438,14 @@ PrimeInstance::get_session (void)
     if (m_disable)
         return NULL;
 
-    if (m_prime.major_version () < 0 || !m_prime.is_connected ()) {
+    if (m_prime->major_version () < 0 || !m_prime->is_connected ()) {
         delete m_session;
         m_session = NULL;
         m_disable = true;
         set_error_message ();
         return NULL;
 
-    } else if (m_prime.major_version () < 1) {
+    } else if (m_prime->major_version () < 1) {
         const char *message = _("Your PRIME is out of date. "
                                 "Please install PRIME-1.0.0 or later.");
         show_aux_string ();
@@ -958,7 +971,7 @@ PrimeInstance::action_commit_on_register (bool learn)
         if (m_registering_key.length () > 0 &&
             m_registering_value.length () > 0)
         {
-            m_prime.learn_word (m_registering_key, m_registering_value,
+            m_prime->learn_word (m_registering_key, m_registering_value,
                                 WideString (), WideString (),
                                 WideString (), WideString ());
         }
@@ -1896,14 +1909,14 @@ PrimeInstance::action_set_language_japanese (void)
             m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
         } else {
             m_session->edit_get_query_string (query);
-            m_prime.session_end (m_session);
+            m_prime->session_end (m_session);
             delete m_session;
             m_session = NULL;
         }
     }
 
     if (!m_session) {
-        m_session = m_prime.session_start ("Japanese");
+        m_session = m_prime->session_start ("Japanese");
         if (m_session) {
             m_language = SCIM_PRIME_LANGUAGE_JAPANESE;
             m_session->edit_insert (query.c_str ());
@@ -1950,14 +1963,14 @@ PrimeInstance::action_set_language_english (void)
             m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
         } else {
             m_session->edit_get_query_string (query);
-            m_prime.session_end (m_session);
+            m_prime->session_end (m_session);
             delete m_session;
             m_session = NULL;
         }
     }
 
     if (!m_session) {
-        m_session = m_prime.session_start ("English");
+        m_session = m_prime->session_start ("English");
         if (m_session) {
             m_language = SCIM_PRIME_LANGUAGE_ENGLISH;
             m_session->edit_insert (query.c_str ());
@@ -2022,7 +2035,7 @@ PrimeInstance::action_recovery (void)
         return false;
 
     bool rv;
-    rv = m_prime.open_connection (m_factory->m_command.c_str(),
+    rv = m_prime->open_connection (m_factory->m_command.c_str(),
                                   m_factory->m_typing_method.c_str());
     if (rv) {
         m_disable = false;
@@ -2095,7 +2108,7 @@ void
 PrimeInstance::set_error_message (void)
 {
     WideString msg;
-    m_prime.get_error_message (msg);
+    m_prime->get_error_message (msg);
 
     update_aux_string (msg);
     show_aux_string ();

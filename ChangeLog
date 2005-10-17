@@ -1,3 +1,9 @@
+2005-10-17 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/prime_connection.cpp,
+	  src/scim_prime_imengine.[cpp|h]:
+	make PrimeConnection pointer for prevent crashing scim-setup.
+
 2005-10-12 Hiroyuki Ikezoe <poincare@ikezoe.net>
 
 	* src/scim_prime_imengine_setup.cpp,

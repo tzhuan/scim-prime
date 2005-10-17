@@ -159,7 +159,6 @@ private:
     void   set_error_message                   (void);
 
 private:
-    static PrimeConnection  m_prime;
     static unsigned int     m_recovery_count;
 
     PrimeSession           *m_session;
