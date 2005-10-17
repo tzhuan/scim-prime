@@ -1,8 +1,8 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>AnthySettingUI</class>
+<class>PrimeSettingUI</class>
 <widget class="QWidget">
     <property name="name">
-        <cstring>AnthySettingUI</cstring>
+        <cstring>PrimeSettingUI</cstring>
     </property>
     <property name="geometry">
         <rect>
@@ -13,7 +13,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>Anthy</string>
+        <string>Prime</string>
     </property>
     <vbox>
         <property name="name">
