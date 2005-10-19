@@ -8,7 +8,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>575</width>
+            <width>596</width>
             <height>525</height>
         </rect>
     </property>
@@ -364,10 +364,10 @@
                                     <cstring>checkBox21</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>checkBox2&amp;1</string>
+                                    <string>Switch to the inline word register mode &amp;automatically</string>
                                 </property>
                                 <property name="accel">
-                                    <string>Alt+1</string>
+                                    <string>Alt+A</string>
                                 </property>
                             </widget>
                             <widget class="QCheckBox" row="2" column="0">
@@ -375,10 +375,10 @@
                                     <cstring>checkBox23</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>checkBo&amp;x23</string>
+                                    <string>Show annotations for words on the candidates window</string>
                                 </property>
                                 <property name="accel">
-                                    <string>Alt+X</string>
+                                    <string></string>
                                 </property>
                             </widget>
                             <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="4">
@@ -386,10 +386,10 @@
                                     <cstring>checkBox22</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>chec&amp;kBox22</string>
+                                    <string>&amp;Close candidates window when a candidate is selected directly</string>
                                 </property>
                                 <property name="accel">
-                                    <string>Alt+K</string>
+                                    <string>Alt+C</string>
                                 </property>
                             </widget>
                             <widget class="QLabel" row="2" column="3">
@@ -413,10 +413,10 @@
                                     <cstring>checkBox24</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>checkBox&amp;24</string>
+                                    <string>Show &amp;usages of words on the candidates window</string>
                                 </property>
                                 <property name="accel">
-                                    <string>Alt+2</string>
+                                    <string>Alt+U</string>
                                 </property>
                             </widget>
                             <widget class="QCheckBox" row="4" column="0">
@@ -424,10 +424,10 @@
                                     <cstring>checkBox25</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>checkBox2&amp;5</string>
+                                    <string>Show comments for words on the candidates window</string>
                                 </property>
                                 <property name="accel">
-                                    <string>Alt+5</string>
+                                    <string></string>
                                 </property>
                             </widget>
                             <spacer row="2" column="1">
