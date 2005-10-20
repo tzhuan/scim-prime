@@ -1,3 +1,7 @@
+2005-10-20 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Fix wron key bind (Swap PageUp and PageDown).
+
 2005-10-17 Hiroyuki Ikezoe <poincare@ikezoe.net>
 
 	* src/prime_connection.cpp,

@@ -28,6 +28,9 @@
 #define SCIM_PRIME_CONFIG_COMMIT_PERIOD                       "/IMEngine/PRIME/CommitPeriod"
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER                     "/IMEngine/PRIME/CommitOnUpper"
 
+#define SCIM_PRIME_CONFIG_SPACE_CHAR                          "/IMEngine/PRIME/SpaceChar"
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR              "/IMEngine/PRIME/AlternativeSpaceChar"
+
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION               "/IMEngine/PRIME/PredictOnPreedition"
 #define SCIM_PRIME_CONFIG_PREDICT_WIN_POS                     "/IMEngine/PRIME/PredictWinPos"
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION         "/IMEngine/PRIME/DirectSelectOnPrediction"
@@ -38,9 +41,9 @@
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
 #define SCIM_PRIME_CONFIG_SHOW_USAGE                          "/IMEngine/PRIME/ShowUsage"
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT                        "/IMEngine/PRIME/ShowComment"
-
-#define SCIM_PRIME_CONFIG_SPACE_CHAR                          "/IMEngine/PRIME/SpaceChar"
-#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR              "/IMEngine/PRIME/AlternativeSpaceChar"
+#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR                "/IMEngine/PRIME/CandidateFormColor"
+#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR               "/IMEngine/PRIME/CandidateUsageColor"
+#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR             "/IMEngine/PRIME/CandidateCommentColor"
 
 #define SCIM_PRIME_CONFIG_COMMIT_KEY                          "/IMEngine/PRIME/CommitKey"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY            "/IMEngine/PRIME/CommitWithoutLearnKey"
@@ -85,9 +88,6 @@
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY                 "/IMEngine/PRIME/ToggleLanguageKey"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY                   "/IMEngine/PRIME/RegisterWordKey"
 #define SCIM_PRIME_CONFIG_RECOVERY_KEY                        "/IMEngine/PRIME/RecoveryKey"
-#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR                "/IMEngine/PRIME/CandidateFormColor"
-#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR               "/IMEngine/PRIME/CandidateUsageColor"
-#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR             "/IMEngine/PRIME/CandidateCommentColor"
 
 #define SCIM_PRIME_CONFIG_COMMAND_DEFAULT                     "prime"
 #define SCIM_PRIME_CONFIG_LANGUAGE_DEFAULT                    "Japanese"
@@ -95,6 +95,9 @@
 #define SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT           false
 #define SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT               true
 #define SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT             false
+
+#define SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT                  " "
+#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT      "\xE3\x80\x80"
 
 #define SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT       true
 #define SCIM_PRIME_CONFIG_PREDICT_WIN_POS_DEFAULT             "tail"
@@ -106,8 +109,9 @@
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
 #define SCIM_PRIME_CONFIG_SHOW_USAGE_DEFAULT                  true
 #define SCIM_PRIME_CONFIG_SHOW_COMMENT_DEFAULT                true
-#define SCIM_PRIME_CONFIG_SPACE_CHAR_DEFAULT                  " "
-#define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_CHAR_DEFAULT      "\xE3\x80\x80"
+#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT        "#00007F"
+#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT       "#FF0000"
+#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT     "#0000FF"
 
 #define SCIM_PRIME_CONFIG_COMMIT_KEY_DEFAULT                  "Return,KP_Enter,Control+m,Control+M,Henkan"
 #define SCIM_PRIME_CONFIG_COMMIT_WITHOUT_LEARN_KEY_DEFAULT    "Muhenkan"
@@ -119,14 +123,14 @@
 #define SCIM_PRIME_CONFIG_DELETE_KEY_DEFAULT                  "Delete,Control+d,Control+D"
 #define SCIM_PRIME_CONFIG_SPACE_KEY_DEFAULT                   "space"
 #define SCIM_PRIME_CONFIG_ALTERNATIVE_SPACE_KEY_DEFAULT       "Shift+space,Alt+space"
-#define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT  "Control+a,Control+A,Home"
-#define SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT "Control+e,Control+E,End"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_KEY_DEFAULT       "Left,Control+b,Control+B"
 #define SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_KEY_DEFAULT      "Right,Control+f,Control+F"
+#define SCIM_PRIME_CONFIG_MODIFY_CARET_LEFT_EDGE_KEY_DEFAULT  "Control+a,Control+A,Home"
+#define SCIM_PRIME_CONFIG_MODIFY_CARET_RIGHT_EDGE_KEY_DEFAULT "Control+e,Control+E,End"
 #define SCIM_PRIME_CONFIG_CONV_NEXT_CANDIDATE_KEY_DEFAULT     "space,Tab,Down,KP_Add,Control+n,Control+N"
 #define SCIM_PRIME_CONFIG_CONV_PREV_CANDIDATE_KEY_DEFAULT     "Shift+Tab,Up,KP_Subtract,Control+p,Control+P"
-#define SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT          "Page_Up"
-#define SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT          "Page_Down"
+#define SCIM_PRIME_CONFIG_CONV_NEXT_PAGE_KEY_DEFAULT          "Page_Down"
+#define SCIM_PRIME_CONFIG_CONV_PREV_PAGE_KEY_DEFAULT          "Page_Up"
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_1_KEY_DEFAULT      "1"
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_2_KEY_DEFAULT      "2"
 #define SCIM_PRIME_CONFIG_SELECT_CANDIDATE_3_KEY_DEFAULT      "3"
@@ -152,9 +156,6 @@
 #define SCIM_PRIME_CONFIG_TOGGLE_LANGUAGE_KEY_DEFAULT         "F11"
 #define SCIM_PRIME_CONFIG_REGISTER_WORD_KEY_DEFAULT           "Control+w, Control+W"
 #define SCIM_PRIME_CONFIG_RECOVERY_KEY_DEFAULT                "Control+Alt+r"
-#define SCIM_PRIME_CONFIG_CANDIDATE_FORM_COLOR_DEFAULT        "#00007F"
-#define SCIM_PRIME_CONFIG_CANDIDATE_USAGE_COLOR_DEFAULT       "#FF0000"
-#define SCIM_PRIME_CONFIG_CANDIDATE_COMMENT_COLOR_DEFAULT     "#0000FF"
 
 #include <scim.h>
 
