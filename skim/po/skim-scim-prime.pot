@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-20 16:42+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../setupui/primeui.cpp:839
+msgid "PRIME"
+msgstr ""
+
+#: ../setupui/primeui.cpp:840
+msgid "Start &conversion on inputting comma or period"
+msgstr ""
+
+#: ../setupui/primeui.cpp:841 ../setupui/primeui.cpp:904
+#: ../setupui/primeui.cpp:920
+msgid "Alt+C"
+msgstr ""
+
+#: ../setupui/primeui.cpp:842
+msgid "Commit comma &and period immediately"
+msgstr ""
+
+#: ../setupui/primeui.cpp:843 ../setupui/primeui.cpp:916
+msgid "Alt+A"
+msgstr ""
+
+#: ../setupui/primeui.cpp:844
+msgid "Commit on inputting &upper letter"
+msgstr ""
+
+#: ../setupui/primeui.cpp:845 ../setupui/primeui.cpp:906
+#: ../setupui/primeui.cpp:924
+msgid "Alt+U"
+msgstr ""
+
+#: ../setupui/primeui.cpp:846
+msgid "PRIME command:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:847
+msgid "Default language:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:849
+msgid "Off"
+msgstr ""
+
+#: ../setupui/primeui.cpp:850
+msgid "Japanese"
+msgstr ""
+
+#: ../setupui/primeui.cpp:851
+msgid "English"
+msgstr ""
+
+#: ../setupui/primeui.cpp:852
+msgid "&General"
+msgstr ""
+
+#: ../setupui/primeui.cpp:853
+msgid "Switch &language:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:854
+msgid "&Raw mode:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:855
+msgid "&Wide ascii mode:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:856
+msgid "&Half katakana mode:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:857
+msgid "&Katakana mode:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:858
+msgid "Defa&ult mode:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:859
+msgid "O&n/Off:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:860
+msgid "&Mode"
+msgstr ""
+
+#: ../setupui/primeui.cpp:861
+msgid "&Insert space:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:862
+msgid "Insert &alternative space:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:863
+msgid "&Backspace:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:864
+msgid "De&lete:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:865
+msgid "&Edit"
+msgstr ""
+
+#: ../setupui/primeui.cpp:866
+msgid "Ca&ncel:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:867
+msgid "Con&vert:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:868
+msgid "&Register a word:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:869
+msgid "Com&plete:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:870
+msgid "Commit &alternative:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:871
+msgid "Commit witho&ut learning:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:872
+msgid "Co&mmit:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:873
+msgid "Con&vert"
+msgstr ""
+
+#: ../setupui/primeui.cpp:874
+msgid "Move to &last:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:875
+msgid "Move to &first:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:876
+msgid "Move to for&ward:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:877
+msgid "Move to &backward:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:878
+msgid "C&aret"
+msgstr ""
+
+#: ../setupui/primeui.cpp:879
+msgid "&First segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:880
+msgid "&Last segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:881
+msgid "Ne&xt segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:882
+msgid "Previo&us segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:883
+msgid "&Shrink segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:884
+msgid "E&xpand segment:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:885
+msgid "&Segments"
+msgstr ""
+
+#: ../setupui/primeui.cpp:886
+msgid "Ne&xt candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:887
+msgid "Previo&us candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:888
+msgid "Page &down:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:889
+msgid "Page &up:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:890
+msgid "&Candidates"
+msgstr ""
+
+#: ../setupui/primeui.cpp:891
+msgid "&1st candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:892
+msgid "&2nd candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:893
+msgid "&3rd candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:894
+msgid "&4th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:895
+msgid "&5th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:896
+msgid "&6th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:897
+msgid "&7th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:898
+msgid "&8th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:899
+msgid "&9th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:900
+msgid "1&0th candidate:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:901
+msgid "&Direct select"
+msgstr ""
+
+#: ../setupui/primeui.cpp:902
+msgid "&Key bindings"
+msgstr ""
+
+#: ../setupui/primeui.cpp:903
+msgid "Predi&ct while typing letters"
+msgstr ""
+
+#: ../setupui/primeui.cpp:905
+msgid "&Use direct select keys also on prediction"
+msgstr ""
+
+#: ../setupui/primeui.cpp:907
+msgid "Inline prediction"
+msgstr ""
+
+#: ../setupui/primeui.cpp:910
+msgid "Head of preedition area"
+msgstr ""
+
+#: ../setupui/primeui.cpp:911
+msgid "Tail of preedition area"
+msgstr ""
+
+#: ../setupui/primeui.cpp:912
+msgid "Prediction window position:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:913
+msgid "Pre&diction"
+msgstr ""
+
+#: ../setupui/primeui.cpp:914
+msgid "Candidates window"
+msgstr ""
+
+#: ../setupui/primeui.cpp:915
+msgid "Switch to the inline word register mode &automatically"
+msgstr ""
+
+#: ../setupui/primeui.cpp:917
+msgid "Show annotations for words on the candidates window"
+msgstr ""
+
+#: ../setupui/primeui.cpp:919
+msgid "&Close candidates window when a candidate is selected directly"
+msgstr ""
+
+#: ../setupui/primeui.cpp:921 ../setupui/primeui.cpp:927
+#: ../setupui/primeui.cpp:928
+msgid "Color:"
+msgstr ""
+
+#: ../setupui/primeui.cpp:923
+msgid "Show &usages of words on the candidates window"
+msgstr ""
+
+#: ../setupui/primeui.cpp:925
+msgid "Show comments for words on the candidates window"
+msgstr ""
+
+#: ../setupui/primeui.cpp:931
+msgid "Pa&nel"
+msgstr ""
