@@ -3,5 +3,284 @@
 <kcfg>
   <kcfgfile name="skimrc"/>
   <group name="SCIM">
+    <entry name="_IMEngine_PRIME_Command" key="/IMEngine/PRIME/Command" type="String">
+      <label></label>
+      <default>prime</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_Language" key="/IMEngine/PRIME/Language" type="Enum">
+      <label></label>
+      <choices>
+        <choice name="Off">
+          <label>Off</label>
+        </choice>
+        <choice name="Japanese">
+          <label>Japanese</label>
+        </choice>
+        <choice name="English">
+          <label>English</label>
+        </choice>
+      </choices>
+      <default>Japanese</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_TypingMethod" key="/IMEngine/PRIME/TypingMethod" type="String">
+      <label></label>
+      <default></default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvertOnPeriod" key="/IMEngine/PRIME/ConvertOnPeriod" type="Bool">
+      <label></label>
+      <default>false</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CommitPeriod" key="/IMEngine/PRIME/CommitPeriod" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CommitOnUpper" key="/IMEngine/PRIME/CommitOnUpper" type="Bool">
+      <label></label>
+      <default>false</default>
+    </entry>
+
+
+    <entry name="_IMEngine_PRIME_SpaceChar" key="/IMEngine/PRIME/SpaceChar" type="String">
+      <label></label>
+      <default> </default>
+    </entry>
+    <entry name="_IMEngine_PRIME_AlternativeSpaceChar" key="/IMEngine/PRIME/AlternativeSpaceChar" type="String">
+      <label></label>
+      <default>\xE3\x80\x80</default>
+    </entry>
+
+
+    <entry name="_IMEngine_PRIME_PredictOnPreedition" key="/IMEngine/PRIME/PredictOnPreedition" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_PredictWinPos" key="/IMEngine/PRIME/PredictWinPos" type="Enum">
+      <label></label>
+      <choices>
+        <choice name="head">
+          <label>Head of preedition area</label>
+        </choice>
+        <choice name="tail">
+          <label>Tail of preedition area</label>
+        </choice>
+      </choices>
+      <default>tail</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_DirectSelectOnPrediction" key="/IMEngine/PRIME/DirectSelectOnPrediction" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_InlinePrediction" key="/IMEngine/PRIME/InlinePrediction" type="Bool">
+      <label></label>
+      <default>false</default>
+    </entry>
+
+
+    <entry name="_IMEngine_PRIME_AutoRegister" key="/IMEngine/PRIME/AutoRegister" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CloseCandWinOnSelect" key="/IMEngine/PRIME/CloseCandWinOnSelect" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ShowAnnotation" key="/IMEngine/PRIME/ShowAnnotation" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ShowUsage" key="/IMEngine/PRIME/ShowUsage" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ShowComment" key="/IMEngine/PRIME/ShowComment" type="Bool">
+      <label></label>
+      <default>true</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CandidateFormColor" key="/IMEngine/PRIME/CandidateFormColor" type="String">
+      <label></label>
+      <default>#00007F</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CandidateUsageColor" key="/IMEngine/PRIME/CandidateUsageColor" type="String">
+      <label></label>
+      <default>#FF0000</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CandidateCommentColor" key="/IMEngine/PRIME/CandidateCommentColor" type="String">
+      <label></label>
+      <default>#0000FF</default>
+    </entry>
+
+
+    <entry name="_IMEngine_PRIME_CommitKey" key="/IMEngine/PRIME/CommitKey" type="String">
+      <label></label>
+      <default>Return,KP_Enter,Control+m,Control+M,Henkan</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CommitWithoutLearnKey" key="/IMEngine/PRIME/CommitWithoutLearnKey" type="String">
+      <label></label>
+      <default>Muhenkan</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CommitAlternativeKey" key="/IMEngine/PRIME/CommitAlternativeKey" type="String">
+      <label></label>
+      <default>Shift+Return</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvertKey" key="/IMEngine/PRIME/ConvertKey" type="String">
+      <label></label>
+      <default>space,Control+l,Control+L,Down</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_CancelKey" key="/IMEngine/PRIME/CancelKey" type="String">
+      <label></label>
+      <default>Escape,Control+g,Control+G</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectPredictionKey" key="/IMEngine/PRIME/SelectPredictionKey" type="String">
+      <label></label>
+      <default>Tab</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_BackSpaceKey" key="/IMEngine/PRIME/BackSpaceKey" type="String">
+      <label></label>
+      <default>BackSpace,Control+h,Control+H</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_DeleteKey" key="/IMEngine/PRIME/DeleteKey" type="String">
+      <label></label>
+      <default>Delete,Control+d,Control+D</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SpaceKey" key="/IMEngine/PRIME/SpaceKey" type="String">
+      <label></label>
+      <default>space</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_AlternativeSpaceKey" key="/IMEngine/PRIME/AlternativeSpaceKey" type="String">
+      <label></label>
+      <default>Shift+space,Alt+space</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_MoveCaretLeftKey" key="/IMEngine/PRIME/MoveCaretLeftKey" type="String">
+      <label></label>
+      <default>Left,Control+b,Control+B</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_MoveCaretRightKey" key="/IMEngine/PRIME/MoveCaretRightKey" type="String">
+      <label></label>
+      <default>Right,Control+f,Control+F</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_MoveCaretLeftEdgeKey" key="/IMEngine/PRIME/MoveCaretLeftEdgeKey" type="String">
+      <label></label>
+      <default>Control+a,Control+A,Home</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_MoveCaretRightEdgeKey" key="/IMEngine/PRIME/MoveCaretRightEdgeKey" type="String">
+      <label></label>
+      <default>Control+e,Control+E,End</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvNextCandidateKey" key="/IMEngine/PRIME/ConvNextCandidateKey" type="String">
+      <label></label>
+      <default>space,Tab,Down,KP_Add,Control+n,Control+N</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvPrevCandidateKey" key="/IMEngine/PRIME/ConvPrevCandidateKey" type="String">
+      <label></label>
+      <default>Shift+Tab,Up,KP_Subtract,Control+p,Control+P</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvNextPageKey" key="/IMEngine/PRIME/ConvNextPageKey" type="String">
+      <label></label>
+      <default>Page_Up</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ConvPrevPageKey" key="/IMEngine/PRIME/ConvPrevPageKey" type="String">
+      <label></label>
+      <default>Page_Down</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates1Key" key="/IMEngine/PRIME/SelectCandidates1Key" type="String">
+      <label></label>
+      <default>1</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates2Key" key="/IMEngine/PRIME/SelectCandidates2Key" type="String">
+      <label></label>
+      <default>2</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates3Key" key="/IMEngine/PRIME/SelectCandidates3Key" type="String">
+      <label></label>
+      <default>3</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates4Key" key="/IMEngine/PRIME/SelectCandidates4Key" type="String">
+      <label></label>
+      <default>4</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates5Key" key="/IMEngine/PRIME/SelectCandidates5Key" type="String">
+      <label></label>
+      <default>5</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates6Key" key="/IMEngine/PRIME/SelectCandidates6Key" type="String">
+      <label></label>
+      <default>6</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates7Key" key="/IMEngine/PRIME/SelectCandidates7Key" type="String">
+      <label></label>
+      <default>7</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates8Key" key="/IMEngine/PRIME/SelectCandidates8Key" type="String">
+      <label></label>
+      <default>8</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates9Key" key="/IMEngine/PRIME/SelectCandidates9Key" type="String">
+      <label></label>
+      <default>9</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectCandidates10Key" key="/IMEngine/PRIME/SelectCandidates10Key" type="String">
+      <label></label>
+      <default>0</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectFirstSegmentKey" key="/IMEngine/PRIME/SelectFirstSegmentKey" type="String">
+      <label></label>
+      <default>Control+a,Control+A,Home</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectLastSegmentKey" key="/IMEngine/PRIME/SelectLastSegmentKey" type="String">
+      <label></label>
+      <default>Control+e,Control+E,End</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectNextSegmentKey" key="/IMEngine/PRIME/SelectNextSegmentKey" type="String">
+      <label></label>
+      <default>Right,Control+f,Control+F</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SelectPrevSegmentKey" key="/IMEngine/PRIME/SelectPrevSegmentKey" type="String">
+      <label></label>
+      <default>Left,Control+b,Control+B</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ShrinkSegmentKey" key="/IMEngine/PRIME/ShrinkSegmentKey" type="String">
+      <label></label>
+      <default>Shift+Left,Control+i,Control+I</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ExpandSegmentKey" key="/IMEngine/PRIME/ExpandSegmentKey" type="String">
+      <label></label>
+      <default>Shift+Right,Control+o,Control+O</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SetModeDefaultKey" key="/IMEngine/PRIME/SetModeDefaultKey" type="String">
+      <label></label>
+      <default>F6</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SetModeKatakanaKey" key="/IMEngine/PRIME/SetModeKatakanaKey" type="String">
+      <label></label>
+      <default>F7</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SetModeHalfKatakanaKey" key="/IMEngine/PRIME/SetModeHalfKatakanaKey" type="String">
+      <label></label>
+      <default>F8</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SetModeWideAsciiKey" key="/IMEngine/PRIME/SetModeWideAsciiKey" type="String">
+      <label></label>
+      <default>F9</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_SetModeRawKey" key="/IMEngine/PRIME/SetModeRawKey" type="String">
+      <label></label>
+      <default>F10</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ToggleOnOffKey" key="/IMEngine/PRIME/ToggleOnOffKey" type="String">
+      <label></label>
+      <default>Zenkaku_Hankaku</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_ToggleLanguageKey" key="/IMEngine/PRIME/ToggleLanguageKey" type="String">
+      <label></label>
+      <default>F11</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_RegisterWordKey" key="/IMEngine/PRIME/RegisterWordKey" type="String">
+      <label></label>
+      <default>Control+w, Control+W</default>
+    </entry>
+    <entry name="_IMEngine_PRIME_RecoveryKey" key="/IMEngine/PRIME/RecoveryKey" type="String">
+      <label></label>
+      <default>Control+Alt+r</default>
+    </entry>
   </group>
 </kcfg>

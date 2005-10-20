@@ -8,12 +8,12 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>596</width>
+            <width>662</width>
             <height>525</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Prime</string>
+        <string>PRIME</string>
     </property>
     <vbox>
         <property name="name">
@@ -39,7 +39,7 @@
                     </property>
                     <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="3">
                         <property name="name">
-                            <cstring>checkBox1</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_ConvertOnPeriod</cstring>
                         </property>
                         <property name="text">
                             <string>Start &amp;conversion on inputting comma or period</string>
@@ -50,7 +50,7 @@
                     </widget>
                     <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="3">
                         <property name="name">
-                            <cstring>checkBox2</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_CommitPeriod</cstring>
                         </property>
                         <property name="text">
                             <string>Commit comma &amp;and period immediately</string>
@@ -61,7 +61,7 @@
                     </widget>
                     <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="3">
                         <property name="name">
-                            <cstring>checkBox3</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_CommitOnUpper</cstring>
                         </property>
                         <property name="text">
                             <string>Commit on inputting &amp;upper letter</string>
@@ -105,7 +105,7 @@
                     </widget>
                     <widget class="KLineEdit" row="0" column="1" rowspan="1" colspan="2">
                         <property name="name">
-                            <cstring>kLineEdit9</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_Command</cstring>
                         </property>
                     </widget>
                     <widget class="QLabel" row="1" column="0">
@@ -117,8 +117,23 @@
                         </property>
                     </widget>
                     <widget class="KComboBox" row="1" column="1">
+                        <item>
+                            <property name="text">
+                                <string>Off</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Japanese</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>English</string>
+                            </property>
+                        </item>
                         <property name="name">
-                            <cstring>kComboBox16</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_Language</cstring>
                         </property>
                     </widget>
                     <spacer row="1" column="2">
@@ -249,7 +264,7 @@
                     </property>
                     <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="2">
                         <property name="name">
-                            <cstring>checkBox18</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_PredictOnPreedition</cstring>
                         </property>
                         <property name="text">
                             <string>Predi&amp;ct while typing letters</string>
@@ -260,7 +275,7 @@
                     </widget>
                     <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="3">
                         <property name="name">
-                            <cstring>checkBox19</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_DirectSelectOnPrediction</cstring>
                         </property>
                         <property name="text">
                             <string>&amp;Use direct select keys also on prediction</string>
@@ -271,7 +286,7 @@
                     </widget>
                     <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
                         <property name="name">
-                            <cstring>checkBox20</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_InlinePrediction</cstring>
                         </property>
                         <property name="text">
                             <string>Inline prediction</string>
@@ -315,8 +330,18 @@
                         </property>
                     </spacer>
                     <widget class="KComboBox" row="1" column="1">
+                        <item>
+                            <property name="text">
+                                <string>Head of preedition area</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Tail of preedition area</string>
+                            </property>
+                        </item>
                         <property name="name">
-                            <cstring>kComboBox17</cstring>
+                            <cstring>kcfg__IMEngine_PRIME_PredictWinPos</cstring>
                         </property>
                     </widget>
                     <widget class="QLabel" row="1" column="0">
@@ -361,7 +386,7 @@
                             </property>
                             <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="4">
                                 <property name="name">
-                                    <cstring>checkBox21</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_AutoRegister</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Switch to the inline word register mode &amp;automatically</string>
@@ -372,7 +397,7 @@
                             </widget>
                             <widget class="QCheckBox" row="2" column="0">
                                 <property name="name">
-                                    <cstring>checkBox23</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_ShowAnnotation</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Show annotations for words on the candidates window</string>
@@ -383,7 +408,7 @@
                             </widget>
                             <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="4">
                                 <property name="name">
-                                    <cstring>checkBox22</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_CloseCandWinOnSelect</cstring>
                                 </property>
                                 <property name="text">
                                     <string>&amp;Close candidates window when a candidate is selected directly</string>
@@ -402,7 +427,7 @@
                             </widget>
                             <widget class="KColorButton" row="2" column="4">
                                 <property name="name">
-                                    <cstring>kColorButton1</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateFormColor</cstring>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -410,7 +435,7 @@
                             </widget>
                             <widget class="QCheckBox" row="3" column="0">
                                 <property name="name">
-                                    <cstring>checkBox24</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_ShowUsage</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Show &amp;usages of words on the candidates window</string>
@@ -421,7 +446,7 @@
                             </widget>
                             <widget class="QCheckBox" row="4" column="0">
                                 <property name="name">
-                                    <cstring>checkBox25</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_ShowComment</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Show comments for words on the candidates window</string>
@@ -499,7 +524,7 @@
                             </widget>
                             <widget class="KColorButton" row="3" column="4">
                                 <property name="name">
-                                    <cstring>kColorButton2</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateUsageColor</cstring>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -507,7 +532,7 @@
                             </widget>
                             <widget class="KColorButton" row="4" column="4">
                                 <property name="name">
-                                    <cstring>kColorButton3</cstring>
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateCommentColor</cstring>
                                 </property>
                                 <property name="text">
                                     <string></string>
@@ -611,7 +636,7 @@
 </customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="881">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033849444154388dad9431681c471486bf3353bc05096641c52d38700711e88a1417111772544890e6888b33b848828ba448235205dcb88ae354c6659242e0c64429ecd885402914a43477074a4e27706003173815821dd0c10ec4b0af58508ad149bac488147ab0c5ecce7cf3cddb7fb7d2dfeb43091858bcb178c21554bfdbaf543add0e6284172f5f9c34179a38efc85d4ef63afb5f10ef3da3e188deefbd20785a468cb07863f1e4f90fcf4912259e87a2f434014a2512a140898c20281821d7302e5022847408ac0bbd5ff51cac6518b8b123aec368fc13793e02947856c90bc11d09f95801219e83c6bc8204809660638893e993183161463ece294a8ffe3d023cf1acb03fb0f4363d83030f4c6c84da82d0ba63797719acd1009ff91778629cf98c264a5106e8ce366c7cef026a46a82f58c44076a41cfea97cf7b5a3f591e5e34f052b01fe46e3c844502af12cec0fe414aaac7c58a5d5169204d42894093b9b051beb8ead1f1db5eb3556db3162fc14f8dac4b8280b2281bc10765ffa33e8279f0bc95b1e351e3d16b69ee5dcbe13f1d9175540d878ea517fdea8371a1728de09e91f1e6b2dadb620e2c3a2d7966f1f29e981273f86b57b31bded3077f0ca62651a3c6d6c20730a2849edf4f8a7d0c70f3ce981c7ce094bcb0233058d66a065878a96d3e46b178d05988cad849eeab1e5f103253d081b8a40723d229e01cc0426c865c618886c98981e2994313bbf104cad50ad5adc91e7e1fd8cfddf62b261589bd4a2cb5391abd298576a6f0b877f293b9b05b7efc6e4c7caea8a1057231ede0777e8f9666d84aa62e78466b32077d3afef3f3d46a0d5b6006cac3b767ece59bb17d35886c67b395f7e55c7562dde7bb45456db55ea0b5c6e5c9c6eb2b402de59369e3a9e3c72f4b685e63b821ac886193a563001b0bfeb496f2558112e86eefccb1b674426ec2ca2b4ee0a325763eb5948437a706e63e78456bb4677d7e355a104379e6ec599f16838221d82c417e06d61f5833a835739f951b85fafc5349a39f50558bd9520a5a064a4836970a5d3ed7073e9e609069aef87ec8a70f6f3c780989094c9f143296204ef211d289953bcbbf0b8bfd70738b9eaeb2c15575dd7c408fd6ebf72e5602d43743addce95c1fb7bfdca3fdcb3ae17a3e19dbf0000000049454e44ae426082</data>
+        <data format="PNG" length="909">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000035449444154388dad9431681c471440df992dbe608b3938c10ea4b8150e48858cb75021392ea4ce875d5c428ac4b88843d28454e92cdb10b02bd7490aa13401b9109c0b811a635d20dc9dc12127e4a00d28dc0a72300312dc401634c58152ac4ed22544b8d0c0143b3bfbe6fdbfff4fa9b7d3831c0861eadad43197307aed5ea9d46ab7d0a166f5f9eaf1d2f412a94bc1c26ebefb4e10e71cd95e46e7d70e0ccfd6031d6aa6ae4d1dbf6abc22520635ab30799744ca0c7283561ae30d3ad48837106a32573c1b6fd0a2e9bccd28af089b3ffb33b0c90d00e95f29aaaae8f657190c32c0134f7ab652c1f685c1a107847205e6673d5d074aa063a1aa013d1e49a0c393951c4cde458619e0882785ad8e22dd7034b71d30b211aad3c2dd7b8a780eaaca6373a856fe051e19efda5d12f1a47f17d0c606acfd600b5428c4d30a09c0f43dfb7f789e2e5b6a9f283efd4c88956733ff1f631d6a0679463c095b1d39817a166f47d4eac24c0c76e85181a6b17ec4da8a65f3b925b95a456e9589423706be323236b9412bc80642f3853b85defd529879df61870e3910d67e1af0f9bd09ee7f1d01c2772b0ef160fd05c6c667e084f47787528a5a5d8894c37a5043c5a3679e74db313880878fcb745e167b9b6f14b1e202e310d27d0f7874f524fc11f48123dd76a88a50bb290c8223661229beddf7985cc6c1e78dc5830e8b0db11439955cf1e88127dd2e0e148189f726882b40308209fa226342f0526c6cf73d2a28d3d8a030554214296cdff164d9b0f54b19b3572456572730175545e632e6673dd5abc2fe9f9ec6fa11f7bf88191c783eba25a02678b20c76dff1f4ab0cef3daa2224c911b8f1bff79f1c3ba0562fe25a5bb1345e643c7c5c269a83f99b03bef93646450ae71c7ee859aa4724d7b9d8d8e4194a606111708aef572c3f3eb3745e0a8b73821d82d933f8430f4101f8ade9e8bcd6c44a38ebcef377453fa51642e7b068d3858f051f56d95c2faa21dd3eb35115a156afd26e3a9cf7a800d2fe782a4e8db3bd8cce5b8834d81c22e5a9d5850fef2434df647058849b4cc7e8998ce43a345f6ba220c2fa94b43b0e2eb5da2d6e2cdc382680e403416b10a1b85b83624a5054ca28fc627824109c83b4eb31d6e3ecb9d7bd9d1ec0f165cfd3aab8ec7145879a5ebb57ba74f0a8e35aedd6a5c17b3bbdd23fb484b3f317eb56fc0000000049454e44ae426082</data>
     </image>
 </images>
 <tabstops>
