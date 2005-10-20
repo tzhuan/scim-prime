@@ -176,11 +176,11 @@
     </entry>
     <entry name="_IMEngine_PRIME_ConvNextPageKey" key="/IMEngine/PRIME/ConvNextPageKey" type="String">
       <label></label>
-      <default>Page_Up</default>
+      <default>Page_Down</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvPrevPageKey" key="/IMEngine/PRIME/ConvPrevPageKey" type="String">
       <label></label>
-      <default>Page_Down</default>
+      <default>Page_Up</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates1Key" key="/IMEngine/PRIME/SelectCandidates1Key" type="String">
       <label></label>

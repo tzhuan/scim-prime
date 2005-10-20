@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>662</width>
-            <height>525</height>
+            <height>521</height>
         </rect>
     </property>
     <property name="caption">
@@ -162,94 +162,1444 @@
                 <attribute name="title">
                     <string>&amp;Key bindings</string>
                 </attribute>
-                <grid>
+                <vbox>
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="QLabel" row="0" column="0">
+                    <widget class="QTabWidget">
                         <property name="name">
-                            <cstring>textLabel10</cstring>
+                            <cstring>tabWidget3</cstring>
                         </property>
-                        <property name="text">
-                            <string>Gro&amp;up:</string>
-                        </property>
-                        <property name="buddy" stdset="0">
-                            <cstring>kComboBox8</cstring>
-                        </property>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Mode</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel21</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Switch &amp;language:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleLanguageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel20</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Raw mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeRawKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel19</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Wide ascii mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel18</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Half katakana mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel17</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Katakana mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel16</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Defa&amp;ult mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeDefaultKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel15</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>O&amp;n/Off:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleOnOffKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleOnOffKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeDefaultKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeRawKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleLanguageKey</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="7" column="1">
+                                    <property name="name">
+                                        <cstring>spacer46</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_3_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_3_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_3_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_3_3_5</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Edit</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Insert space:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Insert &amp;alternative space:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_AlternativeSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_AlternativeSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Backspace:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_BackSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_BackSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel4_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>De&amp;lete:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_DeleteKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_DeleteKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer43</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>31</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>tab</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>Con&amp;vert</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel6_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ca&amp;ncel:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CancelKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CancelKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvertKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel5_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Con&amp;vert:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvertKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitAlternativeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_5</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPredictionKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_RegisterWordKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_6</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_6_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel10</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Register a word:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_RegisterWordKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel9</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Com&amp;plete:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPredictionKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel8</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Commit &amp;alternative:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitAlternativeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel7</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Commit witho&amp;ut learning:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel33</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Co&amp;mmit:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitKey</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="7" column="1">
+                                    <property name="name">
+                                        <cstring>spacer44</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>170</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>C&amp;aret</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel12</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;last:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel11</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;first:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel13</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to for&amp;ward:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel14</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;backward:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer45</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>31</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Segments</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel22</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;First segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel23</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Last segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectLastSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel24</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ne&amp;xt segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectNextSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel25</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Previo&amp;us segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel26</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Shrink segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ShrinkSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel27</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>E&amp;xpand segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ExpandSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectLastSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectNextSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ShrinkSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ExpandSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_6</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_7</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_8</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_9</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_10</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="6" column="1">
+                                    <property name="name">
+                                        <cstring>spacer47</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Candidates</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel28</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ne&amp;xt candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel29</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Previo&amp;us candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel30</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Page &amp;down:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel31</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Page &amp;up:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_5</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer48</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>tab</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Direct select</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;1st candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates1Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;2nd candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates2Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;3rd candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates3Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_3</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;4th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates4Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_4</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;5th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates5Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_5</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;6th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates6Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_6</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;7th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates7Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="7" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_7</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;8th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates8Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="8" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_8</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;9th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates9Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="9" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_9</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>1&amp;0th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates10Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates1Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates2Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates3Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates4Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates5Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates6Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates7Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="7" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates8Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="8" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates9Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="9" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates10Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_5</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_6</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_7</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_8</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="7" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_9</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="8" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_10</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="9" column="2">
+                                    <property name="name">
+                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_11</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="10" column="1">
+                                    <property name="name">
+                                        <cstring>spacer50</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
                     </widget>
-                    <widget class="KComboBox" row="0" column="1" rowspan="1" colspan="2">
-                        <property name="name">
-                            <cstring>kComboBox8</cstring>
-                        </property>
-                    </widget>
-                    <widget class="QPushButton" row="2" column="5" rowspan="1" colspan="2">
-                        <property name="name">
-                            <cstring>pushButton3</cstring>
-                        </property>
-                        <property name="text">
-                            <string>&amp;Choose keys...</string>
-                        </property>
-                        <property name="accel">
-                            <string>Alt+C</string>
-                        </property>
-                    </widget>
-                    <widget class="KLineEdit" row="0" column="3" rowspan="1" colspan="3">
-                        <property name="name">
-                            <cstring>kLineEdit3</cstring>
-                        </property>
-                    </widget>
-                    <widget class="SkimEditShortcutButton" row="0" column="6">
-                        <property name="name">
-                            <cstring>punctButton1</cstring>
-                        </property>
-                        <property name="sizePolicy">
-                            <sizepolicy>
-                                <hsizetype>0</hsizetype>
-                                <vsizetype>1</vsizetype>
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                    </widget>
-                    <widget class="QListView" row="1" column="0" rowspan="1" colspan="7">
-                        <column>
-                            <property name="text">
-                                <string>Features</string>
-                            </property>
-                            <property name="clickable">
-                                <bool>true</bool>
-                            </property>
-                            <property name="resizable">
-                                <bool>true</bool>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Key bindings</string>
-                            </property>
-                            <property name="clickable">
-                                <bool>true</bool>
-                            </property>
-                            <property name="resizable">
-                                <bool>true</bool>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Description</string>
-                            </property>
-                            <property name="clickable">
-                                <bool>true</bool>
-                            </property>
-                            <property name="resizable">
-                                <bool>true</bool>
-                            </property>
-                        </column>
-                        <property name="name">
-                            <cstring>listView1</cstring>
-                        </property>
-                    </widget>
-                </grid>
+                </vbox>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -636,7 +1986,7 @@
 </customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="909">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000035449444154388dad9431681c471440df992dbe608b3938c10ea4b8150e48858cb75021392ea4ce875d5c428ac4b88843d28454e92cdb10b02bd7490aa13401b9109c0b811a635d20dc9dc12127e4a00d28dc0a72300312dc401634c58152ac4ed22544b8d0c0143b3bfbe6fdbfff4fa9b7d3831c0861eadad43197307aed5ea9d46ab7d0a166f5f9eaf1d2f412a94bc1c26ebefb4e10e71cd95e46e7d70e0ccfd6031d6aa6ae4d1dbf6abc22520635ab30799744ca0c7283561ae30d3ad48837106a32573c1b6fd0a2e9bccd28af089b3ffb33b0c90d00e95f29aaaae8f657190c32c0134f7ab652c1f685c1a107847205e6673d5d074aa063a1aa013d1e49a0c393951c4cde458619e0882785ad8e22dd7034b71d30b211aad3c2dd7b8a780eaaca6373a856fe051e19efda5d12f1a47f17d0c606acfd600b5428c4d30a09c0f43dfb7f789e2e5b6a9f283efd4c88956733ff1f631d6a0679463c095b1d39817a166f47d4eac24c0c76e85181a6b17ec4da8a65f3b925b95a456e9589423706be323236b9412bc80642f3853b85defd529879df61870e3910d67e1af0f9bd09ee7f1d01c2772b0ef160fd05c6c667e084f47787528a5a5d8894c37a5043c5a3679e74db313880878fcb745e167b9b6f14b1e202e310d27d0f7874f524fc11f48123dd76a88a50bb290c8223661229beddf7985cc6c1e78dc5830e8b0db11439955cf1e88127dd2e0e148189f726882b40308209fa226342f0526c6cf73d2a28d3d8a030554214296cdff164d9b0f54b19b3572456572730175545e632e6673dd5abc2fe9f9ec6fa11f7bf88191c783eba25a02678b20c76dff1f4ab0cef3daa2224c911b8f1bff79f1c3ba0562fe25a5bb1345e643c7c5c269a83f99b03bef93646450ae71c7ee859aa4724d7b9d8d8e4194a606111708aef572c3f3eb3745e0a8b73821d82d933f8430f4101f8ade9e8bcd6c44a38ebcef377453fa51642e7b068d3858f051f56d95c2faa21dd3eb35115a156afd26e3a9cf7a800d2fe782a4e8db3bd8cce5b8834d81c22e5a9d5850fef2434df647058849b4cc7e8998ce43a345f6ba220c2fa94b43b0e2eb5da2d6e2cdc382680e403416b10a1b85b83624a5054ca28fc627824109c83b4eb31d6e3ecb9d7bd9d1ec0f165cfd3aab8ec7145879a5ebb57ba74f0a8e35aedd6a5c17b3bbdd23fb484b3f317eb56fc0000000049454e44ae426082</data>
+        <data format="PNG" length="939">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037249444154388dad9431681b5718c77f2a1a3e83872773c31338a0831272a2869e68c038cd604316d10e327428d912d225c912d32953699c25f114da0ec6c9105006237528dc62b00c41a7218daca1e88c6d380f061d58486f30f80d067738dbb1689376f08337dcbb8fdffdbe8fffbdcc607b007dc08189ab13275cc21a84834ca61936f11c8fa5574b27f3d7e66999162a518487e1ff8218638877625a7fb6e0f8c37966b03d60e2eac4c9fbe03d7989b05ad1ed37709526ee4714b547d744141d0f3111381eed247dee9a88a27209de0584cb9b5437ec39381bf523005a3b2dcab70aacef2e311cc644584a572cb54d21d917eafd001072ce3ae5eb96f5dd005741b005be0b417eb493ace77800a8e3d454676386184a57845a4391fc61a8770c706623d4ae09f7ef2998025f5ba23ef893105c007f76661cee85b86a487490425756e1d79f13ea1d8b8c0bde571a7f5aa32785bd2dcb8f0b09f55796d808be86a8ff11e3a25324eeb7295d815a43a8fe960096d96f34e58a30e341746871c7f3acbc3ea2ba9c10bc4998fda280cce6f01c33023e37eef6bb1435b47b42e377730ebdfd83303365880e0dfa40f86579c8c2bd31ee3cd480b0f8c29007a251eea871d7b4c95921facba094a25c113c6d880cb859c5836796a863181ec0f3a7395a6b696dfdadc2d750ffa8b103e196052cf9c269fb67d04786a863508e70fba6101f1fe1f902406fcf12f5657414178dc580e7a405bea433d5c78a078f2c5127fda008d8c9314a9340f60c26787a741423c638909c1606fb16773cc7cb5552532568ad48f60d4f1ef7a8ade5e8eda411cc17c63e9d8a76d2a67cdd52fb5cd8dbb5acbc3e62e16189e141c8dd8a60648c278f21d9332cde8fb1d6a21cc1f78f50d68e80ff31e3d842b9a200a82e27acbc69f3fc690e9982f2ad210b3fb928ad30c6608f2d7315cddcf47fe4b8db6fe32a9059c859c5e28b8497cf125a6bc2fc4da17a08bd9d1eb66f219b02da0d43b091c7d742957fb92bc2dd90f2f7a7ffbeb6f0ad70275b20584dd3b0d8f960a31ca15c2910360cc65adc7108764747716e1cefc404efc073d3b63c6d295784bbdfcd517fdb461da6e7735f9610b7cddc34d437f278e31e9109893647c19966d8e4c6cc8d13b2e07f2de4f320427ab766d32dd9342967eda7cb2259c11888362dbdc462920baf07db038093cbdee7a9b8f435d81e30082fdf3a3576a019363397289bf91b7a63d5955eb4ffa10000000049454e44ae426082</data>
     </image>
 </images>
 <tabstops>
@@ -646,8 +1996,47 @@
 <includehints>
     <includehint>klineedit.h</includehint>
     <includehint>kcombobox.h</includehint>
-    <includehint>kcombobox.h</includehint>
-    <includehint>klineedit.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
+    <includehint>skimeditshortcutbutton.h</includehint>
     <includehint>skimeditshortcutbutton.h</includehint>
     <includehint>kcombobox.h</includehint>
     <includehint>kcolorbutton.h</includehint>
