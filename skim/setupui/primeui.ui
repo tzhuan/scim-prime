@@ -312,7 +312,7 @@
                                 </spacer>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3</cstring>
+                                        <cstring>ToggleOnOffKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -325,7 +325,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_2</cstring>
+                                        <cstring>SetModeDefaultKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -338,7 +338,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_3</cstring>
+                                        <cstring>SetModeKatakanaKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -351,7 +351,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_3_2</cstring>
+                                        <cstring>SetModeHalfKatakanaKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -364,7 +364,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="4" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_3_3</cstring>
+                                        <cstring>SetModeWideAsciiKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -377,7 +377,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="5" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_3_4</cstring>
+                                        <cstring>SetModeRawKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -390,7 +390,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="6" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_3_3_5</cstring>
+                                        <cstring>ToggleLanguageKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -432,7 +432,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button</cstring>
+                                        <cstring>SpaceKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -493,7 +493,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2</cstring>
+                                        <cstring>AlternativeSpaceKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -506,7 +506,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_2</cstring>
+                                        <cstring>BackSpaceKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -519,7 +519,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3</cstring>
+                                        <cstring>DeleteKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -609,7 +609,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2</cstring>
+                                        <cstring>ConvertKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -622,7 +622,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_2</cstring>
+                                        <cstring>CancelKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -635,7 +635,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_3</cstring>
+                                        <cstring>CommitKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -648,7 +648,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_4</cstring>
+                                        <cstring>CommitWithoutLearnKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -661,7 +661,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="4" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_5</cstring>
+                                        <cstring>CommitAlternativeKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -684,7 +684,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="5" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_6</cstring>
+                                        <cstring>SelectPredictionKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -697,7 +697,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="6" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_6_2</cstring>
+                                        <cstring>RegisterWordKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -859,7 +859,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7</cstring>
+                                        <cstring>MoveCaretLeftEdgeKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -872,7 +872,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_2</cstring>
+                                        <cstring>MoveCaretRightEdgeKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -885,7 +885,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_3</cstring>
+                                        <cstring>MoveCaretRightKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -898,7 +898,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_4</cstring>
+                                        <cstring>MoveCaretLeftKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1037,7 +1037,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5</cstring>
+                                        <cstring>SelectFirstSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1050,7 +1050,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_6</cstring>
+                                        <cstring>SelectLastSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1063,7 +1063,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_7</cstring>
+                                        <cstring>SelectNextSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1076,7 +1076,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_8</cstring>
+                                        <cstring>SelectPrevSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1089,7 +1089,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="4" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_9</cstring>
+                                        <cstring>ShrinkSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1102,7 +1102,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="5" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_10</cstring>
+                                        <cstring>ExpandSegmentKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1209,7 +1209,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2</cstring>
+                                        <cstring>ConvNextCandidateKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1222,7 +1222,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_3</cstring>
+                                        <cstring>ConvPrevCandidateKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1235,7 +1235,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_4</cstring>
+                                        <cstring>ConvNextPageKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1248,7 +1248,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_5</cstring>
+                                        <cstring>ConvPrevPageKey_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1451,7 +1451,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="0" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_2</cstring>
+                                        <cstring>SelectCandidates1Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1464,7 +1464,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="1" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_3</cstring>
+                                        <cstring>SelectCandidates2Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1477,7 +1477,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="2" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_4</cstring>
+                                        <cstring>SelectCandidates3Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1490,7 +1490,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="3" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_5</cstring>
+                                        <cstring>SelectCandidates4Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1503,7 +1503,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="4" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_6</cstring>
+                                        <cstring>SelectCandidates5Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1516,7 +1516,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="5" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_7</cstring>
+                                        <cstring>SelectCandidates6Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1529,7 +1529,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="6" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_8</cstring>
+                                        <cstring>SelectCandidates7Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1542,7 +1542,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="7" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_9</cstring>
+                                        <cstring>SelectCandidates8Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1555,7 +1555,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="8" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_10</cstring>
+                                        <cstring>SelectCandidates9Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1568,7 +1568,7 @@
                                 </widget>
                                 <widget class="SkimEditShortcutButton" row="9" column="2">
                                     <property name="name">
-                                        <cstring>LeftThumbShiftKey_Button_2_3_2_7_5_2_11</cstring>
+                                        <cstring>SelectCandidates10Key_Button</cstring>
                                     </property>
                                     <property name="sizePolicy">
                                         <sizepolicy>
@@ -1986,9 +1986,785 @@
 </customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="939">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037249444154388dad9431681b5718c77f2a1a3e83872773c31338a0831272a2869e68c038cd604316d10e327428d912d225c912d32953699c25f114da0ec6c9105006237528dc62b00c41a7218daca1e88c6d380f061d58486f30f80d067738dbb1689376f08337dcbb8fdffdbe8fffbdcc607b007dc08189ab13275cc21a84834ca61936f11c8fa5574b27f3d7e66999162a518487e1ff8218638877625a7fb6e0f8c37966b03d60e2eac4c9fbe03d7989b05ad1ed37709526ee4714b547d744141d0f3111381eed247dee9a88a27209de0584cb9b5437ec39381bf523005a3b2dcab70aacef2e311cc644584a572cb54d21d917eafd001072ce3ae5eb96f5dd005741b005be0b417eb493ace77800a8e3d454676386184a57845a4391fc61a8770c706623d4ae09f7ef2998025f5ba23ef893105c007f76661cee85b86a487490425756e1d79f13ea1d8b8c0bde571a7f5aa32785bd2dcb8f0b09f55796d808be86a8ff11e3a25324eeb7295d815a43a8fe960096d96f34e58a30e341746871c7f3acbc3ea2ba9c10bc4998fda280cce6f01c33023e37eef6bb1435b47b42e377730ebdfd83303365880e0dfa40f86579c8c2bd31ee3cd480b0f8c29007a251eea871d7b4c95921facba094a25c113c6d880cb859c5836796a863181ec0f3a7395a6b696dfdadc2d750ffa8b103e196052cf9c269fb67d04786a863508e70fba6101f1fe1f902406fcf12f5657414178dc580e7a405bea433d5c78a078f2c5127fda008d8c9314a9340f60c26787a741423c638909c1606fb16773cc7cb5552532568ad48f60d4f1ef7a8ade5e8eda411cc17c63e9d8a76d2a67cdd52fb5cd8dbb5acbc3e62e16189e141c8dd8a60648c278f21d9332cde8fb1d6a21cc1f78f50d68e80ff31e3d842b9a200a82e27acbc69f3fc690e9982f2ad210b3fb928ad30c6608f2d7315cddcf47fe4b8db6fe32a9059c859c5e28b8497cf125a6bc2fc4da17a08bd9d1eb66f219b02da0d43b091c7d742957fb92bc2dd90f2f7a7ffbeb6f0ad70275b20584dd3b0d8f960a31ca15c2910360cc65adc7108764747716e1cefc404efc073d3b63c6d295784bbdfcd517fdb461da6e7735f9610b7cddc34d437f278e31e9109893647c19966d8e4c6cc8d13b2e07f2de4f320427ab766d32dd9342967eda7cb2259c11888362dbdc462920baf07db038093cbdee7a9b8f435d81e30082fdf3a3576a019363397289bf91b7a63d5955eb4ffa10000000049454e44ae426082</data>
+        <data format="PNG" length="954">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000038149444154388dad9431685b4718c77f2a6f388b0e27d0700215a4d04054e8f0441729e96043078b2e3674703a350d05e336a5349beba1adbd240da110d78321a5b49687627528bc421da42e7e1a52def360e7191c2c43053ab0403718f906813a3c14c7a1361dfcc10deff8f8dfeffbdfff5da27fd0070d28485e490eb984eafbfd8413ea1057b92cad2e0d777fdaa5611a28ada81fd7ff97883186d67e8be6df4d18c47bc9727298e81ff4495e490e77ffdc25e384d86c86407bbc95cef34c0714b345826e40511511dd005411bf1d7f07dd8062ba40ad5923580d79fc977d71a013ea108046d4607ab280b7b748afd7226a59ca79cbda530fdd16d4ba1e2048a5eb4c972cde9e47210db51d8fd255f0326727715ce502a05004da232f5af43094f382b54d89f9dd50dd36c08846b0714d707756123950ca5a420da51c782f0b8f88ebcfebdc7dcfb2f134165d5e87ea8a8ea55e17e4af4984039db6e570cff2e9e79aca8c447c2428652d0bfa2cf16b23e2a22af24c43390f6b9b82ea4a4c39febee4dbef25bffc2098fb06366a196ece2a70c05bd79810a2e314ae7a4578441ce8806216fc7f048ddf46a28a0f3f114cb886d018f24782072b3de667c7b8f59902045f3d34e41d08bbe7781cdfb24f662088760c524a2a5302376b08bb501092dbf72dd1b6a177048feea5686ec6bdd586a49485dab9c40aea3b16b064728289b73915bd6388b60d322df8f85d41644f28b80280cea125d4e27c8f45178a2a6e2809088d258fe4f61d4bb41d1f280498ec18e51ce08cc4046ef6028f51d01ac48db5b6a520532caf13934a815212dd362cce7758fb2345673f8e60263746f84a2ace78ecb77da64b968d370587cf2dcb3f9e30ff4599de519db90f04da1963711ef4a16169ae85b5169916b8ee096a60a95ee471740c952909407555b3fcb3cfa37b2928c0f4648f2fbfce2395c418831d5826a614951b5c4c1c689f421ac43864069285879ac7f735cd4dc1cd7141d54067bf83ed5a706281a061a83dc950ce0aaafcc75b51dfabf3dd0cd476e2df9449c12d7278bfc66958d83ea5916941652a87df30186b294878b0772a7a86b8b5dfa2d604f76a3c969bb58829c1dc4c856ac347d978bff24e19def0a9dc80ea930cae7409bb75a2f0ac7062cbdfe27af9fa1007dc1b824c0684207e5b9d7809274eca68fcb82cc21118035168e9688b79d9e7fe411f6078d9eb452a2ebdfa077dfafee553c7c40ab6fcadc425c226fe05c537d6c65bdc9b440000000049454e44ae426082</data>
     </image>
 </images>
+<connections>
+    <connection>
+        <sender>ToggleOnOffKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleOnOffKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ToggleOnOffKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ToggleOnOffKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ToggleOnOffKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleOnOffKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeDefaultKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeDefaultKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeDefaultKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeDefaultKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeDefaultKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeDefaultKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeKatakanaKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeKatakanaKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeKatakanaKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeKatakanaKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeHalfKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeHalfKatakanaKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeHalfKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeRawKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeRawKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeRawKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeRawKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeRawKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeRawKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeWideAsciiKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeWideAsciiKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeWideAsciiKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ToggleLanguageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleLanguageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ToggleLanguageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ToggleLanguageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ToggleLanguageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleLanguageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>AlternativeSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_AlternativeSpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_AlternativeSpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>AlternativeSpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>AlternativeSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_AlternativeSpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>BackSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_BackSpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_BackSpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>BackSpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>BackSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_BackSpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>DeleteKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_DeleteKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_DeleteKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DeleteKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>DeleteKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_DeleteKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvertKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvertKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvertKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvertKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvertKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvertKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CancelKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CancelKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CancelKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CancelKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CancelKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CancelKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitWithoutLearnKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitWithoutLearnKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitWithoutLearnKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitAlternativeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitAlternativeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitAlternativeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitAlternativeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitAlternativeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitAlternativeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectPredictionKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPredictionKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectPredictionKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectPredictionKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectPredictionKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPredictionKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>RegisterWordKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_RegisterWordKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_RegisterWordKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>RegisterWordKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>RegisterWordKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_RegisterWordKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectFirstSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectFirstSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectFirstSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectLastSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectLastSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectLastSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectLastSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectLastSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectLastSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectNextSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectNextSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectNextSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectNextSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectNextSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectNextSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectPrevSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectPrevSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectPrevSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ShrinkSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ShrinkSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ShrinkSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ShrinkSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ShrinkSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ShrinkSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ExpandSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ExpandSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ExpandSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ExpandSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ExpandSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ExpandSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretRightEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretRightKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretRightKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextCandidateKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvNextCandidateKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvNextCandidateKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextCandidateKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvPrevCandidateKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextPageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvNextPageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvNextPageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextPageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevPageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvPrevPageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvPrevPageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevPageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates1Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates1Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates1Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates1Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates1Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates1Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates2Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates2Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates2Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates2Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates2Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates2Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates3Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates3Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates3Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates3Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates3Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates3Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates4Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates4Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates4Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates4Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates4Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates4Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates5Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates5Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates5Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates5Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates5Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates5Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates6Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates6Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates6Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates6Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates6Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates6Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates7Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates7Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates7Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates7Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates7Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates7Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates8Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates8Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates8Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates8Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates8Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates8Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates9Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates9Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates9Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates9Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates9Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates9Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates10Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates10Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates10Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates10Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates10Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates10Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+</connections>
 <tabstops>
     <tabstop>tabWidget2</tabstop>
 </tabstops>
