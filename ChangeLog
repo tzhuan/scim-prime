@@ -1,3 +1,7 @@
+2005-10-21 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Remove checks for EIO condition.
+
 2005-10-20 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_prefs.h: Fix wron key bind (Swap PageUp and PageDown).

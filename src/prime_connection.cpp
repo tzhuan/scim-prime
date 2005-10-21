@@ -240,7 +240,6 @@ PrimeConnection::close_connection (void)
             case EBADF:
             case EINVAL:
             case EPIPE:
-            case EIO:
                 remaining = 0;
                 if (m_err_msg.empty ())
                     set_error_message (COMMUNICATION_FAILD, errno);
@@ -555,7 +554,6 @@ PrimeConnection::send_command (const char *command,
         case EBADF:
         case EINVAL:
         case EPIPE:
-        case EIO:
             clean_child ();
             if (m_err_msg.empty ())
                 set_error_message (COMMUNICATION_FAILD, errno);
@@ -582,7 +580,6 @@ PrimeConnection::send_command (const char *command,
             case EBADF:
             case EINVAL:
             case EPIPE:
-            case EIO:
                 clean_child ();
                 if (m_err_msg.empty ())
                     set_error_message (COMMUNICATION_FAILD, errno);
@@ -668,7 +665,6 @@ PrimeConnection::write_all (int fd, const char *buf, int size)
         case EBADF:
         case EINVAL:
         case EPIPE:
-        case EIO:
             return false;
         default:
             remaining -= rv;
