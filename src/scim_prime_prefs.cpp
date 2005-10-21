@@ -32,7 +32,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD,
         SCIM_PRIME_CONFIG_CONVERT_ON_PERIOD_DEFAULT,
-        N_("_Start conversion on inputting comma or period."),
+        N_("_Start conversion on inputting comma or period"),
         NULL,
         N_("Start conversion on inputting comma or period."),
         NULL,
@@ -41,7 +41,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_COMMIT_PERIOD,
         SCIM_PRIME_CONFIG_COMMIT_PERIOD_DEFAULT,
-        N_("Commit comma and period _immediately."),
+        N_("Commit comma and period _immediately"),
         NULL,
         N_("Commit comma and period immediatly on inputting these characters "
            "when no preedition string exists."),
@@ -51,7 +51,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER,
         SCIM_PRIME_CONFIG_COMMIT_ON_UPPER_DEFAULT,
-        N_("Commit on inputting _upper letter."),
+        N_("Commit when input an _upper letter"),
         NULL,
         N_("Commit previous preedit string when a upper letter is entered."),
         NULL,
@@ -60,7 +60,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION,
         SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT,
-        N_("_Predict while typing letters."),
+        N_("_Predict while typing letters"),
         NULL,
         N_("Show candidates window to display predicted candidates "
            "while typing letters."),
@@ -70,7 +70,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION,
         SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT,
-        N_("Use _direct select keys also on prediction."),
+        N_("Use _direct select keys also on prediction"),
         NULL,
         N_("Use direct select keys not only for conversion state "
            "but also for prediction state."),
@@ -80,7 +80,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_INLINE_PREDICTION,
         SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT,
-        N_("_Inline prediction."),
+        N_("_Inline prediction"),
         NULL,
         N_("Show first candidate of predictions instead of reading on preedit area. "
            "Reading is shown by external window."),
@@ -90,7 +90,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_AUTO_REGISTER,
         SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT,
-        N_("Change to the inline word _register mode automatically."),
+        N_("Switch to the inline word _register mode automatically"),
         NULL,
         N_("Invoke the inline word register mode when the cursor in the "
            "candidates window is move to out of range."),
@@ -100,7 +100,7 @@ BoolConfigData __config_bool_common [] =
     {
         SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT,
         SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT,
-        N_("_Close candidates window when a candidate is selected directly."),
+        N_("_Close candidates window when a candidate is selected directly"),
         NULL,
         N_("Close candidates window when a candidate is selected directly."),
         NULL,
@@ -256,8 +256,8 @@ StringConfigData __config_keyboards_convert [] =
     {
         SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY,
         SCIM_PRIME_CONFIG_COMMIT_ALTERNATIVE_KEY_DEFAULT,
-        N_("Alternative commit"),
-        N_("Select alternative commit keys"),
+        N_("Commit alternative"),
+        N_("Select commit alternative keys"),
         N_("The key events to commit the first predicted string. "
            "On inline prediction mode, reading string will be commited by this key events."),
         NULL,

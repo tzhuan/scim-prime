@@ -1,4 +1,5 @@
 src/prime_connection.cpp
+src/scim_prime_prefs.cpp
 src/scim_prime_imengine.cpp
 src/scim_prime_imengine_factory.cpp
 src/scim_prime_imengine_setup.cpp
