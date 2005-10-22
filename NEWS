@@ -1,5 +1,15 @@
+Overview of Changes from scim-prime-0.2.10 to scim-prime-0.3.0
+==============================================================
+* Fix some wrong key bindings (Pageu up & Page down candidates).
+* Fix a problem that scim-prime losts the connection to the PRIME process when
+  the I/O is busy.
+* Fix a crash problem of scim-setup when use scim-prime with glibc-2.3.5's
+  iconv & scim-skk.
+* Fix some english messages.
+* Add SKIM support (provide as external package named skim-scim-prime).
+
 Overview of Changes from scim-prime-0.2.9 to scim-prime-0.2.10
-=============================================================
+==============================================================
 * Fix a bug that set wrong key bind to key bindings view when startup the
   scim-setup.
 

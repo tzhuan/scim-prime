@@ -1,3 +1,12 @@
+2005-10-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.3.0.
+
+2005-10-22 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Wait 1 second before start communication
+	  with PRIME process. It's ad-hoc solution.
+
 2005-10-21 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/scim_prime_prefs.cpp: Fix some messages.

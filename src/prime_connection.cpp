@@ -121,6 +121,8 @@ PrimeConnection::open_connection (const char *command,
 
     if (pid > 0) {
         /* parent process */
+	sleep (1);
+
         m_pid = pid;
 
         m_in_fd = in_fd[1];
