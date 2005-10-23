@@ -12,13 +12,13 @@ web site:
 2. Requirements
 ===============
 
-skim-scim-prime doesn't contain scim-prime itself. Please install
-corresponding version of scim-prime first.
-
   * SCIM 1.4.0 or later
   * SKIM 1.4.0 or later
   * PRIME-1.0 or later
   * Corresponding version of scim-prime
+
+skim-scim-prime doesn't contain scim-prime itself. Please install
+corresponding version of scim-prime first.
 
 
 3. Install
