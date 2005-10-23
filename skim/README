@@ -1,0 +1,65 @@
+1. What's this?
+===============
+
+skim-scim-prime is a scim-prime settings plugin for SKIM.
+You can find more informations about SCIM, SKIM and scim-prime from following
+web site:
+
+  * http://www.scim-im.org/
+  * http://sourceforge.jp/projects/scim-imengine/
+
+
+2. Requirements
+===============
+
+skim-scim-prime doesn't contain scim-prime itself. Please install
+corresponding version of scim-prime first.
+
+  * SCIM 1.4.0 or later
+  * SKIM 1.4.0 or later
+  * PRIME-1.0 or later
+  * Corresponding version of scim-prime
+
+
+3. Install
+==========
+
+Please build & install requirements and skim-scim-prime by this comamnd:
+
+  $ ./configure
+  $ make
+  # make install
+
+If you installed the SCIM into /usr/local or any other non-standard diretories,
+you should specify the PKG_CONFIG_PATH environment variable like this:
+
+  $ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure
+
+
+4. Usage
+========
+
+If you installed this package correctly, you can find the PRIME setteing page inthe SKIM settiings window.
+
+
+5. License
+==========
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA.
+
+
+6. Credit
+=========
+
+ * Takuro Ashie <ashie at homa.ne.jp>
+   - Author.
