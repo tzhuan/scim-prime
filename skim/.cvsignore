@@ -1,10 +1,5 @@
-ABOUT-NLS
-COPYING
-ChangeLog
-INSTALL
 Makefile
 Makefile.in
-NEWS
 acinclude.m4
 aclocal.m4
 autom4te.cache
