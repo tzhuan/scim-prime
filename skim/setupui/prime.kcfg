@@ -4,11 +4,12 @@
   <kcfgfile name="skimrc"/>
   <group name="SCIM">
     <entry name="_IMEngine_PRIME_Command" key="/IMEngine/PRIME/Command" type="String">
-      <label></label>
+      <label>PRIME command</label>
+      <whatsthis>The PRIME command to use as conversion engine.</whatsthis>
       <default>prime</default>
     </entry>
     <entry name="_IMEngine_PRIME_Language" key="/IMEngine/PRIME/Language" type="Enum">
-      <label></label>
+      <label>Default language</label>
       <choices>
         <choice name="Off">
           <label>Off</label>
@@ -27,21 +28,23 @@
       <default></default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvertOnPeriod" key="/IMEngine/PRIME/ConvertOnPeriod" type="Bool">
-      <label></label>
+      <label>Start conversion on inputting comma or period</label>
       <default>false</default>
     </entry>
     <entry name="_IMEngine_PRIME_CommitPeriod" key="/IMEngine/PRIME/CommitPeriod" type="Bool">
-      <label></label>
+      <label>Commit comma and period immediately</label>
+      <whatsthis>Commit comma and period immediatly on inputting these characters when no preedition string exists.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_CommitOnUpper" key="/IMEngine/PRIME/CommitOnUpper" type="Bool">
-      <label></label>
+      <label>Commit when input an upper letter</label>
+      <whatsthis>Commit previous preedit string when a upper letter is entered.</whatsthis>
       <default>false</default>
     </entry>
 
 
     <entry name="_IMEngine_PRIME_SpaceChar" key="/IMEngine/PRIME/SpaceChar" type="String">
-      <label></label>
+      <label>Space character</label>
       <default> </default>
     </entry>
     <entry name="_IMEngine_PRIME_AlternativeSpaceChar" key="/IMEngine/PRIME/AlternativeSpaceChar" type="String">
@@ -51,11 +54,12 @@
 
 
     <entry name="_IMEngine_PRIME_PredictOnPreedition" key="/IMEngine/PRIME/PredictOnPreedition" type="Bool">
-      <label></label>
+      <label>Alternative space character</label>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_PredictWinPos" key="/IMEngine/PRIME/PredictWinPos" type="Enum">
-      <label></label>
+      <label>Prediction window position</label>
+      <whatsthis>Position of the prediction window to show.</whatsthis>
       <choices>
         <choice name="head">
           <label>Head of preedition area</label>
@@ -67,219 +71,268 @@
       <default>tail</default>
     </entry>
     <entry name="_IMEngine_PRIME_DirectSelectOnPrediction" key="/IMEngine/PRIME/DirectSelectOnPrediction" type="Bool">
-      <label></label>
+      <label>Use _direct select keys also on prediction</label>
+      <whatsthis>Use direct select keys not only for conversion state but also for prediction state.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_InlinePrediction" key="/IMEngine/PRIME/InlinePrediction" type="Bool">
-      <label></label>
+      <label>Inline prediction</label>
+      <whatsthis>Show first candidate of predictions instead of reading on preedit area. Reading is shown by external window.</whatsthis>
       <default>false</default>
     </entry>
 
 
     <entry name="_IMEngine_PRIME_AutoRegister" key="/IMEngine/PRIME/AutoRegister" type="Bool">
-      <label></label>
+      <label>Switch to the inline word register mode automatically</label>
+      <whatsthis>Invoke the inline word register mode when the cursor in the candidates window is move to out of range.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_CloseCandWinOnSelect" key="/IMEngine/PRIME/CloseCandWinOnSelect" type="Bool">
-      <label></label>
+      <label>Close candidates window when a candidate is selected directly</label>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_ShowAnnotation" key="/IMEngine/PRIME/ShowAnnotation" type="Bool">
-      <label></label>
+      <label>Show annotation of the word on the candidates window</label>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_ShowUsage" key="/IMEngine/PRIME/ShowUsage" type="Bool">
-      <label></label>
+      <label>Show usage of the word on the candidates window</label>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_ShowComment" key="/IMEngine/PRIME/ShowComment" type="Bool">
-      <label></label>
+      <label>Show comment of the word on the candidates window</label>
       <default>true</default>
     </entry>
     <entry name="_IMEngine_PRIME_CandidateFormColor" key="/IMEngine/PRIME/CandidateFormColor" type="String">
-      <label></label>
+      <label>The color of the annotaion text</label>
+      <whatsthis>The color of the annotaion text in the candidate list.</whatsthis>
       <default>#00007F</default>
     </entry>
     <entry name="_IMEngine_PRIME_CandidateUsageColor" key="/IMEngine/PRIME/CandidateUsageColor" type="String">
-      <label></label>
+      <label>The color of the usage text</label>
+      <whatsthis>The color of the usage text in the candidate list.</whatsthis>
       <default>#FF0000</default>
     </entry>
     <entry name="_IMEngine_PRIME_CandidateCommentColor" key="/IMEngine/PRIME/CandidateCommentColor" type="String">
-      <label></label>
+      <label>The color of the comment text</label>
+      <whatsthis>The color of the comment text in the candidate list.</whatsthis>
       <default>#0000FF</default>
     </entry>
 
 
     <entry name="_IMEngine_PRIME_CommitKey" key="/IMEngine/PRIME/CommitKey" type="String">
-      <label></label>
+      <label>Commit keys</label>
+      <whatsthis>The key events to commit the preedit string. </whatsthis>
       <default>Return,KP_Enter,Control+m,Control+M,Henkan</default>
     </entry>
     <entry name="_IMEngine_PRIME_CommitWithoutLearnKey" key="/IMEngine/PRIME/CommitWithoutLearnKey" type="String">
-      <label></label>
+      <label>Commit witout learn keys</label>
+      <whatsthis>The key events to commit the preedit string without learn.</whatsthis>
       <default>Muhenkan</default>
     </entry>
     <entry name="_IMEngine_PRIME_CommitAlternativeKey" key="/IMEngine/PRIME/CommitAlternativeKey" type="String">
-      <label></label>
+      <label>Commit alternative keys</label>
+      <whatsthis>The key events to commit the first predicted string. On inline prediction mode, reading string will be commited by this key events.</whatsthis>
       <default>Shift+Return</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvertKey" key="/IMEngine/PRIME/ConvertKey" type="String">
-      <label></label>
+      <label>Convert keys</label>
+      <whatsthis>The key events to convert the preedit string to kanji.</whatsthis>
       <default>space,Control+l,Control+L,Down</default>
     </entry>
     <entry name="_IMEngine_PRIME_CancelKey" key="/IMEngine/PRIME/CancelKey" type="String">
-      <label></label>
+      <label>Cancel keys</label>
+      <whatsthis>The key events to cancel preediting or converting.</whatsthis>
       <default>Escape,Control+g,Control+G</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectPredictionKey" key="/IMEngine/PRIME/SelectPredictionKey" type="String">
-      <label></label>
+      <label>Complete keys</label>
+      <whatsthis>The key events to complete a word using predictions.</whatsthis>
       <default>Tab</default>
     </entry>
     <entry name="_IMEngine_PRIME_BackSpaceKey" key="/IMEngine/PRIME/BackSpaceKey" type="String">
-      <label></label>
+      <label>Backspace keys</label>
+      <whatsthis>The key events to delete a character before caret.</whatsthis>
       <default>BackSpace,Control+h,Control+H</default>
     </entry>
     <entry name="_IMEngine_PRIME_DeleteKey" key="/IMEngine/PRIME/DeleteKey" type="String">
-      <label></label>
+      <label>Delete keys</label>
+      <whatsthis>The key events to delete a character after caret.</whatsthis>
       <default>Delete,Control+d,Control+D</default>
     </entry>
     <entry name="_IMEngine_PRIME_SpaceKey" key="/IMEngine/PRIME/SpaceKey" type="String">
-      <label></label>
+      <label>Insert space keys</label>
+      <whatsthis>The key events to insert space letter on non-preediting state.</whatsthis>
       <default>space</default>
     </entry>
     <entry name="_IMEngine_PRIME_AlternativeSpaceKey" key="/IMEngine/PRIME/AlternativeSpaceKey" type="String">
-      <label></label>
+      <label>Insert alternative space keys</label>
+      <whatsthis>The key events to insert alterenative space letter on non-preediting state.</whatsthis>
       <default>Shift+space,Alt+space</default>
     </entry>
     <entry name="_IMEngine_PRIME_MoveCaretLeftKey" key="/IMEngine/PRIME/MoveCaretLeftKey" type="String">
-      <label></label>
+      <label>Move to backward keys</label>
+      <whatsthis>The key events to move the caret to backward.</whatsthis>
       <default>Left,Control+b,Control+B</default>
     </entry>
     <entry name="_IMEngine_PRIME_MoveCaretRightKey" key="/IMEngine/PRIME/MoveCaretRightKey" type="String">
-      <label></label>
+      <label>Move to forward keys</label>
+      <whatsthis>The key events to move the caret to forward.</whatsthis>
       <default>Right,Control+f,Control+F</default>
     </entry>
     <entry name="_IMEngine_PRIME_MoveCaretLeftEdgeKey" key="/IMEngine/PRIME/MoveCaretLeftEdgeKey" type="String">
-      <label></label>
+      <label>Move to first keys</label>
+      <whatsthis>The key events to move the caret to the first of preedit string.</whatsthis>
       <default>Control+a,Control+A,Home</default>
     </entry>
     <entry name="_IMEngine_PRIME_MoveCaretRightEdgeKey" key="/IMEngine/PRIME/MoveCaretRightEdgeKey" type="String">
-      <label></label>
+      <label>Move to last keys</label>
+      <whatsthis>The key events to move the caret to the last of the preedit string.</whatsthis>
       <default>Control+e,Control+E,End</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvNextCandidateKey" key="/IMEngine/PRIME/ConvNextCandidateKey" type="String">
-      <label></label>
+      <label>Next candidate keys</label>
+      <whatsthis>The key events to select next candidate.</whatsthis>
       <default>space,Tab,Down,KP_Add,Control+n,Control+N</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvPrevCandidateKey" key="/IMEngine/PRIME/ConvPrevCandidateKey" type="String">
-      <label></label>
+      <label>Previous candidate</label>
+      <whatsthis>The key events to select previous candidate.</whatsthis>
       <default>Shift+Tab,Up,KP_Subtract,Control+p,Control+P</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvNextPageKey" key="/IMEngine/PRIME/ConvNextPageKey" type="String">
-      <label></label>
+      <label>Page down keys</label>
+      <whatsthis>The key events to select page down candidates.</whatsthis>
       <default>Page_Down</default>
     </entry>
     <entry name="_IMEngine_PRIME_ConvPrevPageKey" key="/IMEngine/PRIME/ConvPrevPageKey" type="String">
-      <label></label>
+      <label>Page up</label>
+      <whatsthis>The key events to select page up candidates.</whatsthis>
       <default>Page_Up</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates1Key" key="/IMEngine/PRIME/SelectCandidates1Key" type="String">
-      <label></label>
+      <label>1st candidate keys</label>
+      <whatsthis>The key events to select 1st candidate.</whatsthis>
       <default>1</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates2Key" key="/IMEngine/PRIME/SelectCandidates2Key" type="String">
-      <label></label>
+      <label>2nd candidatekeys</label>
+      <whatsthis>The key events to select 2nd candidate.</whatsthis>
       <default>2</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates3Key" key="/IMEngine/PRIME/SelectCandidates3Key" type="String">
-      <label></label>
+      <label>3rd candidate keys</label>
+      <whatsthis>The key events to select 3rd candidate.</whatsthis>
       <default>3</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates4Key" key="/IMEngine/PRIME/SelectCandidates4Key" type="String">
-      <label></label>
+      <label>4th candidate keys</label>
+      <whatsthis>The key events to select 4th candidate.</whatsthis>
       <default>4</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates5Key" key="/IMEngine/PRIME/SelectCandidates5Key" type="String">
-      <label></label>
+      <label>5th candidate keys</label>
+      <whatsthis>The key events to select 5th candidate.</whatsthis>
       <default>5</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates6Key" key="/IMEngine/PRIME/SelectCandidates6Key" type="String">
-      <label></label>
+      <label>6th candidate keys</label>
+      <whatsthis>The key events to select 6th candidate.</whatsthis>
       <default>6</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates7Key" key="/IMEngine/PRIME/SelectCandidates7Key" type="String">
-      <label></label>
+      <label>7th candidate keys</label>
+      <whatsthis>The key events to select 7th candidate.</whatsthis>
       <default>7</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates8Key" key="/IMEngine/PRIME/SelectCandidates8Key" type="String">
-      <label></label>
+      <label>8th candidate keys</label>
+      <whatsthis>The key events to select 8th candidate.</whatsthis>
       <default>8</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates9Key" key="/IMEngine/PRIME/SelectCandidates9Key" type="String">
-      <label></label>
+      <label>9th candidate keys</label>
+      <whatsthis>The key events to select 9th candidate.</whatsthis>
       <default>9</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectCandidates10Key" key="/IMEngine/PRIME/SelectCandidates10Key" type="String">
-      <label></label>
+      <label>10th candidate keys</label>
+      <whatsthis>The key events to select 10th candidate.</whatsthis>
       <default>0</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectFirstSegmentKey" key="/IMEngine/PRIME/SelectFirstSegmentKey" type="String">
-      <label></label>
+      <label>First segment keys</label>
+      <whatsthis>The key events to select first segment.</whatsthis>
       <default>Control+a,Control+A,Home</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectLastSegmentKey" key="/IMEngine/PRIME/SelectLastSegmentKey" type="String">
-      <label></label>
+      <label>Last segment keys</label>
+      <whatsthis>The key events to select last segment.</whatsthis>
       <default>Control+e,Control+E,End</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectNextSegmentKey" key="/IMEngine/PRIME/SelectNextSegmentKey" type="String">
-      <label></label>
+      <label>Next segment keys</label>
+      <whatsthis>The key events to select next segment.</whatsthis>
       <default>Right,Control+f,Control+F</default>
     </entry>
     <entry name="_IMEngine_PRIME_SelectPrevSegmentKey" key="/IMEngine/PRIME/SelectPrevSegmentKey" type="String">
-      <label></label>
+      <label>Previous segment keys</label>
+      <whatsthis>The key events to select previous segment.</whatsthis>
       <default>Left,Control+b,Control+B</default>
     </entry>
     <entry name="_IMEngine_PRIME_ShrinkSegmentKey" key="/IMEngine/PRIME/ShrinkSegmentKey" type="String">
-      <label></label>
+      <label>Shrink segment keys</label>
+      <whatsthis>The key events to shrink the selected segment.</whatsthis>
       <default>Shift+Left,Control+i,Control+I</default>
     </entry>
     <entry name="_IMEngine_PRIME_ExpandSegmentKey" key="/IMEngine/PRIME/ExpandSegmentKey" type="String">
-      <label></label>
+      <label>Expand segment keys</label>
+      <whatsthis>The key events to expand the selected segment.</whatsthis>
       <default>Shift+Right,Control+o,Control+O</default>
     </entry>
     <entry name="_IMEngine_PRIME_SetModeDefaultKey" key="/IMEngine/PRIME/SetModeDefaultKey" type="String">
-      <label></label>
+      <label>Default mode keys</label>
+      <whatsthis>The key events to set to default mode.</whatsthis>
       <default>F6</default>
     </entry>
     <entry name="_IMEngine_PRIME_SetModeKatakanaKey" key="/IMEngine/PRIME/SetModeKatakanaKey" type="String">
-      <label></label>
+      <label>Katakana mode keys</label>
+      <whatsthis>The key events to set to katakana mode.</whatsthis>
       <default>F7</default>
     </entry>
     <entry name="_IMEngine_PRIME_SetModeHalfKatakanaKey" key="/IMEngine/PRIME/SetModeHalfKatakanaKey" type="String">
-      <label></label>
+      <label>Half katakana mode keys</label>
+      <whatsthis>The key events to set to half katakana mode.</whatsthis>
       <default>F8</default>
     </entry>
     <entry name="_IMEngine_PRIME_SetModeWideAsciiKey" key="/IMEngine/PRIME/SetModeWideAsciiKey" type="String">
-      <label></label>
+      <label>Wide ascii mode keys</label>
+      <whatsthis>The key events to set to wide ascii mode.</whatsthis>
       <default>F9</default>
     </entry>
     <entry name="_IMEngine_PRIME_SetModeRawKey" key="/IMEngine/PRIME/SetModeRawKey" type="String">
-      <label></label>
+      <label>Raw mode.</label>
+      <whatsthis>The key events to set to raw mode.</whatsthis>
       <default>F10</default>
     </entry>
     <entry name="_IMEngine_PRIME_ToggleOnOffKey" key="/IMEngine/PRIME/ToggleOnOffKey" type="String">
-      <label></label>
+      <label>On/Off keys</label>
+      <whatsthis>The key events to toggle on/off PRIME.</whatsthis>
       <default>Zenkaku_Hankaku</default>
     </entry>
     <entry name="_IMEngine_PRIME_ToggleLanguageKey" key="/IMEngine/PRIME/ToggleLanguageKey" type="String">
-      <label></label>
+      <label>Toggle language keys</label>
+      <whatsthis>The key events to toggle language.</whatsthis>
       <default>F11</default>
     </entry>
     <entry name="_IMEngine_PRIME_RegisterWordKey" key="/IMEngine/PRIME/RegisterWordKey" type="String">
-      <label></label>
+      <label>Register a word keys</label>
+      <whatsthis>The key events to invoke registering a word mode.</whatsthis>
       <default>Control+w, Control+W</default>
     </entry>
     <entry name="_IMEngine_PRIME_RecoveryKey" key="/IMEngine/PRIME/RecoveryKey" type="String">
-      <label></label>
+      <label>Recovery keys</label>
+      <whatsthis>Try recovery on losting connection to the PRIME process</whatsthis>
       <default>Control+Alt+r</default>
     </entry>
   </group>
