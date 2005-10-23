@@ -84,7 +84,7 @@ extern "C" {
 
         try {
             factory = new PrimeFactory (String ("ja_JP"),
-                                        String ("53ad00ca-0eb7-4495-bec4-7cdb52f367d7"),
+                                        String ("ff7ea8c6-2fd5-494c-a691-e6bd0101b7d3"),
                                         _scim_config);
         } catch (...) {
             delete factory;
