@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anthy\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-10-21 17:29+0900\n"
+"POT-Creation-Date: 2005-10-29 03:18+0000\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -534,28 +534,28 @@ msgid "The key events to select previous candidate. "
 msgstr "前の候補を選択するキーイベント"
 
 #: src/scim_prime_prefs.cpp:510
-msgid "Page down"
-msgstr "次のページ"
-
-#: src/scim_prime_prefs.cpp:511
-msgid "Select page down candidates keys"
-msgstr "次のページへ移動キーの設定"
-
-#: src/scim_prime_prefs.cpp:512
-msgid "The key events to select page down candidates. "
-msgstr "次の候補ページへ移動するキーイベント"
-
-#: src/scim_prime_prefs.cpp:519
 msgid "Page up"
 msgstr "前のページ"
 
-#: src/scim_prime_prefs.cpp:520
+#: src/scim_prime_prefs.cpp:511
 msgid "Select page up candidates keys"
 msgstr "前のページへ移動するキーの設定"
 
-#: src/scim_prime_prefs.cpp:521
+#: src/scim_prime_prefs.cpp:512
 msgid "The key events to select page up candidates. "
 msgstr "前の候補ページへ移動するキーイベント"
+
+#: src/scim_prime_prefs.cpp:519
+msgid "Page down"
+msgstr "次のページ"
+
+#: src/scim_prime_prefs.cpp:520
+msgid "Select page down candidates keys"
+msgstr "次のページへ移動キーの設定"
+
+#: src/scim_prime_prefs.cpp:521
+msgid "The key events to select page down candidates. "
+msgstr "次の候補ページへ移動するキーイベント"
 
 #: src/scim_prime_prefs.cpp:541
 msgid "1st candidate"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-10-21 17:29+0900\n"
+"POT-Creation-Date: 2005-10-29 03:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -531,27 +531,27 @@ msgid "The key events to select previous candidate. "
 msgstr ""
 
 #: src/scim_prime_prefs.cpp:510
-msgid "Page down"
-msgstr ""
-
-#: src/scim_prime_prefs.cpp:511
-msgid "Select page down candidates keys"
-msgstr ""
-
-#: src/scim_prime_prefs.cpp:512
-msgid "The key events to select page down candidates. "
-msgstr ""
-
-#: src/scim_prime_prefs.cpp:519
 msgid "Page up"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:520
+#: src/scim_prime_prefs.cpp:511
 msgid "Select page up candidates keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:521
+#: src/scim_prime_prefs.cpp:512
 msgid "The key events to select page up candidates. "
+msgstr ""
+
+#: src/scim_prime_prefs.cpp:519
+msgid "Page down"
+msgstr ""
+
+#: src/scim_prime_prefs.cpp:520
+msgid "Select page down candidates keys"
+msgstr ""
+
+#: src/scim_prime_prefs.cpp:521
+msgid "The key events to select page down candidates. "
 msgstr ""
 
 #: src/scim_prime_prefs.cpp:541
