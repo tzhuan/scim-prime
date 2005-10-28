@@ -1,0 +1,369 @@
+# skim-scim-prime
+# Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>
+# This file is distributed under the same license as the skim-scim-prime
+# package.
+# Takuro Ashie <ashie@homa.ne.jp>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: skim-scim-prime\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-23 12:52+0000\n"
+"PO-Revision-Date: 2005-10-22 21:43+0900\n"
+"Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../setupui/primeui.cpp:970
+msgid "PRIME"
+msgstr "PRIME"
+
+#: ../setupui/primeui.cpp:971
+msgid "Start &conversion on inputting comma or period"
+msgstr "句読点入力時に変換を開始する(&C)"
+
+#: ../setupui/primeui.cpp:972 ../setupui/primeui.cpp:1035
+#: ../setupui/primeui.cpp:1051
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: ../setupui/primeui.cpp:973
+msgid "Commit comma &and period immediately"
+msgstr "句読点はすぐに確定する(&A)"
+
+#: ../setupui/primeui.cpp:974 ../setupui/primeui.cpp:1047
+msgid "Alt+A"
+msgstr "Alt+A"
+
+#: ../setupui/primeui.cpp:975
+msgid "Commit on inputting &upper letter"
+msgstr "大文字入力時に確定する(&U)"
+
+#: ../setupui/primeui.cpp:976 ../setupui/primeui.cpp:1037
+#: ../setupui/primeui.cpp:1055
+msgid "Alt+U"
+msgstr "Alt+U"
+
+#: ../setupui/primeui.cpp:977
+msgid "PRIME command:"
+msgstr "PRIMEコマンド:"
+
+#: ../setupui/primeui.cpp:978
+msgid "Default language:"
+msgstr "デフォルトの言語"
+
+#: ../setupui/primeui.cpp:980
+msgid "Off"
+msgstr "オフ"
+
+#: ../setupui/primeui.cpp:981
+msgid "Japanese"
+msgstr "日本語"
+
+#: ../setupui/primeui.cpp:982
+msgid "English"
+msgstr "英語"
+
+#: ../setupui/primeui.cpp:983
+msgid "&General"
+msgstr "一般(&G)"
+
+#: ../setupui/primeui.cpp:984
+msgid "Switch &language:"
+msgstr "言語切り替え(&L):"
+
+#: ../setupui/primeui.cpp:985
+msgid "&Raw mode:"
+msgstr "英数モード(&R):"
+
+#: ../setupui/primeui.cpp:986
+msgid "&Wide ascii mode:"
+msgstr "全角英数モード(&W)"
+
+#: ../setupui/primeui.cpp:987
+msgid "&Half katakana mode:"
+msgstr "半角カタカナモード(&H):"
+
+#: ../setupui/primeui.cpp:988
+msgid "&Katakana mode:"
+msgstr "カタカナモード(&K):"
+
+#: ../setupui/primeui.cpp:989
+msgid "Defa&ult mode:"
+msgstr "デフォルトモード(&U):"
+
+#: ../setupui/primeui.cpp:990
+msgid "O&n/Off:"
+msgstr "オン/オフ(&N):"
+
+#: ../setupui/primeui.cpp:991
+msgid "&Mode"
+msgstr "モード(&M)"
+
+#: ../setupui/primeui.cpp:992
+msgid "&Insert space:"
+msgstr "スペースを挿入(&I):"
+
+#: ../setupui/primeui.cpp:993
+msgid "Insert &alternative space:"
+msgstr "別幅スペースを挿入(&A):"
+
+#: ../setupui/primeui.cpp:994
+msgid "&Backspace:"
+msgstr "バックスペース(&B):"
+
+#: ../setupui/primeui.cpp:995
+msgid "De&lete:"
+msgstr "削除(&L):"
+
+#: ../setupui/primeui.cpp:996
+msgid "&Edit"
+msgstr "編集(&E)"
+
+#: ../setupui/primeui.cpp:997
+msgid "Ca&ncel:"
+msgstr "キャンセル(&N):"
+
+#: ../setupui/primeui.cpp:998
+msgid "Con&vert:"
+msgstr "変換(&V):"
+
+#: ../setupui/primeui.cpp:999
+msgid "&Register a word:"
+msgstr "単語登録(&R):"
+
+#: ../setupui/primeui.cpp:1000
+msgid "Com&plete:"
+msgstr "補完(&P):"
+
+#: ../setupui/primeui.cpp:1001
+msgid "Commit &alternative:"
+msgstr "予測候補で確定(&A):"
+
+#: ../setupui/primeui.cpp:1002
+msgid "Commit witho&ut learning:"
+msgstr "学習せずに確定(&U):"
+
+#: ../setupui/primeui.cpp:1003
+msgid "Co&mmit:"
+msgstr "確定(&M):"
+
+#: ../setupui/primeui.cpp:1004
+msgid "Con&vert"
+msgstr "変換(&V)"
+
+#: ../setupui/primeui.cpp:1005
+msgid "Move to &last:"
+msgstr "最後へ移動(&L):"
+
+#: ../setupui/primeui.cpp:1006
+msgid "Move to &first:"
+msgstr "最初へ移動(&F):"
+
+#: ../setupui/primeui.cpp:1007
+msgid "Move to for&ward:"
+msgstr "前方へ移動(&W):"
+
+#: ../setupui/primeui.cpp:1008
+msgid "Move to &backward:"
+msgstr "後方へ移動(&B):"
+
+#: ../setupui/primeui.cpp:1009
+msgid "C&aret"
+msgstr "キャレット(&A)"
+
+#: ../setupui/primeui.cpp:1010
+msgid "&First segment:"
+msgstr "最初の文節(&F):"
+
+#: ../setupui/primeui.cpp:1011
+msgid "&Last segment:"
+msgstr "最後の文節(&L):"
+
+#: ../setupui/primeui.cpp:1012
+msgid "Ne&xt segment:"
+msgstr "次の文節(&X):"
+
+#: ../setupui/primeui.cpp:1013
+msgid "Previo&us segment:"
+msgstr "前の文節(&U):"
+
+#: ../setupui/primeui.cpp:1014
+msgid "&Shrink segment:"
+msgstr "文節を縮める(&S):"
+
+#: ../setupui/primeui.cpp:1015
+msgid "E&xpand segment:"
+msgstr "文節を伸ばす(&X):"
+
+#: ../setupui/primeui.cpp:1016
+msgid "&Segments"
+msgstr "文節(&S)"
+
+#: ../setupui/primeui.cpp:1017
+msgid "Ne&xt candidate:"
+msgstr "次の候補(&X):"
+
+#: ../setupui/primeui.cpp:1018
+msgid "Previo&us candidate:"
+msgstr "前の候補(&U):"
+
+#: ../setupui/primeui.cpp:1019
+msgid "Page &down:"
+msgstr "次のページ(&D):"
+
+#: ../setupui/primeui.cpp:1020
+msgid "Page &up:"
+msgstr "前のページ(&U):"
+
+#: ../setupui/primeui.cpp:1021
+msgid "&Candidates"
+msgstr "候補(&C)"
+
+#: ../setupui/primeui.cpp:1022
+msgid "&1st candidate:"
+msgstr "&1番目の候補"
+
+#: ../setupui/primeui.cpp:1023
+msgid "&2nd candidate:"
+msgstr "&2番目の候補"
+
+#: ../setupui/primeui.cpp:1024
+msgid "&3rd candidate:"
+msgstr "&3番目の候補"
+
+#: ../setupui/primeui.cpp:1025
+msgid "&4th candidate:"
+msgstr "&4番目の候補"
+
+#: ../setupui/primeui.cpp:1026
+msgid "&5th candidate:"
+msgstr "&5番目の候補"
+
+#: ../setupui/primeui.cpp:1027
+msgid "&6th candidate:"
+msgstr "&6番目の候補"
+
+#: ../setupui/primeui.cpp:1028
+msgid "&7th candidate:"
+msgstr "&7番目の候補"
+
+#: ../setupui/primeui.cpp:1029
+msgid "&8th candidate:"
+msgstr "&8番目の候補"
+
+#: ../setupui/primeui.cpp:1030
+msgid "&9th candidate:"
+msgstr "&9番目の候補"
+
+#: ../setupui/primeui.cpp:1031
+msgid "1&0th candidate:"
+msgstr "1&0番目の候補"
+
+#: ../setupui/primeui.cpp:1032
+msgid "&Direct select"
+msgstr "直接選択(&D)"
+
+#: ../setupui/primeui.cpp:1033
+msgid "&Key bindings"
+msgstr "キーバインド(&K)"
+
+#: ../setupui/primeui.cpp:1034
+msgid "Predi&ct while typing letters"
+msgstr "文字入力中に予測する(&C)"
+
+#: ../setupui/primeui.cpp:1036
+msgid "&Use direct select keys also on prediction"
+msgstr "予測時にも直接選択キーを使用する(&U)"
+
+#: ../setupui/primeui.cpp:1038
+msgid "Inline prediction"
+msgstr "インライン予測"
+
+#: ../setupui/primeui.cpp:1041
+msgid "Head of preedition area"
+msgstr "編集領域の先頭"
+
+#: ../setupui/primeui.cpp:1042
+msgid "Tail of preedition area"
+msgstr "編集領域の後ろ"
+
+#: ../setupui/primeui.cpp:1043
+msgid "Prediction window position:"
+msgstr "予測ウィンドウの位置:"
+
+#: ../setupui/primeui.cpp:1044
+msgid "Pre&diction"
+msgstr "予測(&D)"
+
+#: ../setupui/primeui.cpp:1045
+msgid "Candidates window"
+msgstr "候補ウィンドウ"
+
+#: ../setupui/primeui.cpp:1046
+msgid "Switch to the inline word register mode &automatically"
+msgstr "自動的にインライン単語登録モードへ移行する(&A)"
+
+#: ../setupui/primeui.cpp:1048
+msgid "Show annotations for words on the candidates window"
+msgstr "候補ウィンドウ上に単語の注釈を表示する"
+
+#: ../setupui/primeui.cpp:1050
+msgid "&Close candidates window when a candidate is selected directly"
+msgstr "候補を直接選択した時に候補ウィンドウを閉じる(&C)"
+
+#: ../setupui/primeui.cpp:1052 ../setupui/primeui.cpp:1058
+#: ../setupui/primeui.cpp:1059
+msgid "Color:"
+msgstr "色:"
+
+#: ../setupui/primeui.cpp:1054
+msgid "Show &usages of words on the candidates window"
+msgstr "候補ウィンドウ上に単語の用例を表示する(&U)"
+
+#: ../setupui/primeui.cpp:1056
+msgid "Show comments for words on the candidates window"
+msgstr "候補ウィンドウ上に単語のコメントを表示する"
+
+#: ../setupui/primeui.cpp:1062
+msgid "Pa&nel"
+msgstr "パネル(&N)"
+
+#, fuzzy
+#~ msgid "Key &bindings"
+#~ msgstr "キーバインド"
+
+#, fuzzy
+#~ msgid ""
+#~ "Use direct select keys not only for conversion state but also for "
+#~ "prediction state."
+#~ msgstr "予測時にも直接選択キーを使用する(&U)"
+
+#, fuzzy
+#~ msgid "Alt+I"
+#~ msgstr "Alt+C"
+
+#, fuzzy
+#~ msgid "Position of the prediction window to show."
+#~ msgstr "予測ウィンドウの位置:"
+
+#, fuzzy
+#~ msgid "Alt+D"
+#~ msgstr "Alt+C"
+
+#~ msgid "Features"
+#~ msgstr "機能"
+
+#~ msgid "Description"
+#~ msgstr "説明"
+
+#~ msgid "Gro&up:"
+#~ msgstr "グループ(&U):"
+
+#~ msgid "&Choose keys..."
+#~ msgstr "キーを選択(&C)..."
+
+#~ msgid "Prime"
+#~ msgstr "Prime"

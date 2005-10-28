@@ -1,0 +1,14 @@
+.deps
+.libs
+Makefile
+Makefile.in
+kcm_skimplugin_scim_prime.la
+scimprimesettingplugin.lo
+scimprimesettingplugin.moc
+prime.cpp
+prime.h
+prime.lo
+primeui.cpp
+primeui.h
+primeui.lo
+primeui.moc
