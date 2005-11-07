@@ -49,7 +49,7 @@
     </entry>
     <entry name="_IMEngine_PRIME_AlternativeSpaceChar" key="/IMEngine/PRIME/AlternativeSpaceChar" type="String">
       <label></label>
-      <default>　</default>
+      <default>-A　</default>$)B
     </entry>
 
 
@@ -318,7 +318,7 @@
     <entry name="_IMEngine_PRIME_ToggleOnOffKey" key="/IMEngine/PRIME/ToggleOnOffKey" type="String">
       <label>On/Off keys</label>
       <whatsthis>The key events to toggle on/off PRIME.</whatsthis>
-      <default>Zenkaku_Hankaku</default>
+      <default>Zenkaku_Hankaku,Control+j,Control+J</default>
     </entry>
     <entry name="_IMEngine_PRIME_ToggleLanguageKey" key="/IMEngine/PRIME/ToggleLanguageKey" type="String">
       <label>Toggle language keys</label>
