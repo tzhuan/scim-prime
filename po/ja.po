@@ -1,11 +1,11 @@
 # translation of scim-anthy to Japanese
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the scim-prime package.
 # Copyright (C) 2004 Takuro Ashie <ashie@homa.ne.jp>.
 msgid ""
 msgstr ""
-"Project-Id-Version: anthy\n"
+"Project-Id-Version: scim-prime\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-10-29 03:18+0000\n"
+"POT-Creation-Date: 2005-11-07 16:02+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -756,11 +756,127 @@ msgstr "使用不可"
 
 #: src/scim_prime_imengine_factory.cpp:144
 msgid ""
-"Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
-"Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>"
+"Authors of sicm-prime:\n"
+"  Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
+"  Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
+"  \n"
+"Authors of PRIME:\n"
+"  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n"
 msgstr ""
-"Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
-"Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>"
+"scim-primeの作者:\n"
+"  Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
+"  Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
+"  \n"
+"PRIMEの作者:\n"
+"  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n"
+
+#: src/scim_prime_imengine_factory.cpp:156
+msgid ""
+"Special thanks:\n"
+"  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
+msgstr ""
+"Special thanks:\n"
+"  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
+
+#: src/scim_prime_imengine_factory.cpp:164
+msgid ""
+"Basic operation:\n"
+"  \n"
+msgstr ""
+"基本操作:\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:168
+msgid ""
+"1. Switch Japanese input mode:\n"
+"  You can switch on/off Japanese input mode by pressing Zenkaku_Hankaku\n"
+"  key or Control+J.\n"
+"  \n"
+msgstr ""
+"1. 日本語入力モードの切り替え:\n"
+"  全角/半角キーかControl+Jを押すことで日本語入力モードをON/OFFすることがで\n"
+"  きます。\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:174
+msgid ""
+"2. Input hiragana and katakana:\n"
+"  You can input hiragana by inputting romaji.\n"
+"  If some predicted candidates exists, they will be shown in the lookup\n"
+"  window. You can select one of it by pressing numeric key or clicking it\n"
+"  by mouse. Or you can select a next candidate by pressing Tab key. If the\n"
+"  cursor on the lookup window beyonds the range, then scim-prime will be\n"
+"  switched to conversion mode automatically.\n"
+"  \n"
+msgstr ""
+"2. ひらがなとカタカナの入力:\n"
+"  ローマ字を入力することでひらがなを入力することができます。\n"
+"  予測候補が存在する場合は、それらが候補ウィンドウに表示されます。数字キー\n"
+"  を押すか、マウスで選択することで、それらを選択することができます。また、\n"
+"  Tabキーを押すことで次の候補を選択できます。候補ウィンドウのカーソルが範囲\n"
+"  を越えた場合は、自動的に変換モードに以降します。\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:184
+msgid ""
+"3. Convert to Japanese kanji:\n"
+"  After inputting hiragana or katakana, you can convert it to kanji by\n"
+"  pressing Space key. Then it will show some candidates. You can select a\n"
+"  next candidate by pressing Space key. If the cursor on the lookup window\n"
+"  beyonds the range, scim-prime will be switched to register mode. You\n"
+"  can register a word on this mode. If you want to escape from this mode,\n"
+"  press Escape or more Space key.\n"
+"  \n"
+msgstr ""
+"3. 漢字への変換:\n"
+"  ひらがなやカタカナを入力後、Spaceキーを押すことで漢字へ変換することができ\n"
+"  ます。この際、複数の候補が表示されるでしょう。更にSpaceキーを押すことで次\n"
+"  の候補を選択することができます。候補ウィンドウのカーソルが範囲を越える\n"
+"  と自動的に登録モードへ以降します。このモードで単語を登録することができま\n"
+"  す。さらにSpaceキーを押すか、Escapeキーを押すと、このモードを抜けることが\n"
+"  できます。\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:194
+msgid ""
+"4. Modify sentence segments:\n"
+"  When you input a sentence, you can split it to some segments by pressing\n"
+"  left or right cursor key after starting conversion. You can also select\n"
+"  a next or previous segment by these keys. And you can shrink and extend\n"
+"  the selected segment by pressing Shift + left or right cursor key.\n"
+"  \n"
+msgstr ""
+"4. 文節の編集:\n"
+"  文を入力した場合、変換を開始した後に左か右カーソルキーを押すと、文節を分\n"
+"  割することができます。これらのキーで前後の文節へ移動する事もできます。\n"
+"  また、Shift+左あるいは右カーソルキーで文節を縮めたり伸ばしたりすること\n"
+"  ができます。\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:202
+msgid ""
+"5. Commit:\n"
+"  You can commit the preedit string by pressing Enter key.\n"
+"  \n"
+msgstr ""
+"5. 確定:\n"
+"  Enterキーを押すと、文字列が確定します。\n"
+"  \n"
+
+#: src/scim_prime_imengine_factory.cpp:207
+msgid ""
+"6. Predict English words:\n"
+"  You can switch language to English by pressing F11 key.\n"
+"  On English mode, PRIME can predict English words.\n"
+"  Basic operation is almost same with Japanese mode, but you can't use\n"
+"  Space key for starting conversion. Use down cursor key or Tab key\n"
+"  instead.  \n"
+msgstr ""
+"6. 英単語の予測:\n"
+"  F11キーを押すと言語が英語に切り替わります。\n"
+"  英語モードでは、PRIMEは英単語を予測することができます。\n"
+"  基本操作は日本語モードと同じですが、Spaceキーで変換を開始することはできま\n"
+"  せん。代わりに下カーソルキーかTabキーを使用して下さい\n"
 
 #: src/scim_prime_imengine_setup.cpp:88
 msgid "PRIME"
@@ -857,218 +973,3 @@ msgstr "辞書"
 #: src/scim_prime_imengine_setup.cpp:1144
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"
-
-#~ msgid "Alternative commit"
-#~ msgstr "予測候補で確定"
-
-#~ msgid "Select alternative commit keys"
-#~ msgstr "予測候補で確定するキーの設定"
-
-#~ msgid ""
-#~ "PRIME process seems terminated abnormally.Press Control+Alt+r to try "
-#~ "recovery."
-#~ msgstr ""
-#~ "PRIMEプロセスが異常終了しました。Control+Alt+rを押すと再起動を試みます。"
-
-#~ msgid "Options"
-#~ msgstr "オプション"
-
-#~ msgid "Space keys:"
-#~ msgstr "スペース:"
-
-#~ msgid "Alternative space keys:"
-#~ msgstr "全角スペース:"
-
-#~ msgid "Convert keys:"
-#~ msgstr "変換:"
-
-#~ msgid "Register a word keys:"
-#~ msgstr "単語登録:"
-
-#~ msgid "Next keys:"
-#~ msgstr "次へ移動:"
-
-#~ msgid "Previous keys:"
-#~ msgstr "前へ移動:"
-
-#~ msgid "Candidates keys (Direct select)"
-#~ msgstr "候補選択キー (直接選択)"
-
-#~ msgid "Use auto registering a word feature"
-#~ msgstr "自動単語登録機能を使用する"
-
-#, fuzzy
-#~ msgid "Commit the first segment keys:"
-#~ msgstr "選択文節を確定するキー:"
-
-#~ msgid "Select commiting the first segment keys"
-#~ msgstr "最初の文節を確定するキーの設定"
-
-#~ msgid "The key events to commit the first segment. "
-#~ msgstr "最初の文節を確定するキーイベント"
-
-#~ msgid "Commit the selected segment keys:"
-#~ msgstr "選択文節を確定するキー:"
-
-#~ msgid "Select commiting the selected segment keys"
-#~ msgstr "選択文節を確定するキーの設定"
-
-#~ msgid "The key events to commit the selected segment. "
-#~ msgstr "選択文節を確定するキーイベント"
-
-#~ msgid "Show annotation of the word on candidates window."
-#~ msgstr "候補ウィンドウ上に単語の注釈を表示する"
-
-#~ msgid "Show usage of the word on candidates window"
-#~ msgstr "候補ウィンドウ上に単語の用例を表示する"
-
-#~ msgid "Show annotation on candidates window."
-#~ msgstr "候補ウィンドウ上に単語の注釈を表示する"
-
-#~ msgid "Prime"
-#~ msgstr "Prime"
-
-#~ msgid "Input mode"
-#~ msgstr "入力モード"
-
-#~ msgid "Hiragana"
-#~ msgstr "ひらがな"
-
-#~ msgid "Katakana"
-#~ msgstr "カタカナ"
-
-#~ msgid "Half width katakana"
-#~ msgstr "半角カタカナ"
-
-#~ msgid "Latin"
-#~ msgstr "英数"
-
-#~ msgid "Wide latin"
-#~ msgstr "全角英数"
-
-#~ msgid "Typing method"
-#~ msgstr "入力方式"
-
-#~ msgid "Roma"
-#~ msgstr "ローマ字"
-
-#~ msgid "Kana"
-#~ msgstr "かな"
-
-#~ msgid "Period style"
-#~ msgstr "句読点スタイル"
-
-#~ msgid "Dictionary menu"
-#~ msgstr "辞書メニュー"
-
-#~ msgid "Edit the dictionary"
-#~ msgstr "辞書を編集"
-
-#~ msgid "Launch the dictionary administration tool."
-#~ msgstr "辞書管理ツールを起動"
-
-#~ msgid "Add a word to the dictorinay."
-#~ msgstr "単語を辞書に追加"
-
-#~ msgid "Anthy"
-#~ msgstr "Anthy"
-
-#~ msgid "Hiragana keys:"
-#~ msgstr "ひらがな変換キー："
-
-#~ msgid "Select convert to hiragana keys"
-#~ msgstr "ひらがな変換キーの設定"
-
-#~ msgid "The key events to convert the preedit string to hiragana. "
-#~ msgstr "文字列をひらがなへ変換するキーイベント"
-
-#~ msgid "Select convert to katakana keys"
-#~ msgstr "カタカナ変換キーの設定"
-
-#~ msgid "The key events to convert the preedit string to katakana. "
-#~ msgstr "文字列をカタカナへ変換するキーイベント"
-
-#~ msgid "Half width keys:"
-#~ msgstr "半角カタカナ変換キー:"
-
-#~ msgid "Select convert to half width katakana keys"
-#~ msgstr "半角カタカナ変換キーの設定"
-
-#~ msgid ""
-#~ "The key events to convert the preedit string to half width katakana. "
-#~ msgstr "文字列を半角カタカナへ変換するキーイベント"
-
-#~ msgid "Latin keys:"
-#~ msgstr "英数変換キー:"
-
-#~ msgid "Wide latin keys:"
-#~ msgstr "全角英数変換キー:"
-
-#~ msgid "Select convert to wide latin keys"
-#~ msgstr "全角英数変換キーの設定"
-
-#~ msgid "The key events to convert the preedit string to wide latin. "
-#~ msgstr "文字列を全角英数へ変換するキーイベント"
-
-#~ msgid "Edit dictionary keys:"
-#~ msgstr "辞書編集キー:"
-
-#~ msgid "Select edit dictionary keys"
-#~ msgstr "辞書編集キーの設定"
-
-#~ msgid "The key events to launch dictionary administration tool. "
-#~ msgstr "辞書管理ツールを起動するキーイベント"
-
-#~ msgid "Add a word keys:"
-#~ msgstr "単語追加キー:"
-
-#~ msgid "The key events to launch the tool to add a word. "
-#~ msgstr "単語追加ツールを起動するキーイベント"
-
-#~ msgid "Converting keys"
-#~ msgstr "変換キー"
-
-#~ msgid "Dictionary keys"
-#~ msgstr "辞書関連キー"
-
-#~ msgid "Roma typing method"
-#~ msgstr "ローマ字入力方式"
-
-#~ msgid "Kana typing method"
-#~ msgstr "かな入力方式"
-
-#~ msgid "Wide"
-#~ msgstr "全角"
-
-#~ msgid "Half"
-#~ msgstr "半角"
-
-#~ msgid "Typing method: "
-#~ msgstr "入力方式: "
-
-#~ msgid "Space type: "
-#~ msgstr "空白のタイプ: "
-
-#~ msgid "Show _input mode label"
-#~ msgstr "入力モードラベルを表示"
-
-#~ msgid "Show _typing method label"
-#~ msgstr "入力方式ラベルを表示"
-
-#~ msgid "Show _period style label"
-#~ msgstr "句読点スタイルラベルを表示"
-
-#~ msgid "Show _dictionary menu label"
-#~ msgstr "辞書メニューラベルを表示"
-
-#~ msgid "Show _edit dictionary label"
-#~ msgstr "辞書編集ラベルを表示"
-
-#~ msgid "Show _add word label"
-#~ msgstr "単語追加ラベルを表示"
-
-#~ msgid "Edit dictionary command:"
-#~ msgstr "辞書編集コマンド:"
-
-#~ msgid "Add word command:"
-#~ msgstr "単語追加コマンド:"

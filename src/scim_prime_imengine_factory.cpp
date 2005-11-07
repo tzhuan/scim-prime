@@ -141,20 +141,84 @@ WideString
 PrimeFactory::get_authors () const
 {
     return utf8_mbstowcs (
-        _("Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
-          "Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>"));
+        _("Authors of sicm-prime:\n"
+          "  Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
+          "  Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
+          "  \n"
+          "Authors of PRIME:\n"
+          "  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n"));
 }
 
 WideString
 PrimeFactory::get_credits () const
 {
-    return WideString ();
+    return utf8_mbstowcs (
+        _("Special thanks:\n"
+          "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"));
 }
 
 WideString
 PrimeFactory::get_help () const
 {
-    return WideString ();
+    const char *title =
+        _("Basic operation:\n"
+          "  \n");
+
+    const char *text1 =
+        _("1. Switch Japanese input mode:\n"
+          "  You can switch on/off Japanese input mode by pressing Zenkaku_Hankaku\n"
+          "  key or Control+J.\n"
+          "  \n");
+
+    const char *text2 =
+        _("2. Input hiragana and katakana:\n"
+          "  You can input hiragana by inputting romaji.\n"
+          "  If some predicted candidates exists, they will be shown in the lookup\n"
+          "  window. You can select one of it by pressing numeric key or clicking it\n"
+          "  by mouse. Or you can select a next candidate by pressing Tab key. If the\n"
+          "  cursor on the lookup window beyonds the range, then scim-prime will be\n"
+          "  switched to conversion mode automatically.\n"
+          "  \n");
+
+    const char *text3 =
+        _("3. Convert to Japanese kanji:\n"
+          "  After inputting hiragana or katakana, you can convert it to kanji by\n"
+          "  pressing Space key. Then it will show some candidates. You can select a\n"
+          "  next candidate by pressing Space key. If the cursor on the lookup window\n"
+          "  beyonds the range, scim-prime will be switched to register mode. You\n"
+          "  can register a word on this mode. If you want to escape from this mode,\n"
+          "  press Escape or more Space key.\n"
+          "  \n");
+
+    const char *text4 =
+        _("4. Modify sentence segments:\n"
+          "  When you input a sentence, you can split it to some segments by pressing\n"
+          "  left or right cursor key after starting conversion. You can also select\n"
+          "  a next or previous segment by these keys. And you can shrink and extend\n"
+          "  the selected segment by pressing Shift + left or right cursor key.\n"
+          "  \n");
+
+    const char *text5 =
+        _("5. Commit:\n"
+          "  You can commit the preedit string by pressing Enter key.\n"
+          "  \n");
+
+    const char *text6 =
+        _("6. Predict English words:\n"
+          "  You can switch language to English by pressing F11 key.\n"
+          "  On English mode, PRIME can predict English words.\n"
+          "  Basic operation is almost same with Japanese mode, but you can't use\n"
+          "  Space key for starting conversion. Use down cursor key or Tab key\n"
+          "  instead."
+          "  \n");
+
+    return utf8_mbstowcs (title)
+        + utf8_mbstowcs (text1)
+        + utf8_mbstowcs (text2)
+        + utf8_mbstowcs (text3)
+        + utf8_mbstowcs (text4)
+        + utf8_mbstowcs (text5)
+        + utf8_mbstowcs (text6);
 }
 
 String
