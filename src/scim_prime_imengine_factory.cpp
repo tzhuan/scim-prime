@@ -140,13 +140,18 @@ PrimeFactory::get_name () const
 WideString
 PrimeFactory::get_authors () const
 {
-    return utf8_mbstowcs (
+    const char *package =
+        PACKAGE "-" PACKAGE_VERSION "\n"
+        "\n";
+    const char *authors =
         _("Authors of sicm-prime:\n"
           "  Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
           "  Copyright (C) 2005 Hiroyuki Ikezoe <poincare@ikezoe.net>\n"
           "  \n"
           "Authors of PRIME:\n"
-          "  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n"));
+          "  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n");
+
+    return utf8_mbstowcs (package) + utf8_mbstowcs (authors);
 }
 
 WideString
