@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scim-prime\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-11-07 16:02+0900\n"
+"POT-Creation-Date: 2005-11-13 19:37+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -754,7 +754,7 @@ msgstr "]"
 msgid "Disabled"
 msgstr "使用不可"
 
-#: src/scim_prime_imengine_factory.cpp:144
+#: src/scim_prime_imengine_factory.cpp:147
 msgid ""
 "Authors of sicm-prime:\n"
 "  Copyright (C) 2005 Takuro Ashie <ashie@homa.ne.jp>\n"
@@ -770,7 +770,7 @@ msgstr ""
 "PRIMEの作者:\n"
 "  Copyright (C) 2002-2005 Hiroyuki Komatsu <komatsu@taiyaki.org>\n"
 
-#: src/scim_prime_imengine_factory.cpp:156
+#: src/scim_prime_imengine_factory.cpp:161
 msgid ""
 "Special thanks:\n"
 "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
@@ -778,7 +778,7 @@ msgstr ""
 "Special thanks:\n"
 "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 
-#: src/scim_prime_imengine_factory.cpp:164
+#: src/scim_prime_imengine_factory.cpp:169
 msgid ""
 "Basic operation:\n"
 "  \n"
@@ -786,7 +786,7 @@ msgstr ""
 "基本操作:\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:168
+#: src/scim_prime_imengine_factory.cpp:173
 msgid ""
 "1. Switch Japanese input mode:\n"
 "  You can switch on/off Japanese input mode by pressing Zenkaku_Hankaku\n"
@@ -798,7 +798,7 @@ msgstr ""
 "  きます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:174
+#: src/scim_prime_imengine_factory.cpp:179
 msgid ""
 "2. Input hiragana and katakana:\n"
 "  You can input hiragana by inputting romaji.\n"
@@ -814,10 +814,10 @@ msgstr ""
 "  予測候補が存在する場合は、それらが候補ウィンドウに表示されます。数字キー\n"
 "  を押すか、マウスで選択することで、それらを選択することができます。また、\n"
 "  Tabキーを押すことで次の候補を選択できます。候補ウィンドウのカーソルが範囲\n"
-"  を越えた場合は、自動的に変換モードに以降します。\n"
+"  を越えた場合は、自動的に変換モードに移行します。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:184
+#: src/scim_prime_imengine_factory.cpp:189
 msgid ""
 "3. Convert to Japanese kanji:\n"
 "  After inputting hiragana or katakana, you can convert it to kanji by\n"
@@ -832,12 +832,12 @@ msgstr ""
 "  ひらがなやカタカナを入力後、Spaceキーを押すことで漢字へ変換することができ\n"
 "  ます。この際、複数の候補が表示されるでしょう。更にSpaceキーを押すことで次\n"
 "  の候補を選択することができます。候補ウィンドウのカーソルが範囲を越える\n"
-"  と自動的に登録モードへ以降します。このモードで単語を登録することができま\n"
+"  と自動的に登録モードへ移行します。このモードで単語を登録することができま\n"
 "  す。さらにSpaceキーを押すか、Escapeキーを押すと、このモードを抜けることが\n"
 "  できます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:194
+#: src/scim_prime_imengine_factory.cpp:199
 msgid ""
 "4. Modify sentence segments:\n"
 "  When you input a sentence, you can split it to some segments by pressing\n"
@@ -853,7 +853,7 @@ msgstr ""
 "  ができます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:202
+#: src/scim_prime_imengine_factory.cpp:207
 msgid ""
 "5. Commit:\n"
 "  You can commit the preedit string by pressing Enter key.\n"
@@ -863,7 +863,7 @@ msgstr ""
 "  Enterキーを押すと、文字列が確定します。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:207
+#: src/scim_prime_imengine_factory.cpp:212
 msgid ""
 "6. Predict English words:\n"
 "  You can switch language to English by pressing F11 key.\n"
