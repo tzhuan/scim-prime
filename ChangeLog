@@ -1,3 +1,7 @@
+2005-12-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.cpp: Sorry, I forgot to terminate some arrays.
+
 2005-11-13 Takuro Ashie <ashie@homa.ne.jp>
 
 	* po/ja.po: Fix typo.

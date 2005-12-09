@@ -133,6 +133,15 @@ BoolConfigData __config_bool_common [] =
         NULL,
         false,
     },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        false,
+    },
 };
 
 StringConfigData __config_string_common [] =
@@ -161,6 +170,15 @@ StringConfigData __config_string_common [] =
         N_("Prediction _window position:"),
         NULL,
         N_("The prediction window position to show."),
+        NULL,
+        false,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
         NULL,
         false,
     },
@@ -662,6 +680,15 @@ ColorConfigData __config_color_common [] =
         N_("Co_lor:"),
         N_("The color of the comment text"),
         N_("The color of the comment text in the candidate list."),
+        NULL,
+        false,
+    },
+    {
+        NULL,
+        "",
+        NULL,
+        NULL,
+        NULL,
         NULL,
         false,
     },
