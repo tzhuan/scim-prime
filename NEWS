@@ -1,3 +1,9 @@
+Overview of Changes from scim-prime-0.3.0 to scim-prime-0.3.1
+=============================================================
+* Add "Control+J" for toggling ON/OFF PRIME.
+* Add help text.
+* Fix a clash bug of setup module.
+
 Overview of Changes from scim-prime-0.2.10 to scim-prime-0.3.0
 ==============================================================
 * Fix some wrong key bindings (Page up & Page down candidates).
