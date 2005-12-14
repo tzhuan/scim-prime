@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-11-13 19:37+0900\n"
+"POT-Creation-Date: 2005-12-13 16:12+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,563 +143,563 @@ msgstr ""
 msgid "Show comment of the word on the candidates window."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:143
+#: src/scim_prime_prefs.cpp:152
 msgid "PRIME _command:"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:145
+#: src/scim_prime_prefs.cpp:154
 msgid "The PRIME command to use as conversion engine."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:152
+#: src/scim_prime_prefs.cpp:161
 msgid "Default _language:"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:154
+#: src/scim_prime_prefs.cpp:163
 msgid "Default language:"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:161
+#: src/scim_prime_prefs.cpp:170
 msgid "Prediction _window position:"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:163
+#: src/scim_prime_prefs.cpp:172
 msgid "The prediction window position to show."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:174
+#: src/scim_prime_prefs.cpp:192
 msgid "Insert space"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:175
+#: src/scim_prime_prefs.cpp:193
 msgid "Select space keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:176
+#: src/scim_prime_prefs.cpp:194
 msgid "The key events to insert space letter on non-preediting state. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:183
+#: src/scim_prime_prefs.cpp:201
 msgid "Insert alternative space"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:184
+#: src/scim_prime_prefs.cpp:202
 msgid "Select alternative space keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:185
+#: src/scim_prime_prefs.cpp:203
 msgid ""
 "The key events to insert alterenative space letter on non-preediting state. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:192
+#: src/scim_prime_prefs.cpp:210
 msgid "Backspace"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:193
+#: src/scim_prime_prefs.cpp:211
 msgid "Select backspace keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:194
+#: src/scim_prime_prefs.cpp:212
 msgid "The key events to delete a character before caret. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:201
+#: src/scim_prime_prefs.cpp:219
 msgid "Delete"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:202
+#: src/scim_prime_prefs.cpp:220
 msgid "Select delete keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:203
+#: src/scim_prime_prefs.cpp:221
 msgid "The key events to delete a character after caret. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:223
+#: src/scim_prime_prefs.cpp:241
 msgid "Convert"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:224
+#: src/scim_prime_prefs.cpp:242
 msgid "Select convert keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:225
+#: src/scim_prime_prefs.cpp:243
 msgid "The key events to convert the preedit string to kanji. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:232
+#: src/scim_prime_prefs.cpp:250
 msgid "Cancel"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:233
+#: src/scim_prime_prefs.cpp:251
 msgid "Select cancel keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:234
+#: src/scim_prime_prefs.cpp:252
 msgid "The key events to cancel preediting or converting. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:241
+#: src/scim_prime_prefs.cpp:259
 msgid "Commit"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:242
+#: src/scim_prime_prefs.cpp:260
 msgid "Select commit keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:243
+#: src/scim_prime_prefs.cpp:261
 msgid "The key events to commit the preedit string. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:250
+#: src/scim_prime_prefs.cpp:268
 msgid "Commit witout learn"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:251
+#: src/scim_prime_prefs.cpp:269
 msgid "Select commit witout learn keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:252
+#: src/scim_prime_prefs.cpp:270
 msgid "The key events to commit the preedit string without learn. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:259
+#: src/scim_prime_prefs.cpp:277
 msgid "Commit alternative"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:260
+#: src/scim_prime_prefs.cpp:278
 msgid "Select commit alternative keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:261
+#: src/scim_prime_prefs.cpp:279
 msgid ""
 "The key events to commit the first predicted string. On inline prediction "
 "mode, reading string will be commited by this key events."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:269
+#: src/scim_prime_prefs.cpp:287
 msgid "Complete"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:270
+#: src/scim_prime_prefs.cpp:288
 msgid "Select complete keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:271
+#: src/scim_prime_prefs.cpp:289
 msgid "The key events to complete a word using predictions. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:278
+#: src/scim_prime_prefs.cpp:296
 msgid "Register a word"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:279
+#: src/scim_prime_prefs.cpp:297
 msgid "Select register a word keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:280
+#: src/scim_prime_prefs.cpp:298
 msgid "The key events to invoke registering a word mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:300
+#: src/scim_prime_prefs.cpp:318
 msgid "On/Off"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:301
+#: src/scim_prime_prefs.cpp:319
 msgid "Select on/off keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:302
+#: src/scim_prime_prefs.cpp:320
 msgid "The key events to toggle on/off PRIME."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:309
+#: src/scim_prime_prefs.cpp:327
 msgid "Default mode"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:310
+#: src/scim_prime_prefs.cpp:328
 msgid "Select default mode keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:311
+#: src/scim_prime_prefs.cpp:329
 msgid "The key events to set to default mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:318
+#: src/scim_prime_prefs.cpp:336
 msgid "Katakana mode"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:319
+#: src/scim_prime_prefs.cpp:337
 msgid "Select katakana mode keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:320
+#: src/scim_prime_prefs.cpp:338
 msgid "The key events to set to katakana mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:327
+#: src/scim_prime_prefs.cpp:345
 msgid "Half katakana mode"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:328
+#: src/scim_prime_prefs.cpp:346
 msgid "Select half katakana mode keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:329
+#: src/scim_prime_prefs.cpp:347
 msgid "The key events to set to half katakana mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:336
+#: src/scim_prime_prefs.cpp:354
 msgid "Wide ascii mode"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:337
+#: src/scim_prime_prefs.cpp:355
 msgid "Select wide ascii mode keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:338
+#: src/scim_prime_prefs.cpp:356
 msgid "The key events to set to wide ascii mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:345
+#: src/scim_prime_prefs.cpp:363
 msgid "Raw mode"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:346
+#: src/scim_prime_prefs.cpp:364
 msgid "Select raw mode keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:347
+#: src/scim_prime_prefs.cpp:365
 msgid "The key events to set to raw mode. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:354
+#: src/scim_prime_prefs.cpp:372
 msgid "Toggle language"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:355
+#: src/scim_prime_prefs.cpp:373
 msgid "Select toggle language keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:356
+#: src/scim_prime_prefs.cpp:374
 msgid "The key events to toggle language. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:376
+#: src/scim_prime_prefs.cpp:394
 msgid "Move to first"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:377
+#: src/scim_prime_prefs.cpp:395
 msgid "Select move caret to first keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:378
+#: src/scim_prime_prefs.cpp:396
 msgid "The key events to move the caret to the first of preedit string. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:385
+#: src/scim_prime_prefs.cpp:403
 msgid "Move to last"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:386
+#: src/scim_prime_prefs.cpp:404
 msgid "Select move caret to last keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:387
+#: src/scim_prime_prefs.cpp:405
 msgid "The key events to move the caret to the last of the preedit string. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:394
+#: src/scim_prime_prefs.cpp:412
 msgid "Move to forward"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:395
+#: src/scim_prime_prefs.cpp:413
 msgid "Select move caret to forward keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:396
+#: src/scim_prime_prefs.cpp:414
 msgid "The key events to move the caret to forward. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:403
+#: src/scim_prime_prefs.cpp:421
 msgid "Move to backward"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:404
+#: src/scim_prime_prefs.cpp:422
 msgid "Select move caret to backward keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:405
+#: src/scim_prime_prefs.cpp:423
 msgid "The key events to move the caret to backward. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:425
+#: src/scim_prime_prefs.cpp:443
 msgid "First segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:426
+#: src/scim_prime_prefs.cpp:444
 msgid "Select first segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:427
+#: src/scim_prime_prefs.cpp:445
 msgid "The key events to select first segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:434
+#: src/scim_prime_prefs.cpp:452
 msgid "Last segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:435
+#: src/scim_prime_prefs.cpp:453
 msgid "Select last segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:436
+#: src/scim_prime_prefs.cpp:454
 msgid "The key events to select last segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:443
+#: src/scim_prime_prefs.cpp:461
 msgid "Next segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:444
+#: src/scim_prime_prefs.cpp:462
 msgid "Select next segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:445
+#: src/scim_prime_prefs.cpp:463
 msgid "The key events to select next segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:452
+#: src/scim_prime_prefs.cpp:470
 msgid "Previous segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:453
+#: src/scim_prime_prefs.cpp:471
 msgid "Select previous segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:454
+#: src/scim_prime_prefs.cpp:472
 msgid "The key events to select previous segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:461
+#: src/scim_prime_prefs.cpp:479
 msgid "Shrink segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:462
+#: src/scim_prime_prefs.cpp:480
 msgid "Select shrink segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:463
+#: src/scim_prime_prefs.cpp:481
 msgid "The key events to shrink the selected segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:470
+#: src/scim_prime_prefs.cpp:488
 msgid "Expand segment"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:471
+#: src/scim_prime_prefs.cpp:489
 msgid "Select expand segment keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:472
+#: src/scim_prime_prefs.cpp:490
 msgid "The key events to expand the selected segment. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:492
+#: src/scim_prime_prefs.cpp:510
 msgid "Next candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:493
+#: src/scim_prime_prefs.cpp:511
 msgid "Select next candidate keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:494
+#: src/scim_prime_prefs.cpp:512
 msgid "The key events to select next candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:501
+#: src/scim_prime_prefs.cpp:519
 msgid "Previous candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:502
+#: src/scim_prime_prefs.cpp:520
 msgid "Select previous candidate keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:503
+#: src/scim_prime_prefs.cpp:521
 msgid "The key events to select previous candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:510
+#: src/scim_prime_prefs.cpp:528
 msgid "Page up"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:511
+#: src/scim_prime_prefs.cpp:529
 msgid "Select page up candidates keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:512
+#: src/scim_prime_prefs.cpp:530
 msgid "The key events to select page up candidates. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:519
+#: src/scim_prime_prefs.cpp:537
 msgid "Page down"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:520
+#: src/scim_prime_prefs.cpp:538
 msgid "Select page down candidates keys"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:521
+#: src/scim_prime_prefs.cpp:539
 msgid "The key events to select page down candidates. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:541
+#: src/scim_prime_prefs.cpp:559
 msgid "1st candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:542
+#: src/scim_prime_prefs.cpp:560
 msgid "Select keys to select 1st candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:543
+#: src/scim_prime_prefs.cpp:561
 msgid "The key events to select 1st candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:550
+#: src/scim_prime_prefs.cpp:568
 msgid "2nd candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:551
+#: src/scim_prime_prefs.cpp:569
 msgid "Select keys to select 2nd candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:552
+#: src/scim_prime_prefs.cpp:570
 msgid "The key events to select 2nd candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:559
+#: src/scim_prime_prefs.cpp:577
 msgid "3rd candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:560
+#: src/scim_prime_prefs.cpp:578
 msgid "Select keys to select 3rd candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:561
+#: src/scim_prime_prefs.cpp:579
 msgid "The key events to select 3rd candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:568
+#: src/scim_prime_prefs.cpp:586
 msgid "4th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:569
+#: src/scim_prime_prefs.cpp:587
 msgid "Select keys to select 4th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:570
+#: src/scim_prime_prefs.cpp:588
 msgid "The key events to select 4th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:577
+#: src/scim_prime_prefs.cpp:595
 msgid "5th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:578
+#: src/scim_prime_prefs.cpp:596
 msgid "Select keys to select 5th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:579
+#: src/scim_prime_prefs.cpp:597
 msgid "The key events to select 5th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:586
+#: src/scim_prime_prefs.cpp:604
 msgid "6th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:587
+#: src/scim_prime_prefs.cpp:605
 msgid "Select keys to select 6th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:588
+#: src/scim_prime_prefs.cpp:606
 msgid "The key events to select 6th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:595
+#: src/scim_prime_prefs.cpp:613
 msgid "7th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:596
+#: src/scim_prime_prefs.cpp:614
 msgid "Select keys to select 7th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:597
+#: src/scim_prime_prefs.cpp:615
 msgid "The key events to select 7th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:604
+#: src/scim_prime_prefs.cpp:622
 msgid "8th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:605
+#: src/scim_prime_prefs.cpp:623
 msgid "Select keys to select 8th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:606
+#: src/scim_prime_prefs.cpp:624
 msgid "The key events to select 8th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:613
+#: src/scim_prime_prefs.cpp:631
 msgid "9th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:614
+#: src/scim_prime_prefs.cpp:632
 msgid "Select keys to select 9th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:615
+#: src/scim_prime_prefs.cpp:633
 msgid "The key events to select 9th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:622
+#: src/scim_prime_prefs.cpp:640
 msgid "10th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:623
+#: src/scim_prime_prefs.cpp:641
 msgid "Select keys to select 10th candidate"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:624
+#: src/scim_prime_prefs.cpp:642
 msgid "The key events to select 10th candidate. "
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:644 src/scim_prime_prefs.cpp:653
-#: src/scim_prime_prefs.cpp:662
+#: src/scim_prime_prefs.cpp:662 src/scim_prime_prefs.cpp:671
+#: src/scim_prime_prefs.cpp:680
 msgid "Co_lor:"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:645
+#: src/scim_prime_prefs.cpp:663
 msgid "The color of the annotaion text"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:646
+#: src/scim_prime_prefs.cpp:664
 msgid "The color of the annotaion text in the candidate list."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:654
+#: src/scim_prime_prefs.cpp:672
 msgid "The color of the usage text"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:655
+#: src/scim_prime_prefs.cpp:673
 msgid "The color of the usage text in the candidate list."
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:663
+#: src/scim_prime_prefs.cpp:681
 msgid "The color of the comment text"
 msgstr ""
 
-#: src/scim_prime_prefs.cpp:664
+#: src/scim_prime_prefs.cpp:682
 msgid "The color of the comment text in the candidate list."
 msgstr ""
 
