@@ -1,0 +1,843 @@
+2005-12-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.3.1.
+
+2005-12-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.cpp: Sorry, I forgot to terminate some arrays.
+
+2005-11-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po: Fix typo.
+
+2005-11-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp:
+	Add package name and version into authors text.
+	Thank you for your notifying > Masatake YAMATO <jet@gyve.org>
+
+2005-11-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Add help text.
+	* po/ja.po: Update.
+
+2005-11-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Add Control+J for toggling ON/OFF.
+
+2005-10-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.3.0.
+	
+2005-10-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.cpp: Fix a wrong entry (PageUp,PageDown).
+
+2005-10-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Change uuid to decrease
+	priority.
+
+2005-10-21 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.cpp: Fix some messages.
+	* po/POTFILES.in, po/ja.po, po/scim-prime.pot: Update.
+
+2005-10-21 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Remove checks for EIO condition.
+
+2005-10-20 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Fix wron key bind (Swap PageUp and PageDown).
+
+2005-10-17 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/prime_connection.cpp,
+	  src/scim_prime_imengine.[cpp|h]:
+	make PrimeConnection pointer for prevent crashing scim-setup.
+
+2005-10-12 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.[cpp|h]:
+	using namespace scim_prime.
+
+2005-10-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Fix typo.
+
+2005-09-26 Takuro Ashie <ashie@homa.ne.jp>
+
+	* AUTHORS, src/scim_prime_imengine_factory.cpp:
+	Change order of authors list.
+
+2005-08-30 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.10.
+
+2005-08-30 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp:
+	Sorry, wrong key was set on startup.
+
+2005-08-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.9.
+
+2005-08-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.{cpp,h}: Separate some code from
+	set_preedition() to set_preedition_on_preediting ().
+
+2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.{cpp,h}: Rename process_remaining_key_event ()
+	to process_input_key_event ().
+
+2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Fix indent.
+
+2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Make "Key bindings" column
+	resizable.
+
+2005-08-24 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Such key "10" doesn't exit m( )m
+	Thanks Bando-san.
+
+2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Minor fix.
+
+2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Fix indent.
+
+2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Show all key bindings by default.
+
+2005-08-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Add authors.
+
+2005-08-22 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Disconnect "reload" signal of
+	config object. Thanks James Su.
+
+2005-08-19 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.{cpp,h}: Show detailed error message.
+	* po/POTFILES.in, po/ja.po: Update.
+
+2005-08-19 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.{cpp,h}: Check error strictly.
+
+2005-07-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.8.
+
+2005-07-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po, po/scim-prime.pot, src/scim_prime_imengine.{cpp,h},
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Add a key binding to on/off PRIME.
+
+2005-07-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_imengine_factory.{cpp.h}, src/scim_prime_prefs.h,
+	  po/ja.po, po/scim-prime.pot:
+	Add default language setting.
+
+2005-07-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Fix a build problem on non glibc system.
+	Thanks 357 & 360 of SCIM thread on 2ch linux board.
+
+2005-06-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.7.
+
+2005-06-27 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Set sensitivity of color selection
+	button.
+
+2005-06-24 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Minor fix.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po: Update.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Add "Choose keys..." button for
+	key list view. Also other minor fixes are made.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Replace "APPEND_ENTRY" macro with
+	"create_entry" function.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Add mnemonic for color buttons.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Set tooltips for color buttons.
+
+2005-06-23 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/scim_prime_imengine.[cpp,h],
+	  src/scim_prime_imengine_factory.[cpp,h],
+	  src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.h:
+	Configuration of the colors of annotaion, usage and comment.
+
+	* po/ja.po, po/scim-prime.pot: Update.
+
+2005-06-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_action.cpp: Ignore CapsLock on matching key bindings.
+
+2005-06-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.6.
+
+2005-06-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* scim_prime_prefs.h: Changed default setting of lookup window
+	position to "tail". "head" doesn't work correctly on certain
+	environment such as scim-qtimm.
+
+2005-06-02 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_action.{cpp,h}, src/scim_prime_imengine_factory.h:
+	Fix for gcc-4.0. But it's a ad-hoc solution.
+
+2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Sorry, AM_INIT_AUTOMAKE(1.9), not AM_PREREQ.
+
+2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* Update automake to 1.9.4
+	* configure.ac: Version-0.2.5
+
+2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Add AM_PREREQ and AC_PREREQ.
+
+2005-05-17 Takuro Ashie <ashie@homa.ne.jp>
+	* NEW: Fix typo.
+	
+2005-05-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.4.
+	* NEWS: Update.
+
+2005-05-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp
+	* src/prime_connection.cpp: Connect signal each time when the scim-prime
+	read/write the message to the pipe, and restore signal handler on
+	exiting the function.
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_prefs.h:
+	Try recovery when the connection is lost.
+	* po/ja.po, po/scim_prime.pot: Update.
+
+2005-05-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Revive key mask checking to enable
+	apllication's short cut key on non-preedition state.
+	Thanks DAIRIKI-san.
+
+2005-05-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.2.3.
+	* NEWS: Update.
+
+2005-05-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po: Fix typo. Thanks Kazuhiro NISHIYAMA.
+
+2005-05-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Remove mask checking to compile against
+	scim-1.3.0. Thanks UTUMI-san.
+
+2005-05-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp:
+	Changed a message ("Option" -> "Common").
+
+2005-05-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Minor fix.
+	* src/scim_prime_imengine_setup.cpp: Add mnemonic.
+	* po/ja.po, po/scim-prime.pot: Update.
+
+2005-05-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Eat all key event while preediting.
+
+2005-05-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_prefs.h,
+	  src/scim_prime_imengine_setup.cpp:
+	Added a UI for prediction window position preference.
+	Fixed some minor bugs.
+
+2005-05-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_prefs.h:
+	Added a setting for prediction window position.
+
+2005-04-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* Version-0.2.2.
+
+2005-04-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Also m_preedition_visible flags is added.
+
+2005-04-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Add m_lookup_table_visible flag, and call show_lookup_table () on focus
+	in if this value is true.
+
+2005-04-28 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Minor bug fix.
+
+2005-04-26 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Removed m_prime_major_version.
+
+2005-04-26 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Clean child process when a error is occured.
+
+2005-04-23 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't set prediction on changing
+	language.
+
+2005-04-22 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Refactoring.
+	* po/ja.po: Update.
+
+2005-04-20 Takuro Ashie <ashie@homa.ne.jp>
+
+	* Version-0.2.1.
+
+2005-04-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp:
+	  - Don't relay backspace and insert key event to application on inline
+	    register mode.
+	  - Don't predict internally when the preedit string doesn't exit.
+
+2005-04-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Reverse color of preedit string on
+	inine prediction mode.
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Immediate committing comma and period
+	feature didn't work correctly on certain condition.
+	Thanks reporting > UTSUMI-san
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.h:
+	Added a option to choose commit comma or period immediatly or not.
+	* po/ja.po, po/scim-prime.pot: Updated.	
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.h:
+	Enabled to start conversion on inputting comma or period.
+	* po/ja.po, po/scim-prime.pot: Updated.	
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* Version-0.2.0.
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Fixed some messages.
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Added alternative commit key
+	preference.
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Fixed window layout.
+
+2005-04-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scimr_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp, scim_prime_imengine_setup.cpp:
+	Ignore conversion keys which conflicts with space and alternative space
+	keys on certain language.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Start coversion when no predictions are
+	found on tab pressing.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp, src/scim_prime_prefs.h:
+	Added alternative commit key.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Cancel prediction correctly on certain
+	condition.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't process changing language action
+	when the PRIME is dead.
+
+2005-04-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't call reset() on changing language.
+
+2005-04-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Enabled to start modifying from
+	selecting prediction state.
+	* src/scim_prime_prefs.h: Changed some default settings.
+
+2005-04-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Implemented inline prediction on
+	register mode.
+
+2005-04-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Cancel prediction on inline prediction
+	mode when a cancel key is pressed.
+
+2005-04-09 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Fixed clash bug on direct selection.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added UI for inline prediction preference.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Commit first candidate of predictions on
+	inline prediction mode.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Start conversion when the cursor in
+	candidates window is moved to out of range on predicttion.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_prefs.h:
+	Added inline prediction option, but it's not work yet.
+	* src/scim_prime_imengine_setup.cpp: Divide pages.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't change to register mode on
+	selectig predictions.
+
+2005-04-08 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Now I'm implementing a secret feature :D
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Sorry, candidates overflow at last
+	commited code.
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Simplified.
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Avoid flicker of candidates window on
+	prediction.
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp: Added a preference for
+	completion key.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp, src/scim_prime_prefs.h:
+	Enabled to select predictions by TAB key.
+ 
+2005-04-07 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_prefs.h: Added "Down" key for Converting function.
+	Thanks to UTSUMI-san.
+
+2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Dont't recreate the session when the
+	same language with the current session is selected.
+
+2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Make sure to show language label.
+
+2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imegnine.h: Added a
+	toolbar item to indicating current language.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h, src/scim_prime_imengine_setup.cpp,
+	  src/scim_prime_prefs.h:
+	Enabled to use direct select keys on prediction state.
+	Modified to revert to non-prediction state when a cancel key is pressed.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-06 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Added checks for PPRIME.
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp: Use waitpid(2) instead of wait(2).
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Check connection.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't change the sate to register mode
+	automatically when the current state is modifying mode.
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: return true on end of
+	PrimeInstance::action_modify_caret_left_edge and
+	PrimeInstance::action_modify_caret_right_edge.
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Modified to revert from modifying state
+	to preediting state when the cannel key is pressed.
+
+2005-04-05 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Show conversion string correctly on
+	modifying on register mode.
+
+2005-04-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h: Fixed odd
+	behavior of registering feature, but handling segments issue is not
+	fixed yet.
+
+2005-04-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h: Code refine.
+
+2005-04-04 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_commands.h, src/prime_session.cpp, src/prime_session.h:
+	Fixed typo.
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Enabled to modify segments, but still has some problems mainly in
+	registering feature.
+
+2005-04-01 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added key bindings for handling segments, but it doesn't work yet.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-31 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_commands.h: Fixed typo.
+	* src/prime_session.cpp, prime_session.h: Added multi segment handling
+	related protocl supports.
+	* src/prime_connection.cpp, src/prime_connection.h: Minor fix.
+
+2005-03-31 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/prime_session.cpp, src/prime_session.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Use "conv_*" protocol instead of "lookup_*" one to get candidates.
+	Other minor fixes are made.
+	* po/ja.po. po/scim-prime.pot: Updated.
+
+2005-03-29 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.ac: Version-0.1.0.
+
+2005-03-20 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Register empty PropertyList on focus in
+	to clear toolbar.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Set caret position to last of string
+	when the candidates window is hidden.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't clear lookup table on hiding
+	candidates widnow.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp,
+	  src/scim_prime_imengine_factory.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine_setup.cpp:
+	Added a option to close candidates window when a candidate is selected
+	directly.
+	* po/ja.po: Updated.
+
+2005-03-17 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Don't call session_start in constructor
+	for performance issue. Call it when inputting is started instead.
+	Thank you for reporting > Bando-san.
+
+2005-03-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Revert to preediting state on pressing
+	backspace key. Thanks to UTSUMI-san.
+	* src/scim_prime_prefs.h: Fixed typo.
+
+2005-03-16 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_commands.h: Fixed typo. Thanks to komatsu-san.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp, scim_prime_imengine_factory.h:
+	Divided from scim_prime_imengine_factory.{cpp,h}.
+	* src/Makefile.am,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h
+	Moved PrimeFactory to scim_prime_imengine_factory.{cpp,h}
+	* po/POTFILES.in: Added scim_prime_imengine_factory.{cpp,h}.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/scim_prime_imengine.cpp:
+	Use std::map to store meta data of candidates.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp: Call session_end command before delete
+	session object.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp:
+	Added commit without learn key.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-15 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added language toggle key.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added "predict on preedition" setting.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp:
+	Clear stored actions before reload config.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_action.cpp, src/scim_prime_action.h:
+	New file. Added action manager class.
+	I'll happy if the SCIM has such a class template.
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Manage actions using PrimeAction class.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/intl.c: Divided from src/scim_prime_imengine.cpp and
+	src/scim_prime_imengine_setup.cpp.
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine_setup.cpp:
+	Ditto.
+	* src/scim_prime_imengine.h: Fixed copyright year.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h
+	  src/prime_session.cpp, src/prime_session.h:
+	Added some implementation for protocol dialog.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h:
+	Added "--no-save" option.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added space key preferences.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp:
+	Sorry, forgot to connect to signal for auto register setting.
+
+2005-03-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Enabled to edit commited string on register mode.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added features to show annotation and usage of words on candidates
+	widnow.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h:
+	Set context and learn word correctly.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp:
+	Don't allow entering space on register mode.
+	Revert to preedition state when the input mode is changed on converting
+	state.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added auto register feature.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp. src/scim_prime_imengine.h,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added "prime command" and "commit on upper letter" preferences.
+	* src/prime_connection.cpp: Minor fix.
+	* po/ja.po, po/scim-prime.pot: Updated.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po, po/scim-prime.pot: Updated.
+	* src/prime_connection.h, src/prime_connection.cpp: Minor fix.
+	* src/scim_prime_imengine.h, src/scim_prime_imengine.cpp,
+	  src/scim_prime_imengine_setup.cpp, src/scim_prime_prefs.h:
+	Added some key bindings for selecting candidates.
+
+2005-03-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* data/Makefile.am, data/scim-prime.png, scim_prime_imengine.cpp:
+	Added icon file.
+	* src/scim_prime_prefs.h: Fixed typo.
+
+2005-03-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp:
+	Don't process key event if the PrimeSession doesn't exist.
+
+2005-03-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/ja.po, po/scim-prime.pot, src/scim_prime_imengine_setup.cpp
+	Fixed typo.
+
+2005-03-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_setup.cpp:
+	Added tooltips.
+
+2005-03-12 Takuro Ashie <ashie@homa.ne.jp>
+
+	* po/POTFILES.in, po/ja.po, po/scim-prime.pot
+	Updated.
+	* src/scim_prime_imengine_setup.cpp:
+	Added key preferences.
+
+2005-03-11 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/prime_connection.cpp, src/prime_connection.h,
+	  src/scim_prime_imengine.cpp, src/scim_prime_imengine.h,
+	  src/scim_prime_prefs.h:
+	Added inline word learning feature.
+	Added key preferences.
+
+2005-03-10 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine.cpp:
+	Show preedit string when using XIM.

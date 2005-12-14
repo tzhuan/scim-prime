@@ -1,5 +1,7 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT(scim-prime, 0.0.0, poincare@ikezoe.net)
+AC_PREREQ(2.59)
+
+AC_INIT(scim-prime, 0.3.1, ashie@homa.ne.jp)
 AC_CONFIG_SRCDIR([configure.ac])
 
 # Save this value here, since automake will set cflags and cxxflags later
@@ -7,8 +9,8 @@ cflags_set=${CFLAGS+set}
 cppflags_set=${CPPFLAGS+set}
 
 SCIM_PRIME_MAJOR_VERSION=0
-SCIM_PRIME_MINOR_VERSION=0
-SCIM_PRIME_MICRO_VERSION=0
+SCIM_PRIME_MINOR_VERSION=3
+SCIM_PRIME_MICRO_VERSION=1
 
 SCIM_PRIME_VERSION=$SCIM_PRIME_MAJOR_VERSION.$SCIM_PRIME_MINOR_VERSION.$SCIM_PRIME_MICRO_VERSION
 
@@ -18,7 +20,7 @@ AC_SUBST(SCIM_PRIME_MICRO_VERSION)
 AC_SUBST(SCIM_PRIME_VERSION)
 
 # Init automake stuff
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE(1.9)
 AM_CONFIG_HEADER(config.h)
 
 # Init gettext
@@ -110,7 +112,17 @@ fi
 
 AC_SUBST(SCIM_ICONDIR)
 AC_SUBST(SCIM_MODULEDIR)
-        
+
+
+# Checks for PRIME
+PRIME_VERSION=1.0.0
+
+PKG_CHECK_MODULES(PRIME,
+	[prime >= $PRIME_VERSION],
+	[],
+	[AC_MSG_ERROR(Please install PRIME-1.0.0 or later.)])
+
+
 AC_CONFIG_FILES([
 Makefile
 intl/Makefile

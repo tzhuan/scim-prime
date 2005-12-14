@@ -1,0 +1,4 @@
+File=prime.kcfg
+ClassName=PrimeConfig
+Singleton=true
+Mutators=false
