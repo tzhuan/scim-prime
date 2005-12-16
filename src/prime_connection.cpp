@@ -236,17 +236,20 @@ PrimeConnection::close_connection (void)
             ssize_t rv = write (m_in_fd,
                                 command + (len - remaining),
                                 remaining);
-            switch (errno) {
-            case EBADF:
-            case EINVAL:
-            case EPIPE:
-                remaining = 0;
-                if (m_err_msg.empty ())
-                    set_error_message (COMMUNICATION_FAILD, errno);
-                break;
-            default:
+            if (rv < 0) {
+                switch (errno) {
+                case EBADF:
+                case EINVAL:
+                case EPIPE:
+                    remaining = 0;
+                    if (m_err_msg.empty ())
+                        set_error_message (COMMUNICATION_FAILD, errno);
+                    break;
+                default:
+                    break;
+                }
+            } else {
                 remaining -= rv;
-                break;
             }
         }
 #endif
@@ -550,18 +553,21 @@ PrimeConnection::send_command (const char *command,
         ssize_t rv = write (m_in_fd,
                             str.c_str() + (len - remaining),
                             remaining);
-        switch (errno) {
-        case EBADF:
-        case EINVAL:
-        case EPIPE:
-            clean_child ();
-            if (m_err_msg.empty ())
-                set_error_message (COMMUNICATION_FAILD, errno);
-            goto ERROR;
-            break;
-        default:
+        if (rv < 0) {
+            switch (errno) {
+            case EBADF:
+            case EINVAL:
+            case EPIPE:
+                clean_child ();
+                if (m_err_msg.empty ())
+                    set_error_message (COMMUNICATION_FAILD, errno);
+                goto ERROR;
+                break;
+            default:
+                break;
+            }
+        } else {
             remaining -= rv;
-            break;
         }
     }
 #endif
@@ -575,7 +581,7 @@ PrimeConnection::send_command (const char *command,
     char buf[4096];
     while (true) {
         rv = read (m_out_fd, buf, 4095);
-        if (rv <= 0) {
+        if (rv < 0) {
             switch (errno) {
             case EBADF:
             case EINVAL:
