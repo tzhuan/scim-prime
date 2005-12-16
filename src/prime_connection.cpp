@@ -545,7 +545,6 @@ PrimeConnection::send_command (const char *command,
         goto ERROR;
     }
 #else
-    ssize_t rv;
     size_t len, remaining;
     len = remaining = str.length ();
 
@@ -580,7 +579,7 @@ PrimeConnection::send_command (const char *command,
 
     char buf[4096];
     while (true) {
-        rv = read (m_out_fd, buf, 4095);
+        ssize_t rv = read (m_out_fd, buf, 4095);
         if (rv < 0) {
             switch (errno) {
             case EBADF:
@@ -666,15 +665,19 @@ PrimeConnection::write_all (int fd, const char *buf, int size)
         return false;
 
     while (remaining > 0) {
-        int rv = write (fd, buf + (size - remaining), remaining);
-        switch (errno) {
-        case EBADF:
-        case EINVAL:
-        case EPIPE:
-            return false;
-        default:
+        ssize_t rv = write (fd, buf + (size - remaining), remaining);
+
+        if (rv < 0) {
+            switch (errno) {
+            case EBADF:
+            case EINVAL:
+            case EPIPE:
+                return false;
+            default:
+                break;
+            }
+        } else {
             remaining -= rv;
-            break;
         }
     }
 
