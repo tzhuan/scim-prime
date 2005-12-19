@@ -68,7 +68,7 @@
 
 #define PRIME_CONTEXT_RESET          "context_reset"          // arg1:SESSION
 #define PRIME_CONTEXT_SET_PREVIOUS_WORD \
-                                     "context_set_previous_wor"
+                                     "context_set_previous_word"
                                                               // arg1: SESSION
                                                               // arg2: WORD
 
