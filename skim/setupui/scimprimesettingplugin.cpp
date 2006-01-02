@@ -49,6 +49,7 @@ ScimPrimeSettingPlugin::ScimPrimeSettingPlugin(QWidget *parent,
 ScimPrimeSettingPlugin::~ScimPrimeSettingPlugin() 
 {
     KGlobal::locale()->removeCatalogue("skim-scim-prime");
+    delete d;
 }
 
 
