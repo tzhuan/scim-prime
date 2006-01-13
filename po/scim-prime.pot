@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2005-12-13 16:12+0900\n"
+"POT-Creation-Date: 2006-01-13 13:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,32 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prime_connection.cpp:709
+#: src/prime_connection.cpp:718
 #, c-format
 msgid "Failed to create pipe (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:717
+#: src/prime_connection.cpp:726
 #, c-format
 msgid "Failed to create child process (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:725
+#: src/prime_connection.cpp:734
 #, c-format
 msgid "Failed to redirect output or input of child process (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:733
+#: src/prime_connection.cpp:742
 #, c-format
 msgid "Failed to execute child process \"%s\" (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:741
+#: src/prime_connection.cpp:750
 #, c-format
 msgid "Failed to communicate with PRIME (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:749
+#: src/prime_connection.cpp:758
 #, c-format
 msgid "An error occured (%s)"
 msgstr ""

@@ -1,3 +1,8 @@
+Overview of Changes from scim-prime-0.3.1 to scim-prime-0.3.2
+=============================================================
+* The problem that scim-prime seldom losts the connection to the PRIME on
+  certain ennvironment has been Fixed.
+
 Overview of Changes from scim-prime-0.3.0 to scim-prime-0.3.1
 =============================================================
 * Add "Control+J" for toggling ON/OFF PRIME.

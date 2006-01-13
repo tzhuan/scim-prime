@@ -1,3 +1,7 @@
+2006-01-14 Takuro Ashie <ashie@homa.ne.jp>
+
+	* configure.in.in: Version-0.3.2.
+
 2006-01-03 Takuro Ashie <ashie@homa.ne.jp>
 
 	* setupui/scimprimesettingplugin.cpp: Plug memory leak.
