@@ -1,3 +1,8 @@
+2006-02-01 Hiroyuki Ikezoe <poincare@ikezoe.net>
+
+	* src/configure.ac:  append AC_SUBST(LIBTOOL_EXPORT_OPTIONS) for 
+	preventing "@LIBTOOL_EXPORT_OPTIONS@: No such file or directory"
+
 2006-01-14 Takuro Ashie <ashie@homa.ne.jp>
 
 	* src/configure.ac: Version-0.3.2.
