@@ -1,1 +1,78 @@
-scim-prime is an SCIM IMEngine module for PRIME.
+1. What's this?
+===============
+
+scim-canna is a SCIM IMEngine module using PRIME.
+
+SCIM is Smart Common Input Method platform, it provides user friendly/full
+featured user interface and development platform to make input method
+developer's life easier.
+
+PRIME is a predictive Japanese conversion engine written in Ruby.
+
+scim-prime combines PRIME to SCIM and provides some usefull user interfaces.
+
+
+2. Requirements
+===============
+
+ * scim-1.0.0 or later.
+   - http://www.scim-im.org/
+
+ * PRIME.
+   - http://taiyaki.org/prime/index.html
+
+3. Install
+==========
+
+You can build & install scim, prime and scim-prime by following command:
+
+  $ ./configure
+  $ make
+  # make install
+
+If you installed the SCIM into /usr/local or any other non-standard
+directories, you should specify the PKG_CONFIG_PATH environment variable:
+
+  $ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure
+
+
+4. Usage
+========
+
+Please run the SCIM with some environment variable from ~/.xinitrc or a same
+kind file:
+
+  export XMODIFIRES="@im=SCIM"
+  export GTK_IM_MODULE=scim
+  # specify QT_IM_MODULE if you have scim-qtimmm
+  # export QT_IM_MODULE=scim
+  scim &
+
+After rebooting X Window system you'll find a keyboard icon in the system tray
+and SCIM toolbar. You can switch input method to the scim-prime from these
+items.
+
+
+5. License
+==========
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA.
+
+
+6. Credit
+=========
+
+Special thanks to all scim-prime developers and users!
+
+ * Takuro Ashie <ashie at homa.ne.jp>
+   - Developer.
