@@ -1,12 +1,11 @@
-For version-1.0:
+For version-1.0
   * "Candidates" label like scim-anthy
   * Preference to set number of candidates in a page.
-  * SKIM support.
   * Fill README
-  * Document for help.
-  * PRIME protocol document to renewal http://taiyaki.org/prime/protocol.html.
-  * (Wide latin mode).
 
-Other:
+For version-1.4
   * Cooperate with handwriting pad.
   * Cooperate with applications such as kazehakase.
+
+Other
+  * Renewal PRIME protocol document http://taiyaki.org/prime/protocol.html.
