@@ -1,7 +1,7 @@
 1. What's this?
 ===============
 
-scim-canna is a SCIM IMEngine module using PRIME.
+scim-prime is a SCIM IMEngine module using PRIME.
 
 SCIM is Smart Common Input Method platform, it provides user friendly/full
 featured user interface and development platform to make input method
