@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scim-prime\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2006-01-13 13:42+0900\n"
+"POT-Creation-Date: 2006-02-08 15:19+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -938,7 +938,7 @@ msgstr "全て"
 msgid "Feature"
 msgstr "機能"
 
-#: src/scim_prime_imengine_setup.cpp:719 src/scim_prime_imengine_setup.cpp:784
+#: src/scim_prime_imengine_setup.cpp:719 src/scim_prime_imengine_setup.cpp:817
 msgid "Key bindings"
 msgstr "キーバインド"
 
@@ -950,26 +950,53 @@ msgstr "説明"
 msgid "_Choose keys..."
 msgstr "キーを設定...(_C)"
 
-#: src/scim_prime_imengine_setup.cpp:778
+#: src/scim_prime_imengine_setup.cpp:775
+#, c-format
+msgid ""
+"<span size=\"20000\">%s-%s</span>\n"
+"\n"
+"<span size=\"16000\" style=\"italic\">A Japanese input method module\n"
+"for SCIM using PRIME</span>\n"
+"\n"
+"\n"
+"\n"
+"<span size=\"12000\">Copyright 2005-2006, Takuro Ashie &lt;ashie@homa.ne."
+"jp&gt;</span>"
+msgstr ""
+"<span size=\"20000\">%s-%s</span>\n"
+"\n"
+"<span size=\"16000\" style=\"italic\">PRIMEを利用した\n"
+"SCIM用日本語入力モジュール</span>\n"
+"\n"
+"\n"
+"\n"
+"<span size=\"12000\">Copyright 2005-2006, Takuro Ashie &lt;ashie@homa.ne."
+"jp&gt;</span>"
+
+#: src/scim_prime_imengine_setup.cpp:811
 msgid "Common"
 msgstr "一般"
 
-#: src/scim_prime_imengine_setup.cpp:790
+#: src/scim_prime_imengine_setup.cpp:823
 msgid "Prediction"
 msgstr "予測"
 
-#: src/scim_prime_imengine_setup.cpp:796
+#: src/scim_prime_imengine_setup.cpp:829
 msgid "Candidates window"
 msgstr "候補ウィンドウ"
 
-#: src/scim_prime_imengine_setup.cpp:803
+#: src/scim_prime_imengine_setup.cpp:836
 msgid "Toolbar"
 msgstr "ツールバー"
 
-#: src/scim_prime_imengine_setup.cpp:809
+#: src/scim_prime_imengine_setup.cpp:842
 msgid "Dictionary"
 msgstr "辞書"
 
-#: src/scim_prime_imengine_setup.cpp:1144
+#: src/scim_prime_imengine_setup.cpp:849
+msgid "About"
+msgstr "情報"
+
+#: src/scim_prime_imengine_setup.cpp:1183
 msgid "Set key filter"
 msgstr "キ-フィルターをセット"

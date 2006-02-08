@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2006-01-13 13:42+0900\n"
+"POT-Creation-Date: 2006-02-08 15:19+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -892,7 +892,7 @@ msgstr ""
 msgid "Feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:719 src/scim_prime_imengine_setup.cpp:784
+#: src/scim_prime_imengine_setup.cpp:719 src/scim_prime_imengine_setup.cpp:817
 msgid "Key bindings"
 msgstr ""
 
@@ -904,26 +904,44 @@ msgstr ""
 msgid "_Choose keys..."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:778
+#: src/scim_prime_imengine_setup.cpp:775
+#, c-format
+msgid ""
+"<span size=\"20000\">%s-%s</span>\n"
+"\n"
+"<span size=\"16000\" style=\"italic\">A Japanese input method module\n"
+"for SCIM using PRIME</span>\n"
+"\n"
+"\n"
+"\n"
+"<span size=\"12000\">Copyright 2005-2006, Takuro Ashie &lt;ashie@homa.ne."
+"jp&gt;</span>"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:811
 msgid "Common"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:790
+#: src/scim_prime_imengine_setup.cpp:823
 msgid "Prediction"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:796
+#: src/scim_prime_imengine_setup.cpp:829
 msgid "Candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:803
+#: src/scim_prime_imengine_setup.cpp:836
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:809
+#: src/scim_prime_imengine_setup.cpp:842
 msgid "Dictionary"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1144
+#: src/scim_prime_imengine_setup.cpp:849
+msgid "About"
+msgstr ""
+
+#: src/scim_prime_imengine_setup.cpp:1183
 msgid "Set key filter"
 msgstr ""
