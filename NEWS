@@ -1,3 +1,7 @@
+Overview of Changes from scim-prime-0.3.2 to scim-prime-1.0.0
+=============================================================
+* Show version information at setup window.
+
 Overview of Changes from scim-prime-0.3.1 to scim-prime-0.3.2
 =============================================================
 * The problem that scim-prime seldom losts the connection to the PRIME on
