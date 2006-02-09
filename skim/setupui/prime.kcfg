@@ -82,6 +82,11 @@
     </entry>
 
 
+    <entry name="_IMEngine_PRIME_CandWinPageSize" key="/IMEngine/PRIME/CandWinPageSize" type="Int">
+      <label>Number of candidates to show in a page</label>
+      <whatsthis>Specify the number of candidates to show in a page of the candidates window.</whatsthis>
+      <default>10</default>
+    </entry>
     <entry name="_IMEngine_PRIME_AutoRegister" key="/IMEngine/PRIME/AutoRegister" type="Bool">
       <label>Switch to the inline word register mode automatically</label>
       <whatsthis>Invoke the inline word register mode when the cursor in the candidates window is move to out of range.</whatsthis>
