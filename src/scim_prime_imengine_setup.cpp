@@ -167,6 +167,8 @@ static void     on_toggle_button_toggled_set_sensitive
                                                    gpointer         user_data);
 static void     on_default_toggle_button_toggled  (GtkToggleButton *togglebutton,
                                                    gpointer         user_data);
+static void     on_default_spin_button_changed    (GtkSpinButton   *spinbutton,
+                                                   gpointer         user_data);
 #if 0
 static void     on_default_key_selection_clicked  (GtkButton       *button,
                                                    gpointer         user_data);
@@ -201,6 +203,21 @@ find_bool_config_entry (const char *config_key)
 
     for (unsigned int i = 0; __config_bool_common[i].key; i++) {
         BoolConfigData *entry = &__config_bool_common[i];
+        if (entry->key && !strcmp (entry->key, config_key))
+            return entry;
+    }
+
+    return NULL;
+}
+
+static IntConfigData *
+find_int_config_entry (const char *config_key)
+{
+    if (!config_key)
+        return NULL;
+
+    for (unsigned int i = 0; __config_int_common[i].key; i++) {
+        IntConfigData *entry = &__config_int_common[i];
         if (entry->key && !strcmp (entry->key, config_key))
             return entry;
     }
@@ -251,6 +268,59 @@ create_check_button (const char *config_key)
                       G_CALLBACK (on_default_toggle_button_toggled),
                       entry);
     gtk_widget_show (GTK_WIDGET (entry->widget));
+
+    if (!__widget_tooltips)
+        __widget_tooltips = gtk_tooltips_new();
+    if (entry->tooltip)
+        gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (entry->widget),
+                              _(entry->tooltip), NULL);
+
+    return GTK_WIDGET (entry->widget);
+}
+
+GtkWidget *
+create_spin_button (const char *config_key, GtkTable *table, int idx)
+{
+    IntConfigData *entry = find_int_config_entry (config_key);
+    if (!entry)
+        return NULL;
+
+    GtkWidget *label = gtk_label_new_with_mnemonic (_(entry->label));
+    gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+    gtk_misc_set_padding (GTK_MISC (label), 4, 0);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, idx, idx + 1,
+                      (GtkAttachOptions) (GTK_FILL),
+                      (GtkAttachOptions) (GTK_FILL),
+                      4, 4);
+    gtk_widget_show (GTK_WIDGET (label));
+
+    GtkWidget *hbox = gtk_hbox_new (FALSE, 0);
+    gtk_table_attach (GTK_TABLE (table), GTK_WIDGET (hbox),
+                      1, 2, idx, idx + 1,
+                      (GtkAttachOptions) GTK_FILL,
+                      (GtkAttachOptions) GTK_FILL,
+                      4, 4);
+    gtk_widget_show (hbox);
+
+    entry->widget = gtk_spin_button_new_with_range (entry->min, entry->max,
+                                                    entry->step);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label),
+                                   GTK_WIDGET (entry->widget));
+    gtk_box_pack_start (GTK_BOX (hbox), GTK_WIDGET (entry->widget),
+                        FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (entry->widget), "value-changed",
+                      G_CALLBACK (on_default_spin_button_changed),
+                      entry);
+    gtk_widget_show (GTK_WIDGET (entry->widget));
+
+    if (entry->unit) {
+        label = gtk_label_new_with_mnemonic (_(entry->unit));
+        gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+        gtk_misc_set_padding (GTK_MISC (label), 4, 0);
+        gtk_box_pack_start (GTK_BOX (hbox), GTK_WIDGET (label),
+                            FALSE, FALSE, 0);
+        gtk_widget_show (GTK_WIDGET (label));
+    }
 
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
@@ -540,10 +610,17 @@ create_prediction_page ()
 static GtkWidget *
 create_candidates_window_page ()
 {
-    GtkWidget *vbox, *hbox, *widget, *widget2;
+    GtkWidget *vbox, *hbox, *table, *widget, *widget2;
 
     vbox = gtk_vbox_new (FALSE, 0);
     gtk_widget_show (vbox);
+
+    /* page size */
+    table = gtk_table_new (1, 3, FALSE);
+    gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 0);
+    gtk_widget_show (table);
+    widget = create_spin_button (SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE,
+                                 GTK_TABLE (table), 0);
 
     /* auto register */
     widget = create_check_button (SCIM_PRIME_CONFIG_AUTO_REGISTER);
@@ -894,6 +971,13 @@ setup_widget_value ()
                                           entry.value);
     }
 
+    for (unsigned int i = 0; __config_int_common[i].key; i++) {
+        IntConfigData &entry = __config_int_common[i];
+        if (entry.widget)
+            gtk_spin_button_set_value (GTK_SPIN_BUTTON (entry.widget),
+                                       entry.value);
+    }
+
     for (unsigned int i = 0; __config_string_common[i].key; i++) {
         StringConfigData &entry = __config_string_common[i];
         if (entry.widget && GTK_IS_COMBO (entry.widget))
@@ -945,6 +1029,11 @@ load_config (const ConfigPointer &config)
         entry.value = config->read (String (entry.key), entry.value);
     }
 
+    for (unsigned int i = 0; __config_int_common[i].key; i++) {
+        IntConfigData &entry = __config_int_common[i];
+        entry.value = config->read (String (entry.key), entry.value);
+    }
+
     for (unsigned int i = 0; __config_string_common[i].key; i++) {
         StringConfigData &entry = __config_string_common[i];
         entry.value = config->read (String (entry.key), entry.value);
@@ -968,6 +1057,9 @@ load_config (const ConfigPointer &config)
     for (unsigned int i = 0; __config_bool_common[i].key; i++)
         __config_bool_common[i].changed = false;
 
+    for (unsigned int i = 0; __config_int_common[i].key; i++)
+        __config_int_common[i].changed = false;
+
     for (unsigned int i = 0; __config_string_common[i].key; i++)
         __config_string_common[i].changed = false;
 
@@ -990,6 +1082,13 @@ save_config (const ConfigPointer &config)
 
     for (unsigned int i = 0; __config_bool_common[i].key; i++) {
         BoolConfigData &entry = __config_bool_common[i];
+        if (entry.changed)
+            entry.value = config->write (String (entry.key), entry.value);
+        entry.changed = false;
+    }
+
+    for (unsigned int i = 0; __config_int_common[i].key; i++) {
+        IntConfigData &entry = __config_int_common[i];
         if (entry.changed)
             entry.value = config->write (String (entry.key), entry.value);
         entry.changed = false;
@@ -1036,6 +1135,18 @@ on_default_toggle_button_toggled (GtkToggleButton *togglebutton,
 
     if (entry) {
         entry->value = gtk_toggle_button_get_active (togglebutton);
+        entry->changed = true;
+        __have_changed = true;
+    }
+}
+
+static void
+on_default_spin_button_changed (GtkSpinButton *spinbutton, gpointer user_data)
+{
+    IntConfigData *entry = static_cast<IntConfigData*> (user_data);
+
+    if (entry) {
+        entry->value = static_cast<int> (gtk_spin_button_get_value (spinbutton));
         entry->changed = true;
         __have_changed = true;
     }

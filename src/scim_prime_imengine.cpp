@@ -787,6 +787,11 @@ PrimeInstance::set_prediction (void)
     m_lookup_table.show_cursor (false);
 
     if (is_preediting ()) {
+        if (m_factory->m_cand_win_page_size > 0)
+            m_lookup_table.set_page_size (m_factory->m_cand_win_page_size);
+        else
+            m_lookup_table.set_page_size (SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT);
+
         get_session()->conv_predict (m_candidates);
         for (unsigned int i = 0; i < m_candidates.size (); i++)
             m_lookup_table.append_candidate (m_candidates[i].m_conversion);
@@ -1056,6 +1061,11 @@ PrimeInstance::action_convert (void)
         get_session()->segment_reconvert (m_candidates);
     else
         get_session()->conv_convert (m_candidates);
+
+    if (m_factory->m_cand_win_page_size > 0)
+        m_lookup_table.set_page_size (m_factory->m_cand_win_page_size);
+    else
+        m_lookup_table.set_page_size (SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT);
 
     for (unsigned int i = 0; i < m_candidates.size (); i++) {
         WideString label;

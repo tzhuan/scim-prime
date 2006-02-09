@@ -144,6 +144,33 @@ BoolConfigData __config_bool_common [] =
     },
 };
 
+IntConfigData __config_int_common [] =
+{
+    {
+        SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE,
+        SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT,
+        SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT,
+        1, 100, 1,
+        N_("Number of candidates to show in a _page:"),
+        NULL,
+        NULL,
+        N_("Specify the number of candidates to show in a page of the candidates window."),
+        NULL,
+        false,
+    },
+    {
+        NULL,
+        0,
+        0,
+        0, 0, 0,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        false,
+    },
+};
+
 StringConfigData __config_string_common [] =
 {
     {

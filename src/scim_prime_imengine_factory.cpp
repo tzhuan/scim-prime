@@ -107,6 +107,7 @@ PrimeFactory::PrimeFactory (const String &lang,
       m_predict_on_preedition    (SCIM_PRIME_CONFIG_PREDICT_ON_PREEDITION_DEFAULT),
       m_predict_win_pos          (SCIM_PRIME_CONFIG_PREDICT_WIN_POS_DEFAULT),
       m_inline_prediction        (SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT),
+      m_cand_win_page_size       (SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT),
       m_auto_register            (SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT),
       m_close_cand_win_on_select (SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT),
       m_show_annotation          (SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT),
@@ -352,6 +353,9 @@ PrimeFactory::reload_config (const ConfigPointer &config)
         = config->read (String (SCIM_PRIME_CONFIG_INLINE_PREDICTION),
                         SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT);
 
+    m_cand_win_page_size
+        = config->read (String (SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE),
+                        SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT);
     m_auto_register
         = config->read (String (SCIM_PRIME_CONFIG_AUTO_REGISTER),
                         SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT);

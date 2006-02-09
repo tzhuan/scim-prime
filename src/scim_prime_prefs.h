@@ -36,6 +36,7 @@
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION         "/IMEngine/PRIME/DirectSelectOnPrediction"
 #define SCIM_PRIME_CONFIG_INLINE_PREDICTION                   "/IMEngine/PRIME/InlinePrediction"
 
+#define SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE                  "/IMEngine/PRIME/CandWinPageSize"
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER                       "/IMEngine/PRIME/AutoRegister"
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT            "/IMEngine/PRIME/CloseCandWinOnSelect"
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION                     "/IMEngine/PRIME/ShowAnnotation"
@@ -104,6 +105,7 @@
 #define SCIM_PRIME_CONFIG_DIRECT_SELECT_ON_PREDICTION_DEFAULT true
 #define SCIM_PRIME_CONFIG_INLINE_PREDICTION_DEFAULT           false
 
+#define SCIM_PRIME_CONFIG_CAND_WIN_PAGE_SIZE_DEFAULT          10
 #define SCIM_PRIME_CONFIG_AUTO_REGISTER_DEFAULT               true
 #define SCIM_PRIME_CONFIG_CLOSE_CAND_WIN_ON_SELECT_DEFAULT    true
 #define SCIM_PRIME_CONFIG_SHOW_ANNOTATION_DEFAULT             true
@@ -174,6 +176,20 @@ struct BoolConfigData
     bool        changed;
 };
 
+struct IntConfigData
+{
+    const char *key;
+    int         value;
+    int         default_value;
+    int         min, max, step;
+    const char *label;
+    const char *unit;
+    const char *title;
+    const char *tooltip;
+    void       *widget;
+    bool        changed;
+};
+
 struct StringConfigData
 {
     const char *key;
@@ -215,6 +231,7 @@ struct ComboConfigCandidate
 };
 
 extern BoolConfigData   __config_bool_common [];
+extern IntConfigData    __config_int_common [];
 extern StringConfigData __config_string_common [];
 extern ColorConfigData  __config_color_common [];
 extern ColorConfigData  __config_color_common [];

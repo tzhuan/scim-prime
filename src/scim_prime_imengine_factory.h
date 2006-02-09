@@ -57,6 +57,7 @@ class PrimeFactory : public IMEngineFactoryBase
     bool         m_inline_prediction;
 
     // preferences for candidates window
+    int          m_cand_win_page_size;
     bool         m_auto_register;
     bool         m_close_cand_win_on_select;
     bool         m_show_annotation;
