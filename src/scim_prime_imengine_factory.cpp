@@ -159,7 +159,9 @@ WideString
 PrimeFactory::get_credits () const
 {
     return utf8_mbstowcs (
-        _("Special thanks:\n"
+        _("Taiyaki icon:\n"
+          "  FUJITA Yuji <yuji@webmasters.gr.jp>\n"
+          "Special thanks:\n"
           "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"));
 }
 

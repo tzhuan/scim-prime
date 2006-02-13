@@ -1,3 +1,7 @@
+2006-02-13 Takuro Ashie <ashie@homa.ne.jp>
+
+	* src/scim_prime_imengine_factory.cpp: Fix credit.
+
 2006-02-09 Takuro Ashie <ashie@homa.ne.jp>
 
 	* Version-0.9.0 (Feature freeze).

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: scim-prime\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2006-02-09 12:27+0900\n"
+"POT-Creation-Date: 2006-02-13 12:23+0900\n"
 "PO-Revision-Date: 2005-08-19 11:24+0900\n"
 "Last-Translator: Takuro Ashie <ashie@homa.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -781,13 +781,17 @@ msgstr ""
 
 #: src/scim_prime_imengine_factory.cpp:162
 msgid ""
+"Taiyaki icon:\n"
+"  FUJITA Yuji <yuji@webmasters.gr.jp>\n"
 "Special thanks:\n"
 "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 msgstr ""
+"Taiyaki icon:\n"
+"  FUJITA Yuji <yuji@webmasters.gr.jp>\n"
 "Special thanks:\n"
 "  UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 
-#: src/scim_prime_imengine_factory.cpp:170
+#: src/scim_prime_imengine_factory.cpp:172
 msgid ""
 "Basic operation:\n"
 "  \n"
@@ -795,7 +799,7 @@ msgstr ""
 "基本操作:\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:174
+#: src/scim_prime_imengine_factory.cpp:176
 msgid ""
 "1. Switch Japanese input mode:\n"
 "  You can switch on/off Japanese input mode by pressing Zenkaku_Hankaku\n"
@@ -807,7 +811,7 @@ msgstr ""
 "  きます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:180
+#: src/scim_prime_imengine_factory.cpp:182
 msgid ""
 "2. Input hiragana and katakana:\n"
 "  You can input hiragana by inputting romaji.\n"
@@ -826,7 +830,7 @@ msgstr ""
 "  を越えた場合は、自動的に変換モードに移行します。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:190
+#: src/scim_prime_imengine_factory.cpp:192
 msgid ""
 "3. Convert to Japanese kanji:\n"
 "  After inputting hiragana or katakana, you can convert it to kanji by\n"
@@ -846,7 +850,7 @@ msgstr ""
 "  できます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:200
+#: src/scim_prime_imengine_factory.cpp:202
 msgid ""
 "4. Modify sentence segments:\n"
 "  When you input a sentence, you can split it to some segments by pressing\n"
@@ -862,7 +866,7 @@ msgstr ""
 "  ができます。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:208
+#: src/scim_prime_imengine_factory.cpp:210
 msgid ""
 "5. Commit:\n"
 "  You can commit the preedit string by pressing Enter key.\n"
@@ -872,7 +876,7 @@ msgstr ""
 "  Enterキーを押すと、文字列が確定します。\n"
 "  \n"
 
-#: src/scim_prime_imengine_factory.cpp:213
+#: src/scim_prime_imengine_factory.cpp:215
 msgid ""
 "6. Predict English words:\n"
 "  You can switch language to English by pressing F11 key.\n"
