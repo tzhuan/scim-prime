@@ -2802,51 +2802,6 @@
 <includehints>
     <includehint>klineedit.h</includehint>
     <includehint>kcombobox.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>skimeditshortcutbutton.h</includehint>
-    <includehint>kcombobox.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
     <includehint>kcolorbutton.h</includehint>
 </includehints>
 </UI>
