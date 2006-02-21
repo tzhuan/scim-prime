@@ -7,9 +7,12 @@ INCLUDE	= \
 	-I$(top_srcdir)/src 
 
 noinst_HEADERS = \
+	intl.h \
 	prime_commands.h \
 	prime_connection.h \
 	prime_session.h \
+	scim_prime_action.h \
+	scim_prime_imengine_factory.h \
 	scim_prime_imengine.h \
 	scim_prime_prefs.h
 
@@ -19,6 +22,8 @@ module_LTLIBRARIES = prime.la
 prime_la_SOURCES = \
 	prime_connection.cpp \
 	prime_session.cpp \
+	scim_prime_action.cpp \
+	scim_prime_imengine_factory.cpp \
 	scim_prime_imengine.cpp
 
 prime_la_CFLAGS = @SCIM_CFLAGS@  @SCIM_DEBUG_FLAGS@
@@ -38,7 +43,9 @@ endif
 setupmoduledir           = @SCIM_MODULEDIR@/SetupUI
 setupmodule_LTLIBRARIES  = $(SETUP_MODULE)
 
-prime_imengine_setup_la_SOURCES = scim_prime_imengine_setup.cpp
+prime_imengine_setup_la_SOURCES = \
+	scim_prime_imengine_setup.cpp \
+	scim_prime_prefs.cpp
 
 prime_imengine_setup_la_CFLAGS  = @SCIM_GTKUTILS_CFLAGS@ @SCIM_CFLAGS@ @SCIM_DEBUG_FLAGS@
 

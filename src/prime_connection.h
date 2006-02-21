@@ -25,9 +25,17 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <scim.h>
-#include "prime_session.h"
+#include <map>
+#include "prime_commands.h"
 
 using namespace scim;
+
+
+typedef enum {
+    PRIME_CONNECTION_PIPE,
+    PRIME_CONNECTION_UNIX_SOCKET,
+    PRIME_CONNECTION_TCP_IP,
+} PrimeConnectionType;
 
 
 class PrimeCandidate
@@ -39,13 +47,15 @@ public:
 public:
     WideString m_preedition;
     WideString m_conversion;
-    int        m_priority;
-    WideString m_part;
-    WideString m_base;
-    WideString m_basekey;
-    WideString m_suffix;
-    WideString m_conjugation;
+    std::map<String, WideString> m_values;
 };
+
+
+typedef std::vector<String> Strings;
+typedef std::vector<PrimeCandidate> PrimeCandidates;
+
+
+class PrimeSession;
 
 
 class PrimeConnection
@@ -55,49 +65,106 @@ public:
     virtual ~PrimeConnection                ();
 
     // connection
-    void                open_connection     (void);
+    bool                open_connection     (const char *command,
+                                             const char *typing_method = NULL,
+                                             bool save = true);
     void                close_connection    (void);
-
-    // session
-    PrimeSession       *session_start       (void);
-    void                session_end         (PrimeSession *session);
+    void                close_connection_with_error (void);
+    bool                is_connected        (void);
+    PrimeConnectionType get_connection_type (void) { return m_connection_type; }
+    pid_t               get_child_pid       (void) { return m_pid; }
 
     // comunication
     // Arguments must be terminated by NULL pointer.
-    bool                send_command        (const char *command,
+    bool                send_command        (const char      *command,
                                              ...);
 
-    // lookup
-    bool                lookup              (const char                  *sequence,
-                                             PrimeCandidate              &candidate);
-    bool                lookup_all          (const char                  *sequence,
-                                             std::vector<PrimeCandidate> &candidates);
-
     // getting reply string
-    void                get_reply           (String &reply);
-    void                get_reply           (WideString &reply);
-    void                get_reply           (std::vector<String> &str_list,
-                                             char *delim);
+    void                get_reply           (String          &reply);
+    void                get_reply           (WideString      &reply);
+    void                get_reply           (Strings         &str_list,
+                                             char            *delim,
+                                             int              num = -1);
+    void                get_error_message   (WideString      &msg);
+
+    // get prime version
+    void                version             (String          &version);
+    int                 major_version       (void);
+    int                 minor_version       (void);
+    int                 micro_version       (void);
+
+    // get variables
+    void                get_env             (const String    &key,
+                                             String          &type,
+                                             Strings         &values);
+
+    // refresh prime
+    void                refresh             (void);
+
+    // session
+    PrimeSession       *session_start       (const char      *language = NULL);
+    void                session_end         (PrimeSession    *session);
+
+    // context
+    void                set_context         (WideString      &context);
+    void                reset_context       (void);
+
+    // preedition
+    void                preedit_convert_input (const String  &pattern,
+                                               WideString    &preedition,
+                                               WideString    &pending);
+
+    // lookup
+    bool                lookup              (const String    &sequence,
+                                             PrimeCandidates &candidates,
+                                             const char      *command = PRIME_LOOKUP);
+
+    // learn
+    void                learn_word          (WideString       key,
+                                             WideString       value,
+                                             WideString       part,
+                                             WideString       context,
+                                             WideString       suffix,
+                                             WideString       rest);
 
 private:
-    void                split_string        (String &str,
-                                             std::vector<String> &str_list,
-                                             char *delim);
-
+    bool                write_all           (int         fd,
+                                             const char *buf,
+                                             int         size);
+    void                write_err_and_exit  (int         fd,
+                                             int         msg);
+    bool                set_error_message   (int         erridx,
+                                             int         syserr);
+    bool                check_child_err     (int         fd);
+    int                 get_version_int     (int         idx); // major: idx=0
+                                                               // minor: idx=1
+                                                               // micro: idx=2
+    void                clean_child         (void);
 
 public:
-    IConvert         m_iconv;
+    IConvert            m_iconv;
 
 private:
-    pid_t            m_pid;
-    int              m_in_fd;
-    int              m_out_fd;
-    int              m_err_fd;
+    PrimeConnectionType m_connection_type;
 
-    String           m_last_reply; // EUC-JP
+    pid_t               m_pid;
+    int                 m_in_fd;
+    int                 m_out_fd;
+    int                 m_err_fd;
 
-    std::vector<PrimeSession> m_sessions;
+    String              m_command;
+    String              m_typing_method;
+
+    String              m_last_reply; // EUC-JP
+    int                 m_exit_status;
+    WideString          m_err_msg;
 };
+
+
+void scim_prime_util_split_string (String  &str,
+                                   Strings &str_list,
+                                   char    *delim,
+                                   int      num = -1);
 
 #endif /* __SCIM_PRIME_CONNECTION_H__ */
 /*

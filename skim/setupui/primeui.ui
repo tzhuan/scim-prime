@@ -1,0 +1,2807 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>PrimeSettingUI</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>PrimeSettingUI</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>662</width>
+            <height>521</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>PRIME</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <widget class="QTabWidget">
+            <property name="name">
+                <cstring>tabWidget2</cstring>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>&amp;General</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_ConvertOnPeriod</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Start &amp;conversion on inputting comma or period</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+C</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_CommitPeriod</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Commit comma &amp;and period immediately</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+A</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_CommitOnUpper</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Commit on inputting &amp;upper letter</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+U</string>
+                        </property>
+                    </widget>
+                    <spacer row="5" column="1">
+                        <property name="name">
+                            <cstring>spacer33</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>290</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QLabel" row="0" column="0">
+                        <property name="name">
+                            <cstring>textLabel1</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>5</hsizetype>
+                                <vsizetype>5</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="text">
+                            <string>PRIME command:</string>
+                        </property>
+                    </widget>
+                    <widget class="KLineEdit" row="0" column="1" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_Command</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="1" column="0">
+                        <property name="name">
+                            <cstring>textLabel2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Default language:</string>
+                        </property>
+                    </widget>
+                    <widget class="KComboBox" row="1" column="1">
+                        <item>
+                            <property name="text">
+                                <string>Off</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Japanese</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>English</string>
+                            </property>
+                        </item>
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_Language</cstring>
+                        </property>
+                    </widget>
+                    <spacer row="1" column="2">
+                        <property name="name">
+                            <cstring>spacer42</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>41</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>&amp;Key bindings</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QTabWidget">
+                        <property name="name">
+                            <cstring>tabWidget3</cstring>
+                        </property>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Mode</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel21</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Switch &amp;language:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleLanguageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel20</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Raw mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeRawKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel19</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Wide ascii mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel18</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Half katakana mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel17</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Katakana mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel16</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Defa&amp;ult mode:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeDefaultKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel15</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>O&amp;n/Off:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleOnOffKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleOnOffKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeDefaultKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SetModeRawKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ToggleLanguageKey</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="7" column="1">
+                                    <property name="name">
+                                        <cstring>spacer46</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>ToggleOnOffKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>SetModeDefaultKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>SetModeKatakanaKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>SetModeHalfKatakanaKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>SetModeWideAsciiKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>SetModeRawKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>ToggleLanguageKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Edit</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Insert space:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>SpaceKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Insert &amp;alternative space:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_AlternativeSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_AlternativeSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Backspace:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_BackSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_BackSpaceKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel4_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>De&amp;lete:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_DeleteKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_DeleteKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>AlternativeSpaceKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>BackSpaceKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>DeleteKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer43</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>31</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>tab</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>Con&amp;vert</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel6_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ca&amp;ncel:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CancelKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CancelKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvertKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel5_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Con&amp;vert:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvertKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitAlternativeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>ConvertKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>CancelKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>CommitKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>CommitWithoutLearnKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>CommitAlternativeKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPredictionKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_RegisterWordKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>SelectPredictionKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>RegisterWordKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel10</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Register a word:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_RegisterWordKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel9</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Com&amp;plete:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPredictionKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel8</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Commit &amp;alternative:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitAlternativeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel7</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Commit witho&amp;ut learning:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel33</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Co&amp;mmit:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_CommitKey</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="7" column="1">
+                                    <property name="name">
+                                        <cstring>spacer44</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>170</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>C&amp;aret</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel12</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;last:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel11</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;first:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel13</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to for&amp;ward:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel14</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Move to &amp;backward:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretRightKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_MoveCaretLeftKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>MoveCaretLeftEdgeKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>MoveCaretRightEdgeKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>MoveCaretRightKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>MoveCaretLeftKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer45</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>31</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Segments</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel22</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;First segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel23</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Last segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectLastSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel24</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ne&amp;xt segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectNextSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel25</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Previo&amp;us segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel26</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Shrink segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ShrinkSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel27</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>E&amp;xpand segment:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ExpandSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectLastSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectNextSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ShrinkSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ExpandSegmentKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>SelectFirstSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>SelectLastSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>SelectNextSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>SelectPrevSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>ShrinkSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>ExpandSegmentKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="6" column="1">
+                                    <property name="name">
+                                        <cstring>spacer47</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>TabPage</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Candidates</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel28</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Ne&amp;xt candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel29</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Previo&amp;us candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel30</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Page &amp;down:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel31</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Page &amp;up:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvNextPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_ConvPrevPageKey</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>ConvNextCandidateKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>ConvPrevCandidateKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>ConvNextPageKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>ConvPrevPageKey_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer48</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>tab</cstring>
+                            </property>
+                            <attribute name="title">
+                                <string>&amp;Direct select</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;1st candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates1Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;2nd candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates2Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;3rd candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates3Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_3</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;4th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates4Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_4</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;5th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates5Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_5</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;6th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates6Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="6" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_6</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;7th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates7Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="7" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_7</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;8th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates8Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="8" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_8</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;9th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates9Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="9" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel32_2_9</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>1&amp;0th candidate:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates10Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="0" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates1Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="1" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates2Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates3Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="3" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates4Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates5Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="5" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates6Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="6" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates7Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="7" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates8Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="8" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates9Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit" row="9" column="1">
+                                    <property name="name">
+                                        <cstring>kcfg__IMEngine_PRIME_SelectCandidates10Key</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="0" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates1Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates2Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates3Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates4Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates5Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="5" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates6Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="6" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates7Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="7" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates8Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="8" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates9Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <widget class="SkimEditShortcutButton" row="9" column="2">
+                                    <property name="name">
+                                        <cstring>SelectCandidates10Key_Button</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                                <spacer row="10" column="1">
+                                    <property name="name">
+                                        <cstring>spacer50</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                    </widget>
+                </vbox>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Pre&amp;diction</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_PredictOnPreedition</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Predi&amp;ct while typing letters</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+C</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_DirectSelectOnPrediction</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Use direct select keys also on prediction</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+U</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_InlinePrediction</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Inline prediction</string>
+                        </property>
+                        <property name="accel">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <spacer row="4" column="2">
+                        <property name="name">
+                            <cstring>spacer34</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>311</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <spacer row="1" column="2">
+                        <property name="name">
+                            <cstring>spacer35_2</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>61</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="KComboBox" row="1" column="1">
+                        <item>
+                            <property name="text">
+                                <string>Head of preedition area</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Tail of preedition area</string>
+                            </property>
+                        </item>
+                        <property name="name">
+                            <cstring>kcfg__IMEngine_PRIME_PredictWinPos</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="1" column="0">
+                        <property name="name">
+                            <cstring>textLabel3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Prediction window position:</string>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Pa&amp;nel</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <spacer row="1" column="0">
+                        <property name="name">
+                            <cstring>spacer35</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>170</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QGroupBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>groupBox8</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>7</hsizetype>
+                                <vsizetype>5</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="title">
+                            <string>Candidates window</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel" row="5" column="4">
+                                <property name="name">
+                                    <cstring>textLabel6</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Color:</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_ShowComment</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show comments for words on the candidates window</string>
+                                </property>
+                                <property name="accel">
+                                    <string></string>
+                                </property>
+                            </widget>
+                            <spacer row="5" column="3">
+                                <property name="name">
+                                    <cstring>spacer36_3</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Fixed</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>16</width>
+                                        <height>16</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="KColorButton" row="5" column="5">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateCommentColor</cstring>
+                                </property>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                            </widget>
+                            <widget class="KColorButton" row="4" column="5">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateUsageColor</cstring>
+                                </property>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="4" column="4">
+                                <property name="name">
+                                    <cstring>textLabel5</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Color:</string>
+                                </property>
+                            </widget>
+                            <spacer row="4" column="3">
+                                <property name="name">
+                                    <cstring>spacer36_2</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Fixed</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>16</width>
+                                        <height>16</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_ShowUsage</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show &amp;usages of words on the candidates window</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+U</string>
+                                </property>
+                            </widget>
+                            <spacer row="4" column="6">
+                                <property name="name">
+                                    <cstring>spacer37_2</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>81</width>
+                                        <height>20</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <spacer row="5" column="6">
+                                <property name="name">
+                                    <cstring>spacer37_3</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>81</width>
+                                        <height>20</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="KColorButton" row="3" column="5">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_CandidateFormColor</cstring>
+                                </property>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="3" column="4">
+                                <property name="name">
+                                    <cstring>textLabel4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Color:</string>
+                                </property>
+                            </widget>
+                            <spacer row="3" column="3">
+                                <property name="name">
+                                    <cstring>spacer36</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Fixed</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>16</width>
+                                        <height>16</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_ShowAnnotation</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show annotations for words on the candidates window</string>
+                                </property>
+                                <property name="accel">
+                                    <string></string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="5">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_CloseCandWinOnSelect</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Close candidates window when a candidate is selected directly</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+C</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="0" column="0">
+                                <property name="name">
+                                    <cstring>textLabel1_3</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Number of candidates to show in a page:</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="5">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_AutoRegister</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Switch to the inline word register mode &amp;automatically</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+A</string>
+                                </property>
+                            </widget>
+                            <spacer row="3" column="6">
+                                <property name="name">
+                                    <cstring>spacer37</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>81</width>
+                                        <height>20</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                            <widget class="QSpinBox" row="0" column="1">
+                                <property name="name">
+                                    <cstring>kcfg__IMEngine_PRIME_CandWinPageSize</cstring>
+                                </property>
+                            </widget>
+                            <spacer row="0" column="2" rowspan="1" colspan="5">
+                                <property name="name">
+                                    <cstring>spacer37_4</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>280</width>
+                                        <height>20</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </grid>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+    </vbox>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>SkimEditShortcutButton</class>
+        <header location="local">skimkeygrabber.h</header>
+        <sizehint>
+            <width>24</width>
+            <height>24</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>1</hordata>
+            <verdata>1</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+        <signal>setEditorText(const QString &amp;)</signal>
+        <slot access="public" specifier="">slot()</slot>
+        <slot access="public" specifier="">setShortcuts(const QString &amp;)</slot>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="978">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000039949444154388dad9441485c571486bf096f7104175798c51b788427287496135a882f0dc4816c8664e1ec62d3456d29687095da4dddb48d8b200d8448030d5a023a59b435d0a69310612c04ef6c1a156a1da8e00479d40711e62e02de8570b3781d7584962e3c7017ef72df7fbe7bee7f4ec6ed388881003267338e5308a75dc6d3b1260a2226ef4fbaed87db544d953009a9bea9fe2f11630ccdad26f5dfeb7090ee65a28ccbb81d47e66cc66dd7b6f1d1d8b0171d2f72cecfb31a6ba2304227697249340411b557e9b74e34917f8eca8b05361facf1ed6ff630616645af7021bae066eece307cb5c0e2c624ad5613b014fb2db5a690c4426bcf02424f16862f5ad60c147ca8c73018c0c4b4a1fae848d88b820880d00bd1f122f9ee26ba6528f60bb34f15f617c3dcba01da3f093fbd234c8e2bd63c180c6d2ade071dc55bd12b006e6c7cccfdfdd7889b7ea8dc4bedbbe151df81381027ddcae5dff55de1bceffc401dee97aef96efe79e8b6377d57fe481c70b8ceb489a320623586623fcc3e152af753cac12b8aafef2a7efc4eb8f115fcfa738ee1511f3ca83e4ab07fc0aae96120e87cd4333ad600e8581385506b0acb8fdba23e1f7c2a94de33d4f70cf9d7c2d4bd16b7c6bb1819f701e1b369435ea09e740a7bc7897552a317a1b161504a511a120642433d8142b7e2fae796c6baa1f51a66eff4505f4acfce2d298a212cfe2b7100d5750b5872a1502a70243a6668ac1b5456b87151587db34fbe2000ecbeb2e8583a4b719c58128882f4c0a0407dcf92f714d7c72c8d7f128a40127451ec03bcb6981085274a719cb81c40c3a6072bb1e5e36c8ea97bfb29a91244842436dcfa02f6e965776b17805cd8858e4da7b2db71006efef6bc7ba247dc4bedbbb02fb5d4f068e8fedc1c7183577cf7642174330b79e787ca014e29e544c4a9acb8f9e7a19bb97dc26e276bbc66a034a400a83c48f8e6fb1ab3777ab0fd307cb5c5cd2f7b51bec218833db014877cca9740c7ffe58ab846c10719845e1413d30973d309f52561e4b2f0c91eec6eed62f72c78a9c0eab2a1f22c4731142a1c6be9367175a3cacc35a8aca76dca6561e420a4fa43ea8689f5231a95154a43217ad960aca59085a9c747a21dc4cdad26951730904f07cb40689121e1e68765e6966af41ea4d72d9f2f627335ca9760ee598e81ec00f5a44a63ad53f870bae141e17d21970311d2d9eaa54bbcd429edeba761114f30061a6b96ddc4628e775fdb15a7bd0e5d71eae1761c4e9f3e754a1cc08a5ec99c226ce62d2923f0ea08db57f80000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>ToggleOnOffKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleOnOffKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ToggleOnOffKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ToggleOnOffKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ToggleOnOffKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleOnOffKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeDefaultKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeDefaultKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeDefaultKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeDefaultKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeDefaultKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeDefaultKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeKatakanaKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeKatakanaKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeKatakanaKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeKatakanaKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeHalfKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeHalfKatakanaKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeHalfKatakanaKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeHalfKatakanaKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeRawKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeRawKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeRawKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeRawKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeRawKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeRawKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SetModeWideAsciiKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SetModeWideAsciiKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SetModeWideAsciiKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SetModeWideAsciiKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ToggleLanguageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleLanguageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ToggleLanguageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ToggleLanguageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ToggleLanguageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ToggleLanguageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>AlternativeSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_AlternativeSpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_AlternativeSpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>AlternativeSpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>AlternativeSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_AlternativeSpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>BackSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_BackSpaceKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_BackSpaceKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>BackSpaceKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>BackSpaceKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_BackSpaceKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>DeleteKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_DeleteKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_DeleteKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DeleteKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>DeleteKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_DeleteKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvertKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvertKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvertKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvertKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvertKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvertKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CancelKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CancelKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CancelKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CancelKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CancelKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CancelKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitWithoutLearnKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitWithoutLearnKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitWithoutLearnKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitWithoutLearnKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>CommitAlternativeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitAlternativeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_CommitAlternativeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CommitAlternativeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>CommitAlternativeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_CommitAlternativeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectPredictionKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPredictionKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectPredictionKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectPredictionKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectPredictionKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPredictionKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>RegisterWordKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_RegisterWordKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_RegisterWordKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>RegisterWordKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>RegisterWordKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_RegisterWordKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectFirstSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectFirstSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectFirstSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectFirstSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectLastSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectLastSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectLastSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectLastSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectLastSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectLastSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectNextSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectNextSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectNextSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectNextSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectNextSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectNextSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectPrevSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectPrevSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectPrevSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectPrevSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ShrinkSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ShrinkSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ShrinkSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ShrinkSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ShrinkSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ShrinkSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ExpandSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ExpandSegmentKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ExpandSegmentKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ExpandSegmentKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ExpandSegmentKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ExpandSegmentKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretRightEdgeKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightEdgeKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightEdgeKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretRightKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretRightKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretRightKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretRightKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_MoveCaretLeftKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MoveCaretLeftKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>MoveCaretLeftKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_MoveCaretLeftKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextCandidateKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvNextCandidateKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvNextCandidateKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextCandidateKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvPrevCandidateKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevCandidateKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevCandidateKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextPageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvNextPageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvNextPageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvNextPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvNextPageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevPageKey</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_ConvPrevPageKey</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>ConvPrevPageKey_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ConvPrevPageKey_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_ConvPrevPageKey</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates1Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates1Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates1Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates1Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates1Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates1Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates2Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates2Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates2Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates2Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates2Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates2Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates3Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates3Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates3Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates3Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates3Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates3Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates4Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates4Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates4Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates4Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates4Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates4Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates5Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates5Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates5Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates5Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates5Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates5Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates6Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates6Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates6Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates6Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates6Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates6Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates7Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates7Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates7Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates7Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates7Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates7Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates8Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates8Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates8Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates8Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates8Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates8Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates9Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates9Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates9Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates9Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates9Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates9Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates10Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates10Key</receiver>
+        <slot>setText(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>kcfg__IMEngine_PRIME_SelectCandidates10Key</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>SelectCandidates10Key_Button</receiver>
+        <slot>setShortcuts(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>SelectCandidates10Key_Button</sender>
+        <signal>setEditorText(const QString&amp;)</signal>
+        <receiver>kcfg__IMEngine_PRIME_SelectCandidates10Key</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>tabWidget2</tabstop>
+</tabstops>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>klineedit.h</includehint>
+    <includehint>kcombobox.h</includehint>
+    <includehint>kcolorbutton.h</includehint>
+</includehints>
+</UI>

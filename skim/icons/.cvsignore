@@ -1,0 +1,10 @@
+Makefile
+Makefile.in
+POTFILES
+remove-potcdate.sed
+stamp-po
+*.rej
+*.orig
+*.gmo
+*.bak
+*~
