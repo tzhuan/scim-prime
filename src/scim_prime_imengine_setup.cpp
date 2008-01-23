@@ -26,6 +26,7 @@
 #define Uses_SCIM_CONFIG_BASE
 #define Uses_SCIM_EVENT
 
+#include <string.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
