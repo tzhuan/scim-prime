@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: ashie@homa.ne.jp\n"
-"POT-Creation-Date: 2006-02-13 12:23+0900\n"
+"POT-Creation-Date: 2008-01-29 11:49+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,32 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prime_connection.cpp:718
+#: src/prime_connection.cpp:719
 #, c-format
 msgid "Failed to create pipe (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:726
+#: src/prime_connection.cpp:727
 #, c-format
 msgid "Failed to create child process (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:734
+#: src/prime_connection.cpp:735
 #, c-format
 msgid "Failed to redirect output or input of child process (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:742
+#: src/prime_connection.cpp:743
 #, c-format
 msgid "Failed to execute child process \"%s\" (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:750
+#: src/prime_connection.cpp:751
 #, c-format
 msgid "Failed to communicate with PRIME (%s)"
 msgstr ""
 
-#: src/prime_connection.cpp:758
+#: src/prime_connection.cpp:759
 #, c-format
 msgid "An error occured (%s)"
 msgstr ""
@@ -718,17 +718,17 @@ msgstr ""
 
 #: src/scim_prime_imengine.cpp:369 src/scim_prime_imengine.cpp:1861
 #: src/scim_prime_imengine.cpp:1948 src/scim_prime_imengine.cpp:2002
-#: src/scim_prime_imengine_setup.cpp:148
+#: src/scim_prime_imengine_setup.cpp:149
 msgid "Off"
 msgstr ""
 
 #: src/scim_prime_imengine.cpp:373 src/scim_prime_imengine.cpp:1945
-#: src/scim_prime_imengine_setup.cpp:149
+#: src/scim_prime_imengine_setup.cpp:150
 msgid "Japanese"
 msgstr ""
 
 #: src/scim_prime_imengine.cpp:377 src/scim_prime_imengine.cpp:1999
-#: src/scim_prime_imengine_setup.cpp:150
+#: src/scim_prime_imengine_setup.cpp:151
 msgid "English"
 msgstr ""
 
@@ -843,79 +843,79 @@ msgid ""
 "  instead.  \n"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:88
+#: src/scim_prime_imengine_setup.cpp:89
 msgid "PRIME"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:93
+#: src/scim_prime_imengine_setup.cpp:94
 msgid "An PRIME IMEngine Module."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:133
+#: src/scim_prime_imengine_setup.cpp:134
 msgid "Edit keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:134
+#: src/scim_prime_imengine_setup.cpp:135
 msgid "Convert keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:135
+#: src/scim_prime_imengine_setup.cpp:136
 msgid "Mode keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:136
+#: src/scim_prime_imengine_setup.cpp:137
 msgid "Caret keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:137
+#: src/scim_prime_imengine_setup.cpp:138
 msgid "Segments keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:138
+#: src/scim_prime_imengine_setup.cpp:139
 msgid "Candidates keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:139
+#: src/scim_prime_imengine_setup.cpp:140
 msgid "Direct select keys"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:156
+#: src/scim_prime_imengine_setup.cpp:157
 msgid "Head of preedition area"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:157
+#: src/scim_prime_imengine_setup.cpp:158
 msgid "Tail of preedition area"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:719
+#: src/scim_prime_imengine_setup.cpp:720
 msgid "_Group:"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:740
+#: src/scim_prime_imengine_setup.cpp:741
 msgid "Search by key"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:744
+#: src/scim_prime_imengine_setup.cpp:745
 msgid "all"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:787
+#: src/scim_prime_imengine_setup.cpp:788
 msgid "Feature"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:796 src/scim_prime_imengine_setup.cpp:894
+#: src/scim_prime_imengine_setup.cpp:797 src/scim_prime_imengine_setup.cpp:895
 msgid "Key bindings"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:805
+#: src/scim_prime_imengine_setup.cpp:806
 msgid "Description"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:817
+#: src/scim_prime_imengine_setup.cpp:818
 msgid "_Choose keys..."
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:852
+#: src/scim_prime_imengine_setup.cpp:853
 #, c-format
 msgid ""
 "<span size=\"20000\">%s-%s</span>\n"
@@ -929,30 +929,30 @@ msgid ""
 "jp&gt;</span>"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:888
+#: src/scim_prime_imengine_setup.cpp:889
 msgid "Common"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:900
+#: src/scim_prime_imengine_setup.cpp:901
 msgid "Prediction"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:906
+#: src/scim_prime_imengine_setup.cpp:907
 msgid "Candidates window"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:913
+#: src/scim_prime_imengine_setup.cpp:914
 msgid "Toolbar"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:919
+#: src/scim_prime_imengine_setup.cpp:920
 msgid "Dictionary"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:926
+#: src/scim_prime_imengine_setup.cpp:927
 msgid "About"
 msgstr ""
 
-#: src/scim_prime_imengine_setup.cpp:1294
+#: src/scim_prime_imengine_setup.cpp:1295
 msgid "Set key filter"
 msgstr ""
