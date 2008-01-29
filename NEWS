@@ -1,3 +1,7 @@
+Overview of Changes from scim-prime-1.0.0 to scim-prime-1.0.1
+=============================================================
+* Fix a build problem on gcc-4.3.
+
 Overview of Changes from scim-prime-0.9.0 to scim-prime-1.0.0
 =============================================================
 * Fix credit.
