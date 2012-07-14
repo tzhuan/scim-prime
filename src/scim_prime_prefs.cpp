@@ -167,6 +167,7 @@ IntConfigData __config_int_common [] =
         NULL,
         NULL,
         NULL,
+        NULL,
         false,
     },
 };
