@@ -125,7 +125,7 @@ PrimeSession::edit_insert (const char *str)
 void
 PrimeSession::edit_set_mode (PrimePreeditionMode mode)
 {
-    char *command = "default";
+    const char *command = "default";
 
     switch (mode) {
     case PRIME_PREEDITION_KATAKANA:

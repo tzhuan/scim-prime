@@ -160,9 +160,9 @@ PrimeConnection::open_connection (const char *command,
             argv[2] = NULL;
         } else {
             if (argv[1]) {
-                argv[2] = "--no-save";
+                argv[2] = const_cast<char*>("--no-save");
             } else {
-                argv[1] = "--no-save";
+                argv[1] = const_cast<char*>("--no-save");
                 argv[2] = NULL;
             }
         }
@@ -646,7 +646,7 @@ PrimeConnection::get_reply (WideString &reply)
 }
 
 void
-PrimeConnection::get_reply (std::vector<String> &str_list, char *delim, int num)
+PrimeConnection::get_reply (std::vector<String> &str_list, const char *delim, int num)
 {
     scim_prime_util_split_string (m_last_reply, str_list, delim, num);
 }
@@ -825,7 +825,7 @@ handle_sigpipe (int signo)
 
 void
 scim_prime_util_split_string (String &str, std::vector<String> &str_list,
-                              char *delim, int num)
+                              const char *delim, int num)
 {
     String::size_type start = 0, end;
 

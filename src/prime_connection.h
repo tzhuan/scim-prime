@@ -83,7 +83,7 @@ public:
     void                get_reply           (String          &reply);
     void                get_reply           (WideString      &reply);
     void                get_reply           (Strings         &str_list,
-                                             char            *delim,
+                                             const char      *delim,
                                              int              num = -1);
     void                get_error_message   (WideString      &msg);
 
@@ -163,7 +163,7 @@ private:
 
 void scim_prime_util_split_string (String  &str,
                                    Strings &str_list,
-                                   char    *delim,
+                                   const char *delim,
                                    int      num = -1);
 
 #endif /* __SCIM_PRIME_CONNECTION_H__ */
