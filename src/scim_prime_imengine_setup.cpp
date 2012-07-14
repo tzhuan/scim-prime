@@ -127,7 +127,10 @@ static GtkWidget   * __widget_key_filter          = NULL;
 static GtkWidget   * __widget_key_filter_button   = NULL;
 static GtkWidget   * __widget_key_list_view       = NULL;
 static GtkWidget   * __widget_choose_keys_button  = NULL;
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
 static GtkTooltips * __widget_tooltips            = NULL;
+#endif
 
 static struct KeyboardConfigPage __key_conf_pages[] =
 {
@@ -181,7 +184,7 @@ static void     on_default_color_button_set       (GtkColorButton  *colorbutton,
 
 static void     on_key_filter_selection_clicked   (GtkButton       *button,
                                                    gpointer         user_data);
-static void     on_key_category_menu_changed      (GtkOptionMenu   *omenu,
+static void     on_key_category_menu_changed      (GtkWidget       *omenu,
                                                    gpointer         user_data);
 static gboolean on_key_list_view_key_press        (GtkWidget       *widget,
                                                    GdkEventKey     *event,
@@ -270,11 +273,19 @@ create_check_button (const char *config_key)
                       entry);
     gtk_widget_show (GTK_WIDGET (entry->widget));
 
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
+#endif
     if (entry->tooltip)
+#if GTK_CHECK_VERSION(2, 12, 0)
+        gtk_widget_set_tooltip_text (GTK_WIDGET (entry->widget),
+                              _(entry->tooltip));
+#else
         gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (entry->widget),
                               _(entry->tooltip), NULL);
+#endif
 
     return GTK_WIDGET (entry->widget);
 }
@@ -295,7 +306,11 @@ create_spin_button (const char *config_key, GtkTable *table, int idx)
                       4, 4);
     gtk_widget_show (GTK_WIDGET (label));
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    GtkWidget *hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     GtkWidget *hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_table_attach (GTK_TABLE (table), GTK_WIDGET (hbox),
                       1, 2, idx, idx + 1,
                       (GtkAttachOptions) GTK_FILL,
@@ -323,11 +338,19 @@ create_spin_button (const char *config_key, GtkTable *table, int idx)
         gtk_widget_show (GTK_WIDGET (label));
     }
 
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
+#endif
     if (entry->tooltip)
+#if GTK_CHECK_VERSION(2, 12, 0)
+        gtk_widget_set_tooltip_text (GTK_WIDGET (entry->widget),
+                              _(entry->tooltip));
+#else
         gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (entry->widget),
                               _(entry->tooltip), NULL);
+#endif
 
     return GTK_WIDGET (entry->widget);
 }
@@ -367,11 +390,19 @@ create_entry (StringConfigData *data, GtkTable *table, int i)
                       (GtkAttachOptions) (GTK_FILL|GTK_EXPAND),
                       (GtkAttachOptions) (GTK_FILL), 4, 4);
 
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
+#endif
     if (data->tooltip)
+#if GTK_CHECK_VERSION(2, 12, 0)
+        gtk_widget_set_tooltip_text (GTK_WIDGET (data->widget),
+                              _(data->tooltip));
+#else
         gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (data->widget),
                               _(data->tooltip), NULL);
+#endif
 }
 
 static GtkWidget *
@@ -392,30 +423,54 @@ create_combo (const char *config_key, gpointer candidates_p,
                       (GtkAttachOptions) (GTK_FILL), 4, 4);
     gtk_widget_show (label);
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+    entry->widget = gtk_combo_box_text_new_with_entry ();
+    GtkWidget *widget_entry = gtk_bin_get_child (GTK_BIN (entry->widget));
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget_entry);
+    gtk_editable_set_editable (GTK_EDITABLE (widget_entry), FALSE);
+#else
     entry->widget = gtk_combo_new ();
     gtk_label_set_mnemonic_widget (GTK_LABEL (label),
                                    GTK_COMBO (entry->widget)->entry);
     gtk_combo_set_value_in_list (GTK_COMBO (entry->widget), TRUE, FALSE);
     gtk_combo_set_case_sensitive (GTK_COMBO (entry->widget), TRUE);
-    gtk_entry_set_editable (GTK_ENTRY (GTK_COMBO (entry->widget)->entry),
+    gtk_editable_set_editable (GTK_EDITABLE (GTK_COMBO (entry->widget)->entry),
                             FALSE);
+#endif
     gtk_widget_show (GTK_WIDGET (entry->widget));
     gtk_table_attach (GTK_TABLE (table), GTK_WIDGET (entry->widget), 1, 2, idx, idx + 1,
                       (GtkAttachOptions) (GTK_FILL|GTK_EXPAND),
                       (GtkAttachOptions) (GTK_FILL), 4, 4);
+#if GTK_CHECK_VERSION(2, 24, 0)
+    g_object_set_data (G_OBJECT (widget_entry),
+                       DATA_POINTER_KEY,
+                       (gpointer) candidates_p);
+    g_signal_connect ((gpointer) widget_entry, "changed",
+                      G_CALLBACK (on_default_combo_changed),
+                      entry);
+#else
     g_object_set_data (G_OBJECT (GTK_COMBO (entry->widget)->entry),
                        DATA_POINTER_KEY,
                        (gpointer) candidates_p);
-
     g_signal_connect ((gpointer) GTK_COMBO (entry->widget)->entry, "changed",
                       G_CALLBACK (on_default_combo_changed),
                       entry);
+#endif
 
+
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
+#endif
     if (entry->tooltip)
+#if GTK_CHECK_VERSION(2, 12, 0)
+        gtk_widget_set_tooltip_text (GTK_WIDGET (entry->widget),
+                              _(entry->tooltip));
+#else
         gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (entry->widget),
                               _(entry->tooltip), NULL);
+#endif
 
     return GTK_WIDGET (entry->widget);
 }
@@ -427,7 +482,11 @@ create_color_button (const char *config_key)
     if (!entry)
         return NULL;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    GtkWidget *hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     GtkWidget *hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_widget_show (hbox);
 
     GtkWidget *label = NULL;
@@ -449,11 +508,19 @@ create_color_button (const char *config_key)
     if (label)
         gtk_label_set_mnemonic_widget (GTK_LABEL (label), GTK_WIDGET (entry->widget));
 
+#if GTK_CHECK_VERSION(2, 12, 0)
+#else
     if (!__widget_tooltips)
         __widget_tooltips = gtk_tooltips_new();
+#endif
     if (entry->tooltip)
+#if GTK_CHECK_VERSION(2, 12, 0)
+        gtk_widget_set_tooltip_text (GTK_WIDGET (entry->widget),
+                              _(entry->tooltip));
+#else
         gtk_tooltips_set_tip (__widget_tooltips, GTK_WIDGET (entry->widget),
                               _(entry->tooltip), NULL);
+#endif
 
     return hbox;
 }
@@ -550,7 +617,11 @@ create_options_page ()
     GtkWidget *vbox, *table, *widget;
     StringConfigData *entry;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
     table = gtk_table_new (3, 2, FALSE);
@@ -583,7 +654,11 @@ create_prediction_page ()
 {
     GtkWidget *vbox, *table, *widget;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
     /* predict on preedition */
@@ -613,7 +688,11 @@ create_candidates_window_page ()
 {
     GtkWidget *vbox, *hbox, *table, *widget, *widget2;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
     /* page size */
@@ -632,7 +711,11 @@ create_candidates_window_page ()
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 2);
 
     /* show annotation */
+#if GTK_CHECK_VERSION(3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_ANNOTATION);
@@ -646,7 +729,11 @@ create_candidates_window_page ()
                       widget);
 
     /* show usage */
+#if GTK_CHECK_VERSION(3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_USAGE);
@@ -660,7 +747,11 @@ create_candidates_window_page ()
                       widget);
 
     /* show comment */
+#if GTK_CHECK_VERSION(3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 2);
     gtk_widget_show (hbox);
     widget = create_check_button (SCIM_PRIME_CONFIG_SHOW_COMMENT);
@@ -682,7 +773,11 @@ create_toolbar_page ()
 {
     GtkWidget *vbox, *hbox, *label;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
     return vbox;
@@ -708,10 +803,18 @@ create_keyboard_page (void)
 {
     GtkWidget *vbox, *hbox;
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 4);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     gtk_widget_show(hbox);
@@ -721,37 +824,60 @@ create_keyboard_page (void)
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
     gtk_widget_show (label);
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+    GtkWidget *omenu = gtk_combo_box_text_new ();
+#else
     GtkWidget *omenu = gtk_option_menu_new ();
+#endif
     __widget_key_categories_menu = omenu;
     gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, FALSE, 2);
     gtk_widget_show (omenu);
 
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), omenu);
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+#else
     GtkWidget *menu = gtk_menu_new ();
 
     GtkWidget *menuitem;
+#endif
 
     for (unsigned int i = 0; i < __key_conf_pages_num; i++) {
+#if GTK_CHECK_VERSION(2, 24, 0)
+        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (omenu),
+                                        _(__key_conf_pages[i].label));
+#else
         menuitem = gtk_menu_item_new_with_label (_(__key_conf_pages[i].label));
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
         gtk_widget_show (menuitem);
+#endif
     }
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (omenu), _("Search by key"));
+#else
     menuitem = gtk_menu_item_new_with_label (_("Search by key"));
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     gtk_widget_show (menuitem);
+#endif
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (omenu), _("all"));
+#else
     menuitem = gtk_menu_item_new_with_label (_("all"));
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     gtk_widget_show (menuitem);
+#endif
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+#else
     gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
     gtk_widget_show (menu);
+#endif
 
     GtkWidget *entry = gtk_entry_new ();
     __widget_key_filter = entry;
-    gtk_entry_set_editable (GTK_ENTRY (entry), FALSE);
+    gtk_editable_set_editable (GTK_EDITABLE (entry), FALSE);
     gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 2);
     gtk_widget_show(entry);
 
@@ -809,7 +935,11 @@ create_keyboard_page (void)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
     // for key bind theme
+#if GTK_CHECK_VERSION(3, 0, 0)
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#else
     hbox = gtk_hbox_new (FALSE, 0);
+#endif
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 4);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     gtk_widget_show(hbox);
@@ -845,7 +975,11 @@ create_about_page ()
     GtkWidget *vbox, *label;
     gchar str[256];
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#else
     vbox = gtk_vbox_new (FALSE, 0);
+#endif
     gtk_widget_show (vbox);
 
     g_snprintf (
@@ -939,27 +1073,46 @@ create_setup_window ()
 }
 
 static void
-setup_combo_value (GtkCombo *combo, const String & str)
+setup_combo_value (GtkWidget *combo, const String & str)
 {
+#if GTK_CHECK_VERSION(2, 24, 0)
+#else
     GList *list = NULL;
     const char *defval = NULL;
+#endif
 
     ComboConfigCandidate *data
         = static_cast<ComboConfigCandidate*>
+#if GTK_CHECK_VERSION(2, 24, 0)
+        (g_object_get_data (G_OBJECT (gtk_bin_get_child (GTK_BIN (combo))),
+#else
         (g_object_get_data (G_OBJECT (GTK_COMBO(combo)->entry),
+#endif
                             DATA_POINTER_KEY));
 
     for (unsigned int i = 0; data[i].label; i++) {
+#if GTK_CHECK_VERSION(2, 24, 0)
+#else
         list = g_list_append (list, (gpointer) _(data[i].label));
-        if (!strcmp (data[i].data, str.c_str ()))
+#endif
+        if (!strcmp (data[i].data, str.c_str ())) {
+#if GTK_CHECK_VERSION(2, 24, 0)
+            gtk_combo_box_set_active (GTK_COMBO_BOX (combo), i);
+            break;
+#else
             defval = _(data[i].label);
+#endif
+        }
     }
 
-    gtk_combo_set_popdown_strings (combo, list);
+#if GTK_CHECK_VERSION(2, 24, 0)
+#else
+    gtk_combo_set_popdown_strings (GTK_COMBO (combo), list);
     g_list_free (list);
 
     if (defval)
-        gtk_entry_set_text (GTK_ENTRY (combo->entry), defval);
+        gtk_entry_set_text (GTK_ENTRY (GTK_COMBO (combo)->entry), defval);
+#endif
 }
 
 static void
@@ -981,8 +1134,12 @@ setup_widget_value ()
 
     for (unsigned int i = 0; __config_string_common[i].key; i++) {
         StringConfigData &entry = __config_string_common[i];
+#if GTK_CHECK_VERSION(2, 24, 0)
+        if (entry.widget && GTK_IS_COMBO_BOX (entry.widget))
+#else
         if (entry.widget && GTK_IS_COMBO (entry.widget))
-            setup_combo_value (GTK_COMBO (entry.widget), entry.value);
+#endif
+            setup_combo_value (GTK_WIDGET (entry.widget), entry.value);
         else if (entry.widget && GTK_IS_ENTRY (entry.widget))
             gtk_entry_set_text (GTK_ENTRY (entry.widget),
                                 entry.value.c_str ());
@@ -1008,8 +1165,13 @@ setup_widget_value ()
         }
     }
 
+#if GTK_CHECK_VERSION(2, 24, 0)
+    gtk_combo_box_set_active (GTK_COMBO_BOX (__widget_key_categories_menu),
+                              KEY_CATEGORY_INDEX_ALL);
+#else
     gtk_option_menu_set_history (GTK_OPTION_MENU (__widget_key_categories_menu),
                                  KEY_CATEGORY_INDEX_ALL);
+#endif
     GtkTreeView *treeview = GTK_TREE_VIEW (__widget_key_list_view);
     GtkListStore *store = GTK_LIST_STORE (gtk_tree_view_get_model (treeview));
     gtk_list_store_clear (store);
@@ -1254,14 +1416,18 @@ on_default_color_button_set (GtkColorButton *colorbutton,
 }
 
 static void
-on_key_category_menu_changed (GtkOptionMenu *omenu, gpointer user_data)
+on_key_category_menu_changed (GtkWidget *omenu, gpointer user_data)
 {
     GtkTreeView *treeview = GTK_TREE_VIEW (user_data);
     GtkListStore *store = GTK_LIST_STORE (gtk_tree_view_get_model (treeview));
 
     gtk_list_store_clear (store);
 
-    gint idx = gtk_option_menu_get_history (omenu);
+#if GTK_CHECK_VERSION(2, 24, 0)
+    gint idx = gtk_combo_box_get_active (GTK_COMBO_BOX (omenu));
+#else
+    gint idx = gtk_option_menu_get_history (GtkOptionMenu (omenu));
+#endif
 
     bool use_filter = false;
 
@@ -1329,8 +1495,13 @@ on_key_list_view_key_press (GtkWidget *widget, GdkEventKey *event,
     GtkTreeView *treeview = GTK_TREE_VIEW (widget);
 
     switch (event->keyval) {
+#if GTK_CHECK_VERSION(3, 0, 0)
+    case GDK_KEY_Return:
+    case GDK_KEY_KP_Enter:
+#else
     case GDK_Return:
     case GDK_KP_Enter:
+#endif
         key_list_view_popup_key_selection (treeview);
         break;
     }
